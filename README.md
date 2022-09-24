@@ -47,5 +47,5 @@ yarn
 When installation is complete, run it :
 
 ```
-yarn start
+expo start
 ```
