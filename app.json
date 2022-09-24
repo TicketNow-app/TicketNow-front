@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "vip",
+    "slug": "vip",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
