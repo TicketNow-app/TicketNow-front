@@ -10,9 +10,15 @@ import com.facebook.react.ReactRootView;
 import expo.modules.ReactActivityDelegateWrapper;
 
 public class MainActivity extends ReactActivity {
+  //This change is required to avoid crashes related to View state being not persisted consistently across Activity restarts.
+  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    // Set the theme to AppTheme BEFORE onCreate to support 
+    // Set the theme to AppTheme BEFORE onCreate to support
     // coloring the background, status bar, and navigation bar.
     // This is required for expo-splash-screen.
     setTheme(R.style.AppTheme);
