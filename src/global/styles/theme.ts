@@ -11,11 +11,12 @@ export default {
     attention: '#E83F5B',
     attention_light: 'rgba(232, 63, 91, 0.5)',
 
-    shape: '#FFFFFF',
-    title: '#363F5F',
-    text: '#969CB2',
-    text_dark: '#000000',
-    background: '#F0F2F5',
+    shape: '#F3F6FB',
+    title: '#FFFFFF',
+    text: '#F3F6FB',
+    text_inactive: '#7E7F87',
+    background: '#131313',
+    background_secondary: '#F5F5F5',
   },
 
   fonts: {

@@ -1,5 +1,6 @@
 import React from "react";
-// import {useTheme} from "styled-components";
+import { Text } from "react-native";
+import { useTheme } from "styled-components";
 import { MaterialIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -11,15 +12,24 @@ import { Profile } from "../screens/Profile";
 import { Search } from "../screens/Search";
 
 export function AppRoutes() {
-  // const theme = useTheme();
+  const theme = useTheme();
   return (
     <Navigator
       screenOptions={{
-        tabBarActiveTintColor: "#000",
-        tabBarInactiveTintColor: "#e1e1e6",
+        tabBarActiveTintColor: theme.colors.text,
+        tabBarInactiveTintColor: theme.colors.text_inactive,
+        tabBarStyle: {
+          height: 60,
+          paddingVertical: 10,
+          paddingHorizontal: 20,
+          backgroundColor: theme.colors.background,
+        },
+        tabBarLabelStyle: {
+          paddingBottom: 10,
+        },
         header: () => null,
-        tabBarShowLabel: false,
-      }}
+      }
+      }
     >
       <Screen
         name="Configurações"
@@ -27,7 +37,7 @@ export function AppRoutes() {
         options={{
           tabBarIcon: (({ size, color }) => (
             <MaterialIcons name="settings" size={size} color={color} />
-          ))
+          )),
         }}
       />
       <Screen
@@ -57,6 +67,6 @@ export function AppRoutes() {
           ))
         }}
       />
-    </Navigator>
+    </ Navigator>
   );
 }
