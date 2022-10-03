@@ -5,8 +5,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
+import { Settings } from "../screens/Settings";
 import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
+import { Search } from "../screens/Search";
 
 export function AppRoutes() {
   // const theme = useTheme();
@@ -21,7 +23,7 @@ export function AppRoutes() {
     >
       <Screen
         name="Configurações"
-        component={Home}
+        component={Settings}
         options={{
           tabBarIcon: (({ size, color }) => (
             <MaterialIcons name="settings" size={size} color={color} />
@@ -30,7 +32,7 @@ export function AppRoutes() {
       />
       <Screen
         name="Início"
-        component={Profile}
+        component={Home}
         options={{
           tabBarIcon: (({ size, color }) => (
             <MaterialIcons name="home-filled" size={size} color={color} />
@@ -39,7 +41,7 @@ export function AppRoutes() {
       />
       <Screen
         name="Pesquisar"
-        component={Profile}
+        component={Search}
         options={{
           tabBarIcon: (({ size, color }) => (
             <MaterialIcons name="search" size={size} color={color} />

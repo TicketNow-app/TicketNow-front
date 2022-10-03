@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { Container, Title } from './styles';
 
-export function Profile() {
+export function Settings() {
   return (
     <Container>
-      <Title>Profile</Title>
+      <Title>Settings</Title>
     </Container>
   );
 }
