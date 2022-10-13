@@ -22,7 +22,8 @@ export function AppRoutes() {
           height: 60,
           paddingVertical: 10,
           paddingHorizontal: 20,
-          backgroundColor: theme.colors.background,
+          backgroundColor: theme.colors.background_secondary,
+          borderTopColor: 'transparent',
         },
         tabBarLabelStyle: {
           paddingBottom: 10,

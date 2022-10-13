@@ -4,6 +4,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export const Container = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.secondary};
+
+  margin-right: 16px;
+
   width: ${RFValue(300)}px;
   height: ${RFValue(150)}px;
   border-radius: 10px;

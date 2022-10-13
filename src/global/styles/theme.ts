@@ -13,7 +13,8 @@ export default {
     base: '#FFFFFF',
     text: '#F3F6FB',
     text_inactive: '#7E7F87',
-    background: '#1A1B1F'
+    background: '#1A1B1F',
+    background_secondary: '#0D0C12',
   },
 
   fonts: {
