@@ -18,7 +18,7 @@ export const ContainerScroll = styled.View`
   margin: ${RFValue(22)}px 0;
 `;
 
-export const ScrollView = styled.ScrollView.attrs({
+export const HorizontalScroll = styled.FlatList.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: { paddingHorizontal: 24 }

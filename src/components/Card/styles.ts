@@ -7,8 +7,8 @@ export const Container = styled.TouchableOpacity`
 
   margin-right: 16px;
 
-  width: ${RFValue(150)}px;
-  height: ${RFValue(150)}px;
+  width: ${RFValue(140)}px;
+  height: ${RFValue(140)}px;
   border-radius: 10px;
 `;
 

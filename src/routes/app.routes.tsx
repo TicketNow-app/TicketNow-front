@@ -11,10 +11,13 @@ import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
 import { Search } from "../screens/Search";
 
+//set home as initial route
+
 export function AppRoutes() {
   const theme = useTheme();
   return (
     <Navigator
+      initialRouteName="Início"
       screenOptions={{
         tabBarActiveTintColor: theme.colors.text,
         tabBarInactiveTintColor: theme.colors.text_inactive,
