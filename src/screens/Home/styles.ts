@@ -1,22 +1,27 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper'
 
-export const Container = styled.View`
+export const Container = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingTop: getStatusBarHeight() + RFValue(20),
+    paddingBottom: getBottomSpace() + 24,
+  }
+})`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const ContainerCardLarge = styled.View`
+export const ContainerScroll = styled.View`
   width: 100%;
-  margin-top: ${getStatusBarHeight() + RFValue(28)}px;
+  margin: ${RFValue(22)}px 0;
 `;
 
 export const ScrollView = styled.ScrollView.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
-  contentContainerStyle: { paddingHorizontal: 24 },
-  endFillColor: 'red'
+  contentContainerStyle: { paddingHorizontal: 24 }
 })`
   width: 100%;
   margin-top: ${RFValue(20)}px;
