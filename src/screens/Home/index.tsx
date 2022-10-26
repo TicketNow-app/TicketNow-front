@@ -5,8 +5,9 @@ import { Container, ContainerScroll, HorizontalScroll, TitleContainer } from './
 import { CardLarge } from '../../components/CardLarge';
 import { Card } from '../../components/Card';
 import { CompanyTag } from '../../components/CompanyTag';
+import { CardLargeEvent } from '../../components/CardLargeEvent';
 
-import { data, event, company } from '../../mock';
+import { data, event, company, eventsRecent } from '../../mock';
 
 export function Home() {
 
@@ -28,6 +29,15 @@ export function Home() {
           showsHorizontalScrollIndicator={false}
           data={event}
           renderItem={({ item }) => <Card event={item} />}
+        />
+      </ContainerScroll>
+      <ContainerScroll>
+        <TitleContainer>Eventos recentes</TitleContainer>
+        <HorizontalScroll
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={eventsRecent}
+          renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
         />
       </ContainerScroll>
       <ContainerScroll>
