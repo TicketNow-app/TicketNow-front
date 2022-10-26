@@ -41,7 +41,7 @@ This project works fine on iOS and Android.
 Install packages :
 
 ```
-yarn
+yarn install
 ```
 
 When installation is complete, run it :
