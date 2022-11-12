@@ -1,15 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
 import { useTheme } from "styled-components";
-import { MaterialIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-const { Navigator, Screen } = createBottomTabNavigator();
+import { Cog6ToothIcon, HomeIcon, UserIcon, MapIcon } from "react-native-heroicons/outline";
 
 import { Settings } from "../screens/Settings";
 import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
 import { Search } from "../screens/Search";
+
+const { Navigator, Screen } = createBottomTabNavigator();
 
 //set home as initial route
 
@@ -23,15 +22,12 @@ export function AppRoutes() {
         tabBarInactiveTintColor: theme.colors.text_inactive,
         tabBarStyle: {
           height: 60,
-          paddingVertical: 10,
           paddingHorizontal: 20,
           backgroundColor: theme.colors.background_secondary,
           borderTopColor: 'transparent',
         },
-        tabBarLabelStyle: {
-          paddingBottom: 10,
-        },
         header: () => null,
+        tabBarShowLabel: false
       }
       }
     >
@@ -40,7 +36,7 @@ export function AppRoutes() {
         component={Settings}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="settings" size={size} color={color} />
+            <Cog6ToothIcon size={size} color={color} />
           )),
         }}
       />
@@ -49,7 +45,7 @@ export function AppRoutes() {
         component={Home}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="home-filled" size={size} color={color} />
+            <HomeIcon size={size} color={color} />
           ))
         }}
       />
@@ -58,7 +54,7 @@ export function AppRoutes() {
         component={Search}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="search" size={size} color={color} />
+            <UserIcon size={size} color={color} />
           ))
         }}
       />
@@ -67,7 +63,7 @@ export function AppRoutes() {
         component={Profile}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="person" size={size} color={color} />
+            <MapIcon size={size} color={color} />
           ))
         }}
       />
