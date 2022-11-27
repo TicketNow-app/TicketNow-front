@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTheme } from "styled-components";
+import { BellIcon } from "react-native-heroicons/solid";
 
-import { Container, ContainerScroll, HorizontalScroll, TitleContainer } from './styles';
+import { Container, ContainerScroll, Header, HorizontalScroll, TitleContainer } from './styles';
 
+import { HeaderButton } from '../../components/HeaderButton';
 import { CardLarge } from '../../components/CardLarge';
 import { Card } from '../../components/Card';
 import { CompanyTag } from '../../components/CompanyTag';
@@ -13,6 +16,12 @@ export function Home() {
 
   return (
     <Container>
+      <Header>
+        <HeaderButton>
+          <BellIcon size={24} color={useTheme().colors.text_inactive} />
+        </HeaderButton>
+        <TitleContainer>teste</TitleContainer>
+      </Header>
       <ContainerScroll>
         <TitleContainer>Categorias</TitleContainer>
         <HorizontalScroll

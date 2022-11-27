@@ -54,7 +54,7 @@ export function AppRoutes() {
         component={Search}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <UserIcon size={size} color={color} />
+            <MapIcon size={size} color={color} />
           ))
         }}
       />
@@ -63,7 +63,7 @@ export function AppRoutes() {
         component={Profile}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MapIcon size={size} color={color} />
+            <UserIcon size={size} color={color} />
           ))
         }}
       />

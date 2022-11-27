@@ -5,12 +5,20 @@ import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper
 export const Container = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
-    paddingTop: getStatusBarHeight() + RFValue(20),
     paddingBottom: getBottomSpace() + 24,
   }
 })`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
+`;
+
+export const Header = styled.View`
+  width: 100%;
+  height: ${RFValue(113)}px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${getStatusBarHeight() + 18}px ${RFValue(16)}px ${RFValue(19)}px ${RFValue(16)}px;
 `;
 
 export const ContainerScroll = styled.View`
