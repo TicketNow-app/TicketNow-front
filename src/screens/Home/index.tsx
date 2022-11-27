@@ -5,6 +5,7 @@ import { BellIcon } from "react-native-heroicons/solid";
 import { Container, ContainerScroll, Header, HorizontalScroll, TitleContainer } from './styles';
 
 import { HeaderButton } from '../../components/HeaderButton';
+import { AvatarMini } from '../../components/AvatarMini';
 import { CardLarge } from '../../components/CardLarge';
 import { Card } from '../../components/Card';
 import { CompanyTag } from '../../components/CompanyTag';
@@ -20,7 +21,7 @@ export function Home() {
         <HeaderButton>
           <BellIcon size={24} color={useTheme().colors.text_inactive} />
         </HeaderButton>
-        <TitleContainer>teste</TitleContainer>
+        <AvatarMini />
       </Header>
       <ContainerScroll>
         <TitleContainer>Categorias</TitleContainer>
