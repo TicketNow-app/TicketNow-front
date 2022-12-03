@@ -13,7 +13,11 @@ import { CardLargeEvent } from '../../components/CardLargeEvent';
 
 import { data, event, company, eventsRecent } from '../../mock';
 
-export function Home() {
+export function Home({ navigation }) {
+  function OpenSettings() {
+    navigation.navigate('Settings');
+    console.log('Settings');
+  }
 
   return (
     <Container>
@@ -24,7 +28,7 @@ export function Home() {
         <AvatarMini />
       </Header>
       <ContainerScroll>
-        <TitleContainer>Categorias</TitleContainer>
+        <TitleContainer onPress={OpenSettings}>Categorias</TitleContainer>
         <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
