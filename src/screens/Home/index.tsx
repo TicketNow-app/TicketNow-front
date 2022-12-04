@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from "styled-components";
 import { BellIcon } from "react-native-heroicons/solid";
+import { useNavigation } from '@react-navigation/native';
 
 import { Container, ContainerScroll, Header, HorizontalScroll, TitleContainer } from './styles';
 
@@ -13,10 +14,11 @@ import { CardLargeEvent } from '../../components/CardLargeEvent';
 
 import { data, event, company, eventsRecent } from '../../mock';
 
-export function Home({ navigation }) {
-  function OpenSettings() {
-    navigation.navigate('Settings');
-    console.log('Settings');
+export function Home() {
+  const navigation = useNavigation();
+
+  function OpenEvent() {
+    navigation.navigate('Event');
   }
 
   return (
@@ -28,7 +30,7 @@ export function Home({ navigation }) {
         <AvatarMini />
       </Header>
       <ContainerScroll>
-        <TitleContainer onPress={OpenSettings}>Categorias</TitleContainer>
+        <TitleContainer onPress={OpenEvent}>Categorias</TitleContainer>
         <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}

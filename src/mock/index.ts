@@ -1,160 +1,172 @@
 export const data = [
   {
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3',
+    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     title: 'Festival Eletronica',
     description: '21 Eventos próximos'
   },
   {
-    image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3',
+    image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     title: 'Shows',
     description: '47 Eventos próximos'
   },
   {
-    image: 'https://images.unsplash.com/photo-1630163664483-9ee845d40a63',
-    title: '#Baile',
+    image: 'https://images.unsplash.com/photo-1532285105565-5860e4cb0e95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1260&q=80',
+    title: '#NãoParaNão',
     description: '4 Eventos próximos'
   }
 ];
 
 export const event = [
   {
-    image: "https://images.unsplash.com/photo-1595239094789-4e00e532528a",
+    image: "https://images.unsplash.com/photo-1519530782816-ba0c305fbb0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     date: 'Sex 14 de Out',
+    hour_start: '21:30',
+    hour_end: '05:30',
     title: "#ECX22 - Eletronic Core Experience",
-    location: "1291 Nesor Street"
+    location: "1291 Nesor Street",
+    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22"
   },
   {
-    image: 'https://images.unsplash.com/photo-1549342902-be005322599a',
+    image: 'https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     date: 'Sab 18 de Nov',
-    title: "Mack e Puc apres: Volta ao Mundo do Funk",
-    location: "334 Daeh Pass"
+    hour_start: '21:30',
+    hour_end: '05:30',
+    title: "Solid | Halloween",
+    location: "334 Daeh Pass",
+    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22"
   },
   {
-    image: 'https://images.unsplash.com/photo-1570872626485-d8ffea69f463',
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
     date: 'Sab 22 de Out',
+    hour_start: '21:30',
+    hour_end: '05:30',
     title: "Bravosween",
-    location: "1291 Nesor Street"
+    location: "1291 Nesor Street",
+    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22"
   },
   {
-    image: 'https://images.unsplash.com/photo-1599839619722-39751411ea63',
+    image: 'https://images.unsplash.com/photo-1514533212735-5df27d970db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80',
     date: 'Sab 18 de Nov',
-    title: "Bruno Prado e MC Kelvinho",
-    location: "334 Daeh Pass"
+    hour_start: '21:30',
+    hour_end: '05:30',
+    title: "Marshmello - World Tour",
+    location: "334 Daeh Pass",
+    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22"
   }
 ]
 
 export const company = [
   {
-    image: 'https://images.unsplash.com/photo-1612808444988-623003362d44',
-    title: 'Holy Shit'
+    image: 'https://images.unsplash.com/photo-1649783467317-810564b3df8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1113&q=80',
+    title: 'Waves Sonds'
   },
   {
-    image: 'https://images.unsplash.com/photo-1516876437184-593fda40c7ce',
-    title: 'Creation Company'
+    image: 'https://images.unsplash.com/photo-1529912626516-e58b23f44f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    title: 'Rainbow Creation'
   },
   {
-    image: 'https://images.unsplash.com/photo-1547987523-f132f72f9b43',
-    title: 'Underground Prod.'
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1614851099518-055a1000e6d5',
+    image: 'https://images.unsplash.com/photo-1535083252457-6080fe29be45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     title: 'Cromatic'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    title: 'Underground Prod.'
   }
 ]
 
 export const eventsRecent = [
   {
-    image: 'https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?',
-    title: "Bruno Prado e MC Kelvinho",
+    image: 'https://images.unsplash.com/photo-1619229666372-3c26c399a4cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    title: "Supra Summer Fest",
     location: "334 Daeh Pass",
     date: 'Sab 18 de Nov',
     friendsConfirmed: [
       {
-        image: 'https://images.unsplash.com/photo-1499155286265-79a9dc9c6380?',
+        image: 'https://images.unsplash.com/photo-1568782517100-09bf22d88c2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
         name: 'Sarah Lindt',
       },
       {
-        image: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?',
+        image: 'https://images.unsplash.com/photo-1531734510209-2da4a139a53a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Gilbert Brown',
       },
       {
-        image: 'https://plus.unsplash.com/premium_photo-1663054609755-5be53e6d599a?',
+        image: 'https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Michael Jones',
       },
       {
-        image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?',
+        image: 'https://images.unsplash.com/photo-1533435137002-455932c8538f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Aira Jackson',
       }
     ]
   },
   {
-    image: 'https://images.unsplash.com/photo-1582711012153-0ef6ef75d08f?',
-    title: "Bruno Prado e MC Kelvinho",
+    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    title: "Long Beach Festival",
     location: "334 Daeh Pass",
     date: 'Sab 18 de Nov',
     friendsConfirmed: [
       {
-        image: 'https://images.unsplash.com/photo-1568038479111-87bf80659645?',
+        image: 'https://images.unsplash.com/photo-1500336624523-d727130c3328?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Sarah Lindt',
       },
       {
-        image: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?',
+        image: 'https://images.unsplash.com/photo-1524601885886-1bdd86a02f5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Gilbert Brown',
       },
       {
-        image: 'https://images.unsplash.com/photo-1542327897-d73f4005b533?',
+        image: 'https://images.unsplash.com/photo-1523398002811-999ca8dec234?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=405&q=80',
         name: 'Michael Jones',
       },
       {
-        image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?',
+        image: 'https://images.unsplash.com/photo-1469460340997-2f854421e72f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
         name: 'Aira Jackson',
       }
     ]
   },
   {
-    image: 'https://images.unsplash.com/photo-1577648735394-9c41449a1f6f?',
-    title: "Bruno Prado e MC Kelvinho",
+    image: 'https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    title: "Sunset Fest",
     location: "334 Daeh Pass",
     date: 'Sab 18 de Nov',
     friendsConfirmed: [
       {
-        image: 'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?',
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Sarah Lindt',
       },
       {
-        image: 'https://images.unsplash.com/photo-1506436718137-b21cd5c12e7a?',
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
         name: 'Gilbert Brown',
       },
       {
-        image: 'https://images.unsplash.com/photo-1535207010348-71e47296838a?',
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Michael Jones',
       },
       {
-        image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?',
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
         name: 'Aira Jackson',
       }
     ]
   },
   {
-    image: 'https://images.unsplash.com/photo-1574155376612-bfa4ed8aabfd?',
-    title: "Bruno Prado e MC Kelvinho",
+    image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    title: "Fire Stone",
     location: "334 Daeh Pass",
     date: 'Sab 18 de Nov',
     friendsConfirmed: [
       {
-        image: 'https://images.unsplash.com/photo-1499155286265-79a9dc9c6380?',
+        image: 'https://images.unsplash.com/photo-1535041632967-ac4bcbd25965?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Sarah Lindt',
       },
       {
-        image: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?',
+        image: 'https://images.unsplash.com/photo-1626847152272-c64724db41c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Gilbert Brown',
       },
       {
-        image: 'https://plus.unsplash.com/premium_photo-1663054609755-5be53e6d599a?',
+        image: 'https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Michael Jones',
       },
       {
-        image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?',
+        image: 'https://images.unsplash.com/photo-1530452491045-fcc42194fe79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80',
         name: 'Aira Jackson',
       }
     ]

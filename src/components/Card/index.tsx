@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
+
 import { Container, Content, Image, Gradient, ContainerText, Date, Title, Description } from './styles';
 
 interface CardProps {
@@ -11,8 +13,14 @@ interface CardProps {
 }
 
 export function Card({ event }: CardProps) {
+  const navigation = useNavigation();
+
+  function OpenEvent() {
+    navigation.navigate('Event');
+  }
+
   return (
-    <Container activeOpacity={0.6}>
+    <Container activeOpacity={0.6} onPress={OpenEvent}>
       <Content>
         <Image source={{ uri: event.image }} />
         <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)']}
