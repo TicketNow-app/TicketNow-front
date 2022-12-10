@@ -1,6 +1,9 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+import { LinearGradient } from 'expo-linear-gradient';
+import MapView from "react-native-maps";
+import theme from '../../global/styles/theme';
 
 export const Container = styled.View`
   flex: 1;
@@ -36,7 +39,7 @@ export const ContainerDraggable = styled.View`
 `;
 
 export const DragCard = styled.View`
-  min-height: ${RFValue(40)}%;
+  min-height: ${RFValue(70)}%;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.background};
   padding: ${RFValue(12)}px ${RFValue(16)}px;
@@ -57,6 +60,15 @@ export const DragComponent = styled.View`
   height: ${RFValue(5)}px;
   background-color: ${({ theme }) => theme.colors.text_inactive};
   border-radius: ${RFValue(5)}px;
+`;
+
+export const ContainerScroll = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingBottom: 100,
+  },
+  showsVerticalScrollIndicator: false,
+})`
+  width: 100%;
 `;
 
 export const ContainerTopInfos = styled.View`
@@ -129,12 +141,19 @@ export const ReadMore = styled.Text`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-export const ContainerBuy = styled.View`
+export const ContainerBuy = styled(LinearGradient).attrs({
+  //use theme colors
+  colors: [theme.colors.background, 'transparent'],
+  start: { x: 0, y: 0.3 },
+  end: { x: 0, y: 0 },
+})`
   position: absolute;
   width: 100%;
   justify-content: center;
   align-items: center;
-  bottom: ${RFValue(24)}px;
+  bottom: 0;
+  padding-top: ${RFValue(24)}px;
+  padding-bottom: ${RFValue(24)}px;
   box-sizing: border-box;
 `;
 export const BuyButton = styled.TouchableOpacity.attrs({
@@ -151,5 +170,56 @@ export const BuyButton = styled.TouchableOpacity.attrs({
 export const TextButton = styled.Text`
   font-size: ${RFValue(14)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+export const ContainerMap = styled.View`
+  width: 100%;
+  height: ${RFValue(200)}px;
+  border-radius: ${RFValue(10)}px;
+  margin-top: ${RFValue(26)}px;
+  overflow: hidden;
+`;
+
+export const Map = styled(MapView)`
+  width: 100%;
+  height: ${RFValue(200)}px;
+  border-radius: ${RFValue(10)}px;
+`;
+
+export const ContainerLineUp = styled.View`
+  width: 100%;
+  margin-top: ${RFValue(26)}px;
+`;
+
+export const TitleLineUp = styled(TitleAbout)`
+
+`;
+
+export const ContainerLineUpArtists = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})`
+  width: 100%;
+  margin-top: ${RFValue(16)}px;
+`;
+
+export const LineUpArtist = styled.View`
+  width: ${RFValue(80)}px;
+  align-items: center;
+  margin: 0 ${RFValue(20)}px;
+
+`;
+
+export const ImageArtist = styled.Image`
+  width: ${RFValue(80)}px;
+  height: ${RFValue(80)}px;
+  border-radius: ${RFValue(40)}px;
+  margin-bottom: ${RFValue(8)}px;
+`;
+
+export const NameArtist = styled.Text`
+  font-size: ${RFValue(14)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.colors.text};
 `;
