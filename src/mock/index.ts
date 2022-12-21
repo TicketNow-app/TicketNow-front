@@ -33,7 +33,36 @@ export const event = [
     hour_end: '05:30',
     title: "Solid | Halloween",
     location: "334 Daeh Pass",
-    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22"
+    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22",
+    producer: "Supra Events",
+    friends: [
+      'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+      'https://images.unsplash.com/photo-1508216310976-c518daae0cdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=403&q=80',
+      'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+      'https://images.unsplash.com/photo-1508216310976-c518daae0cdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=403&q=80',
+    ],
+    line_up: [
+      {
+        image: 'https://images.unsplash.com/flagged/photo-1563205764-79ea509b3e95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1261&q=80',
+        name: 'Dj 1',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Dj 2',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Dj 3',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Dj 5',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Dj 5',
+      },
+    ]
   },
   {
     image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
@@ -42,7 +71,7 @@ export const event = [
     hour_end: '05:30',
     title: "Bravosween",
     location: "1291 Nesor Street",
-    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22"
+    about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22",
   },
   {
     image: 'https://images.unsplash.com/photo-1514533212735-5df27d970db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80',

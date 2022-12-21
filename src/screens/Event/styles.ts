@@ -1,9 +1,7 @@
-import styled from 'styled-components/native';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
-import { LinearGradient } from 'expo-linear-gradient';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import MapView from "react-native-maps";
-import theme from '../../global/styles/theme';
+import { RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
@@ -39,7 +37,7 @@ export const ContainerDraggable = styled.View`
 `;
 
 export const DragCard = styled.View`
-  min-height: ${RFValue(70)}%;
+  height: ${RFValue(80)}%;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.background};
   padding: ${RFValue(12)}px ${RFValue(16)}px;
@@ -62,9 +60,46 @@ export const DragComponent = styled.View`
   border-radius: ${RFValue(5)}px;
 `;
 
+export const ContainerOutCard = styled.View`
+  position: absolute;
+  width: ${RFValue(100)}%;
+  height: ${RFValue(34)}px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 0 ${RFValue(16)}px;
+  top: -${RFValue(100)}px;
+`;
+
+export const ContainerProducer = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const ImageProducer = styled.Image`
+  width: ${RFValue(34)}px;
+  height: ${RFValue(34)}px;
+  border-radius: ${RFValue(17)}px;
+  background-color: ${({ theme }) => theme.colors.text_inactive};
+  margin-right: ${RFValue(8)}px;
+`;
+
+export const NameProducer = styled.Text`
+  font-size: ${RFValue(14)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+export const ContainerFriends = styled.View`
+  height: ${RFValue(34)}px;
+`;
+
 export const ContainerScroll = styled.ScrollView.attrs({
   contentContainerStyle: {
-    paddingBottom: 100,
+    paddingHorizontal: RFValue(16),
+    paddingBottom: RFValue(100),
   },
   showsVerticalScrollIndicator: false,
 })`
@@ -141,25 +176,20 @@ export const ReadMore = styled.Text`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-export const ContainerBuy = styled(LinearGradient).attrs({
-  //use theme colors
-  colors: [theme.colors.background, 'transparent'],
-  start: { x: 0, y: 0.3 },
-  end: { x: 0, y: 0 },
-})`
+export const ContainerBuy = styled.View`
   position: absolute;
   width: 100%;
   justify-content: center;
   align-items: center;
   bottom: 0;
-  padding-top: ${RFValue(24)}px;
-  padding-bottom: ${RFValue(24)}px;
+  padding: ${RFValue(16)}px;
   box-sizing: border-box;
 `;
+
 export const BuyButton = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6
 })`
-  width: ${RFValue(80)}%;
+  width: 100%;
   height: ${RFValue(50)}px;
   background-color: ${({ theme }) => theme.colors.background_secondary};
   justify-content: center;
