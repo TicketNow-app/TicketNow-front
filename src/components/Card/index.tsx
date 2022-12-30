@@ -1,7 +1,7 @@
-import React from "react";
 import { useNavigation } from '@react-navigation/native';
+import React from "react";
 
-import { Container, Content, Image, Gradient, ContainerText, Date, Title, Description } from './styles';
+import { Container, ContainerText, Content, Date, Description, Gradient, Image, Title } from './styles';
 
 interface CardProps {
   event: {

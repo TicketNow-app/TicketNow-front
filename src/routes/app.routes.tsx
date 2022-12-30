@@ -1,12 +1,13 @@
-import React from "react";
-import { useTheme } from "styled-components";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Cog6ToothIcon, HomeIcon, UserIcon, MapIcon } from "react-native-heroicons/outline";
+import React from "react";
+import { HomeIcon, MapIcon, TicketIcon, UserIcon } from "react-native-heroicons/outline";
+import { useTheme } from "styled-components";
 
-import { Settings } from "../screens/Settings";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
 import { Search } from "../screens/Search";
+import { Ticket } from "../screens/Ticket";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -21,8 +22,8 @@ export function AppRoutes() {
         tabBarActiveTintColor: theme.colors.text,
         tabBarInactiveTintColor: theme.colors.text_inactive,
         tabBarStyle: {
-          height: 60,
-          paddingHorizontal: 20,
+          paddingTop: 16,
+          paddingBottom: getBottomSpace(),
           backgroundColor: theme.colors.background_secondary,
           borderTopColor: 'transparent',
         },
@@ -31,15 +32,6 @@ export function AppRoutes() {
       }
       }
     >
-      <Screen
-        name="Configurações"
-        component={Settings}
-        options={{
-          tabBarIcon: (({ size, color }) => (
-            <Cog6ToothIcon size={size} color={color} />
-          )),
-        }}
-      />
       <Screen
         name="Início"
         component={Home}
@@ -56,6 +48,15 @@ export function AppRoutes() {
           tabBarIcon: (({ size, color }) => (
             <MapIcon size={size} color={color} />
           ))
+        }}
+      />
+      <Screen
+        name="Ticket"
+        component={Ticket}
+        options={{
+          tabBarIcon: (({ size, color }) => (
+            <TicketIcon size={size} color={color} />
+          )),
         }}
       />
       <Screen

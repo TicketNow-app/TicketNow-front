@@ -1,18 +1,18 @@
-import React from 'react';
-import { useTheme } from "styled-components";
-import { BellIcon } from "react-native-heroicons/solid";
 import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { BellIcon } from "react-native-heroicons/solid";
+import { useTheme } from "styled-components";
 
 import { Container, ContainerScroll, Header, HorizontalScroll, TitleContainer } from './styles';
 
-import { HeaderButton } from '../../components/HeaderButton';
 import { AvatarMini } from '../../components/AvatarMini';
-import { CardLarge } from '../../components/CardLarge';
 import { Card } from '../../components/Card';
-import { CompanyTag } from '../../components/CompanyTag';
+import { CardLarge } from '../../components/CardLarge';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
+import { CompanyTag } from '../../components/CompanyTag';
+import { HeaderButton } from '../../components/HeaderButton';
 
-import { data, event, company, eventsRecent } from '../../mock';
+import { company, data, event, eventsRecent } from '../../mock';
 
 export function Home() {
   const navigation = useNavigation();
@@ -25,7 +25,7 @@ export function Home() {
     <Container>
       <Header>
         <HeaderButton>
-          <BellIcon size={24} color={useTheme().colors.text_inactive} />
+          <BellIcon size={20} color={useTheme().colors.text_inactive} />
         </HeaderButton>
         <AvatarMini />
       </Header>

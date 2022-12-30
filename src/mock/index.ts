@@ -18,6 +18,7 @@ export const data = [
 
 export const event = [
   {
+    id: 1,
     image: "https://images.unsplash.com/photo-1519530782816-ba0c305fbb0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     date: 'Sex 14 de Out',
     hour_start: '21:30',
@@ -27,6 +28,7 @@ export const event = [
     about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22"
   },
   {
+    id: 2,
     image: 'https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     date: 'Sab 18 de Nov',
     hour_start: '21:30',
@@ -65,6 +67,7 @@ export const event = [
     ]
   },
   {
+    id: 3,
     image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
     date: 'Sab 22 de Out',
     hour_start: '21:30',
@@ -74,6 +77,7 @@ export const event = [
     about: "Após um longo ano de grandes festas e momentos inesquecíveis gostaríamos de convidar a todos para fazer parte do Festival anual e concluirmos 2022 com chave de ouro ! A Maior Festa Universitária do Litoral de São Paulo, apresenta: Distrito Festival 2K22",
   },
   {
+    id: 4,
     image: 'https://images.unsplash.com/photo-1514533212735-5df27d970db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80',
     date: 'Sab 18 de Nov',
     hour_start: '21:30',
