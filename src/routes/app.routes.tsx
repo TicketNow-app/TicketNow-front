@@ -1,51 +1,43 @@
-import React from "react";
-import { Text } from "react-native";
-import { useTheme } from "styled-components";
-import { MaterialIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
+import { HomeIcon, MapIcon, TicketIcon, UserIcon } from "react-native-heroicons/outline";
+import { useTheme } from "styled-components";
 
-const { Navigator, Screen } = createBottomTabNavigator();
-
-import { Settings } from "../screens/Settings";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
 import { Search } from "../screens/Search";
+import { Ticket } from "../screens/Ticket";
+
+const { Navigator, Screen } = createBottomTabNavigator();
+
+//set home as initial route
 
 export function AppRoutes() {
   const theme = useTheme();
   return (
     <Navigator
+      initialRouteName="Início"
       screenOptions={{
         tabBarActiveTintColor: theme.colors.text,
         tabBarInactiveTintColor: theme.colors.text_inactive,
         tabBarStyle: {
-          height: 60,
-          paddingVertical: 10,
-          paddingHorizontal: 20,
-          backgroundColor: theme.colors.background,
-        },
-        tabBarLabelStyle: {
-          paddingBottom: 10,
+          paddingTop: 16,
+          paddingBottom: getBottomSpace(),
+          backgroundColor: theme.colors.background_secondary,
+          borderTopColor: 'transparent',
         },
         header: () => null,
+        tabBarShowLabel: false
       }
       }
     >
-      <Screen
-        name="Configurações"
-        component={Settings}
-        options={{
-          tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="settings" size={size} color={color} />
-          )),
-        }}
-      />
       <Screen
         name="Início"
         component={Home}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="home-filled" size={size} color={color} />
+            <HomeIcon size={size} color={color} />
           ))
         }}
       />
@@ -54,8 +46,17 @@ export function AppRoutes() {
         component={Search}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="search" size={size} color={color} />
+            <MapIcon size={size} color={color} />
           ))
+        }}
+      />
+      <Screen
+        name="Ticket"
+        component={Ticket}
+        options={{
+          tabBarIcon: (({ size, color }) => (
+            <TicketIcon size={size} color={color} />
+          )),
         }}
       />
       <Screen
@@ -63,7 +64,7 @@ export function AppRoutes() {
         component={Profile}
         options={{
           tabBarIcon: (({ size, color }) => (
-            <MaterialIcons name="person" size={size} color={color} />
+            <UserIcon size={size} color={color} />
           ))
         }}
       />

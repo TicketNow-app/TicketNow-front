@@ -1,10 +1,21 @@
 {
   "expo": {
-    "name": "vip",
-    "slug": "vip",
+    "name": "TicketNow",
+    "slug": "TicketNow",
     "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.ticketnow",
+      "versionCode": 1
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a0cb9832-3f66-49b8-ac29-4161585be49b"
+      }
+    }
   }
 }
