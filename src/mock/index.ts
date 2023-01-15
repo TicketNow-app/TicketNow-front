@@ -205,3 +205,298 @@ export const eventsRecent = [
     ]
   },
 ]
+
+
+export const userEvents = [
+  {
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    title: "Sarah Lindt",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Jun',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    title: "Fire Stone",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Jun',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    title: "Sarah Lindt",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Jun',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+    title: "Gilbert Brown",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Jun',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    title: "Michael Jones",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Jun',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+    title: "Aira Jackson",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Jun',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+]
+
+export const userPastEvents = [
+  {
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    title: "Sarah Lindt",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Nov',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    title: "Fire Stone",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Nov',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    title: "Sarah Lindt",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Nov',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+    title: "Gilbert Brown",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Nov',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    title: "Michael Jones",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Nov',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+    title: "Aira Jackson",
+    location: "334 Daeh Pass",
+    date: 'Sab 18 de Nov',
+    friendsConfirmed: [
+      {
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Sarah Lindt',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1543379832-f3bf95b87523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        name: 'Gilbert Brown',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1539042380473-e548736ea2c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Michael Jones',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
+        name: 'Aira Jackson',
+      }
+    ]
+  },
+]

@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
@@ -25,7 +24,7 @@ export function Home() {
     <Container>
       <Header>
         <HeaderButton>
-          <BellIcon size={20} color={useTheme().colors.text_inactive} />
+          <BellIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
         <AvatarMini />

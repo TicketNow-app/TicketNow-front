@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Content, Image, Gradient, ContainerFriends, FriendImage, ContainerText, Date, Title, Description } from './styles';
+import { Container, ContainerFriends, ContainerText, Content, Date, Description, FriendImage, Gradient, Image, Title } from './styles';
 
 interface FriendsProps {
   image: string;
@@ -13,12 +13,13 @@ interface CardLargeEventProps {
     location: string;
     date: string;
     friendsConfirmed: FriendsProps[];
-  }
+  },
+  verticalSpace?: boolean;
 }
 
-export function CardLargeEvent({ eventsRecent }: CardLargeEventProps) {
+export function CardLargeEvent({ eventsRecent, verticalSpace }: CardLargeEventProps) {
   return (
-    <Container activeOpacity={0.6}>
+    <Container activeOpacity={0.6} Margin={verticalSpace}>
       <Content>
         <Image source={{ uri: eventsRecent.image }} />
         <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
