@@ -7,7 +7,6 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
-  gap: 20px;
 `;
 
 export const Header = styled.View`
@@ -51,7 +50,7 @@ export const Title = styled.Text`
 `;
 
 export const BoxCardLargeEvent = styled.View`
-  margin-bottom: 18px;
+  margin-bottom: 30px;
 `;
 
 export const BoxCardLargeEventPased = styled(BoxCardLargeEvent)`

@@ -10,7 +10,7 @@ import { HeaderButton } from '../../components/HeaderButton';
 
 import { userEvents } from '../../mock';
 
-export function Ticket() {
+export function TicketsList() {
   const navigation = useNavigation();
   return (
     <Container>
