@@ -1,9 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
-import { Container, ContainerScroll, Header, HorizontalScroll, TitleContainer } from './styles';
+import { Container, ContainerScroll, Header, HorizontalScroll, LogoHorizontal, TitleContainer } from './styles';
 
 import { AvatarMini } from '../../components/AvatarMini';
 import { Card } from '../../components/Card';
@@ -25,8 +24,9 @@ export function Home() {
     <Container>
       <Header>
         <HeaderButton>
-          <BellIcon size={20} color={useTheme().colors.text_inactive} />
+          <BellIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
+        <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
         <AvatarMini />
       </Header>
       <ContainerScroll>

@@ -21,6 +21,12 @@ export const Header = styled.View`
   padding: ${getStatusBarHeight() + 10}px ${RFValue(24)}px 0px ${RFValue(24)}px;
 `;
 
+export const LogoHorizontal = styled.Image`
+  width: ${RFValue(100)}px;
+  height: ${RFValue(30)}px;
+`;
+
+
 export const ContainerScroll = styled.View`
   width: 100%;
   margin: ${RFValue(22)}px 0;
