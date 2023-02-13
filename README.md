@@ -1,5 +1,5 @@
 <h1 align="center">
-	✨ VIP (app) ✨
+	✨ TicketNow (app) ✨
 </h1>
 
 
