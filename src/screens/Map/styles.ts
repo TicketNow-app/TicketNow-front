@@ -27,8 +27,6 @@ export const InputMap = styled(BottomSheetTextInput)`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-
-
 export const ButtonUserLocation = styled.TouchableOpacity`
   width: 45px;
   height: 45px;

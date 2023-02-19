@@ -5,6 +5,7 @@ import { useTheme } from "styled-components";
 
 import { ButtonUserLocation, ContainerInputButton, ContainerScrollPills, IconUserLocation, InputMap, MapContent, ScrollPills } from './styles';
 
+import { EventMarker } from '../../components/EventMarker';
 import { Pill } from '../../components/Pill';
 import { categories } from '../../mock';
 import mapStyle from '../../utils/mapStyle.json';
@@ -47,6 +48,7 @@ export function Map() {
   return (
     <>
       <MapContent customMapStyle={mapStyle} showsUserLocation={true} initialRegion={location} zoomEnabled={true} mapPadding={{ top: 0, right: 0, bottom: -40, left: 0 }}>
+        <EventMarker />
       </MapContent >
       <BottomSheet
         ref={sheetRef}
