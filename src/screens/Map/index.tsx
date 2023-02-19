@@ -1,12 +1,16 @@
+import BottomSheet from '@gorhom/bottom-sheet';
 import * as Location from 'expo-location';
-import React, { useEffect, useState } from 'react';
-import { MapContent } from './styles';
+import React, { useEffect, useRef, useState } from 'react';
+
+import { useTheme } from "styled-components";
+
+import { ButtonUserLocation, ContainerInputButton, IconUserLocation, InputMap, MapContent } from './styles';
 
 import mapStyle from '../../utils/mapStyle.json';
 
 export function Map() {
   const [location, setLocation] = useState(null);
-  const [destination, setDestination] = useState(null);
+  const [bottomSheet, setBottomSheet] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
@@ -28,8 +32,40 @@ export function Map() {
     })();
   }, []);
 
+  //change bottomSheet state
+  useEffect(() => {
+    if (bottomSheet === true) {
+      return sheetRef.current?.expand();
+    }
+    sheetRef.current?.collapse();
+  }, [bottomSheet]);
+
+  const sheetRef = useRef<BottomSheet>(null);
+  const snapPoints = ['14%', '24%', '50%'];
 
   return (
-    <MapContent customMapStyle={mapStyle} showsUserLocation={true} initialRegion={location} />
+    <>
+      <MapContent customMapStyle={mapStyle} showsUserLocation={true} initialRegion={location} zoomEnabled={true} mapPadding={{ top: 0, right: 0, bottom: -40, left: 0 }}>
+      </MapContent >
+      <BottomSheet
+        ref={sheetRef}
+        snapPoints={snapPoints}
+        backgroundStyle={{ backgroundColor: useTheme().colors.background }}
+        handleStyle={{ height: 40 }}
+        handleIndicatorStyle={{ backgroundColor: useTheme().colors.text_inactive }}
+        enableOverDrag={false}
+        enableContentPanningGesture={false}
+        enablePanDownToClose={false}
+        keyboardBlurBehavior="restore"
+        style={{ paddingHorizontal: 16 }}
+      >
+        <ContainerInputButton>
+          <InputMap placeholder='Buscar eventos' />
+          <ButtonUserLocation>
+            <IconUserLocation />
+          </ButtonUserLocation>
+        </ContainerInputButton>
+      </BottomSheet>
+    </>
   );
 }
