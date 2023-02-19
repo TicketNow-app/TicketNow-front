@@ -1,11 +1,12 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import * as Location from 'expo-location';
 import React, { useEffect, useRef, useState } from 'react';
-
 import { useTheme } from "styled-components";
 
-import { ButtonUserLocation, ContainerInputButton, IconUserLocation, InputMap, MapContent } from './styles';
+import { ButtonUserLocation, ContainerInputButton, ContainerScrollPills, IconUserLocation, InputMap, MapContent, ScrollPills } from './styles';
 
+import { Pill } from '../../components/Pill';
+import { categories } from '../../mock';
 import mapStyle from '../../utils/mapStyle.json';
 
 export function Map() {
@@ -65,6 +66,13 @@ export function Map() {
             <IconUserLocation />
           </ButtonUserLocation>
         </ContainerInputButton>
+        <ContainerScrollPills>
+          <ScrollPills
+            data={categories}
+            renderItem={({ item }) => <Pill title={item.name} />}
+          >
+          </ScrollPills>
+        </ContainerScrollPills>
       </BottomSheet>
     </>
   );
