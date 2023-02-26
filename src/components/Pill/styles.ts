@@ -7,7 +7,7 @@ interface PillProps {
 }
 
 export const ButtonPill = styled(TouchableOpacity).attrs({
-  activeOpacity: 0.7,
+  activeOpacity: 0.6,
 }) <PillProps>`
   display: flex;
   flex-direction: row;
