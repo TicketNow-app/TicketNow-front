@@ -7,7 +7,7 @@ import { getBottomSpace } from "react-native-iphone-x-helper";
 import { Home } from "../screens/Home";
 import { Map } from "../screens/Map";
 // import { Profile } from "../screens/Profile";
-import { Register } from "../screens/Register";
+import { RegisterSecondStep } from "../screens/RegisterSecondStep";
 import { TicketsList } from "../screens/TicketsList";
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -62,7 +62,7 @@ export function AppRoutes() {
       />
       <Screen
         name="Register"
-        component={Register}
+        component={RegisterSecondStep}
         options={{
           tabBarIcon: (({ size, color }) => (
             <UserIcon size={size} color={color} />
