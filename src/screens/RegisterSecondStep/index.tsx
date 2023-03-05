@@ -25,7 +25,7 @@ export function RegisterSecondStep({ navigation }: any) {
           <Input placeholder='Número de telefone' />
         </InputBox>
         <ButtonBox>
-          <Button title='Finalizar' onPress={() => { navigation.navigate('StackRoutes') }} />
+          <Button title='Finalizar' onPress={() => { navigation.navigate('Login') }} />
         </ButtonBox>
         <ContainerLater>
           <TextLater>Lembre-me mais tarde</TextLater>
