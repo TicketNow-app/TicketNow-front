@@ -1,14 +1,34 @@
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useTheme } from 'styled-components';
 
 import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, Header, InputBox, LogoHorizontal, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
 
 import { Button } from '../../components/Form/Button';
-import { Input } from '../../components/Form/Input';
+import { InputForm } from '../../components/Form/InputForm';
 import { TitleDesc } from '../../components/Form/TitleDesc';
 
+interface FormData {
+  email: string;
+  password: string;
+}
+
 export function Login({ navigation }: any) {
+  const {
+    control,
+    handleSubmit
+  } = useForm();
+
+  function handleLogin(form: FormData) {
+    const data = {
+      email: form.email,
+      password: form.password
+    }
+
+    console.log(data);
+  }
+
   return (
     <Container>
       <Header>
@@ -17,16 +37,24 @@ export function Login({ navigation }: any) {
       <Form>
         <TitleDesc title='Entre na sua conta' desc='Entre agora para encontrar ingressos para os eventos mais incríveis!' />
         <InputBox>
-          <Input placeholder='Endereço de e-mail' />
+          <InputForm
+            placeholder='Endereço de e-mail'
+            control={control}
+            name='email'
+          />
         </InputBox>
         <InputBox>
-          <Input placeholder='Senha' />
+          <InputForm
+            placeholder='Senha'
+            control={control}
+            name='password'
+          />
         </InputBox>
         <ContainerForgotPassword>
           <TextForgotPassword>Esqueceu sua senha?</TextForgotPassword>
         </ContainerForgotPassword>
         <ButtonBox>
-          <Button title='Entrar' onPress={() => { navigation.navigate('RegisterSecondStep') }} />
+          <Button title='Entrar' onPress={handleSubmit(handleLogin)} />
         </ButtonBox>
         <ContainerAnotherSignUpWays>
           <TextAnotherSignUpWays>ou entre com</TextAnotherSignUpWays>
