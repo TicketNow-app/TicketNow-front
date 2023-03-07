@@ -10,5 +10,15 @@ export const Container = styled(TextInput)`
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 12px;
-  margin-bottom: 8px;
+`;
+
+export const ContainerButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
+  position: absolute;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  padding: 0 20px;
 `;

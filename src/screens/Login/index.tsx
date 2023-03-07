@@ -1,7 +1,13 @@
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import {
+  Keyboard,
+  TouchableWithoutFeedback
+} from 'react-native';
 import { useTheme } from 'styled-components';
+import * as Yup from 'yup';
 
 import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, Header, InputBox, LogoHorizontal, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
 
@@ -14,66 +20,100 @@ interface FormData {
   password: string;
 }
 
+const schema = Yup.object().shape({
+  email: Yup
+    .string()
+    .required('E-mail obrigatório')
+    .email('E-mail inválido')
+    .min(6, 'Mínimo 6 caracteres')
+    .max(255, 'Máximo 100 caracteres'),
+  password: Yup
+    .string()
+    .required('Senha obrigatória')
+    .min(6, 'Mínimo 6 caracteres')
+    .max(50, 'Máximo 50 caracteres')
+})
+
 export function Login({ navigation }: any) {
+
   const {
     control,
-    handleSubmit
-  } = useForm();
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
 
   function handleLogin(form: FormData) {
-    const data = {
+    if (!form.email || !form.password)
+      return alert('Preencha todos os campos!');
+
+    const data = { //return example for backend
       email: form.email,
       password: form.password
     }
+
+    navigation.navigate('AppRoutes');
 
     console.log(data);
   }
 
   return (
-    <Container>
-      <Header>
-        <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
-      </Header>
-      <Form>
-        <TitleDesc title='Entre na sua conta' desc='Entre agora para encontrar ingressos para os eventos mais incríveis!' />
-        <InputBox>
-          <InputForm
-            placeholder='Endereço de e-mail'
-            control={control}
-            name='email'
-          />
-        </InputBox>
-        <InputBox>
-          <InputForm
-            placeholder='Senha'
-            control={control}
-            name='password'
-          />
-        </InputBox>
-        <ContainerForgotPassword>
-          <TextForgotPassword>Esqueceu sua senha?</TextForgotPassword>
-        </ContainerForgotPassword>
-        <ButtonBox>
-          <Button title='Entrar' onPress={handleSubmit(handleLogin)} />
-        </ButtonBox>
-        <ContainerAnotherSignUpWays>
-          <TextAnotherSignUpWays>ou entre com</TextAnotherSignUpWays>
-          <ContainerSocialRegister>
-            <ButtonSocialRegisterBox>
-              <Button icon={<AntDesign name='google' size={24} color={useTheme().colors.text} />} />
-            </ButtonSocialRegisterBox>
-            <ButtonSocialRegisterBox>
-              <Button icon={<AntDesign name='apple1' size={24} color={useTheme().colors.text} />} />
-            </ButtonSocialRegisterBox>
-            <ButtonSocialRegisterBox>
-              <Button icon={<MaterialIcons name='facebook' size={24} color={useTheme().colors.text} />} />
-            </ButtonSocialRegisterBox>
-          </ContainerSocialRegister>
-        </ContainerAnotherSignUpWays>
-      </Form>
-      <ContainerFooterMessage>
-        <FooterMessage>*Seus dados pessoais serão usados para processar seus pedidos, melhorar sua experiência no aplicativo e outros fins descritos em nossa política de privacidade.</FooterMessage>
-      </ContainerFooterMessage>
-    </Container>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <Container>
+        <Header>
+          <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
+        </Header>
+        <Form>
+          <TitleDesc title='Entre na sua conta' desc='Entre agora para encontrar ingressos para os eventos mais incríveis!' />
+          <InputBox>
+            <InputForm
+              name='email'
+              control={control}
+              placeholder='E-mail'
+              autoCorrect={false}
+              keyboardType='email-address'
+              autoCapitalize='none'
+              error={errors.email && errors.email.message.toString()}
+            />
+          </InputBox>
+          <InputBox>
+            <InputForm
+              name='password'
+              control={control}
+              placeholder='Senha'
+              autoCorrect={false}
+              keyboardType='default'
+              autoCapitalize='none'
+              secureTextEntry
+              error={errors.password && errors.password.message.toString()}
+            />
+          </InputBox>
+          <ContainerForgotPassword>
+            <TextForgotPassword>Esqueceu sua senha?</TextForgotPassword>
+          </ContainerForgotPassword>
+          <ButtonBox>
+            <Button title='Entrar' onPress={handleSubmit(handleLogin)} />
+          </ButtonBox>
+          <ContainerAnotherSignUpWays>
+            <TextAnotherSignUpWays>ou entre com</TextAnotherSignUpWays>
+            <ContainerSocialRegister>
+              <ButtonSocialRegisterBox>
+                <Button icon={<AntDesign name='google' size={24} color={useTheme().colors.text} />} />
+              </ButtonSocialRegisterBox>
+              <ButtonSocialRegisterBox>
+                <Button icon={<AntDesign name='apple1' size={24} color={useTheme().colors.text} />} />
+              </ButtonSocialRegisterBox>
+              <ButtonSocialRegisterBox>
+                <Button icon={<MaterialIcons name='facebook' size={24} color={useTheme().colors.text} />} />
+              </ButtonSocialRegisterBox>
+            </ContainerSocialRegister>
+          </ContainerAnotherSignUpWays>
+        </Form>
+        <ContainerFooterMessage>
+          <FooterMessage>*Seus dados pessoais serão usados para processar seus pedidos, melhorar sua experiência no aplicativo e outros fins descritos em nossa política de privacidade.</FooterMessage>
+        </ContainerFooterMessage>
+      </Container >
+    </TouchableWithoutFeedback >
   )
 }

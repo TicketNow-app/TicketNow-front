@@ -8,7 +8,7 @@ import { AppRoutes } from './app.routes';
 const { Screen, Navigator } = createNativeStackNavigator();
 
 export function AuthRoutes() {
-  const signed = false;
+  const signed = true;
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       {signed ?
