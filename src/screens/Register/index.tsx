@@ -10,7 +10,7 @@ import { DatePicker } from '../../components/Form/DatePicker';
 import { Input } from '../../components/Form/Input';
 import { TitleDesc } from '../../components/Form/TitleDesc';
 
-export function Register() {
+export function Register({ navigation }: any) {
   const [isChecked, setChecked] = useState(false);
   const [date, setDate] = useState<Date | string>('');
   const [datePickerShow, setDatePickerShow] = useState(false);
@@ -41,7 +41,7 @@ export function Register() {
           </ContainerTextTerms>
         </ContainerTerms>
         <ButtonBox>
-          <Button title='Continuar' />
+          <Button title='Continuar' onPress={() => { navigation.navigate('RegisterSecondStep') }} />
         </ButtonBox>
         <ContainerAlreadyAccount>
           <TextAlreadyAccount>Já possui uma conta? </TextAlreadyAccount>
