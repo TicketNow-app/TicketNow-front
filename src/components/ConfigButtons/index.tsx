@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChevronRightIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
-import { StyleSheet, Text, View } from 'react-native';
+
 
 import { ContainerOption, ContainerTexts, DescProfileOption, GroupIconTexts, TitleProfileOption } from './styles';
 
