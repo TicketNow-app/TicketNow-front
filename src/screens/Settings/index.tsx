@@ -23,25 +23,25 @@ export function Settings({ navigation }) {
         <Title>Conta</Title>
       </Section>      
       <ContainerProfileOptions>
-        <ConfigButtons icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Preferências" description="Preferências da área de promoção" />
-        <ConfigButtons icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Preferências da área de promoção" />
-        <ConfigButtons icon={<LockClosedIcon size={24} color={useTheme().colors.text} />} title="Privacidade e Segurança" />
-        <ConfigButtons icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
+        <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Preferências" description="Preferências da área de promoção" />
+        <ConfigButtons separator="full" icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Preferências da área de promoção" />
+        <ConfigButtons separator="full" icon={<LockClosedIcon size={24} color={useTheme().colors.text} />} title="Privacidade e Segurança" />
+        <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
       </ContainerProfileOptions>
 
       <Section>
         <Title>Conteúdo legal e políticas</Title>
       </Section>
       <ContainerProfileOptions>
-        <ConfigButtons icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Conta" description="Preferências da área de promoção" />
-        <ConfigButtons icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />     
+        <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Conta" description="Preferências da área de promoção" />
+        <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />     
       </ContainerProfileOptions>
       <Section>
         <Title>Opções de saída</Title>
       </Section>
       <ContainerProfileOptions>
-        <ConfigButtons icon={<ArrowLeftOnRectangleIcon size={24} color={useTheme().colors.text} />} title="Sair da conta"/>
-        <ConfigButtons icon={<TrashIcon size={24} color={useTheme().colors.text} />} title="Excluir conta" />     
+        <ConfigButtons separator="full" roundedBorder="top" icon={<ArrowLeftOnRectangleIcon size={24} color={useTheme().colors.text} />} title="Sair da conta"/>
+        <ConfigButtons deleteColor="true" roundedBorder="bottom" icon={<TrashIcon size={24} color={useTheme().colors.text} />} title="Excluir conta" />     
       </ContainerProfileOptions>
       </ScrollView>
     </Container>

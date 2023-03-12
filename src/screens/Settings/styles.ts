@@ -37,7 +37,7 @@ export const ContainerProfileOptions = styled.View`
 `;
 
 export const Section = styled.View`
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 26px;
+  margin-top: 26px;
   padding: 0px ${RFValue(24)}px 0px ${RFValue(24)}px;
 `;
