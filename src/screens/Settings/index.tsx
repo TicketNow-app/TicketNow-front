@@ -1,52 +1,49 @@
 import React from 'react';
+import { ArrowLeftIcon, ArrowLeftOnRectangleIcon, CreditCardIcon, LockClosedIcon, QuestionMarkCircleIcon, TrashIcon, UserIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
-import { Container, Title } from './styles';
-import { ArrowLeftIcon, UserIcon, CreditCardIcon, LockClosedIcon, QuestionMarkCircleIcon, TrashIcon, ArrowLeftOnRectangleIcon } from "react-native-heroicons/solid";
-import {  Header, ContainerProfileOptions, Section, MainTitle } from './styles';
-import { HeaderButton } from '../../components/HeaderButton';
 import { ConfigButtons } from '../../components/ConfigButtons';
-import { ScrollView } from 'react-native';
+import { HeaderButton } from '../../components/HeaderButton';
+import { Container, ContainerProfileOptions, ContainerScroll, GhostView, Header, MainTitle, Section, Title } from './styles';
 
 
 export function Settings({ navigation }) {
-  return (   
+  return (
     <Container>
-      <ScrollView>
-      <Header>
-        <HeaderButton>
-          <ArrowLeftIcon onPress={() => navigation.navigate('Início')} size={20} color={useTheme().colors.text} />
-        </HeaderButton>
-        <MainTitle>Configurações</MainTitle>
-      </Header>
-      
-      <Section>
-        <Title>Conta</Title>
-      </Section>      
-      <ContainerProfileOptions>
-        <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Preferências" description="Preferências da área de promoção" />
-        <ConfigButtons separator="full" icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Preferências da área de promoção" />
-        <ConfigButtons separator="full" icon={<LockClosedIcon size={24} color={useTheme().colors.text} />} title="Privacidade e Segurança" />
-        <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
-      </ContainerProfileOptions>
+      <ContainerScroll>
+        <Header>
+          <HeaderButton>
+            <ArrowLeftIcon onPress={() => navigation.navigate('Início')} size={20} color={useTheme().colors.text} />
+          </HeaderButton>
+          <MainTitle>Configurações</MainTitle>
+          <GhostView />
+        </Header>
 
-      <Section>
-        <Title>Conteúdo legal e políticas</Title>
-      </Section>
-      <ContainerProfileOptions>
-        <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Conta" description="Preferências da área de promoção" />
-        <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />     
-      </ContainerProfileOptions>
-      <Section>
-        <Title>Opções de saída</Title>
-      </Section>
-      <ContainerProfileOptions>
-        <ConfigButtons separator="full" roundedBorder="top" icon={<ArrowLeftOnRectangleIcon size={24} color={useTheme().colors.text} />} title="Sair da conta"/>
-        <ConfigButtons deleteColor="true" roundedBorder="bottom" icon={<TrashIcon size={24} color={useTheme().colors.text} />} title="Excluir conta" />     
-      </ContainerProfileOptions>
-      </ScrollView>
+        <Section>
+          <Title>Conta</Title>
+        </Section>
+        <ContainerProfileOptions>
+          <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Preferências" description="Preferências da área de promoção" />
+          <ConfigButtons separator="full" icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Preferências da área de promoção" />
+          <ConfigButtons separator="full" icon={<LockClosedIcon size={24} color={useTheme().colors.text} />} title="Privacidade e Segurança" />
+          <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
+        </ContainerProfileOptions>
+
+        <Section>
+          <Title>Conteúdo legal e políticas</Title>
+        </Section>
+        <ContainerProfileOptions>
+          <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Conta" description="Preferências da área de promoção" />
+          <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
+        </ContainerProfileOptions>
+        <Section>
+          <Title>Opções de saída</Title>
+        </Section>
+        <ContainerProfileOptions>
+          <ConfigButtons separator="full" roundedBorder="top" icon={<ArrowLeftOnRectangleIcon size={24} color={useTheme().colors.text} />} title="Sair da conta" />
+          <ConfigButtons deleteColor="true" roundedBorder="bottom" icon={<TrashIcon size={24} color={useTheme().colors.text} />} title="Excluir conta" />
+        </ContainerProfileOptions>
+      </ContainerScroll>
     </Container>
-    
-    
   );
 }
 

@@ -1,11 +1,17 @@
-import styled from 'styled-components/native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
 `;
+
+export const ContainerScroll = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingBottom: 28,
+  },
+})``;
 
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
@@ -15,9 +21,14 @@ export const Title = styled.Text`
 
 export const MainTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(18)}px;
+  font-size: ${RFValue(20)}px;
   color: ${({ theme }) => theme.colors.text};
   margin: auto;
+`;
+
+export const GhostView = styled.View`
+  width: 40px;
+  height: 40px;
 `;
 
 
