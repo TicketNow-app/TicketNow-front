@@ -3,11 +3,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import {
-  Keyboard,
+  Alert, Keyboard,
   TouchableWithoutFeedback
 } from 'react-native';
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
+
 
 import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, Header, InputBox, LogoHorizontal, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
 
@@ -35,6 +36,15 @@ const schema = Yup.object().shape({
 })
 
 export function Login({ navigation }: any) {
+
+  async function handleSignInWithGoogle() {
+    try {
+      // await signIn();
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Não foi possível conectar a conta Google');
+    }
+  }
 
   const {
     control,
@@ -99,7 +109,7 @@ export function Login({ navigation }: any) {
             <TextAnotherSignUpWays>ou entre com</TextAnotherSignUpWays>
             <ContainerSocialRegister>
               <ButtonSocialRegisterBox>
-                <Button icon={<AntDesign name='google' size={24} color={useTheme().colors.text} />} />
+                <Button icon={<AntDesign name='google' size={24} color={useTheme().colors.text} />} onPress={handleSignInWithGoogle} />
               </ButtonSocialRegisterBox>
               <ButtonSocialRegisterBox>
                 <Button icon={<AntDesign name='apple1' size={24} color={useTheme().colors.text} />} />
