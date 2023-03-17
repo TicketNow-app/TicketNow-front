@@ -11,7 +11,7 @@ interface ConfigButtons {
   icon?: React.ReactNode;
   title?: string;
   description?: string;
-  roundedBorder?: string;
+  roundedBorder?: 'top' | 'bottom' | 'all';
   deleteColor?: string;
   separator?: string;
 }
@@ -23,7 +23,7 @@ export function ConfigButtons({ icon, title, description, roundedBorder, deleteC
         {icon}
         <ContainerTexts>
           <TitleProfileOption deleteColor={deleteColor}>{title}</TitleProfileOption>
-          { description && <DescProfileOption>{description}</DescProfileOption> }
+          {description && <DescProfileOption>{description}</DescProfileOption>}
         </ContainerTexts>
       </GroupIconTexts>
       <ChevronRightIcon size={24} color={useTheme().colors.text_inactive} />
