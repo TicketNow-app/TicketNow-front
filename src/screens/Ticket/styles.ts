@@ -1,4 +1,5 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import QRCode from 'react-native-qrcode-svg';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -107,8 +108,10 @@ export const ContainerTicketData = styled.View`
 export const ContainerQrCode = styled.View`
   width: 120px;
   height: 120px;
-  border: 1px solid #ccc;
   margin-right: 26px;
+`;
+
+export const QrCodeTag = styled(QRCode)`
 `;
 
 export const ContainerDetails = styled.View`

@@ -2,8 +2,9 @@ import React from 'react';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, EllipsisVerticalIcon, MapPinIcon } from 'react-native-heroicons/solid';
 import { useTheme } from 'styled-components';
 
-import { ClientName, Container, ContainerDetails, ContainerFriends, ContainerIconInfo, ContainerQrCode, ContainerQrCodeObservation, ContainerTicket, ContainerTicketData, ContainerTicketImage, ContainerTicketInfo, ContainerTicketType, EventInfo, EventTitle, Header, LineInfo, LineInfoTitle, QrCodeObservation, TicketBottomInfos, TicketImage, TicketTopInfos, TicketType, TicketValue, TitleHeader } from './styles';
+import { ClientName, Container, ContainerDetails, ContainerFriends, ContainerIconInfo, ContainerQrCode, ContainerQrCodeObservation, ContainerTicket, ContainerTicketData, ContainerTicketImage, ContainerTicketInfo, ContainerTicketType, EventInfo, EventTitle, Header, LineInfo, LineInfoTitle, QrCodeObservation, QrCodeTag, TicketBottomInfos, TicketImage, TicketTopInfos, TicketType, TicketValue, TitleHeader } from './styles';
 
+import { AvatarsFriendsConfirmed } from '../../components/AvatarsFriendsConfirmed';
 import { HeaderButton } from '../../components/HeaderButton';
 
 export function Ticket() {
@@ -26,7 +27,9 @@ export function Ticket() {
           <ContainerTicketInfo>
             <LineInfoTitle>
               <EventTitle>Solid | Halloween</EventTitle>
-              <ContainerFriends></ContainerFriends>
+              <ContainerFriends>
+                <AvatarsFriendsConfirmed images={['https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w', 'https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w', 'https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w', 'https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w']} avatarSize={26} />
+              </ContainerFriends>
             </LineInfoTitle>
             <LineInfo>
               <ContainerIconInfo>
@@ -49,7 +52,9 @@ export function Ticket() {
         <TicketBottomInfos>
           <ClientName>Laura dos Santos Ribeiro</ClientName>
           <ContainerTicketData>
-            <ContainerQrCode />
+            <ContainerQrCode>
+              <QrCodeTag value='https://www.google.com.br/' size={120} backgroundColor='transparent' color={useTheme().colors.text} />
+            </ContainerQrCode>
             <ContainerDetails>
               <ContainerTicketType>
                 <TicketType>Area VIP</TicketType>
