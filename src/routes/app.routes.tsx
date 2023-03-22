@@ -4,6 +4,7 @@ import { HomeIcon, MapIcon, TicketIcon, UserIcon } from "react-native-heroicons/
 import { useTheme } from "styled-components";
 
 import { getBottomSpace } from "react-native-iphone-x-helper";
+
 import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
 import { Search } from "../screens/Search";
@@ -51,7 +52,7 @@ export function AppRoutes() {
         }}
       />
       <Screen
-        name="Ticket"
+        name="TicketList"
         component={TicketsList}
         options={{
           tabBarIcon: (({ size, color }) => (
