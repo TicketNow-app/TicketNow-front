@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Square2StackIcon } from "react-native-heroicons/outline";
 import { Cog6ToothIcon, CreditCardIcon, FireIcon, PencilIcon, TicketIcon, UsersIcon } from "react-native-heroicons/solid";
@@ -9,11 +10,16 @@ import { HeaderButton } from '../../components/HeaderButton';
 
 export function Profile() {
   const promoter = "#F23T08CE" //only for example
+  const navigation = useNavigation();
+
+  function goToFriendsList() {
+    navigation.navigate('FriendsList')
+  }
 
   return (
     <Container>
       <Header>
-        <HeaderButton>
+        <HeaderButton onPress={goToFriendsList}>
           <UsersIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <HeaderButton>
