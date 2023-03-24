@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, EllipsisVerticalIcon, MapPinIcon } from 'react-native-heroicons/solid';
 import { useTheme } from 'styled-components';
@@ -8,10 +9,16 @@ import { AvatarsFriendsConfirmed } from '../../components/AvatarsFriendsConfirme
 import { HeaderButton } from '../../components/HeaderButton';
 
 export function Ticket() {
+  const navigation = useNavigation();
+
+  function GoBack() {
+    navigation.goBack();
+  }
+
   return (
     <Container>
       <Header>
-        <HeaderButton>
+        <HeaderButton onPress={GoBack}>
           <ArrowLeftIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <TitleHeader>Ingresso</TitleHeader>
@@ -28,7 +35,7 @@ export function Ticket() {
             <LineInfoTitle>
               <EventTitle>Solid | Halloween</EventTitle>
               <ContainerFriends>
-                <AvatarsFriendsConfirmed images={['https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w', 'https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w', 'https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w', 'https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w']} avatarSize={26} />
+                <AvatarsFriendsConfirmed images={['https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80', 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80', 'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=766&q=80', 'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=766&q=80']} avatarSize={26} />
               </ContainerFriends>
             </LineInfoTitle>
             <LineInfo>

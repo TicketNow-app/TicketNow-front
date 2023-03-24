@@ -17,7 +17,7 @@ export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: ${getStatusBarHeight() + 10}px ${RFValue(24)}px 0px ${RFValue(24)}px;
+  padding: ${getStatusBarHeight() + 10}px 0px 0px 0px;
 `;
 
 export const TitleHeader = styled.Text`
@@ -75,7 +75,6 @@ export const EventTitle = styled.Text`
 export const ContainerFriends = styled.View`
   width: 70px;
   height: 28px;
-  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const ContainerIconInfo = styled.View`

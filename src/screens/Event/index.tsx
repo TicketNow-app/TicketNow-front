@@ -108,6 +108,3 @@ export function Event() {
     </Container>
   );
 }
-
-
-

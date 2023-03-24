@@ -132,7 +132,6 @@ export const ContainerIcons = styled.View`
 `;
 
 export const IconTouchBox = styled.TouchableOpacity`
-
 `;
 
 export const ContainerDateTime = styled.View`
@@ -223,7 +222,6 @@ export const ContainerLineUp = styled.View`
 `;
 
 export const TitleLineUp = styled(TitleAbout)`
-
 `;
 
 export const ContainerLineUpArtists = styled.ScrollView.attrs({
@@ -238,7 +236,6 @@ export const LineUpArtist = styled.View`
   width: ${RFValue(80)}px;
   align-items: center;
   margin: 0 ${RFValue(20)}px;
-
 `;
 
 export const ImageArtist = styled.Image`
