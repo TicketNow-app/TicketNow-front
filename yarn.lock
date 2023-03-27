@@ -5232,6 +5232,11 @@ expo-asset@~8.6.2:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
+expo-clipboard@~4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/expo-clipboard/-/expo-clipboard-4.0.2.tgz#1d7510f299e05b5f8e653db544aedac0eee402cf"
+  integrity sha512-Iq0k5JKrLk3YlD0ZGIcDPBzwdzw7qt7NWwn8JTtzhre/7oKyH8JPDAODAL9zMR5Jmahv+Uysn9Igsbp6Ttuu1Q==
+
 expo-constants@~14.0.0, expo-constants@~14.0.2:
   version "14.0.2"
   resolved "https://registry.npmjs.org/expo-constants/-/expo-constants-14.0.2.tgz"
