@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
 
-import { Container, GhostView, Header, MainTitle, ScrollContainer, Section, SectionTitle } from './styles';
+import { Container, ContainerNoSolicitations, GhostView, Header, MainTitle, NoSolicitationsSubtitle, NoSolicitationsTitle, ScrollContainer, Section, SectionTitle } from './styles';
 
 import { FriendTag } from '../../components/FriendTag';
 import { HeaderButton } from '../../components/HeaderButton';
@@ -88,6 +88,11 @@ export function FriendsList() {
     setSolicitations(solicitations.filter((_, i) => i !== index));
   }
 
+  function addFriend(index: number) {
+    setFriends([...friends, solicitations[index]]);
+    removeSolicitation(index);
+  }
+
   const navigation = useNavigation();
 
   function GoBack() {
@@ -106,16 +111,26 @@ export function FriendsList() {
         </Header>
         <Section>
           <SectionTitle>Solicitações</SectionTitle>
-          {solicitations.map((solicitation, index) => (
-            <FriendTag
-              key={index}
-              image={solicitation.image}
-              name={solicitation.name}
-              commonFriends={solicitation.commonFriends}
-              close={solicitation.close}
-              removeFriend={() => removeSolicitation(index)}
-            />
-          ))}
+          {
+            solicitations && solicitations.length > 0 ? (
+              solicitations.map((solicitation, index) => (
+                <FriendTag
+                  key={index}
+                  image={solicitation.image}
+                  name={solicitation.name}
+                  commonFriends={solicitation.commonFriends}
+                  close={solicitation.close}
+                  removeFriend={() => removeSolicitation(index)}
+                  addFriend={() => addFriend(index)}
+                />
+              ))
+            ) : (
+              <ContainerNoSolicitations>
+                <NoSolicitationsTitle>Não há solicitações</NoSolicitationsTitle>
+                <NoSolicitationsSubtitle>Sabemos que você é popular, mas não há nenhum pedido de amizade enviado recentemente</NoSolicitationsSubtitle>
+              </ContainerNoSolicitations>
+            )
+          }
         </Section>
         <Section>
           <SectionTitle>Meus amigos</SectionTitle>

@@ -44,7 +44,30 @@ export const FriendsCommon = styled.Text`
   color: ${({ theme }) => theme.colors.text_inactive};
 `;
 
-export const Button = styled.TouchableOpacity.attrs({
+export const ContainerFriendActions = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export const ButtonAdd = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
+  justify-content: center;
+  align-items: center;
+  margin-right: ${RFValue(8)}px;
+  padding: ${RFValue(10)}px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+export const ButtonAddText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(12)}px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const ButtonRemove = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
 })`
   width: ${RFValue(30)}px;
@@ -52,3 +75,4 @@ export const Button = styled.TouchableOpacity.attrs({
   justify-content: center;
   align-items: center;
 `;
+

@@ -50,3 +50,26 @@ export const SectionTitle = styled.Text`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: ${RFValue(8)}px;
 `;
+
+export const ContainerNoSolicitations = styled.View`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: ${RFValue(16)}px;
+  opacity: 0.6;
+`;
+
+export const NoSolicitationsTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(14)}px;
+  color: ${({ theme }) => theme.colors.text_inactive};
+  text-align: center;
+  margin-bottom: ${RFValue(8)}px;
+`;
+
+export const NoSolicitationsSubtitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${RFValue(12)}px;
+  color: ${({ theme }) => theme.colors.text_inactive};
+  text-align: center;
+`;
