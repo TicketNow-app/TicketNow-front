@@ -8,6 +8,7 @@
     "splash": {
       "image": "./assets/splash.png"
     },
+    "scheme": "mycoolredirect",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -23,7 +24,8 @@
     "ios": {
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show nearby events."
-      }
+      },
+      "bundleIdentifier": "com.ticketnow"
     }
   }
 }
