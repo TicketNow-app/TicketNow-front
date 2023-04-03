@@ -8,6 +8,7 @@
     "splash": {
       "image": "./assets/splash.png"
     },
+    "scheme": "mycoolredirect",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -19,6 +20,12 @@
       "eas": {
         "projectId": "a0cb9832-3f66-49b8-ac29-4161585be49b"
       }
+    },
+    "ios": {
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show nearby events."
+      },
+      "bundleIdentifier": "com.ticketnow"
     }
   }
 }
