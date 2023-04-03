@@ -500,3 +500,24 @@ export const userPastEvents = [
     ]
   },
 ]
+
+export const categories = [
+  {
+    name: 'Todos'
+  },
+  {
+    name: 'Carnaval'
+  },
+  {
+    name: 'Eletrônica'
+  },
+  {
+    name: 'Funk'
+  },
+  {
+    name: 'Samba'
+  },
+  {
+    name: 'Sertanejo'
+  },
+]

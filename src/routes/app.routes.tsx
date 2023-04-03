@@ -5,8 +5,8 @@ import { useTheme } from "styled-components";
 
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { Home } from "../screens/Home";
+import { Map } from "../screens/Map";
 import { Profile } from "../screens/Profile";
-import { Search } from "../screens/Search";
 import { TicketsList } from "../screens/TicketsList";
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -42,8 +42,8 @@ export function AppRoutes() {
         }}
       />
       <Screen
-        name="Pesquisar"
-        component={Search}
+        name="Mapa"
+        component={Map}
         options={{
           tabBarIcon: (({ size, color }) => (
             <MapIcon size={size} color={color} />
@@ -60,7 +60,7 @@ export function AppRoutes() {
         }}
       />
       <Screen
-        name="Perfil"
+        name="Profile"
         component={Profile}
         options={{
           tabBarIcon: (({ size, color }) => (
