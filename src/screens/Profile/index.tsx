@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import * as Clipboard from 'expo-clipboard';
 import React from 'react';
 import { Square2StackIcon } from "react-native-heroicons/outline";
@@ -16,6 +17,11 @@ const data = {
 
 export function Profile() {
   const promoter = "#F23T08CE" //only for example
+  const navigation = useNavigation();
+
+  function goToFriendsList() {
+    navigation.navigate('FriendsList')
+  }
 
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(promoter);
@@ -25,7 +31,7 @@ export function Profile() {
   return (
     <Container>
       <Header>
-        <HeaderButton>
+        <HeaderButton onPress={goToFriendsList}>
           <UsersIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <HeaderButton>

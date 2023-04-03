@@ -3,6 +3,7 @@ export declare global { //export global namespace
     interface RootParamList {
       Home: undefined;
       Event: undefined;
+      FriendsList: undefined;
     }
   }
 }
