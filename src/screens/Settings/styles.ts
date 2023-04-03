@@ -50,5 +50,5 @@ export const ContainerProfileOptions = styled.View`
 export const Section = styled.View`
   margin-bottom: 26px;
   margin-top: 26px;
-  padding: 0px ${RFValue(24)}px 0px ${RFValue(24)}px;
+  padding: 0px ${RFValue(16)}px 0px ${RFValue(16)}px;
 `;
