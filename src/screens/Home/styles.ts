@@ -14,11 +14,11 @@ export const Container = styled.ScrollView.attrs({
 
 export const Header = styled.View`
   width: 100%;
-  height: ${RFValue(113)}px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: ${getStatusBarHeight() + 10}px ${RFValue(24)}px 0px ${RFValue(24)}px;
+  box-sizing: border-box;
+  padding: ${getStatusBarHeight() + 30}px ${RFValue(24)}px 20px ${RFValue(24)}px;
 `;
 
 export const LogoHorizontal = styled.Image`

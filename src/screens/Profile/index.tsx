@@ -8,6 +8,3 @@ export function Profile() {
     </Container>
   );
 }
-
-
-

@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
@@ -20,10 +20,14 @@ export function Home() {
     navigation.navigate('Event');
   }
 
+  function DontComeBack() {
+    navigation.dispatch(StackActions.popToTop());
+  }
+
   return (
     <Container>
       <Header>
-        <HeaderButton>
+        <HeaderButton onPress={DontComeBack}>
           <BellIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
