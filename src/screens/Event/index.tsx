@@ -17,7 +17,6 @@ export function Event() {
   const [readMore, setReadMore] = useState(false);
 
   const sheetRef = useRef<BottomSheet>(null);
-  const [isOpen, setIsOpen] = useState(false);
 
   const snapPoints = ['40%', '80%'];
 
@@ -37,9 +36,6 @@ export function Event() {
         backgroundStyle={{ backgroundColor: theme.colors.background }}
         handleStyle={{ height: 40 }}
         handleIndicatorStyle={{ backgroundColor: theme.colors.text_inactive }}
-        onChange={index => {
-          setIsOpen(index === 0);
-        }}
       >
         <ContainerOutCard>
           <ContainerProducer activeOpacity={0.6}>

@@ -11,19 +11,20 @@ interface ConfigButtons {
   icon?: React.ReactNode;
   title?: string;
   description?: string;
-  roundedBorder?: string;
+  roundedBorder?: 'top' | 'bottom' | 'all';
   deleteColor?: string;
   separator?: string;
+  onPress?: () => void;
 }
 
-export function ConfigButtons({ icon, title, description, roundedBorder, deleteColor, separator }: ConfigButtons) {
+export function ConfigButtons({ icon, title, description, roundedBorder, deleteColor, separator, onPress }: ConfigButtons) {
   return (
-    <ContainerOption separator={separator} roundedBorder={roundedBorder}>
+    <ContainerOption separator={separator} roundedBorder={roundedBorder} onPress={onPress}>
       <GroupIconTexts>
         {icon}
         <ContainerTexts>
           <TitleProfileOption deleteColor={deleteColor}>{title}</TitleProfileOption>
-          { description && <DescProfileOption>{description}</DescProfileOption> }
+          {description && <DescProfileOption>{description}</DescProfileOption>}
         </ContainerTexts>
       </GroupIconTexts>
       <ChevronRightIcon size={24} color={useTheme().colors.text_inactive} />

@@ -43,7 +43,6 @@ export const FriendImage = styled.Image`
   height: ${RFValue(30)}px;
   border-radius: 30px;
   background-color: ${({ theme }) => theme.colors.secondary};
-  border: 2px solid ${({ theme }) => theme.colors.secondary};
   margin-left: -${RFValue(10)}px;
 `;
 

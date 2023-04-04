@@ -5,6 +5,8 @@ export declare global { //export global namespace
       Ticket: undefined;
       TicketList: undefined;
       Event: undefined;
+      FriendsList: undefined;
+      Settings: undefined;
     }
   }
 }

@@ -21,22 +21,22 @@ export const ContainerOption = styled.TouchableOpacity.attrs((props: PropBorders
   padding: 14px ${RFValue(18)}px;
   height: 70px;
   border-top-left-radius: ${(props) =>
-    props.roundedBorder === 'top'
+    props.roundedBorder === 'top' || props.roundedBorder === 'all'
       ? `14px 14px`
       : 'none'
   };
   border-top-right-radius: ${(props) =>
-    props.roundedBorder === 'top'
+    props.roundedBorder === 'top' || props.roundedBorder === 'all'
       ? `14px 14px`
       : 'none'
   };
   border-bottom-right-radius: ${(props) =>
-    props.roundedBorder === 'bottom'
+    props.roundedBorder === 'bottom' || props.roundedBorder === 'all'
       ? `14px 14px`
       : 'none'
   };
   border-bottom-left-radius: ${(props) =>
-    props.roundedBorder === 'bottom'
+    props.roundedBorder === 'bottom' || props.roundedBorder === 'all'
       ? `14px 14px`
       : 'none'
   };
