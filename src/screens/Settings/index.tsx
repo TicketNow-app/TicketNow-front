@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ArrowLeftIcon, ArrowLeftOnRectangleIcon, CreditCardIcon, LockClosedIcon, QuestionMarkCircleIcon, TrashIcon, UserIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
@@ -6,13 +7,19 @@ import { HeaderButton } from '../../components/HeaderButton';
 import { Container, ContainerProfileOptions, ContainerScroll, GhostView, Header, MainTitle, Section, Title } from './styles';
 
 
-export function Settings({ navigation }) {
+export function Settings() {
+  const navigation = useNavigation();
+
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   return (
     <Container>
       <ContainerScroll>
         <Header>
-          <HeaderButton>
-            <ArrowLeftIcon onPress={() => navigation.navigate('Início')} size={20} color={useTheme().colors.text} />
+          <HeaderButton onPress={handleGoBack}>
+            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
           </HeaderButton>
           <MainTitle>Configurações</MainTitle>
           <GhostView />

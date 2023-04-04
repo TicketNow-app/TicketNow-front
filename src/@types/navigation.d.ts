@@ -4,6 +4,7 @@ export declare global { //export global namespace
       Home: undefined;
       Event: undefined;
       FriendsList: undefined;
+      Settings: undefined;
     }
   }
 }

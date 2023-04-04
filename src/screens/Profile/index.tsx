@@ -23,6 +23,10 @@ export function Profile() {
     navigation.navigate('FriendsList')
   }
 
+  function goToSettings() {
+    navigation.navigate('Settings')
+  }
+
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(promoter);
     console.log('Copied to Clipboard!');
@@ -34,7 +38,7 @@ export function Profile() {
         <HeaderButton onPress={goToFriendsList}>
           <UsersIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
-        <HeaderButton>
+        <HeaderButton onPress={goToSettings}>
           <Cog6ToothIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
       </Header>

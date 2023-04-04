@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Event } from '../screens/Event';
 import { FriendsList } from '../screens/FriendsList';
+import { Settings } from '../screens/Settings';
 import { AppRoutes } from './app.routes';
 
 const { Screen, Navigator } = createNativeStackNavigator();
@@ -12,6 +13,7 @@ export function StackRoutes() {
       <Screen name="AppRoutes" component={AppRoutes} />
       <Screen name="Event" component={Event} />
       <Screen name="FriendsList" component={FriendsList} />
+      <Screen name="Settings" component={Settings} />
     </Navigator>
   );
 }
