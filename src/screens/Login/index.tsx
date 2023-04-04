@@ -1,16 +1,15 @@
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
+  ActivityIndicator,
   Alert, Keyboard,
   TouchableWithoutFeedback
 } from 'react-native';
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 import { useAuth } from '../../hooks/auth';
-
-
 
 import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, Header, InputBox, LogoHorizontal, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
 
@@ -38,24 +37,27 @@ const schema = Yup.object().shape({
 })
 
 export function Login({ navigation }: any) {
+  const [isLoading, setIsLoading] = useState(false);
   const { signInWithApple } = useAuth();
 
-  async function handleSignInWithGoogle() {
-    try {
-      // await signIn();
-    } catch (error) {
-      console.log(error);
-      Alert.alert('Não foi possível conectar a conta Google');
-    }
-  }
+  // async function handleSignInWithGoogle() {
+  //   try {
+  //     // await signIn();
+  //   } catch (error) {
+  //     console.log(error);
+  //     Alert.alert('Não foi possível conectar a conta Google');
+  //   }
+  // }
 
   async function handleSignInWithApple() {
     try {
-      await signInWithApple();
-      console.log('Apple');
+      setIsLoading(true);
+      return await signInWithApple();
     } catch (error) {
       console.log(error);
       Alert.alert('Não foi possível conectar a conta Apple');
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -122,7 +124,7 @@ export function Login({ navigation }: any) {
             <TextAnotherSignUpWays>ou entre com</TextAnotherSignUpWays>
             <ContainerSocialRegister>
               <ButtonSocialRegisterBox>
-                <Button icon={<AntDesign name='google' size={24} color={useTheme().colors.text} />} onPress={handleSignInWithGoogle} />
+                <Button icon={<AntDesign name='google' size={24} color={useTheme().colors.text} />} />
               </ButtonSocialRegisterBox>
               <ButtonSocialRegisterBox>
                 <Button icon={<AntDesign name='apple1' size={24} color={useTheme().colors.text} />} onPress={handleSignInWithApple} />
@@ -133,6 +135,10 @@ export function Login({ navigation }: any) {
             </ContainerSocialRegister>
           </ContainerAnotherSignUpWays>
         </Form>
+        {
+          isLoading &&
+          <ActivityIndicator size='small' color={useTheme().colors.text} />
+        }
         <ContainerFooterMessage>
           <FooterMessage>*Seus dados pessoais serão usados para processar seus pedidos, melhorar sua experiência no aplicativo e outros fins descritos em nossa política de privacidade.</FooterMessage>
         </ContainerFooterMessage>

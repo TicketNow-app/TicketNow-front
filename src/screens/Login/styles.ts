@@ -88,4 +88,5 @@ export const FooterMessage = styled.Text`
   font-size: ${RFValue(10)}px;
   text-align: center;
   color: ${({ theme }) => theme.colors.text_inactive};
+  margin-top: 40px;
 `;

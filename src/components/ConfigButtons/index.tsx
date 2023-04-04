@@ -14,11 +14,12 @@ interface ConfigButtons {
   roundedBorder?: 'top' | 'bottom' | 'all';
   deleteColor?: string;
   separator?: string;
+  onPress?: () => void;
 }
 
-export function ConfigButtons({ icon, title, description, roundedBorder, deleteColor, separator }: ConfigButtons) {
+export function ConfigButtons({ icon, title, description, roundedBorder, deleteColor, separator, onPress }: ConfigButtons) {
   return (
-    <ContainerOption separator={separator} roundedBorder={roundedBorder}>
+    <ContainerOption separator={separator} roundedBorder={roundedBorder} onPress={onPress}>
       <GroupIconTexts>
         {icon}
         <ContainerTexts>

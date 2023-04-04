@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './src/global/styles/theme';
 import { Routes } from './src/routes';
 
-import { AuthProvider } from './src/hooks/auth';
+import { AuthProvider, useAuth } from './src/hooks/auth';
 
 export default function App() {
   //verify if fonts are loaded
@@ -19,8 +19,10 @@ export default function App() {
     Roboto_700Bold,
   });
 
-  if (!fontsLoaded) {
-    return null;
+  const { userStorageLoading } = useAuth();
+
+  if (!fontsLoaded || userStorageLoading) {
+    return null; //TODO: loading screen
   }
 
   return (
