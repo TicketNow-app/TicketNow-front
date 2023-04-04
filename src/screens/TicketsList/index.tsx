@@ -12,10 +12,15 @@ import { userEvents } from '../../mock';
 
 export function TicketsList() {
   const navigation = useNavigation();
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  }
+
   return (
     <Container>
       <Header>
-        <HeaderButton onPress={() => navigation.goBack()}>
+        <HeaderButton onPress={handleGoBack}>
           <ArrowLeftIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
       </Header>

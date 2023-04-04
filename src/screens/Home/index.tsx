@@ -17,7 +17,7 @@ export function Home() {
   const navigation = useNavigation();
 
   function OpenEvent() {
-    navigation.navigate('Event');
+    navigation.navigate('Ticket');
   }
 
   function DontComeBack() {
