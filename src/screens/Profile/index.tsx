@@ -4,6 +4,9 @@ import React from 'react';
 import { Square2StackIcon } from "react-native-heroicons/outline";
 import { Cog6ToothIcon, CreditCardIcon, FireIcon, PencilIcon, TicketIcon, UsersIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
+
+import { useAuth } from '../../hooks/auth';
+
 import { ButtonPromoter, Container, ContainerConfigButtons, ContainerImage, ContainerMetricsInfos, ContainerPromoterMetrics, ContainerSell, ContainerTopInfos, CopyButtonPromoter, Header, MetricsDivisor, TextButton, TextCopyButton, TextSell, TicketMiniSvg, TitleMetrics, UserImage, UserName } from './styles';
 
 import { ConfigButtons } from '../../components/ConfigButtons';
@@ -14,10 +17,11 @@ const data = {
   money: 87.76,
 }
 
-
 export function Profile() {
   const promoter = "#F23T08CE" //only for example
   const navigation = useNavigation();
+
+  const {user} = useAuth();
 
   function goToFriendsList() {
     navigation.navigate('FriendsList')
@@ -44,9 +48,9 @@ export function Profile() {
       </Header>
       <ContainerTopInfos>
         <ContainerImage>
-          <UserImage source={{ uri: 'https://avatars.githubusercontent.com/u/45953201?v=4' }} />
+          <UserImage source={{ uri: user.photo }} />
         </ContainerImage>
-        <UserName>Lucas Silva</UserName>
+        <UserName>{user.name}</UserName>
         {
           promoter ?
             <>

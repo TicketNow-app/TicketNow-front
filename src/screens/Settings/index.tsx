@@ -2,13 +2,17 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ArrowLeftIcon, ArrowLeftOnRectangleIcon, CreditCardIcon, LockClosedIcon, QuestionMarkCircleIcon, TrashIcon, UserIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
+import { useAuth } from '../../hooks/auth';
+
+import { Container, ContainerProfileOptions, ContainerScroll, GhostView, Header, MainTitle, Section, Title } from './styles';
+
 import { ConfigButtons } from '../../components/ConfigButtons';
 import { HeaderButton } from '../../components/HeaderButton';
-import { Container, ContainerProfileOptions, ContainerScroll, GhostView, Header, MainTitle, Section, Title } from './styles';
 
 
 export function Settings() {
   const navigation = useNavigation();
+  const {signOut} = useAuth();
 
   function handleGoBack() {
     navigation.goBack();
@@ -46,7 +50,7 @@ export function Settings() {
           <Title>Opções de saída</Title>
         </Section>
         <ContainerProfileOptions>
-          <ConfigButtons separator="full" roundedBorder="top" icon={<ArrowLeftOnRectangleIcon size={24} color={useTheme().colors.text} />} title="Sair da conta" />
+          <ConfigButtons onPress={signOut} separator="full" roundedBorder="top" icon={<ArrowLeftOnRectangleIcon size={24} color={useTheme().colors.text} />} title="Sair da conta" />
           <ConfigButtons deleteColor="true" roundedBorder="bottom" icon={<TrashIcon size={24} color={useTheme().colors.text} />} title="Excluir conta" />
         </ContainerProfileOptions>
       </ContainerScroll>
