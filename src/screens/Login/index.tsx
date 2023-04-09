@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import {
   ActivityIndicator,
   Alert, Keyboard,
+  Platform,
   TouchableWithoutFeedback
 } from 'react-native';
 import { useTheme } from 'styled-components';
@@ -56,7 +57,6 @@ export function Login({ navigation }: any) {
     } catch (error) {
       console.log(error);
       Alert.alert('Não foi possível conectar a conta Apple');
-    } finally {
       setIsLoading(false);
     }
   }
@@ -126,9 +126,12 @@ export function Login({ navigation }: any) {
               <ButtonSocialRegisterBox>
                 <Button icon={<AntDesign name='google' size={24} color={useTheme().colors.text} />} />
               </ButtonSocialRegisterBox>
-              <ButtonSocialRegisterBox>
-                <Button icon={<AntDesign name='apple1' size={24} color={useTheme().colors.text} />} onPress={handleSignInWithApple} />
-              </ButtonSocialRegisterBox>
+              {
+                Platform.OS === 'ios' &&
+                <ButtonSocialRegisterBox>
+                  <Button icon={<AntDesign name='apple1' size={24} color={useTheme().colors.text} />} onPress={handleSignInWithApple} />
+                </ButtonSocialRegisterBox>
+              }
               <ButtonSocialRegisterBox>
                 <Button icon={<MaterialIcons name='facebook' size={24} color={useTheme().colors.text} />} />
               </ButtonSocialRegisterBox>
