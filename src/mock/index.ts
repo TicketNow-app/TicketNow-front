@@ -520,4 +520,13 @@ export const categories = [
   {
     name: 'Sertanejo'
   },
+  {
+    name: 'Open'
+  },
+  {
+    name: 'Pagode'
+  },
+  {
+    name: 'Universitário'
+  },
 ]
