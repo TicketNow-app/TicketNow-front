@@ -1,4 +1,5 @@
-import { StackActions, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
@@ -11,35 +12,51 @@ import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { CompanyTag } from '../../components/CompanyTag';
 import { HeaderButton } from '../../components/HeaderButton';
 
-import { company, data, event, eventsRecent } from '../../mock';
+import { readCategories } from '../../helpers/requests/categories';
+import { readRecommendedEvents } from '../../helpers/requests/events';
+
+import { company, eventsRecent } from '../../mock';
 
 export function Home() {
   const navigation = useNavigation();
+  const [recommendedEvents, setRecommendedEvents] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  function OpenEvent() {
-    navigation.navigate('Ticket');
-  }
+  useEffect(() => {
+    async function loadRecommendedEvents() {
+      const response = await readRecommendedEvents();
+      setRecommendedEvents(response);
+    }
 
-  function DontComeBack() {
-    navigation.dispatch(StackActions.popToTop());
+    async function loadCategories() {
+      const response = await readCategories();
+      setCategories(response);
+    }
+
+    loadRecommendedEvents();
+    loadCategories();
+  }, []);
+
+  function handleNavigateToEvent(eventId: number) {
+    navigation.navigate('Event', { id: eventId });
   }
 
   return (
     <Container>
       <Header>
-        <HeaderButton onPress={DontComeBack}>
+        <HeaderButton>
           <BellIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
         <AvatarMini />
       </Header>
       <ContainerScroll>
-        <TitleContainer onPress={OpenEvent}>Categorias</TitleContainer>
+        <TitleContainer>Categorias</TitleContainer>
         <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={data}
-          renderItem={({ item }) => <CardLarge data={item} />}
+          data={categories}
+          renderItem={({ item }) => <CardLarge category={item} />}
         />
       </ContainerScroll>
       <ContainerScroll>
@@ -47,8 +64,8 @@ export function Home() {
         <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={event}
-          renderItem={({ item }) => <Card event={item} />}
+          data={recommendedEvents}
+          renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id_event)} />}
         />
       </ContainerScroll>
       <ContainerScroll>

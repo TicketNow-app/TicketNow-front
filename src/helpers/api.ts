@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://192.168.0.103:3000'; // Altere para a URL do seu backend
+const BASE_URL = 'http://192.168.0.101:3000'; // Altere para a URL do seu backend
 
 interface TicketNowRequest {
   endpoint: string;
