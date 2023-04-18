@@ -73,3 +73,39 @@ export const NoSolicitationsSubtitle = styled.Text`
   color: ${({ theme }) => theme.colors.text_inactive};
   text-align: center;
 `;
+
+export const DeleteSolicitationTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.text};
+  text-align: center;
+  margin-top: ${RFValue(15)}px;
+`;
+
+export const Button = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
+  height: ${RFValue(50)}px;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  padding: 18px;
+  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.background_secondary};
+`;
+
+export const ButtonContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+`;
+
+
+
+export const ButtonText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.text}
+`;
