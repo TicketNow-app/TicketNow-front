@@ -2,14 +2,13 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
-import Modal from "react-native-modal";
-import { StyleSheet, View } from "react-native";
 import { XCircleIcon } from "react-native-heroicons/solid";
 
-import { Container, ContainerNoSolicitations, GhostView, Header, MainTitle, NoSolicitationsSubtitle, NoSolicitationsTitle, DeleteSolicitationTitle, ScrollContainer, Section, SectionTitle, Button, ButtonContainer, ButtonText } from './styles';
+import { Container, ContainerNoSolicitations, GhostView, Header, MainTitle, NoSolicitationsSubtitle, NoSolicitationsTitle, ScrollContainer, Section, SectionTitle } from './styles';
 
 import { FriendTag } from '../../components/FriendTag';
 import { HeaderButton } from '../../components/HeaderButton';
+import { BottomModal } from '../../components/BottomModal';
 
 const solicitationsData = [
   {
@@ -142,37 +141,7 @@ export function FriendsList() {
             )
           }
         </Section>
-        <View style={style.flexView}>
-              <Modal
-                onBackdropPress={() => setModalVisible(false)}
-                onBackButtonPress={() => setModalVisible(false)}
-                isVisible={isModalVisible}
-                swipeDirection="down"
-                onSwipeComplete={toggleModal}
-                animationIn="bounceInUp"
-                animationOut="bounceOutDown"
-                animationInTiming={900}
-                animationOutTiming={500}
-                backdropTransitionInTiming={1000}
-                backdropTransitionOutTiming={500}
-                style={style.modal}
-              >
-                <View style={style.modalContent}>
-                  <View style={style.center}>
-                    <XCircleIcon size={70} color={useTheme().colors.text_inactive} />
-                    <DeleteSolicitationTitle>Voce tem certeza que deseja excluir esta solicitação de amizade? </DeleteSolicitationTitle>
-                    <ButtonContainer>
-                      <Button onPress={() => setModalVisible(false)}>
-                        <ButtonText>Cancelar</ButtonText>
-                      </Button>
-                      <Button onPress={() => removeSolicitation(1)}>
-                        <ButtonText>Excluir</ButtonText>
-                      </Button>
-                    </ButtonContainer>
-                  </View>
-                </View>
-              </Modal>
-            </View>
+          <BottomModal icon={<XCircleIcon size={70} color={useTheme().colors.text_inactive} />} text="Voce tem certeza que deseja excluir esta solicitação de amizade?" leftButtonText="Cancelar" rightButtonText="Excluir" handleFunction={() => removeSolicitation(0)} setModalVisible={() => setModalVisible(false)} isModalVisible={isModalVisible} toggleModal={toggleModal} />
         <Section>
           <SectionTitle>Meus amigos</SectionTitle>
           {friends.map((friend, index) => (
@@ -189,48 +158,6 @@ export function FriendsList() {
     </Container>
   );
 }
-
-const style = StyleSheet.create({
-  flexView: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  modal: {
-    justifyContent: "flex-end",
-    margin: 0,
-  },
-  modalContent: {
-    backgroundColor: "#161616",
-    paddingTop: 12,
-    paddingHorizontal: 12,
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    minHeight: 300,
-    paddingBottom: 20,
-  },
-  center: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  barIcon: {
-    width: 60,
-    height: 5,
-    backgroundColor: "#bbb",
-    borderRadius: 3,
-  },
-  text: {
-    color: "#bbb",
-    fontSize: 24,
-    marginTop: 100,
-  },
-  btnContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 100,
-  },
-});
 
 
 
