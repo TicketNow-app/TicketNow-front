@@ -2,28 +2,33 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import React, { useEffect, useState } from 'react';
 
+import { loginAuth } from '../helpers/requests/login';
+import { getUser } from '../helpers/requests/user';
+
+import { IUser } from '../interfaces/user';
+
 interface AuthProviderProps {
   children: React.ReactNode;
 }
 
-interface User {
-  id: string;
-  name: string;
+interface SignInCredentials {
   email: string;
-  photo?: string;
+  password: string;
 }
 
 interface IAuthContextData {
-  user: User;
+  user: IUser;
   signInWithApple: () => Promise<void>;
+  signInWithApp: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => Promise<void>;
   userStorageLoading: boolean;
+
 }
 
 const AuthContext = React.createContext({} as IAuthContextData);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User>({} as User);
+  const [user, setUser] = useState<IUser>({} as IUser);
   const [userStorageLoading, setUserStorageLoading] = useState(true);
 
   const userStorageKey = '@ticketnow:user';
@@ -41,7 +46,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         const name = credential.fullName!.givenName!;
         const photo = `https://ui-avatars.com/api/?name=${credential.fullName.givenName}}&length=2&size=1024&background=323643&color=FFFFFF&font-size=0.33`;
         const userLogged = {
-          id: String(credential.user),
+          id: Number(credential.user),
           email: credential.email!,
           name,
           photo,
@@ -55,8 +60,27 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }
 
+  async function signInWithApp(credentials: SignInCredentials) {
+    try{
+      const { email, password } = credentials;
+      const userLogged = await loginAuth(email, password);
+
+      const token = userLogged.token;
+      const id = userLogged.user.id_user;
+
+      if (token) {
+        const user = await getUser(id, token);
+        setUser(user);
+        await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
+      }
+    }
+    catch(error){
+      throw new Error(error);
+    }
+  }
+
   async function signOut() {
-    setUser({} as User);
+    setUser({} as IUser);
     await AsyncStorage.removeItem(userStorageKey);
   }
 
@@ -65,7 +89,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const userStorage = await AsyncStorage.getItem(userStorageKey);
 
       if (userStorage) {
-        const userLogged = JSON.parse(userStorage) as User;
+        const userLogged = JSON.parse(userStorage) as IUser;
         setUser(userLogged);
       }
 
@@ -80,8 +104,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       value={{
         user,
         signInWithApple,
+        signInWithApp,
         signOut,
-        userStorageLoading
+        userStorageLoading,
       }}>
       {children}
     </AuthContext.Provider>
