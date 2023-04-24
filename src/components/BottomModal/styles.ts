@@ -1,3 +1,4 @@
+import Modal from "react-native-modal";
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -6,13 +7,18 @@ export const FlexView = styled.View`
   background-color: white;
 `;
 
+export const ModalComponent = styled(Modal)`
+  justify-content: flex-end;
+  margin: 0;
+`;
+
 export const ModalContent = styled.View`
-    background-color: #161616;
-    padding-top: 12;
-    border-top-right-radius: 20;
-    border-top-left-radius: 20;
-    min-height: 300;
-    padding-bottom: 20;
+  background-color: #161616;
+  padding-top: 12px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  min-height: 300px;
+  padding-bottom: 20px;
 `;
 
 export const Center = styled.View`
