@@ -1,15 +1,15 @@
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
-import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAlreadyAccount, ContainerAnotherSignUpWays, ContainerSocialRegister, ContainerTerms, ContainerTextTerms, Form, Header, InputBox, LogoHorizontal, TextAlreadyAccount, TextAlreadyAccountBold, TextAnotherSignUpWays, TextTerms, TextTermsBold, TouchableAlreadyAccount } from './styles';
+import {RegisterTemporaryContext} from '../../contexts/registerTemporary';
 
-import { createUserRequired } from '../../services/user';
+import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAlreadyAccount, ContainerAnotherSignUpWays, ContainerSocialRegister, ContainerTerms, ContainerTextTerms, Form, Header, InputBox, LogoHorizontal, TextAlreadyAccount, TextAlreadyAccountBold, TextAnotherSignUpWays, TextTerms, TextTermsBold, TouchableAlreadyAccount } from './styles';
 
 import { Button } from '../../components/Form/Button';
 import { Checkbox } from '../../components/Form/Checkbox';
@@ -17,7 +17,7 @@ import { DatePicker } from '../../components/Form/DatePicker';
 import { InputForm } from '../../components/Form/InputForm';
 import { TitleDesc } from '../../components/Form/TitleDesc';
 
-import { IRegister, IRegisterForm } from '../../interfaces/register';
+import { IRegister } from '../../interfaces/register';
 
 const schema = Yup.object().shape({
   date: Yup
@@ -37,9 +37,10 @@ const schema = Yup.object().shape({
 
 export function Register() {
   const [isChecked, setChecked] = useState(false);
-  const [date, setDate] = useState<Date | string>(null);
+  const [date, setDate] = useState<Date>(null);
   const [datePickerShow, setDatePickerShow] = useState(false);
   const navigation = useNavigation();
+  const { updateRegisterTemporary } = useContext(RegisterTemporaryContext);
 
   const {
     control,
@@ -49,19 +50,17 @@ export function Register() {
     resolver: yupResolver(schema)
   });
 
-  async function handleRegister(form: IRegisterForm) {
+  async function handleRegister(form: IRegister) {
     if(!date || !form.email || !form.password)
       return alert('Preencha todos os campos');
 
-    const data: IRegister = {
-      cd_email: form.email,
-      cd_password: form.password,
-      ic_status: "A",
-      id_user: 3,
+    const registerInfos: IRegister = {
+      date: date,
+      email: form.email,
+      password: form.password,
     }
 
-    createUserRequired(data);
-
+    updateRegisterTemporary(registerInfos);
     navigation.navigate('RegisterSecondStep');
   }
 

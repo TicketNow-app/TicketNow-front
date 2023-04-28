@@ -15,7 +15,7 @@ const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequ
       method,
       url: `${BASE_URL}${endpoint}`,
       data,
-      headers: headers || { 'Content-Type': 'application/json' },
+      headers: { ...headers } || { 'Content-Type': 'application/json' },
     });
     return response?.data;
   } catch (error) {

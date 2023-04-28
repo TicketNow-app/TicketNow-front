@@ -1,12 +1,16 @@
-export interface IRegisterForm {
+export interface IRegister {
   date: Date;
   email: string;
   password: string;
 }
 
-export interface IRegister {
-  cd_email: string;
-  cd_password: string
-  ic_status: 'A' | 'I';
-  id_user: number;
+export interface IRegisterSecondStep{
+  name: string;
+  cpf: string;
+  phone: string;
 }
+export interface IRegisterContext extends IRegister {
+  secondStep?: IRegisterSecondStep;
+}
+
+export interface IRegisterComplete extends IRegister, IRegisterSecondStep {}
