@@ -6,15 +6,16 @@ interface TicketNowRequest {
   endpoint: string;
   method: 'get' | 'post' | 'put' | 'delete';
   data?: any;
+  headers?: any;
 }
 
-const backendRequest = async ({ endpoint, method, data }: TicketNowRequest) => {
+const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequest) => {
   try {
     const response = await axios({
       method,
       url: `${BASE_URL}${endpoint}`,
       data,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...headers } || { 'Content-Type': 'application/json' },
     });
     return response.data;
   } catch (error) {
