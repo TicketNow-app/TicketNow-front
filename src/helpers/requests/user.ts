@@ -43,3 +43,11 @@ export const createUser = (register: IRegisterComplete ): Promise<IRegisterCompl
     })
   )
 }
+
+export const getUser = (id: string, token: string): Promise<IUser> => {
+  return backendRequest({
+    endpoint: `/user/${id}`,
+    method: 'get',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
