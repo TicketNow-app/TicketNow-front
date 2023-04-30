@@ -1,6 +1,7 @@
 import backendRequest from '../api';
 
 import { IRegisterComplete } from '../../interfaces/register';
+import { IUser } from '../../interfaces/user';
 
 
 
