@@ -1,13 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
-import { ArrowLeftIcon, CameraIcon } from "react-native-heroicons/outline";
+import { ArrowLeftIcon, CameraIcon, ArrowRightIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 
-import { Container, GhostView, Header, MainTitle, ScrollContainer, Form, ContainerDateTelephone, InputBoxDate, InputBoxTelephone, InputBox, ContainerImage, UserImage, ContainerEditImage, ButtonBox } from './styles';
+import { Container, GhostView, Header, MainTitle, ScrollContainer, Form, ContainerDateTelephone, InputBoxDate, InputBoxTelephone, InputBox, ContainerImage, UserImage, ContainerEditImage, ButtonBox, ButtonEditPassword, EditPasswordBox } from './styles';
 
 import { HeaderButton } from '../../components/HeaderButton';
 import { InputForm } from '../../components/Form/InputForm';
@@ -29,7 +29,7 @@ const schema = Yup.object().shape({
 
 export function EditProfile() {
   const [image, setImage] = useState(null);
-
+  const navigation = useNavigation();
   const {
     control,
     handleSubmit,
@@ -38,23 +38,31 @@ export function EditProfile() {
     resolver: yupResolver(schema)
   });
 
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    setImage(result.assets[0].uri);
+  };
 
-    const pickImage = async () => {
-      // No permissions request is necessary for launching the image library
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
-      setImage(result.assets[0].uri);
-    };
+  function goToEditPassword() {
+    navigation.navigate('EditPassword');
+  }
+
+  function GoBack() {
+    navigation.goBack();
+  }
+
 
   return (
     <Container>
       <ScrollContainer>
         <Header>
-          <HeaderButton>
+          <HeaderButton onPress={GoBack}>
             <ArrowLeftIcon size={20} color={useTheme().colors.text} />
           </HeaderButton>
           <MainTitle>Editar</MainTitle>
@@ -81,9 +89,12 @@ export function EditProfile() {
           <InputBox>
             <InputForm control={control} name='email' defaultValue='thiago.leaox@gmail.com' placeholder='E-mail' />
           </InputBox>
-          <InputBox>
-            <InputForm control={control} name='password' defaultValue='thiago123456' placeholder='Senha' />
-          </InputBox>
+          <EditPasswordBox onPress={goToEditPassword}>
+            <InputForm control={control} name='password' value='thiago123456' placeholder='Senha' editable={false} secureTextEntry />
+            <ButtonEditPassword>
+              <ArrowRightIcon size={24} color={useTheme().colors.text_inactive} />
+            </ButtonEditPassword>
+          </EditPasswordBox>
           <ButtonBox>
             <Button title='Salvar' />
           </ButtonBox>
@@ -92,6 +103,3 @@ export function EditProfile() {
     </Container>
   );
 }
-
-
-

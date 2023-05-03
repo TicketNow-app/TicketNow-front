@@ -11,6 +11,7 @@ export declare global { //export global namespace
       FriendsList: undefined;
       Settings: undefined;
       EditProfile: undefined;
+      EditPassword: undefined;
     }
   }
 }

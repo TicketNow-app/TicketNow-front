@@ -5,6 +5,7 @@ import { Ticket } from '../screens/Ticket';
 import { FriendsList } from '../screens/FriendsList';
 import { Settings } from '../screens/Settings';
 import {EditProfile} from '../screens/EditProfile';
+import { EditPassword } from '../screens/EditPassword';
 import { AppRoutes } from './app.routes';
 
 const { Screen, Navigator } = createNativeStackNavigator();
@@ -18,6 +19,7 @@ export function StackRoutes() {
       <Screen name="FriendsList" component={FriendsList} />
       <Screen name="Settings" component={Settings} />
       <Screen name="EditProfile" component={EditProfile} />
+      <Screen name="EditPassword" component={EditPassword} />
     </Navigator>
   );
 }

@@ -102,19 +102,3 @@ export const ButtonBox = styled.View`
   width: 100%;
   margin-bottom: 24px;
 `;
-
-export const EditPasswordBox = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.6
-})`
-  width: 100%;
-  margin-bottom: 20px;
-`;
-
-export const ButtonEditPassword = styled.View`
-  position: absolute;
-  right: 0px;
-  height: 100%;
-  padding: 0px 16px;
-  justify-content: center;
-  align-items: center;
-`;
