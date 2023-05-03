@@ -31,6 +31,10 @@ export function Profile() {
     navigation.navigate('Settings')
   }
 
+  function goToEditProfile() {
+    navigation.navigate('EditProfile')
+  }
+
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(promoter);
     console.log('Copied to Clipboard!');
@@ -82,7 +86,7 @@ export function Profile() {
         }
       </ContainerTopInfos>
       <ContainerConfigButtons>
-        <ConfigButtons roundedBorder='all' icon={<PencilIcon size={24} color={useTheme().colors.text} />} title="Editar" description="Editar informações pessoais" />
+        <ConfigButtons roundedBorder='all' icon={<PencilIcon size={24} color={useTheme().colors.text} />} title="Editar" description="Editar informações pessoais" onPress={goToEditProfile} />
         <ConfigButtons roundedBorder='all' icon={<TicketIcon size={24} color={useTheme().colors.text} />} title="Ingressos" description="Visualizar todos seus ingressos" />
         <ConfigButtons roundedBorder='all' icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Visualizar configurações pegamentos" />
       </ContainerConfigButtons>

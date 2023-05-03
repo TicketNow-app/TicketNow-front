@@ -41,6 +41,14 @@ export function Login({ navigation }: any) {
   const [isLoading, setIsLoading] = useState(false);
   const { signInWithApple } = useAuth();
 
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
+
   // async function handleSignInWithGoogle() {
   //   try {
   //     // await signIn();
@@ -61,13 +69,6 @@ export function Login({ navigation }: any) {
     }
   }
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(schema)
-  });
 
   function handleLogin(form: FormData) {
     if (!form.email || !form.password)
