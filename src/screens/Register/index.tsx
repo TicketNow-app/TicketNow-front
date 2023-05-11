@@ -63,6 +63,10 @@ export function Register({ navigation }: any) {
     navigation.navigate('RegisterSecondStep');
   }
 
+  function goToTermsOfUse() {
+    navigation.navigate('TermsOfUse');
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
@@ -104,11 +108,11 @@ export function Register({ navigation }: any) {
               error={errors.password && errors.password.message.toString()}
             />
           </InputBox>
-          <ContainerTerms onTouchEnd={() => { setChecked(!isChecked) }}>
+          <ContainerTerms>
             <Checkbox color={useTheme().colors.text_inactive} value={isChecked} onValueChange={() => { setChecked(!isChecked) }} />
             <ContainerTextTerms>
               <TextTerms>Eu concordo com os </TextTerms>
-              <TextTermsBold>Termos & Condições</TextTermsBold>
+              <TextTermsBold onPress={ goToTermsOfUse }>Termos de uso</TextTermsBold>
               <TextTerms> e com as </TextTerms>
               <TextTermsBold>Políticas de Privacidade</TextTermsBold>
             </ContainerTextTerms>
