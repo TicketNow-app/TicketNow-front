@@ -10,6 +10,7 @@ import { CardLarge } from '../../components/CardLarge';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { CompanyTag } from '../../components/CompanyTag';
 import { HeaderButton } from '../../components/HeaderButton';
+import {FlatListDivisor} from '../../components/FlatListDivisor';
 
 import { company, data, event, eventsRecent } from '../../mock';
 
@@ -20,14 +21,10 @@ export function Home() {
     navigation.navigate('Ticket');
   }
 
-  function DontComeBack() {
-    navigation.dispatch(StackActions.popToTop());
-  }
-
   return (
     <Container>
       <Header>
-        <HeaderButton onPress={DontComeBack}>
+        <HeaderButton>
           <BellIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
@@ -39,7 +36,8 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={data}
-          renderItem={({ item }) => <CardLarge data={item} />}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+          renderItem={({ item }) => <CardLarge data={item} isLoading/>}
         />
       </ContainerScroll>
       <ContainerScroll>
@@ -48,6 +46,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={event}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
           renderItem={({ item }) => <Card event={item} />}
         />
       </ContainerScroll>
@@ -57,6 +56,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={eventsRecent}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
           renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
         />
       </ContainerScroll>
@@ -66,6 +66,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={company}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
           renderItem={({ item }) => <CompanyTag company={item} />}
         />
       </ContainerScroll>

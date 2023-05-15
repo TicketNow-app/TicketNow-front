@@ -1,11 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
 
 import { Container, GhostView, Header, MainTitle, ScrollContainer, ContainerTopic, TermsIntroduction, TopicText, TopicTitle, FooterDescription } from './styles';
 
 import { HeaderButton } from '../../components/HeaderButton';
+
 export function TermsOfUse() {
   const navigation = useNavigation();
 

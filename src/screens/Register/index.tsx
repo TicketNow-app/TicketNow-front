@@ -67,6 +67,10 @@ export function Register({ navigation }: any) {
     navigation.navigate('TermsOfUse');
   }
 
+  function goToLogin() {
+    navigation.navigate('Login');
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
@@ -122,7 +126,7 @@ export function Register({ navigation }: any) {
           </ButtonBox>
           <ContainerAlreadyAccount>
             <TextAlreadyAccount>Já possui uma conta? </TextAlreadyAccount>
-            <TouchableAlreadyAccount>
+            <TouchableAlreadyAccount onPress={goToLogin}>
               <TextAlreadyAccountBold>Entre aqui!</TextAlreadyAccountBold>
             </TouchableAlreadyAccount>
           </ContainerAlreadyAccount>
