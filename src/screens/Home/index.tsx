@@ -1,4 +1,4 @@
-import { StackActions, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
@@ -16,25 +16,25 @@ import { company, data, event, eventsRecent } from '../../mock';
 export function Home() {
   const navigation = useNavigation();
 
-  function OpenEvent() {
-    navigation.navigate('Ticket');
+  function openEvent() {
+    navigation.navigate('SelectTicket');
   }
 
-  function DontComeBack() {
-    navigation.dispatch(StackActions.popToTop());
+  function openTicket() {
+    navigation.navigate('Ticket')
   }
 
   return (
     <Container>
       <Header>
-        <HeaderButton onPress={DontComeBack}>
+        <HeaderButton onPress={openEvent}>
           <BellIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
         <AvatarMini />
       </Header>
       <ContainerScroll>
-        <TitleContainer onPress={OpenEvent}>Categorias</TitleContainer>
+        <TitleContainer onPress={openTicket}>Categorias</TitleContainer>
         <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}

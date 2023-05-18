@@ -4,6 +4,7 @@ import { Event } from '../screens/Event';
 import { Ticket } from '../screens/Ticket';
 import { FriendsList } from '../screens/FriendsList';
 import { Settings } from '../screens/Settings';
+import { SelectTicket } from '../screens/SelectTicket'
 import { AppRoutes } from './app.routes';
 
 const { Screen, Navigator } = createNativeStackNavigator();
@@ -16,6 +17,7 @@ export function StackRoutes() {
       <Screen name="Event" component={Event} />
       <Screen name="FriendsList" component={FriendsList} />
       <Screen name="Settings" component={Settings} />
+      <Screen name="SelectTicket" component={SelectTicket} />
     </Navigator>
   );
 }
