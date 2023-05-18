@@ -33,7 +33,7 @@ export function Home() {
     }
 
     loadRecommendedEvents();
-    loadCategories();
+    //loadCategories();
   }, []);
 
   function handleNavigateToEvent(eventId: number) {
@@ -64,7 +64,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={recommendedEvents}
-          renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id_event)} />}
+          renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />}
         />
       </ContainerScroll>
       <ContainerScroll>
