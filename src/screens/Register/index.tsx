@@ -65,6 +65,10 @@ export function Register() {
     navigation.navigate('RegisterSecondStep');
   }
 
+  function goToTermsOfUse() {
+    navigation.navigate('TermsOfUse');
+  }
+        
   function goToLogin() {
     navigation.navigate('Login');
   }
@@ -110,11 +114,11 @@ export function Register() {
               error={errors.password && errors.password.message.toString()}
             />
           </InputBox>
-          <ContainerTerms onTouchEnd={() => { setChecked(!isChecked) }}>
+          <ContainerTerms>
             <Checkbox color={useTheme().colors.text_inactive} value={isChecked} onValueChange={() => { setChecked(!isChecked) }} />
             <ContainerTextTerms>
               <TextTerms>Eu concordo com os </TextTerms>
-              <TextTermsBold>Termos & Condições</TextTermsBold>
+              <TextTermsBold onPress={ goToTermsOfUse }>Termos de uso</TextTermsBold>
               <TextTerms> e com as </TextTerms>
               <TextTermsBold>Políticas de Privacidade</TextTermsBold>
             </ContainerTextTerms>
@@ -124,7 +128,7 @@ export function Register() {
           </ButtonBox>
           <ContainerAlreadyAccount>
             <TextAlreadyAccount>Já possui uma conta? </TextAlreadyAccount>
-            <TouchableAlreadyAccount onPress={() => { goToLogin() }}>
+            <TouchableAlreadyAccount onPress={goToLogin}>
               <TextAlreadyAccountBold>Entre aqui!</TextAlreadyAccountBold>
             </TouchableAlreadyAccount>
           </ContainerAlreadyAccount>

@@ -10,6 +10,7 @@ import { Card } from '../../components/Card';
 import { CardLarge } from '../../components/CardLarge';
 import { CompanyTag } from '../../components/CompanyTag';
 import { HeaderButton } from '../../components/HeaderButton';
+import {FlatListDivisor} from '../../components/FlatListDivisor';
 
 import { readCategories } from '../../helpers/requests/categories';
 import { readRecommendedEvents } from '../../helpers/requests/events';
@@ -39,7 +40,7 @@ export function Home() {
   function handleNavigateToEvent(eventId: number) {
     navigation.navigate('Event', { id: eventId });
   }
-
+  
   return (
     <Container>
       <Header>
@@ -55,6 +56,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={categories}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
           renderItem={({ item }) => <CardLarge category={item} />}
         />
       </ContainerScroll>
@@ -64,6 +66,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={recommendedEvents}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
           renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />}
         />
       </ContainerScroll>
@@ -73,7 +76,8 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={eventsRecent}
-          // renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+          //renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
         />
       </ContainerScroll>
       <ContainerScroll>
@@ -82,6 +86,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={company}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
           renderItem={({ item }) => <CompanyTag company={item} />}
         />
       </ContainerScroll>

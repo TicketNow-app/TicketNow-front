@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { LinearGradient } from 'expo-linear-gradient';
 
 export const Container = styled.TouchableOpacity`
   margin-right: 16px;

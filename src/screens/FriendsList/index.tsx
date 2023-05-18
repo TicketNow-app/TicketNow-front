@@ -2,11 +2,13 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
+import { XCircleIcon } from "react-native-heroicons/solid";
 
 import { Container, ContainerNoSolicitations, GhostView, Header, MainTitle, NoSolicitationsSubtitle, NoSolicitationsTitle, ScrollContainer, Section, SectionTitle } from './styles';
 
 import { FriendTag } from '../../components/FriendTag';
 import { HeaderButton } from '../../components/HeaderButton';
+import { BottomModal } from '../../components/BottomModal';
 
 const solicitationsData = [
   {
@@ -86,12 +88,19 @@ export function FriendsList() {
 
   function removeSolicitation(index: number) {
     setSolicitations(solicitations.filter((_, i) => i !== index));
+    setModalVisible(false)
   }
 
   function addFriend(index: number) {
     setFriends([...friends, solicitations[index]]);
     removeSolicitation(index);
   }
+
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const navigation = useNavigation();
 
@@ -120,7 +129,7 @@ export function FriendsList() {
                   name={solicitation.name}
                   commonFriends={solicitation.commonFriends}
                   close={solicitation.close}
-                  removeFriend={() => removeSolicitation(index)}
+                  removeFriend={() => toggleModal()}
                   addFriend={() => addFriend(index)}
                 />
               ))
@@ -132,6 +141,7 @@ export function FriendsList() {
             )
           }
         </Section>
+          <BottomModal icon={<XCircleIcon size={70} color={useTheme().colors.text_inactive} />} text="Voce tem certeza que deseja excluir esta solicitação de amizade?" leftButtonText="Cancelar" rightButtonText="Excluir" handleFunction={() => removeSolicitation(0)} setModalVisible={() => setModalVisible(false)} isModalVisible={isModalVisible} toggleModal={toggleModal} />
         <Section>
           <SectionTitle>Meus amigos</SectionTitle>
           {friends.map((friend, index) => (

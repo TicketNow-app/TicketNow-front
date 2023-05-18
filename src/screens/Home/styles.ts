@@ -35,7 +35,7 @@ export const ContainerScroll = styled.View`
 export const HorizontalScroll = styled.FlatList.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
-  contentContainerStyle: { paddingHorizontal: 24 }
+  contentContainerStyle: { paddingHorizontal: 24 },
 })`
   width: 100%;
   margin-top: ${RFValue(20)}px;

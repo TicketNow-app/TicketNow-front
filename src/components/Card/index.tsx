@@ -2,6 +2,7 @@ import React from "react";
 
 import { Container, ContainerText, Content, Date, Description, Gradient, Image, Title } from './styles';
 
+
 // interface CardProps {
 //   event: {
 //     image: string;
@@ -13,6 +14,14 @@ import { Container, ContainerText, Content, Date, Description, Gradient, Image, 
 
 export function Card({ event, ...rest}) {
   return (
+    <>
+    {
+      event ?
+      (
+        <CardSkeleton />
+      )
+      :
+      (
     <Container activeOpacity={0.6} {...rest}>
       <Content>
         <Image source={{ uri: event.images[0].url }} />
@@ -36,5 +45,8 @@ export function Card({ event, ...rest}) {
         </ContainerText>
       </Content>
     </Container>
+      )
+    }
+    </>
   );
 }
