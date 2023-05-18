@@ -2,17 +2,24 @@ import React from "react";
 import { Marker } from 'react-native-maps';
 import { ContainerMarker, MarkerImage } from './styles';
 
+interface EventMarkerProps {
+  latitude: number;
+  longitude: number;
+  image: string;
+  onPress?: () => void;
+}
 
-export function EventMarker() {
+export function EventMarker({ latitude, longitude, image, onPress }: EventMarkerProps) {
   return (
     <Marker
       coordinate={{
-        latitude: -23.970163,
-        longitude: -46.410530
+        latitude: latitude,
+        longitude: longitude,
       }}
+      onPress={onPress}
     >
       <ContainerMarker>
-        <MarkerImage source={{ uri: 'https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' }} />
+        <MarkerImage source={{ uri: image }} />
       </ContainerMarker>
     </Marker>
   );

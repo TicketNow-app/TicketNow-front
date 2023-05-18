@@ -8,7 +8,6 @@ import { Container, ContainerScroll, Header, HorizontalScroll, LogoHorizontal, T
 import { AvatarMini } from '../../components/AvatarMini';
 import { Card } from '../../components/Card';
 import { CardLarge } from '../../components/CardLarge';
-import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { CompanyTag } from '../../components/CompanyTag';
 import { HeaderButton } from '../../components/HeaderButton';
 
@@ -74,7 +73,7 @@ export function Home() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={eventsRecent}
-          renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
+          // renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
         />
       </ContainerScroll>
       <ContainerScroll>
