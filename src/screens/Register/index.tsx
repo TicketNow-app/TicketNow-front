@@ -1,5 +1,6 @@
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
@@ -34,10 +35,11 @@ const schema = Yup.object().shape({
     .max(50, 'Máximo 50 caracteres')
 })
 
-export function Register({ navigation }: any) {
+export function Register() {
   const [isChecked, setChecked] = useState(false);
   const [date, setDate] = useState<Date | string>(null);
   const [datePickerShow, setDatePickerShow] = useState(false);
+  const navigation = useNavigation();
 
   const {
     control,
@@ -66,7 +68,7 @@ export function Register({ navigation }: any) {
   function goToTermsOfUse() {
     navigation.navigate('TermsOfUse');
   }
-
+        
   function goToLogin() {
     navigation.navigate('Login');
   }

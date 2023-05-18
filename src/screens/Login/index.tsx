@@ -79,8 +79,6 @@ export function Login({ navigation }: any) {
     }
 
     navigation.navigate('AppRoutes');
-
-    console.log(data);
   }
 
   return (

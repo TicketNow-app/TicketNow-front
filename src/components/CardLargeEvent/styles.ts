@@ -7,7 +7,6 @@ export const Container = styled.TouchableOpacity`
   width: ${RFValue(300)}px;
   height: ${RFValue(150)}px;
   border-radius: 10px;
-  margin-right: 20px;
 `;
 
 export const Content = styled.View`

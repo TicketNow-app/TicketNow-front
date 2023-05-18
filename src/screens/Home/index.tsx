@@ -1,4 +1,5 @@
-import { StackActions, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
@@ -7,20 +8,39 @@ import { Container, ContainerScroll, Header, HorizontalScroll, LogoHorizontal, T
 import { AvatarMini } from '../../components/AvatarMini';
 import { Card } from '../../components/Card';
 import { CardLarge } from '../../components/CardLarge';
-import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { CompanyTag } from '../../components/CompanyTag';
 import { HeaderButton } from '../../components/HeaderButton';
 import {FlatListDivisor} from '../../components/FlatListDivisor';
 
-import { company, data, event, eventsRecent } from '../../mock';
+import { readCategories } from '../../helpers/requests/categories';
+import { readRecommendedEvents } from '../../helpers/requests/events';
+
+import { company, eventsRecent } from '../../mock';
 
 export function Home() {
   const navigation = useNavigation();
+  const [recommendedEvents, setRecommendedEvents] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  function OpenEvent() {
-    navigation.navigate('Ticket');
+  useEffect(() => {
+    async function loadRecommendedEvents() {
+      const response = await readRecommendedEvents();
+      setRecommendedEvents(response);
+    }
+
+    async function loadCategories() {
+      const response = await readCategories();
+      setCategories(response);
+    }
+
+    loadRecommendedEvents();
+    //loadCategories();
+  }, []);
+
+  function handleNavigateToEvent(eventId: number) {
+    navigation.navigate('Event', { id: eventId });
   }
-
+  
   return (
     <Container>
       <Header>
@@ -31,13 +51,13 @@ export function Home() {
         <AvatarMini />
       </Header>
       <ContainerScroll>
-        <TitleContainer onPress={OpenEvent}>Categorias</TitleContainer>
+        <TitleContainer>Categorias</TitleContainer>
         <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={data}
+          data={categories}
           ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-          renderItem={({ item }) => <CardLarge data={item} isLoading/>}
+          renderItem={({ item }) => <CardLarge category={item} />}
         />
       </ContainerScroll>
       <ContainerScroll>
@@ -45,9 +65,9 @@ export function Home() {
         <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={event}
+          data={recommendedEvents}
           ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-          renderItem={({ item }) => <Card event={item} />}
+          renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />}
         />
       </ContainerScroll>
       <ContainerScroll>
@@ -57,7 +77,7 @@ export function Home() {
           showsHorizontalScrollIndicator={false}
           data={eventsRecent}
           ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-          renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
+          //renderItem={({ item }) => <CardLargeEvent eventsRecent={item} />}
         />
       </ContainerScroll>
       <ContainerScroll>

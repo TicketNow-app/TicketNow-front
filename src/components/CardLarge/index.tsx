@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-
-import { Container, Content, Image, Gradient, ContainerText, Title, Description } from './styles';
+import React from "react";
+import { Container, ContainerText, Content, Description, Gradient, Image, Title } from './styles';
 
 import { CardLargeSkeleton } from './skeleton'
 
 interface CardLargeProps {
-  data: {
-    image: string;
-    title: string;
-    description: string;
+  category: {
+    im_category_event: string;
+    nm_category_event: string;
   }
   isLoading?: boolean;
 }
@@ -24,13 +22,13 @@ export function CardLarge({ data, isLoading }: CardLargeProps) {
         (
           <Container activeOpacity={0.6}>
             <Content>
-              <Image source={{ uri: data.image }} />
+              <Image source={{ uri: category.im_category_event }} />
               <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
                 locations={[0.4, 1]}
               />
               <ContainerText>
-                <Title>{data.title}</Title>
-                <Description>{data.description}</Description>
+                <Title>{category.nm_category_event}</Title>
+                <Description>10 eventos próximos</Description>
               </ContainerText>
             </Content>
           </Container>
@@ -38,4 +36,5 @@ export function CardLarge({ data, isLoading }: CardLargeProps) {
       }
     </>
   )
+
 }
