@@ -3,8 +3,9 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeftIcon, BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
+import { ActivityIndicator } from 'react-native';
 
-import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDateTime, ContainerIconDateTime, ContainerIcons, ContainerImageEvent, ContainerLineUp, ContainerLineUpArtists, ContainerMap, ContainerScroll, ContainerTitleIcons, ContainerTopInfos, DateTime, Header, IconTouchBox, ImageEvent, Map, ReadMore, TextButton, TitleAbout, TitleEvent, TitleLineUp } from './styles';
+import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDateTime, ContainerIconDateTime, ContainerIcons, ContainerImageEvent, ContainerLineUp, ContainerLineUpArtists, ContainerMap, ContainerScroll, ContainerTitleIcons, ContainerTopInfos, DateTime, Header, IconTouchBox, ImageEvent, Map, ReadMore, TextButton, TitleAbout, TitleEvent, TitleLineUp, LineUpArtist, NameArtist, ImageArtist } from './styles';
 
 import { readEvent } from '../../helpers/requests/events';
 
@@ -32,6 +33,8 @@ export function Event() {
       setResponseEvent(response);
     }
 
+    console.log(responseEvent.participants_events)
+
     loadEvent();
   }, []);
 
@@ -44,11 +47,10 @@ export function Event() {
       </Header>
       <ContainerImageEvent>
         {
-          responseEvent.length === 0 ? (
-            <></>
-          ) : (
-              <ImageEvent source={{ uri: responseEvent.imageEvent[0] }} />
-            )
+          responseEvent.length === 0 ?
+            <ActivityIndicator size="large" color={theme.colors.primary} />
+          :
+            <ImageEvent source={{ uri: responseEvent?.images[0].url }} />
         }
       </ContainerImageEvent>
       <BottomSheet
@@ -73,7 +75,7 @@ export function Event() {
               {
                 responseEvent.length === 0 ?
                   <TitleEvent></TitleEvent> :
-                <TitleEvent>{responseEvent?.nm_event}</TitleEvent>
+                <TitleEvent>{responseEvent?.name}</TitleEvent>
               }
               <ContainerIcons>
                 <IconTouchBox>
@@ -91,7 +93,7 @@ export function Event() {
                   responseEvent.length === 0 ?
                     ''
                   :
-                  responseEvent?.dt_start_event
+                    responseEvent?.dateStart
                     .split('-')
                     .reverse()
                     .join('/')
@@ -105,7 +107,7 @@ export function Event() {
                     responseEvent.length === 0 ?
                       ''
                     :
-                    responseEvent?.hr_start_event
+                      responseEvent?.hourStart
                       .split(':')
                       .slice(0, 2)
                       .join(':')
@@ -115,7 +117,7 @@ export function Event() {
                     responseEvent.length === 0 ?
                       ''
                     :
-                    responseEvent?.hr_finish_event
+                      responseEvent?.hourFinish
                       .split(':')
                       .slice(0, 2)
                       .join(':')
@@ -138,7 +140,7 @@ export function Event() {
                   responseEvent.length === 0 ?
                     ''
                   :
-                    responseEvent?.ds_event.substring(0, 200)
+                    responseEvent?.description.substring(0, 200)
               }
               <ReadMore>{readMore ? '  Ler menos' : '  Ler mais'}</ReadMore>
             </About>
@@ -149,14 +151,16 @@ export function Event() {
           <ContainerLineUp>
             <TitleLineUp>Organização</TitleLineUp>
             <ContainerLineUpArtists>
-              {/* {
-                event[1].line_up.map((artist, index) => (
-                  <LineUpArtist key={index}>
-                    <ImageArtist source={{ uri: artist.image }} />
-                    <NameArtist>{artist.name}</NameArtist>
-                  </LineUpArtist>
-                ))
-              } */}
+              {
+                responseEvent?.participants_events?.map((participant: any) => {
+                  return (
+                    <LineUpArtist key={participant.id}>
+                      <ImageArtist source={{ uri: participant.id_participant.image }} />
+                      <NameArtist>{participant.id_participant.name}</NameArtist>
+                    </LineUpArtist>
+                  )
+                })
+              }
             </ContainerLineUpArtists>
           </ContainerLineUp>
         </ContainerScroll>

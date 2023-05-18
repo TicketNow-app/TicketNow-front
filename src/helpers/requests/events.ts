@@ -2,7 +2,7 @@ import backendRequest from '../api';
 
 export const readRecommendedEvents = (): Promise<any> => {
   return backendRequest({
-    endpoint: '/events/recommended',
+    endpoint: '/events',
     method: 'get',
   });
 }
