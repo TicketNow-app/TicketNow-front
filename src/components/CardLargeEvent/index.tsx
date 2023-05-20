@@ -36,7 +36,7 @@ export function CardLargeEvent({ eventData, onPress }: CardLargeEventProps) {
   return (
     <>
       {
-        eventsRecent ?
+        eventData ?
         (
           <CardLargeEventSkeleton />
         )

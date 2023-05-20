@@ -1,40 +1,46 @@
 import React from "react";
-import { Container, ContainerText, Content, Description, Gradient, Image, Title } from './styles';
+import SkeletonLoader from "expo-skeleton-loader";
+import { useTheme } from "styled-components";
 
-import { CardLargeSkeleton } from './skeleton'
+import { Container, ContainerText, Content, Description, Gradient, Image, Title } from './styles';
 
 interface CardLargeProps {
   category: {
-    im_category_event: string;
-    nm_category_event: string;
+    id: number;
+    name: string;
+    image: string;
   }
-  isLoading?: boolean;
 }
 
-export function CardLarge({ data, isLoading }: CardLargeProps) {
+export function CardLarge({ category }: CardLargeProps) {
   return (
-    <>
-      {
-        isLoading ?
-        (
-          <CardLargeSkeleton />
-        ) :
-        (
-          <Container activeOpacity={0.6}>
-            <Content>
-              <Image source={{ uri: category.im_category_event }} />
-              <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
-                locations={[0.4, 1]}
-              />
-              <ContainerText>
-                <Title>{category.nm_category_event}</Title>
-                <Description>10 eventos próximos</Description>
-              </ContainerText>
-            </Content>
-          </Container>
-        )
-      }
-    </>
+    <Container activeOpacity={0.6}>
+      <Content>
+        <Image source={{ uri: category.image }} />
+        <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
+          locations={[0.4, 1]}
+        />
+        <ContainerText>
+          <Title>{category.name}</Title>
+          <Description>10 eventos próximos</Description>
+        </ContainerText>
+      </Content>
+    </Container>
   )
-
 }
+
+export function CardLargeSkeleton() {
+  return (
+    <SkeletonLoader>
+      <SkeletonLoader.Container
+        style={{ width: 300, height: 150, borderRadius: 10, justifyContent: 'flex-end', backgroundColor: useTheme().colors.background_secondary, padding: 14 }}
+      >
+        <SkeletonLoader.Item
+          style={{ width: 220, height: 14, marginBottom: 5, borderRadius: 2 }}
+        />
+        <SkeletonLoader.Item style={{ width: 150, height: 14, borderRadius: 2 }} />
+      </SkeletonLoader.Container>
+    </SkeletonLoader>
+  )
+}
+

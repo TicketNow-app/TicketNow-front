@@ -2,7 +2,7 @@ import backendRequest from '../api';
 
 export const readCategories = (): Promise<any> => {
   return backendRequest({
-    endpoint: '/events/categories',
+    endpoint: '/categories',
     method: 'get',
   });
 }

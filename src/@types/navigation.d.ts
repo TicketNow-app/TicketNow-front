@@ -10,6 +10,7 @@ export declare global { //export global namespace
       Event: { id: number };
       FriendsList: undefined;
       Settings: undefined;
+      TermsOfUse: undefined;
     }
   }
 }

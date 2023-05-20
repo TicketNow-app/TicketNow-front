@@ -68,7 +68,7 @@ export function Register() {
   function goToTermsOfUse() {
     navigation.navigate('TermsOfUse');
   }
-        
+
   function goToLogin() {
     navigation.navigate('Login');
   }

@@ -1,4 +1,4 @@
-import { APP_BASE_URL } from '@env';
+import { APP_BASE_URL } from '@env'
 import axios from 'axios';
 
 interface TicketNowRequest {
