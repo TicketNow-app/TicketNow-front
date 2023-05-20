@@ -9,12 +9,13 @@ import { AvatarMini } from '../../components/AvatarMini';
 import { Card, CardSkeleton } from '../../components/Card';
 import { CardLarge, CardLargeSkeleton } from '../../components/CardLarge';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
-import { CompanyTag } from '../../components/CompanyTag';
+import { CompanyTag, CompanyTagSkeleton } from '../../components/CompanyTag';
 import { HeaderButton } from '../../components/HeaderButton';
 import {FlatListDivisor} from '../../components/FlatListDivisor';
 
 import { readCategories } from '../../helpers/requests/categories';
 import { readRecommendedEvents } from '../../helpers/requests/events';
+import { readCompanies } from '../../helpers/requests/companies';
 
 import { company, eventsRecent } from '../../mock';
 
@@ -22,6 +23,7 @@ export function Home() {
   const navigation = useNavigation();
   const [recommendedEvents, setRecommendedEvents] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
     async function loadCategories() {
@@ -34,7 +36,14 @@ export function Home() {
       setRecommendedEvents(response);
     }
 
-    Promise.all([loadRecommendedEvents(), loadCategories()]);
+    async function loadCompanies() {
+      const response = await readCompanies();
+      console.log(response);
+      setCompanies(response);
+    }
+
+
+    Promise.all([loadRecommendedEvents(), loadCategories(), loadCompanies()]);
   }, []);
 
   function handleNavigateToEvent(eventId: number) {
@@ -108,13 +117,24 @@ export function Home() {
 
       <ContainerScroll>
         <TitleContainer>Produtoras recentes</TitleContainer>
-        <HorizontalScroll
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={company}
-          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-          renderItem={({ item }) => <CompanyTag company={item} />}
-        />
+        {
+          companies.length > 0 ?
+            <HorizontalScroll
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={companies}
+              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+              renderItem={({ item }) => <CompanyTag company={item} />}
+            />
+          :
+            <HorizontalScroll
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={Array.from(Array(5).keys())}
+              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+              renderItem={() => <CompanyTagSkeleton />}
+            />
+        }
       </ContainerScroll>
     </Container>
   );

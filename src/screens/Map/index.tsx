@@ -10,9 +10,9 @@ import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { EventMarker } from '../../components/EventMarker';
 import { Pill } from '../../components/Pill';
 
-import { categories } from '../../mock';
 import mapStyle from '../../utils/mapStyle.json';
 
+import { readCategories } from '../../helpers/requests/categories';
 import { readEventsDetailed, readEventsMap } from '../../helpers/requests/events';
 
 export function Map() {
@@ -20,6 +20,7 @@ export function Map() {
   const [bottomSheet, setBottomSheet] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [events, setEvents] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const fletListRef = useRef(2);
   const mapRef = useRef(null);
@@ -43,6 +44,18 @@ export function Map() {
         longitudeDelta: 0.0421,
       });
     })();
+  }, []);
+
+  useEffect(() => {
+    async function loadCategories() {
+      const categoryResponse = await readCategories();
+
+      //add 'all' category
+      const responseFormated = [{ id_category: 0, name: 'Todos', Image: '' }, ...categoryResponse];
+      setCategories(responseFormated);
+    }
+
+    loadCategories();
   }, []);
 
   useEffect(() => {
