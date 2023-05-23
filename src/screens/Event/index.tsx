@@ -48,7 +48,7 @@ export function Event() {
           responseEvent?
             <ImageEvent source={{ uri: responseEvent?.images[0].url }} />
             :
-            <ActivityIndicator size="large" color={theme.colors.primary} />
+            <ActivityIndicator size="large" color={theme.colors.text_inactive} />
         }
       </ContainerImageEvent>
       <BottomSheet
@@ -134,7 +134,7 @@ export function Event() {
                   </EventMarker>
                 </Map>
                 :
-                <ActivityIndicator size="large" color={theme.colors.primary} />
+                <ActivityIndicator size="large" color={theme.colors.text_inactive} />
             }
           </ContainerMap>
           <ContainerLineUp>

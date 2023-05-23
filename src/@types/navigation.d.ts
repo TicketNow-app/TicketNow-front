@@ -5,7 +5,8 @@ export declare global { //export global namespace
       Register: undefined;
       RegisterSecondStep: undefined;
       Home: undefined;
-      Ticket: undefined;
+      Profile: undefined;
+      Ticket: { id: number };
       TicketList: undefined;
       Event: { id: number };
       FriendsList: undefined;

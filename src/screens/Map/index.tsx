@@ -13,7 +13,7 @@ import { Pill } from '../../components/Pill';
 import mapStyle from '../../utils/mapStyle.json';
 
 import { readCategories } from '../../helpers/requests/categories';
-import { readEventsDetailed, readEventsMap } from '../../helpers/requests/events';
+import { readEvents } from '../../helpers/requests/events';
 
 export function Map() {
   const [location, setLocation] = useState(null);
@@ -22,7 +22,7 @@ export function Map() {
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const fletListRef = useRef(2);
+  const fletListRef = useRef(null);
   const mapRef = useRef(null);
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = ['13%', '45%'];
@@ -47,24 +47,20 @@ export function Map() {
   }, []);
 
   useEffect(() => {
+    async function loadEvents() {
+      const response = await readEvents();
+      console.log(response);
+      setEvents(response);
+    }
+
     async function loadCategories() {
       const categoryResponse = await readCategories();
-
-      //add 'all' category
       const responseFormated = [{ id_category: 0, name: 'Todos', Image: '' }, ...categoryResponse];
       setCategories(responseFormated);
     }
 
-    loadCategories();
-  }, []);
 
-  useEffect(() => {
-    async function loadEvents() {
-      const response = await readEventsMap();
-      setEvents(response);
-    }
-
-    loadEvents();
+    Promise.all([loadEvents(), loadCategories()]);
   }, []);
 
   //change bottomSheet state
@@ -77,14 +73,14 @@ export function Map() {
     }
   }, [bottomSheet]);
 
-  useEffect(() => {
-    async function loadEventsDetailed() {
-      const response = await readEventsDetailed(2);
-      setEvents(response);
-    }
+  // useEffect(() => {
+  //   async function loadEventsDetailed() {
+  //     const response = await readEventsDetailed(2);
+  //     setEvents(response);
+  //   }
 
-    loadEventsDetailed();
-  }, []);
+  //   loadEventsDetailed();
+  // }, []);
 
   const animateToLocation = (latitude: number, longitude: number) => {
       mapRef.current.animateToRegion({
@@ -100,8 +96,8 @@ export function Map() {
     fletListRef.current.scrollToIndex({ index: eventIndex - 1, animated: true });
   }
 
-  function handleCard(eventIndex: number) {
-    animateToLocation(events[eventIndex-1].cd_latitude, events[eventIndex-1].cd_longitude);
+  function handleCard(latitude, longitude) {
+    animateToLocation(latitude, longitude);
   }
 
 
@@ -118,7 +114,7 @@ export function Map() {
       >
         {
           events?.map((event) => (
-            <EventMarker key={event.id_event} image={event.imageEvent[0]} latitude={event.cd_latitude} longitude={event.cd_longitude} onPress={() => handleMarker(event.id_event)} />
+            <EventMarker key={event.id} image={event.images[0].url} latitude={event.id_place.latitude} longitude={event.id_place.longitude} onPress={() => handleMarker(event.id)} />
           ))
         }
       </MapContent >
@@ -147,17 +143,22 @@ export function Map() {
           />
         </ContainerScrollPills>
         <ContainerScrollCards>
-          <ScrollCards
-            data={events}
-            renderItem={({ item }) => <CardLargeEvent eventData={item} onPress={() => handleCard(item.id_event)} />}
-            ref={fletListRef}
-            getItemLayout={(data, index) => (
-              { length: 300, offset: 312 * index, index }
-            )}
-            ItemSeparatorComponent={() => <View style={{ width: 14 }} />}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          />
+          {
+            events && events.length > 0 ?
+              <ScrollCards
+                data={events}
+                renderItem={({ item }) => <CardLargeEvent eventData={item} onPress={() => handleCard(item.id_place.latitude, item.id_place.longitude)} />}
+                ref={fletListRef}
+                getItemLayout={(data, index) => (
+                  { length: 300, offset: 400 * index, index }
+                )}
+                ItemSeparatorComponent={() => <View style={{ width: 14 }} />}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              />
+            :
+            <></>
+          }
         </ContainerScrollCards>
       </BottomSheet>
     </>

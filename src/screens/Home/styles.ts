@@ -26,6 +26,19 @@ export const LogoHorizontal = styled.Image`
   height: ${RFValue(30)}px;
 `;
 
+export const ContainerCircle = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: ${({ theme }) => theme.colors.secondary};
+`;
+
+export const ImageAvatar = styled.Image`
+  flex: 1;
+  border-radius: 22px;
+`;
 
 export const ContainerScroll = styled.View`
   width: 100%;

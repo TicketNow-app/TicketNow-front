@@ -2,10 +2,8 @@ import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.TouchableOpacity`
-  margin-right: 16px;
-  width: ${RFValue(130)}px;
-  height: ${RFValue(130)}px;
-  border-radius: 10px;
+  width: ${RFValue(120)}px;
+  height: ${RFValue(120)}px;
 `;
 
 export const Content = styled.View`
@@ -16,9 +14,9 @@ export const Content = styled.View`
 `;
 
 export const Image = styled.Image`
-  width: 65%;
-  height: 65%;
-  border-radius: 75px;
+  width: ${RFValue(80)}px;
+  height: ${RFValue(80)}px;
+  border-radius: 45px;
   margin-bottom: 12px;
 `;
 

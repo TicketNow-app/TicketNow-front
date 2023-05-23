@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
-import { Container, ContainerScroll, Header, HorizontalScroll, LogoHorizontal, TitleContainer } from './styles';
+import { Container, ContainerScroll, Header, HorizontalScroll, LogoHorizontal, TitleContainer, ContainerCircle, ImageAvatar } from './styles';
 
-import { AvatarMini } from '../../components/AvatarMini';
 import { Card, CardSkeleton } from '../../components/Card';
 import { CardLarge, CardLargeSkeleton } from '../../components/CardLarge';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
@@ -14,7 +13,7 @@ import { HeaderButton } from '../../components/HeaderButton';
 import {FlatListDivisor} from '../../components/FlatListDivisor';
 
 import { readCategories } from '../../helpers/requests/categories';
-import { readRecommendedEvents } from '../../helpers/requests/events';
+import { readEvents } from '../../helpers/requests/events';
 import { readCompanies } from '../../helpers/requests/companies';
 
 import { company, eventsRecent } from '../../mock';
@@ -32,13 +31,12 @@ export function Home() {
     }
 
     async function loadRecommendedEvents() {
-      const response = await readRecommendedEvents();
+      const response = await readEvents();
       setRecommendedEvents(response);
     }
 
     async function loadCompanies() {
       const response = await readCompanies();
-      console.log(response);
       setCompanies(response);
     }
 
@@ -57,7 +55,9 @@ export function Home() {
           <BellIcon size={20} color={useTheme().colors.text} />
         </HeaderButton>
         <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
-        <AvatarMini />
+        <ContainerCircle onPress={() => navigation.navigate('Profile')}>
+          <ImageAvatar source={{ uri: 'https://images.unsplash.com/photo-1629818036993-ae9c53c8e059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }} />
+        </ContainerCircle>
       </Header>
 
       <ContainerScroll>
@@ -106,13 +106,13 @@ export function Home() {
 
       <ContainerScroll>
         <TitleContainer>Eventos recentes</TitleContainer>
-        <HorizontalScroll
+        {/* <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
           data={eventsRecent}
           ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
           renderItem={({ item }) => <CardLargeEvent eventData={item} onPress={() => handleNavigateToEvent(item.id)} />}
-        />
+        /> */}
       </ContainerScroll>
 
       <ContainerScroll>
@@ -131,7 +131,7 @@ export function Home() {
               horizontal
               showsHorizontalScrollIndicator={false}
               data={Array.from(Array(5).keys())}
-              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={10} />}
               renderItem={() => <CompanyTagSkeleton />}
             />
         }
