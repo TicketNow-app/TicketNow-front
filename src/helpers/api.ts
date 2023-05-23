@@ -1,4 +1,4 @@
-import { APP_BASE_URL } from '@env';
+import { APP_BASE_URL } from '@env'
 import axios from 'axios';
 
 interface TicketNowRequest {
@@ -11,7 +11,7 @@ const backendRequest = async ({ endpoint, method, data }: TicketNowRequest) => {
   try {
     const response = await axios({
       method,
-      url: `${APP_BASE_URL}${endpoint}`,
+      url: `http://192.168.0.108:3000${endpoint}`,
       data,
       headers: { 'Content-Type': 'application/json' },
     });

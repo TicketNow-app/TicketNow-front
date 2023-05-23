@@ -1,8 +1,8 @@
 import backendRequest from '../api';
 
-export const readCategories = (): Promise<any> => {
+export const readTicket = (id: number): Promise<any> => {
   return backendRequest({
-    endpoint: '/categories',
+    endpoint: `/tickets/${id}`,
     method: 'get',
   });
 }

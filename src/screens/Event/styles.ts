@@ -1,5 +1,5 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -28,6 +28,17 @@ export const ContainerImageEvent = styled.View`
 
 export const ImageEvent = styled.Image`
   flex: 1;
+`;
+
+export const EventMarker = styled(Marker)`
+`;
+
+export const MarkerPointer = styled.View`
+  width: ${RFValue(20)}px;
+  height: ${RFValue(20)}px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: ${RFValue(10)}px;
+  border: 3px solid ${({ theme }) => theme.colors.text};
 `;
 
 export const ContainerDraggable = styled.View`

@@ -5,7 +5,7 @@ import { ArrowLeftIcon, BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } f
 import { useTheme } from "styled-components";
 import { ActivityIndicator } from 'react-native';
 
-import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDateTime, ContainerIconDateTime, ContainerIcons, ContainerImageEvent, ContainerLineUp, ContainerLineUpArtists, ContainerMap, ContainerScroll, ContainerTitleIcons, ContainerTopInfos, DateTime, Header, IconTouchBox, ImageEvent, Map, ReadMore, TextButton, TitleAbout, TitleEvent, TitleLineUp, LineUpArtist, NameArtist, ImageArtist } from './styles';
+import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDateTime, ContainerIconDateTime, ContainerIcons, ContainerImageEvent, ContainerLineUp, ContainerLineUpArtists, ContainerMap, ContainerScroll, ContainerTitleIcons, ContainerTopInfos, DateTime, EventMarker, Header, IconTouchBox, ImageEvent, Map, MarkerPointer, ReadMore, TextButton, TitleAbout, TitleEvent, TitleLineUp, LineUpArtist, NameArtist, ImageArtist } from './styles';
 
 import { readEvent } from '../../helpers/requests/events';
 
@@ -21,7 +21,7 @@ export function Event() {
   const { id } = route.params;
 
   const [readMore, setReadMore] = useState(false);
-  const [responseEvent, setResponseEvent]: any = useState([]); //TODO: define response type
+  const [responseEvent, setResponseEvent]: any = useState(); //TODO: define response type
 
   const sheetRef = useRef<BottomSheet>(null);
 
@@ -32,8 +32,6 @@ export function Event() {
       const response = await readEvent(id);
       setResponseEvent(response);
     }
-
-    console.log(responseEvent.participants_events)
 
     loadEvent();
   }, []);
@@ -47,10 +45,10 @@ export function Event() {
       </Header>
       <ContainerImageEvent>
         {
-          responseEvent.length === 0 ?
-            <ActivityIndicator size="large" color={theme.colors.primary} />
-          :
+          responseEvent?
             <ImageEvent source={{ uri: responseEvent?.images[0].url }} />
+            :
+            <ActivityIndicator size="large" color={theme.colors.text_inactive} />
         }
       </ContainerImageEvent>
       <BottomSheet
@@ -72,11 +70,7 @@ export function Event() {
         <ContainerScroll>
           <ContainerTopInfos>
             <ContainerTitleIcons>
-              {
-                responseEvent.length === 0 ?
-                  <TitleEvent></TitleEvent> :
                 <TitleEvent>{responseEvent?.name}</TitleEvent>
-              }
               <ContainerIcons>
                 <IconTouchBox>
                   <ShareIcon size={24} color={useTheme().colors.text} />
@@ -90,9 +84,6 @@ export function Event() {
               <ContainerIconDateTime>
                 <CalendarDaysIcon size={24} color={useTheme().colors.text} />
                 <DateTime>{
-                  responseEvent.length === 0 ?
-                    ''
-                  :
                     responseEvent?.dateStart
                     .split('-')
                     .reverse()
@@ -104,23 +95,17 @@ export function Event() {
                 <ClockIcon size={24} color={useTheme().colors.text} />
                 <DateTime>
                   {
-                    responseEvent.length === 0 ?
-                      ''
-                    :
-                      responseEvent?.hourStart
-                      .split(':')
-                      .slice(0, 2)
-                      .join(':')
+                    responseEvent?.hourStart
+                    .split(':')
+                    .slice(0, 2)
+                    .join(':')
                   }
                   {' - '}
                   {
-                    responseEvent.length === 0 ?
-                      ''
-                    :
-                      responseEvent?.hourFinish
-                      .split(':')
-                      .slice(0, 2)
-                      .join(':')
+                    responseEvent?.hourFinish
+                    .split(':')
+                    .slice(0, 2)
+                    .join(':')
                   }
                 </DateTime>
               </ContainerIconDateTime>
@@ -132,13 +117,7 @@ export function Event() {
               {/* {event[1].about.substring(0, 200)}... <ReadMore>Ler mais</ReadMore> */}
               {
                 readMore ?
-                  responseEvent.length === 0 ?
-                    ''
-                  :
                     responseEvent?.ds_event
-                  :
-                  responseEvent.length === 0 ?
-                    ''
                   :
                     responseEvent?.description.substring(0, 200)
               }
@@ -146,7 +125,17 @@ export function Event() {
             </About>
           </ContainerAbout>
           <ContainerMap>
-            <Map customMapStyle={mapStyle} />
+            {
+              responseEvent?.id_place ?
+                <Map customMapStyle={mapStyle} zoomEnabled={true} initialRegion={{ latitude: Number(responseEvent?.id_place.latitude), longitude: Number(responseEvent?.id_place.longitude), latitudeDelta: 0.01, longitudeDelta: 0.01 }}>
+                  <EventMarker coordinate={{ latitude: Number(responseEvent?.id_place.latitude), longitude: Number(responseEvent?.id_place.longitude) }}>
+
+                    <MarkerPointer />
+                  </EventMarker>
+                </Map>
+                :
+                <ActivityIndicator size="large" color={theme.colors.text_inactive} />
+            }
           </ContainerMap>
           <ContainerLineUp>
             <TitleLineUp>Organização</TitleLineUp>
