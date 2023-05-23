@@ -9,6 +9,8 @@ import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDat
 
 import { readEvent } from '../../helpers/requests/events';
 
+import { EventSkeleton } from './skeleton';
+
 import { HeaderButton } from '../../components/HeaderButton';
 import theme from '../../global/styles/theme';
 import mapStyle from '../../utils/mapStyle.json';
@@ -37,6 +39,8 @@ export function Event() {
   }, []);
 
   return (
+    responseEvent
+      ?
     <Container>
       <Header>
         <HeaderButton onPress={() => navigation.goBack()}>
@@ -160,5 +164,7 @@ export function Event() {
         </BuyButton>
       </ContainerBuy>
     </Container>
+    :
+    <EventSkeleton />
   );
 }

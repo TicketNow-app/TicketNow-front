@@ -91,7 +91,7 @@ export function Home() {
               showsHorizontalScrollIndicator={false}
               data={recommendedEvents}
               ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-              renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id)} isLoading={recommendedEvents.length === 0} />}
+              renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />}
             />
             :
             <HorizontalScroll

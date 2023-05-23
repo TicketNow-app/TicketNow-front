@@ -4,8 +4,7 @@ import { useTheme } from "styled-components/native";
 
 import { Container, ContainerText, Content, Date, Description, Gradient, Image, Title } from './styles';
 
-export function Card({ event, isLoading, ...rest}) {
-  if(isLoading) return (<CardSkeleton />)
+export function Card({ event, ...rest}) {
   return (
       (
         <Container activeOpacity={0.6} {...rest}>
