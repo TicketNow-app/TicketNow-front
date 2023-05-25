@@ -39,7 +39,7 @@ const schema = Yup.object().shape({
 
 export function Login({ navigation }: any) {
   const [isLoading, setIsLoading] = useState(false);
-  const { signInWithApple } = useAuth();
+  const { signInWithApple, signInWithApp } = useAuth();
 
   // async function handleSignInWithGoogle() {
   //   try {
@@ -61,6 +61,18 @@ export function Login({ navigation }: any) {
     }
   }
 
+  async function handleSignInWithApp(credentials: { email: string, password: string }) {
+    try {
+      setIsLoading(true);
+      return await signInWithApp(credentials);
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Não foi possível conectar a conta');
+      setIsLoading(false);
+    }
+  }
+
+
   const {
     control,
     handleSubmit,
@@ -78,7 +90,7 @@ export function Login({ navigation }: any) {
       password: form.password
     }
 
-    navigation.navigate('AppRoutes');
+    handleSignInWithApp(data);
   }
 
   return (
