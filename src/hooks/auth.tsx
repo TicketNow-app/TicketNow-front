@@ -11,9 +11,15 @@ interface AuthProviderProps {
 
 interface User {
   id: number;
+  image?: string;
   name: string;
-  email: string;
-  photo?: string;
+  cpf?: string;
+  telephone?: string;
+  birth?: string;
+  category?: 'P' | 'C';
+  coupon?: string;
+  createdAt?: Date;
+  deletedAt?: Date | null;
 }
 
 interface SignInCredentials {
@@ -70,7 +76,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const userLogged = await loginAuth(email, password);
 
       const token = userLogged.token;
-      const id = userLogged.user.id_user;
+      const id = userLogged.account.id_user.id
 
       if (token) {
         const user = await getUser(id, token);

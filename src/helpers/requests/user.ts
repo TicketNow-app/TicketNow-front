@@ -20,6 +20,5 @@ export const getUser = (id: string, token: string): Promise<User> => {
   return backendRequest({
     endpoint: `/user/${id}`,
     method: 'get',
-    headers: { Authorization: `Bearer ${token}` },
   });
 }

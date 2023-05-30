@@ -9,5 +9,7 @@ export const loginAuth = async (email: string, password: string) => {
       password: password,
     },
   });
+
+  console.log(response);
   return response;
 };
