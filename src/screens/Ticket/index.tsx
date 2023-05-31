@@ -3,12 +3,13 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, EllipsisVerticalIcon, MapPinIcon } from 'react-native-heroicons/solid';
 import { useTheme } from 'styled-components';
 
-import { ClientName, Container, ContainerDetails, ContainerFriends, ContainerIconInfo, ContainerQrCode, ContainerQrCodeObservation, ContainerTicket, ContainerTicketData, ContainerTicketImage, ContainerTicketInfo, ContainerTicketType, EventInfo, EventTitle, Header, LineInfo, LineInfoTitle, QrCodeObservation, QrCodeTag, TicketBottomInfos, TicketImage, TicketTopInfos, TicketType, TicketValue, TitleHeader } from './styles';
+import { ClientName, Container, ContainerDetails, ContainerFriends, ContainerIconInfo, ContainerQrCode, ContainerQrCodeObservation, ContainerTicket, ContainerTicketData, ContainerTicketImage, ContainerTicketInfo, ContainerTicketType, EventInfo, EventTitle, LineInfo, LineInfoTitle, QrCodeObservation, QrCodeTag, TicketBottomInfos, TicketImage, TicketTopInfos, TicketType, TicketValue } from './styles';
 
 import { readTicket } from '../../helpers/requests/ticket';
 
 import { AvatarsFriendsConfirmed } from '../../components/AvatarsFriendsConfirmed';
 import { HeaderButton } from '../../components/HeaderButton';
+import { Header } from '../../components/Header';
 
 type TicketRouteProp = RouteProp<{ Ticket: { id: number } }, 'Ticket'>;
 
@@ -29,22 +30,17 @@ export function Ticket() {
     loadTicket();
   }, []);
 
-
-  function GoBack() {
-    navigation.goBack();
-  }
-
   return (
     <Container>
-      <Header>
-        <HeaderButton onPress={GoBack}>
-          <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-        </HeaderButton>
-        <TitleHeader>Ingresso</TitleHeader>
-        <HeaderButton>
-          <EllipsisVerticalIcon size={20} color={useTheme().colors.text} />
-        </HeaderButton>
-      </Header>
+      <Header
+        buttonBack
+        title='Ingresso'
+        buttonRight={
+          <HeaderButton>
+            <EllipsisVerticalIcon size={20} color={useTheme().colors.text} />
+          </HeaderButton>
+        }
+      />
       <ContainerTicket>
         <TicketTopInfos>
           <ContainerTicketImage>

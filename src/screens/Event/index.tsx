@@ -5,13 +5,15 @@ import { ArrowLeftIcon, BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } f
 import { useTheme } from "styled-components";
 import { ActivityIndicator } from 'react-native';
 
-import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDateTime, ContainerIconDateTime, ContainerIcons, ContainerImageEvent, ContainerLineUp, ContainerLineUpArtists, ContainerMap, ContainerScroll, ContainerTitleIcons, ContainerTopInfos, DateTime, EventMarker, Header, IconTouchBox, ImageEvent, Map, MarkerPointer, ReadMore, TextButton, TitleAbout, TitleEvent, TitleLineUp, LineUpArtist, NameArtist, ImageArtist } from './styles';
+import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDateTime, ContainerIconDateTime, ContainerIcons, ContainerImageEvent, ContainerLineUp, ContainerLineUpArtists, ContainerMap, ContainerScroll, ContainerTitleIcons, ContainerTopInfos, DateTime, EventMarker, IconTouchBox, ImageEvent, Map, MarkerPointer, ReadMore, TextButton, TitleAbout, TitleEvent, TitleLineUp, LineUpArtist, NameArtist, ImageArtist } from './styles';
+
+import { HeaderButton } from '../../components/HeaderButton';
+import { Header } from '../../components/Header';
 
 import { readEvent } from '../../helpers/requests/events';
 
 import { EventSkeleton } from './skeleton';
 
-import { HeaderButton } from '../../components/HeaderButton';
 import theme from '../../global/styles/theme';
 import mapStyle from '../../utils/mapStyle.json';
 
@@ -42,11 +44,7 @@ export function Event() {
     responseEvent
       ?
     <Container>
-      <Header>
-        <HeaderButton onPress={() => navigation.goBack()}>
-          <ArrowLeftIcon size={24} color={useTheme().colors.text_inactive} />
-        </HeaderButton>
-      </Header>
+      <Header buttonBack />
       <ContainerImageEvent>
         {
           responseEvent?

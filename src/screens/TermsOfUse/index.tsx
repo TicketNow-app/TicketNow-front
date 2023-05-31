@@ -3,27 +3,19 @@ import React from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
 
-import { Container, GhostView, Header, MainTitle, ScrollContainer, ContainerTopic, TermsIntroduction, TopicText, TopicTitle, FooterDescription } from './styles';
+import { Container, GhostView, ScrollContainer, ContainerTopic, TermsIntroduction, TopicText, TopicTitle, FooterDescription } from './styles';
 
-import { HeaderButton } from '../../components/HeaderButton';
+import { Header } from '../../components/Header';
 
 export function TermsOfUse() {
-  const navigation = useNavigation();
-
-  function GoBack() {
-    navigation.goBack();
-  }
-
   return (
     <Container>
       <ScrollContainer>
-        <Header>
-          <HeaderButton onPress={GoBack}>
-            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>
-          <MainTitle>Termos de uso</MainTitle>
-          <GhostView />
-        </Header>
+        <Header
+          buttonBack
+          title="Termos de uso"
+          buttonRight={<GhostView />}
+        />
         <TermsIntroduction>Obrigado pelo acesso. Por favor, leia atentamente os nossos termos de uso antes de utilizar a aplicação.</TermsIntroduction>
         <ContainerTopic>
           <TopicTitle>1. Coleta e Tratamento de Dados de dados pessoais</TopicTitle>

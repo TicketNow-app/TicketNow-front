@@ -6,13 +6,14 @@ import { XCircleIcon } from "react-native-heroicons/solid";
 
 import { useAuth } from '../../hooks/auth';
 
-import { Container, ContainerNoSolicitations, GhostView, Header, MainTitle, NoSolicitationsSubtitle, NoSolicitationsTitle, ScrollContainer, Section, SectionTitle } from './styles';
+import { Container, ContainerNoSolicitations, GhostView, NoSolicitationsSubtitle, NoSolicitationsTitle, ScrollContainer, Section, SectionTitle } from './styles';
 
 import { readFriends } from '../../helpers/requests/friendship';
 
 import { FriendTag } from '../../components/FriendTag';
 import { HeaderButton } from '../../components/HeaderButton';
 import { BottomModal } from '../../components/BottomModal';
+import { Header } from '../../components/Header';
 
 const solicitationsData = [
   {
@@ -70,20 +71,10 @@ export function FriendsList() {
 
   const navigation = useNavigation();
 
-  function GoBack() {
-    navigation.goBack();
-  }
-
   return (
     <Container>
       <ScrollContainer>
-        <Header>
-          <HeaderButton onPress={GoBack}>
-            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>
-          <MainTitle>Amigos</MainTitle>
-          <GhostView />
-        </Header>
+        <Header buttonBack title='Amigos' buttonRight={<GhostView />} />
         <Section>
           <SectionTitle>Solicitações</SectionTitle>
           {

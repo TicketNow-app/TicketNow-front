@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
-import { BoxCardLargeEvent, BoxCardLargeEventPased, BoxTitle, Container, ContainerEvent, ContentScroll, Header, Title } from './styles';
+import { BoxCardLargeEvent, BoxCardLargeEventPased, BoxTitle, Container, ContainerEvent, ContentScroll, Title } from './styles';
 
 import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { HeaderButton } from '../../components/HeaderButton';
+import { Header } from '../../components/Header';
 
 import { readOrders } from '../../helpers/requests/order'
 
@@ -28,17 +29,9 @@ export function TicketsList() {
     navigation.navigate('Ticket', { id: TicketId });
   }
 
-  const handleGoBack = () => {
-    navigation.goBack();
-  }
-
   return (
     <Container>
-      <Header>
-        <HeaderButton onPress={handleGoBack}>
-          <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-        </HeaderButton>
-      </Header>
+      <Header buttonBack />
       <ContentScroll>
         <ContainerEvent>
           <BoxTitle>

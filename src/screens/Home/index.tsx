@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BellIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
-import { Container, ContainerScroll, Header, HorizontalScroll, LogoHorizontal, TitleContainer, ContainerCircle, ImageAvatar } from './styles';
+import { Container, ContainerScroll, GhostView, HorizontalScroll, TitleContainer, ContainerCircle, ImageAvatar } from './styles';
 
 import { Card, CardSkeleton } from '../../components/Card';
 import { CardLarge, CardLargeSkeleton } from '../../components/CardLarge';
@@ -11,6 +11,7 @@ import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { CompanyTag, CompanyTagSkeleton } from '../../components/CompanyTag';
 import { HeaderButton } from '../../components/HeaderButton';
 import {FlatListDivisor} from '../../components/FlatListDivisor';
+import {Header} from '../../components/Header';
 
 import { readCategories } from '../../helpers/requests/categories';
 import { readEvents } from '../../helpers/requests/events';
@@ -50,16 +51,17 @@ export function Home() {
 
   return (
     <Container>
-      <Header>
-        <HeaderButton>
-          <BellIcon size={20} color={useTheme().colors.text} />
-        </HeaderButton>
-        <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
-        <ContainerCircle onPress={() => navigation.navigate('Profile')}>
-          <ImageAvatar source={{ uri: 'https://images.unsplash.com/photo-1629818036993-ae9c53c8e059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }} />
-        </ContainerCircle>
-      </Header>
-
+      <Header
+        buttonLeft={
+          <GhostView/>
+        }
+        logo
+        buttonRight={
+          <ContainerCircle onPress={() => navigation.navigate('Profile')}>
+            <ImageAvatar source={{ uri: 'https://images.unsplash.com/photo-1629818036993-ae9c53c8e059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }} />
+          </ContainerCircle>
+        }
+      />
       <ContainerScroll>
         <TitleContainer>Categorias</TitleContainer>
         {

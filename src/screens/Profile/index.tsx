@@ -7,11 +7,12 @@ import { useTheme } from "styled-components";
 
 import { useAuth } from '../../hooks/auth';
 
-import { ButtonPromoter, Container, ContainerConfigButtons, ContainerImage, ContainerMetricsInfos, ContainerPromoterMetrics, ContainerSell, ContainerTopInfos, CopyButtonPromoter, Header, MetricsDivisor, TextButton, TextCopyButton, TextSell, TicketMiniSvg, TitleMetrics, UserImage, UserName } from './styles';
+import { ButtonPromoter, Container, ContainerConfigButtons, ContainerImage, ContainerMetricsInfos, ContainerPromoterMetrics, ContainerSell, ContainerTopInfos, CopyButtonPromoter, MetricsDivisor, TextButton, TextCopyButton, TextSell, TicketMiniSvg, TitleMetrics, UserImage, UserName } from './styles';
 
 import { ModalPromoter } from '../../components/ModalPromoter';
 import { ConfigButtons } from '../../components/ConfigButtons';
 import { HeaderButton } from '../../components/HeaderButton';
+import {Header} from '../../components/Header';
 
 const data = {
   tickets: 55,
@@ -42,14 +43,18 @@ export function Profile() {
     <>
       {modalPromoterVisible && <ModalPromoter closeModal={() => setModalPromoterVisible(false)} />}
       <Container>
-        <Header>
+        <Header
+        buttonLeft={
           <HeaderButton onPress={goToFriendsList}>
             <UsersIcon size={20} color={useTheme().colors.text} />
           </HeaderButton>
+        }
+        buttonRight={
           <HeaderButton onPress={goToSettings}>
             <Cog6ToothIcon size={20} color={useTheme().colors.text} />
           </HeaderButton>
-        </Header>
+        }
+        />
         <ContainerTopInfos>
           <ContainerImage>
             <UserImage source={{ uri: user.image }} />

@@ -7,7 +7,7 @@ import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
-import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAlreadyAccount, ContainerAnotherSignUpWays, ContainerSocialRegister, ContainerTerms, ContainerTextTerms, Form, Header, InputBox, LogoHorizontal, TextAlreadyAccount, TextAlreadyAccountBold, TextAnotherSignUpWays, TextTerms, TextTermsBold, TouchableAlreadyAccount } from './styles';
+import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAlreadyAccount, ContainerAnotherSignUpWays, ContainerSocialRegister, ContainerTerms, ContainerTextTerms, Form, InputBox, TextAlreadyAccount, TextAlreadyAccountBold, TextAnotherSignUpWays, TextTerms, TextTermsBold, TouchableAlreadyAccount } from './styles';
 
 import { createUserRequired } from '../../services/user';
 
@@ -16,6 +16,7 @@ import { Checkbox } from '../../components/Form/Checkbox';
 import { DatePicker } from '../../components/Form/DatePicker';
 import { InputForm } from '../../components/Form/InputForm';
 import { TitleDesc } from '../../components/Form/TitleDesc';
+import {Header} from '../../components/Header';
 
 import { IRegister, IRegisterForm } from '../../interfaces/register';
 
@@ -76,9 +77,7 @@ export function Register() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-        <Header>
-          <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
-        </Header>
+        <Header logo />
         <Form>
           <TitleDesc title='Crie sua conta' desc='Inscreva-se agora para descobrir os eventos mais incríveis!' />
           <InputBox>

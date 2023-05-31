@@ -12,11 +12,12 @@ import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 import { useAuth } from '../../hooks/auth';
 
-import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, Header, InputBox, LogoHorizontal, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
+import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, InputBox, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
 
 import { Button } from '../../components/Form/Button';
 import { InputForm } from '../../components/Form/InputForm';
 import { TitleDesc } from '../../components/Form/TitleDesc';
+import {Header} from '../../components/Header';
 
 interface FormData {
   email: string;
@@ -96,9 +97,7 @@ export function Login({ navigation }: any) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-        <Header>
-          <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
-        </Header>
+        <Header logo />
         <Form>
           <TitleDesc title='Entre na sua conta' desc='Entre agora para encontrar ingressos para os eventos mais incríveis!' />
           <InputBox>
