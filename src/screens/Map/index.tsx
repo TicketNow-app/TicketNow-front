@@ -49,7 +49,7 @@ export function Map() {
   useEffect(() => {
     async function loadEvents() {
       const response = await readEvents();
-      console.log(response);
+
       setEvents(response);
     }
 

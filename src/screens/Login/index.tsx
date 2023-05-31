@@ -156,6 +156,6 @@ export function Login({ navigation }: any) {
           <FooterMessage>*Seus dados pessoais serão usados para processar seus pedidos, melhorar sua experiência no aplicativo e outros fins descritos em nossa política de privacidade.</FooterMessage>
         </ContainerFooterMessage>
       </Container >
-    </TouchableWithoutFeedback >
+    </TouchableWithoutFeedback>
   )
 }

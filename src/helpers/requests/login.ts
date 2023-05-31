@@ -10,6 +10,5 @@ export const loginAuth = async (email: string, password: string) => {
     },
   });
 
-  console.log(response);
   return response;
 };

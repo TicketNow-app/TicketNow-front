@@ -22,7 +22,7 @@ export function Ticket() {
   useEffect(() => {
     async function loadTicket() {
       const response = await readTicket(id);
-      console.log(response);
+
       setTicket(response);
     }
 

@@ -24,7 +24,6 @@ export function Profile() {
   const navigation = useNavigation();
 
   const {user} = useAuth();
-  console.log(user)
 
   function goToFriendsList() {
     navigation.navigate('FriendsList')

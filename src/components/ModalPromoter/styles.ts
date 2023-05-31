@@ -24,7 +24,7 @@ export const Background = styled.TouchableOpacity.attrs({
   background-color: rgba(0,0,0,0.6);
 `;
 
-export const CardModalPromoter = styled.TouchableOpacity.attrs({
+export const Form = styled.TouchableOpacity.attrs({
   activeOpacity: 1
 })`
   position: absolute;
@@ -107,7 +107,7 @@ export const ContainerButtons = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 32px;
 `;
 
 export const ButtonCancel = styled.TouchableOpacity.attrs({
