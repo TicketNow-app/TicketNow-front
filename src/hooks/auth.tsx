@@ -33,6 +33,7 @@ interface IAuthContextData {
   signInWithApp: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => Promise<void>;
   userStorageLoading: boolean;
+  updateUser: (user: User) => Promise<void>;
 }
 
 const AuthContext = React.createContext({} as IAuthContextData);
@@ -89,6 +90,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }
 
+  async function updateUser(user: User) {
+    setUser(user);
+    await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
+  }
+
   async function signOut() {
     setUser({} as User);
     await AsyncStorage.removeItem(userStorageKey);
@@ -117,6 +123,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         signInWithApp,
         signOut,
         userStorageLoading,
+        updateUser
       }}>
       {children}
     </AuthContext.Provider>

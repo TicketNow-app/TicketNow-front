@@ -11,10 +11,25 @@ import { Container, Background, Form, CircleIcon, ContainerTexts, Title, Desc, C
 
 import { InputForm } from '../Form/InputForm';
 
-import { validateUserCoupon } from '../../services/user';
+import { useAuth } from '../../hooks/auth';
+
+import { validateUserCoupon, alterUser } from '../../services/user';
 
 interface FormData {
   coupon: string;
+}
+
+interface User { //TODO: Create global type
+  id: number;
+  image?: string;
+  name: string;
+  cpf?: string;
+  telephone?: string;
+  birth?: string;
+  category?: 'P' | 'C';
+  coupon?: string;
+  createdAt?: Date;
+  deletedAt?: Date | null;
 }
 
 interface ModalPromoterProps {
@@ -30,7 +45,7 @@ const schema = Yup.object().shape({
 })
 
 export function ModalPromoter({ closeModal }: ModalPromoterProps) {
-
+  const { user, updateUser } = useAuth();
   const {
     control,
     handleSubmit,
@@ -42,6 +57,21 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
 
   function setCloseModal() {
     closeModal();
+  }
+
+  async function handleAlterUser(coupon: string) {
+    const alterUserObject: User = {
+      ...user,
+      coupon: coupon,
+      category: 'P'
+    }
+
+    try {
+      await alterUser(alterUserObject);
+      updateUser(alterUserObject);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async function handleValidateCoupon(coupon: string) {
@@ -60,7 +90,8 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
       }
 
       if (response.isValid === true) {
-        setCloseModal();
+        handleAlterUser(coupon);
+        closeModal();
       }
 
     } catch (error) {

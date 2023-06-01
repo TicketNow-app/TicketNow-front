@@ -35,7 +35,7 @@ export function Profile() {
   }
 
   const copyToClipboard = async () => {
-    await Clipboard.setStringAsync(promoter);
+    await Clipboard.setStringAsync(user.coupon);
     console.log('Copied to Clipboard!');
   }
 
@@ -65,7 +65,7 @@ export function Profile() {
               <>
                 <CopyButtonPromoter onPress={copyToClipboard}>
                   <TextCopyButton promoter={promoter}>
-                    {promoter}
+                    {user.coupon}
                   </TextCopyButton>
                   <Square2StackIcon size={20} color={useTheme().colors.text_inactive} />
                 </CopyButtonPromoter>

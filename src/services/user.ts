@@ -35,3 +35,11 @@ export const validateUserCoupon = (coupon: object): Promise<validateUserCouponRe
     data: coupon,
   });
 }
+
+export const alterUser = (user) => { //TODO: TYPE
+  return backendRequest({
+    endpoint: `/user/alter`,
+    method: 'post',
+    data: user,
+  });
+}
