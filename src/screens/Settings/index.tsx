@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { ArrowLeftIcon, ArrowLeftOnRectangleIcon, CreditCardIcon, LockClosedIcon, QuestionMarkCircleIcon, TrashIcon, UserIcon } from "react-native-heroicons/solid";
+import { ArrowLeftIcon, ArrowLeftOnRectangleIcon, CreditCardIcon, LockClosedIcon, QuestionMarkCircleIcon, TrashIcon, UserIcon, InformationCircleIcon, DocumentIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 import { useAuth } from '../../hooks/auth';
 
@@ -13,7 +13,11 @@ import { Header } from '../../components/Header';
 
 export function Settings() {
   const {signOut} = useAuth();
-
+  
+  function handleGoToPromoterPage() {
+    navigation.navigate('AboutPromoters');
+  }
+  
   return (
     <Container>
       <ContainerScroll>
@@ -29,18 +33,18 @@ export function Settings() {
           <Title>Conta</Title>
         </Section>
         <ContainerProfileOptions>
-          <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Preferências" description="Preferências da área de promoção" />
-          <ConfigButtons separator="full" icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Preferências da área de promoção" />
+          <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Preferências" description="Preferências do usuário" />
+          <ConfigButtons separator="full" icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Configurações de pagamento" />
           <ConfigButtons separator="full" icon={<LockClosedIcon size={24} color={useTheme().colors.text} />} title="Privacidade e Segurança" />
-          <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
+          <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Como é ser promoter?" description="Detalhes da função de promoção" onPress={handleGoToPromoterPage} />
         </ContainerProfileOptions>
 
         <Section>
           <Title>Conteúdo legal e políticas</Title>
         </Section>
         <ContainerProfileOptions>
-          <ConfigButtons separator="full" roundedBorder="top" icon={<UserIcon size={24} color={useTheme().colors.text} />} title="Conta" description="Preferências da área de promoção" />
-          <ConfigButtons roundedBorder="bottom" icon={<QuestionMarkCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
+          <ConfigButtons separator="full" roundedBorder="top" icon={<DocumentIcon size={24} color={useTheme().colors.text} />} title="Termos de uso"/>
+          <ConfigButtons roundedBorder="bottom" icon={<InformationCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
         </ContainerProfileOptions>
         <Section>
           <Title>Opções de saída</Title>
