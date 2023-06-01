@@ -85,6 +85,7 @@ const friendsData = [
 export function FriendsList() {
   const [solicitations, setSolicitations] = useState(solicitationsData);
   const [friends, setFriends] = useState(friendsData);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   function removeSolicitation(index: number) {
     setSolicitations(solicitations.filter((_, i) => i !== index));
@@ -96,7 +97,6 @@ export function FriendsList() {
     removeSolicitation(index);
   }
 
-  const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -106,6 +106,10 @@ export function FriendsList() {
 
   function GoBack() {
     navigation.goBack();
+  }
+
+  function handleGoToFriend() {
+    navigation.navigate("FriendView");
   }
 
   return (
@@ -151,6 +155,7 @@ export function FriendsList() {
               name={friend.name}
               commonFriends={friend.commonFriends}
               close={friend.close}
+              onPress={handleGoToFriend}
             />
           ))}
         </Section>
