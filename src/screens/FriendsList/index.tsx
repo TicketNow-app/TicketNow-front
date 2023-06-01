@@ -63,7 +63,6 @@ export function FriendsList() {
     removeSolicitation(index);
   }
 
-  const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -71,6 +70,12 @@ export function FriendsList() {
 
   const navigation = useNavigation();
 
+
+
+  function handleGoToFriend() {
+    navigation.navigate("FriendView");
+  }
+  
   return (
     <Container>
       <ScrollContainer>
@@ -108,6 +113,7 @@ export function FriendsList() {
               name={friend.name}
               commonFriends={friend.commonFriends}
               close={friend.close}
+              onPress={handleGoToFriend}
             />
           ))}
         </Section>
