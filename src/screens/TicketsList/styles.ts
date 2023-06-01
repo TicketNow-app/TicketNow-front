@@ -9,14 +9,6 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${getStatusBarHeight() + 26}px ${RFValue(16)}px ${RFValue(14)}px ${RFValue(16)}px;
-`;
-
 export const ContentScroll = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {

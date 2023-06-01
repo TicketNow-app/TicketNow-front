@@ -2,19 +2,18 @@ import React from 'react';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { ChevronRightIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
-import { ButtonBox, Container, ContainerFooterMessage, ContainerLater, FooterMessage, Form, Header, InputBox, LogoHorizontal, TextLater } from './styles';
+import { ButtonBox, Container, ContainerFooterMessage, ContainerLater, FooterMessage, Form, InputBox, TextLater } from './styles';
 
 import { Button } from '../../components/Form/Button';
 import { Input } from '../../components/Form/Input';
 import { TitleDesc } from '../../components/Form/TitleDesc';
+import {Header} from '../../components/Header';
 
 export function RegisterSecondStep({ navigation }: any) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-        <Header>
-          <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
-        </Header>
+        <Header logo />
         <Form>
           <TitleDesc title='Informações adicionais' desc='Para garantir a segurança das transações, precisamos de algumas informações adicionais.' />
           <InputBox>

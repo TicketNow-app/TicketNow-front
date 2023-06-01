@@ -12,11 +12,12 @@ import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 import { useAuth } from '../../hooks/auth';
 
-import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, Header, InputBox, LogoHorizontal, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
+import { ButtonBox, ButtonSocialRegisterBox, Container, ContainerAnotherSignUpWays, ContainerFooterMessage, ContainerForgotPassword, ContainerSocialRegister, FooterMessage, Form, InputBox, TextAnotherSignUpWays, TextForgotPassword } from '../Login/styles';
 
 import { Button } from '../../components/Form/Button';
 import { InputForm } from '../../components/Form/InputForm';
 import { TitleDesc } from '../../components/Form/TitleDesc';
+import {Header} from '../../components/Header';
 
 interface FormData {
   email: string;
@@ -39,7 +40,7 @@ const schema = Yup.object().shape({
 
 export function Login({ navigation }: any) {
   const [isLoading, setIsLoading] = useState(false);
-  const { signInWithApple } = useAuth();
+  const { signInWithApple, signInWithApp } = useAuth();
 
   // async function handleSignInWithGoogle() {
   //   try {
@@ -61,6 +62,18 @@ export function Login({ navigation }: any) {
     }
   }
 
+  async function handleSignInWithApp(credentials: { email: string, password: string }) {
+    try {
+      setIsLoading(true);
+      return await signInWithApp(credentials);
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Não foi possível conectar a conta');
+      setIsLoading(false);
+    }
+  }
+
+
   const {
     control,
     handleSubmit,
@@ -78,17 +91,13 @@ export function Login({ navigation }: any) {
       password: form.password
     }
 
-    navigation.navigate('AppRoutes');
-
-    console.log(data);
+    handleSignInWithApp(data);
   }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-        <Header>
-          <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />
-        </Header>
+        <Header logo />
         <Form>
           <TitleDesc title='Entre na sua conta' desc='Entre agora para encontrar ingressos para os eventos mais incríveis!' />
           <InputBox>
@@ -146,6 +155,6 @@ export function Login({ navigation }: any) {
           <FooterMessage>*Seus dados pessoais serão usados para processar seus pedidos, melhorar sua experiência no aplicativo e outros fins descritos em nossa política de privacidade.</FooterMessage>
         </ContainerFooterMessage>
       </Container >
-    </TouchableWithoutFeedback >
+    </TouchableWithoutFeedback>
   )
 }
