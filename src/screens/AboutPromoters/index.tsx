@@ -3,25 +3,16 @@ import React from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
 
-import { Container, Header, MainTitle, ScrollContainer, ContainerTopic, Introduction, TopicText, TopicTitle, FooterDescription } from './styles';
+import { GhostView, Container, ScrollContainer, ContainerTopic, Introduction, TopicText, TopicTitle, FooterDescription } from './styles';
 
-import { HeaderButton } from '../../components/HeaderButton';
+import { Header } from '../../components/Header';
+
 export function AboutPromoters() {
-  const navigation = useNavigation();
-
-  function GoBack() {
-    navigation.goBack();
-  }
 
   return (
     <Container>
       <ScrollContainer>
-        <Header>
-          <HeaderButton onPress={GoBack}>
-            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>
-          <MainTitle>Tornar-se um Promoter</MainTitle>
-        </Header>
+        <Header buttonBack title='Tornar-se um Promoter' buttonRight={ <GhostView /> }/>
         <Introduction>O TicketNow é um aplicativo que facilita a venda de ingressos para eventos de diversos tipos. E a função de promoter é uma oportunidade incrível para você ganhar dinheiro enquanto promove esses eventos. Vamos lá:</Introduction>
         <ContainerTopic>
           <TopicTitle>1. Sobre o cupom</TopicTitle>
@@ -37,7 +28,7 @@ export function AboutPromoters() {
           <TopicTitle>3. Sobre a comissão</TopicTitle>
           <TopicText>O valor da comissão que você recebe varia de acordo com o evento, mas a porcentagem mínima é de 5% sobre o valor do ingresso. Isso significa que a cada venda realizada com o seu código, você recebe uma parte do valor do ingresso. É uma forma justa e transparente de recompensar o seu trabalho como promoter.</TopicText>
         </ContainerTopic>
-     
+
         <ContainerTopic>
           <TopicTitle>4. Seja Promoter!!!</TopicTitle>
           <TopicText>Ser promoter no TicketNow é uma ótima maneira de se envolver com eventos e ainda ganhar dinheiro. Além disso, você pode construir uma reputação como promoter, ganhando reconhecimento dos organizadores de eventos e até mesmo expandindo sua rede de contatos no mundo do entretenimento.</TopicText>

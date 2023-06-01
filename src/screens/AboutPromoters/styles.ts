@@ -2,12 +2,16 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
+export const GhostView = styled.View`
+  width: 40px;
+  height: 40px;
+`;
+
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0px ${RFValue(16)}px;
 `;
 
 export const ScrollContainer = styled.ScrollView.attrs({
@@ -19,32 +23,19 @@ export const ScrollContainer = styled.ScrollView.attrs({
   width: 100%;
 `;
 
-export const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${getStatusBarHeight() + 26}px 0px ${RFValue(14)}px 0px;
-`;
-
-export const MainTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.text};
-  margin: auto;
-`;
-
 export const Introduction = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(12)}px;
   text-align: center;
   color: ${({ theme }) => theme.colors.text_inactive};
   margin: ${RFValue(8)}px 0px;
+  padding: 0px ${RFValue(16)}px;
 `;
 
 export const ContainerTopic = styled.View`
   width: 100%;
   margin-top: ${RFValue(18)}px;
+  padding: 0px ${RFValue(16)}px;
 `;
 
 export const TopicTitle = styled.Text`
@@ -65,4 +56,5 @@ export const FooterDescription = styled(TopicText)`
   opacity: 1;
   margin-top: ${RFValue(24)}px;
   margin-bottom: ${RFValue(24)}px;
+  padding: 0px ${RFValue(16)}px;
 `

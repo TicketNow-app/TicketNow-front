@@ -13,11 +13,12 @@ import { Header } from '../../components/Header';
 
 export function Settings() {
   const {signOut} = useAuth();
-  
+  const navigation = useNavigation();
+
   function handleGoToPromoterPage() {
     navigation.navigate('AboutPromoters');
   }
-  
+
   return (
     <Container>
       <ContainerScroll>
