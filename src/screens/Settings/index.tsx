@@ -4,34 +4,30 @@ import { ArrowLeftIcon, ArrowLeftOnRectangleIcon, CreditCardIcon, LockClosedIcon
 import { useTheme } from "styled-components";
 import { useAuth } from '../../hooks/auth';
 
-import { Container, ContainerProfileOptions, ContainerScroll, GhostView, Header, MainTitle, Section, Title } from './styles';
+import { Container, ContainerProfileOptions, ContainerScroll, Section, Title, GhostView } from './styles';
 
 import { ConfigButtons } from '../../components/ConfigButtons';
 import { HeaderButton } from '../../components/HeaderButton';
+import { Header } from '../../components/Header';
 
 
 export function Settings() {
-  const navigation = useNavigation();
   const {signOut} = useAuth();
-
-  function handleGoBack() {
-    navigation.goBack();
-  }
-
+  
   function handleGoToPromoterPage() {
     navigation.navigate('AboutPromoters');
   }
-
+  
   return (
     <Container>
       <ContainerScroll>
-        <Header>
-          <HeaderButton onPress={handleGoBack}>
-            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>
-          <MainTitle>Configurações</MainTitle>
+        <Header
+        buttonBack
+        title='Configurações'
+        buttonRight={
           <GhostView />
-        </Header>
+        }
+        />
 
         <Section>
           <Title>Conta</Title>

@@ -12,20 +12,24 @@ export const Container = styled.ScrollView.attrs({
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  padding: ${getStatusBarHeight() + 30}px ${RFValue(24)}px 20px ${RFValue(24)}px;
+export const GhostView = styled.View`
+  width: 40px;
+  height: 40px;
 `;
 
-export const LogoHorizontal = styled.Image`
-  width: ${RFValue(100)}px;
-  height: ${RFValue(30)}px;
+export const ContainerCircle = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: ${({ theme }) => theme.colors.secondary};
 `;
 
+export const ImageAvatar = styled.Image`
+  flex: 1;
+  border-radius: 22px;
+`;
 
 export const ContainerScroll = styled.View`
   width: 100%;
@@ -35,7 +39,7 @@ export const ContainerScroll = styled.View`
 export const HorizontalScroll = styled.FlatList.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
-  contentContainerStyle: { paddingHorizontal: 24 }
+  contentContainerStyle: { paddingHorizontal: 16 },
 })`
   width: 100%;
   margin-top: ${RFValue(20)}px;

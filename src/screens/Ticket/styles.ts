@@ -11,21 +11,6 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled.View`
-  width: 100%;
-  height: ${RFValue(113)}px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${getStatusBarHeight() + 10}px 0px 0px 0px;
-`;
-
-export const TitleHeader = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.text};
-`;
-
 export const ContainerTicket = styled.View`
   flex: 1;
   justify-content: space-between;
