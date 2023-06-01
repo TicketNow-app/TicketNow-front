@@ -13,7 +13,7 @@ import { userEvents } from '../../mock';
 
 
 export function FriendView() {
-  
+
 
 
   const navigation = useNavigation();
@@ -27,45 +27,45 @@ export function FriendView() {
       <Header>
           <HeaderButton onPress={GoBack}>
             <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>      
+          </HeaderButton>
         </Header>
-      <ScrollContainer>   
+      <ScrollContainer>
         <ContainerInfos>
         <ContainerImage>
           <UserImage />
         </ContainerImage>
-        <UserName>Thiaguinho</UserName>    
+        <UserName>Thiaguinho</UserName>
             <ButtonFollow>
               <UserPlusIcon size={20} color={useTheme().colors.text} />
               <TextButton>
                 Seguir
               </TextButton>
-            </ButtonFollow>    
+            </ButtonFollow>
       </ContainerInfos>
       <ContentScroll>
         <ContainerEvent>
           <BoxTitle>
             <Title>Eventos em comum</Title>
           </BoxTitle>
-          {
+          {/* {
             userEvents.map((item, index) => (
               <BoxCardLargeEvent key={index}>
-                <CardLargeEvent eventsRecent={item} />
+                <CardLargeEvent eventsRecent={item} eventData={item} />
               </BoxCardLargeEvent>
             ))
-          }
+          } */}
         </ContainerEvent>
         <ContainerEvent>
           <BoxTitle>
             <Title>Eventos anteriores</Title>
           </BoxTitle>
-          {
+          {/* {
             userEvents.map((item, index) => (
               <BoxCardLargeEventPased key={index}>
                 <CardLargeEvent eventsRecent={item} />
               </BoxCardLargeEventPased>
             ))
-          }
+          } */}
         </ContainerEvent>
       </ContentScroll>
       </ScrollContainer>

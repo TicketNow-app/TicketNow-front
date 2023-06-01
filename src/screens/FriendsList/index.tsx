@@ -39,13 +39,14 @@ const solicitationsData = [
 export function FriendsList() {
   const [solicitations, setSolicitations] = useState(solicitationsData);
   const [friends, setFriends] = useState([]);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const { user } = useAuth();
 
   useEffect(() => {
     async function getFriends() {
       //convert user.id to number
-      const friends = await readFriends(1)
+      const friends = await readFriends(user.id);
 
       setFriends(friends);
     }
@@ -75,7 +76,7 @@ export function FriendsList() {
   function handleGoToFriend() {
     navigation.navigate("FriendView");
   }
-  
+
   return (
     <Container>
       <ScrollContainer>
