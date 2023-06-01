@@ -10,7 +10,7 @@ import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDat
 import { HeaderButton } from '../../components/HeaderButton';
 import { Header } from '../../components/Header';
 
-import { readEvent } from '../../helpers/requests/events';
+import { readEvent } from '../../services/events';
 
 import { EventSkeleton } from './skeleton';
 

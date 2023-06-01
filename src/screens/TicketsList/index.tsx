@@ -9,7 +9,7 @@ import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { HeaderButton } from '../../components/HeaderButton';
 import { Header } from '../../components/Header';
 
-import { readOrders } from '../../helpers/requests/order'
+import { readOrders } from '../../services/order'
 
 export function TicketsList() {
   const navigation = useNavigation();

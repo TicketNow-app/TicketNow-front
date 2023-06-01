@@ -8,7 +8,7 @@ import { useAuth } from '../../hooks/auth';
 
 import { Container, ContainerNoSolicitations, GhostView, NoSolicitationsSubtitle, NoSolicitationsTitle, ScrollContainer, Section, SectionTitle } from './styles';
 
-import { readFriends } from '../../helpers/requests/friendship';
+import { readFriends } from '../../services/friendship';
 
 import { FriendTag } from '../../components/FriendTag';
 import { HeaderButton } from '../../components/HeaderButton';

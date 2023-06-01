@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components';
 
 import { ClientName, Container, ContainerDetails, ContainerFriends, ContainerIconInfo, ContainerQrCode, ContainerQrCodeObservation, ContainerTicket, ContainerTicketData, ContainerTicketImage, ContainerTicketInfo, ContainerTicketType, EventInfo, EventTitle, LineInfo, LineInfoTitle, QrCodeObservation, QrCodeTag, TicketBottomInfos, TicketImage, TicketTopInfos, TicketType, TicketValue } from './styles';
 
-import { readTicket } from '../../helpers/requests/ticket';
+import { readTicket } from '../../services/ticket';
 
 import { AvatarsFriendsConfirmed } from '../../components/AvatarsFriendsConfirmed';
 import { HeaderButton } from '../../components/HeaderButton';

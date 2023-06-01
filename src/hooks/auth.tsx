@@ -2,8 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import React, { useEffect, useState } from 'react';
 
-import { loginAuth } from '../helpers/requests/login';
-import { getUser } from '../helpers/requests/user';
+import { loginAuth } from '../services/login';
+import { getUser } from '../services/user';
 
 interface AuthProviderProps {
   children: React.ReactNode;

@@ -12,8 +12,8 @@ import { Pill } from '../../components/Pill';
 
 import mapStyle from '../../utils/mapStyle.json';
 
-import { readCategories } from '../../helpers/requests/categories';
-import { readEvents } from '../../helpers/requests/events';
+import { readCategories } from '../../services/categories';
+import { readEvents } from '../../services/events';
 
 export function Map() {
   const [location, setLocation] = useState(null);

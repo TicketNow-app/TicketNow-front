@@ -11,7 +11,7 @@ import { Container, Background, Form, CircleIcon, ContainerTexts, Title, Desc, C
 
 import { InputForm } from '../Form/InputForm';
 
-import { validateUserCoupon } from '../../helpers/requests/user';
+import { validateUserCoupon } from '../../services/user';
 
 interface FormData {
   coupon: string;

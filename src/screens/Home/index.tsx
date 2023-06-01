@@ -13,9 +13,9 @@ import { HeaderButton } from '../../components/HeaderButton';
 import {FlatListDivisor} from '../../components/FlatListDivisor';
 import {Header} from '../../components/Header';
 
-import { readCategories } from '../../helpers/requests/categories';
-import { readEvents } from '../../helpers/requests/events';
-import { readCompanies } from '../../helpers/requests/companies';
+import { readCategories } from '../../services/categories';
+import { readEvents } from '../../services/events';
+import { readCompanies } from '../../services/companies';
 
 import { company, eventsRecent } from '../../mock';
 
