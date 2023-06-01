@@ -1,38 +1,46 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
-import { BoxCardLargeEvent, BoxCardLargeEventPased, BoxTitle, Container, ContainerEvent, ContentScroll, Header, Title } from './styles';
+import { BoxCardLargeEvent, BoxCardLargeEventPased, BoxTitle, Container, ContainerEvent, ContentScroll, Title } from './styles';
 
 import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { HeaderButton } from '../../components/HeaderButton';
+import { Header } from '../../components/Header';
 
-import { userEvents } from '../../mock';
+import { readOrders } from '../../services/order'
 
 export function TicketsList() {
   const navigation = useNavigation();
+  const [orders, setOrders] = useState([]); //TODO: define response type
 
-  const handleGoBack = () => {
-    navigation.goBack();
+  useEffect(() => {
+    async function loadOrders() {
+      //load orders from api passing user id
+      const response = await readOrders(2); //TODO: Remove mock user id
+      setOrders(response);
+    }
+
+    loadOrders();
+  }, []);
+
+  function handleNavigateToTicket(TicketId: number) {
+    navigation.navigate('Ticket', { id: TicketId });
   }
 
   return (
     <Container>
-      <Header>
-        <HeaderButton onPress={handleGoBack}>
-          <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-        </HeaderButton>
-      </Header>
+      <Header buttonBack />
       <ContentScroll>
         <ContainerEvent>
           <BoxTitle>
             <Title>Ingressos atuais</Title>
           </BoxTitle>
           {
-            userEvents.map((item, index) => (
-              <BoxCardLargeEvent key={index}>
-                <CardLargeEvent eventsRecent={item} />
+            orders.map((item, index) => (
+              <BoxCardLargeEvent key={item.id}>
+                <CardLargeEvent eventData={item} onPress={() => handleNavigateToTicket(item.id)} />
               </BoxCardLargeEvent>
             ))
           }
@@ -41,13 +49,13 @@ export function TicketsList() {
           <BoxTitle>
             <Title>Ingressos anteriores</Title>
           </BoxTitle>
-          {
+          {/* {
             userEvents.map((item, index) => (
               <BoxCardLargeEventPased key={index}>
-                <CardLargeEvent eventsRecent={item} />
+                <CardLargeEvent eventData={item} />
               </BoxCardLargeEventPased>
             ))
-          }
+          } */}
         </ContainerEvent>
       </ContentScroll>
     </Container>

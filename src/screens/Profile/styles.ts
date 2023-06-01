@@ -21,15 +21,6 @@ export const Container = styled.ScrollView.attrs({
 })`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0px ${RFValue(16)}px;
-`;
-
-export const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${getStatusBarHeight() + 26}px 0px ${RFValue(14)}px 0px;
 `;
 
 export const ContainerTopInfos = styled.View`
@@ -95,6 +86,7 @@ export const ContainerConfigButtons = styled.View`
   width: 100%;
   height: ${RFValue(230)}px;
   justify-content: space-between;
+  padding: 0px ${RFValue(16)}px;
   margin-top: 24px;
 `;
 

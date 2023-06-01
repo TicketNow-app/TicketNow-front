@@ -1,5 +1,5 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
-import { PaperAirplaneIcon } from "react-native-heroicons/solid";
 import MapView from "react-native-maps";
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
@@ -14,7 +14,7 @@ export const ContainerInputButton = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${RFValue(24)}px;
+  margin-bottom: ${RFValue(18)}px;
 `;
 
 export const InputMap = styled(BottomSheetTextInput)`
@@ -38,7 +38,7 @@ export const ButtonUserLocation = styled.TouchableOpacity`
   margin-left: 8px;
 `;
 
-export const IconUserLocation = styled(PaperAirplaneIcon)`
+export const IconUserLocation = styled(MaterialIcons)`
   width: 24px;
   height: 24px;
   color: ${({ theme }) => theme.colors.text_inactive};
@@ -47,14 +47,24 @@ export const IconUserLocation = styled(PaperAirplaneIcon)`
 
 export const ContainerScrollPills = styled.View`
   width: 100%;
-  height: 80px;
+  height: ${RFValue(36)}px;
+  margin-bottom: ${RFValue(18)}px;
 `;
-
 
 export const ScrollPills = styled.FlatList.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
 })`
+  width: 100%;
+  height: 100%;
+`;
+
+export const ContainerScrollCards = styled.View`
+  width: 100%;
+  height: ${RFValue(150)}px;
+`;
+
+export const ScrollCards = styled.FlatList`
   width: 100%;
   height: 100%;
 `;
