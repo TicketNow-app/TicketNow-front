@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as Clipboard from 'expo-clipboard';
-import React, { useState } from 'react';
 import { Square2StackIcon } from "react-native-heroicons/outline";
 import { Cog6ToothIcon, CreditCardIcon, FireIcon, PencilIcon, TicketIcon, UsersIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
@@ -14,17 +14,26 @@ import { ConfigButtons } from '../../components/ConfigButtons';
 import { HeaderButton } from '../../components/HeaderButton';
 import {Header} from '../../components/Header';
 
-const data = {
-  tickets: 55,
-  money: 87.76,
-}
+import { profit } from '../../helpers/salesHelper';
+
+import { readSales } from '../../services/promoter';
 
 export function Profile() {
   const [modalPromoterVisible, setModalPromoterVisible] = useState(false);
+  const [sales, setSales] = useState([]);
   const promoter = null //only for example
   const navigation = useNavigation();
 
   const {user} = useAuth();
+
+  useEffect(() => {
+    async function loadSales() {
+      const response = await readSales(user.id);
+      setSales(response);
+    }
+
+    loadSales();
+  }, []);
 
   function goToFriendsList() {
     navigation.navigate('FriendsList')
@@ -64,7 +73,7 @@ export function Profile() {
             user.category === 'P' ?
               <>
                 <CopyButtonPromoter onPress={copyToClipboard}>
-                  <TextCopyButton promoter={promoter}>
+                  <TextCopyButton promoter={user.category}>
                     {user.coupon}
                   </TextCopyButton>
                   <Square2StackIcon size={20} color={useTheme().colors.text_inactive} />
@@ -74,9 +83,9 @@ export function Profile() {
                   <ContainerMetricsInfos>
                     <TitleMetrics>Ingressos vendidos</TitleMetrics>
                     <ContainerSell>
-                      <TextSell>{data.tickets}</TextSell>
+                      <TextSell>{sales.length}</TextSell>
                       <MetricsDivisor />
-                      <TextSell>R$ {data.money.toFixed(2).replace('.', ',')}</TextSell>
+                      <TextSell>R$ {profit(sales).toFixed(2).replace('.', ',')}</TextSell>
                     </ContainerSell>
                   </ContainerMetricsInfos>
                 </ContainerPromoterMetrics>
@@ -84,7 +93,7 @@ export function Profile() {
               :
               <ButtonPromoter promoter={promoter} onPress={() => setModalPromoterVisible(true)}>
                 <FireIcon size={20} color={useTheme().colors.text} />
-                <TextButton promoter={promoter}>
+                <TextButton promoter={user.category}>
                   Tornar-se promoter
                 </TextButton>
               </ButtonPromoter>

@@ -9,15 +9,12 @@ import { Card, CardSkeleton } from '../../components/Card';
 import { CardLarge, CardLargeSkeleton } from '../../components/CardLarge';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { CompanyTag, CompanyTagSkeleton } from '../../components/CompanyTag';
-import { HeaderButton } from '../../components/HeaderButton';
 import {FlatListDivisor} from '../../components/FlatListDivisor';
 import {Header} from '../../components/Header';
 
 import { readCategories } from '../../services/categories';
 import { readEvents } from '../../services/events';
 import { readCompanies } from '../../services/companies';
-
-import { company, eventsRecent } from '../../mock';
 
 export function Home() {
   const navigation = useNavigation();
