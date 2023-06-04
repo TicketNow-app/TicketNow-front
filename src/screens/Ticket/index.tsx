@@ -31,7 +31,7 @@ export function Ticket() {
 
   console.log('order', order);
   if (!order) {
-    return null;
+    return null; //TODO: Add skeleton
   }
 
   return (
@@ -100,9 +100,9 @@ export function Ticket() {
             </ContainerQrCode>
             <ContainerDetails>
               <ContainerTicketType>
-                <TicketType>Area VIP</TicketType>
+                <TicketType>{order.id_ticket.id_category_ticket?.description}</TicketType>
                 <TicketValue>
-                  1º Lote -
+                  {order.id_ticket.id_category_ticket.name} -
                   R$ {order.id_ticket.price.replace('.', ',')}
                 </TicketValue>
               </ContainerTicketType>
