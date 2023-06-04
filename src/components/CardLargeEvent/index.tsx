@@ -1,41 +1,21 @@
 import React from "react";
+import { TouchableOpacityProps } from "react-native";
 
 import { Container, ContainerFriends, ContainerText, Content, Date, Description, FriendImage, Gradient, Image, Title } from './styles';
 
-// interface FriendsProps {
-//   image: string;
-//   name: string;
-// }
+interface CardLargeEventProps extends TouchableOpacityProps {
+  image: string;
+  friends?: string[];
+  title: string;
+  address: string;
+  date: string;
+}
 
-// interface UserProps {
-//   id_user: number;
-//   im_user: string;
-//   nm_user: string;
-//   cd_cpf: string;
-//   dt_birth: string;
-//   ds_category_user: string;
-//   cd_coupon: string;
-//   dt_created_at: string;
-//   dt_deleted_at: string;
-// }
-
-// interface CardLargeEventProps {
-//   eventData: {
-//     imageEvent: string;
-//     nm_event: string;
-//     ds_address: string;
-//     dt_start_event: string;
-//     friendship: any; //TODO: create friendship interface
-//   },
-//   onPress: () => void;
-// }
-
-
-export function CardLargeEvent({ eventData, ...rest }) {
+export function CardLargeEvent({ image, friends, title, address, date, ...rest }: CardLargeEventProps) {
   return (
     <Container activeOpacity={0.6} {...rest}>
       <Content>
-        <Image source={{ uri: eventData.images[0].url }} />
+        <Image source={{ uri: image }} />
         <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
           locations={[0.4, 1]}
         />
@@ -49,12 +29,12 @@ export function CardLargeEvent({ eventData, ...rest }) {
         </ContainerFriends>
         <ContainerText>
           <Date>
-            {eventData.dateStart?.split('-')
+            {date.split('-')
             .reverse()
             .join('/')}
           </Date>
-          <Title>{eventData.id_event?.name}</Title>
-          <Description>{eventData.id_place?.address}</Description>
+          <Title>{title}</Title>
+          <Description>{address}</Description>
         </ContainerText>
       </Content>
     </Container>

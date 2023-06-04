@@ -46,5 +46,5 @@ export const BoxCardLargeEvent = styled.View`
 `;
 
 export const BoxCardLargeEventPased = styled(BoxCardLargeEvent)`
-  opacity: 0.5;
+  opacity: 0.3;
 `;

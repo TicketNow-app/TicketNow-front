@@ -49,6 +49,7 @@ export const LineInfo = styled.View`
 
 export const LineInfoTitle = styled(LineInfo)`
   margin-bottom: 30px;
+  align-items: flex-start
 `;
 
 export const EventTitle = styled.Text`
@@ -64,7 +65,7 @@ export const ContainerFriends = styled.View`
 
 export const ContainerIconInfo = styled.View`
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   margin-right: 20px;
 `;
 

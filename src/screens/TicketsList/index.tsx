@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
 
+import { useAuth } from '../../hooks/auth';
+
 import { BoxCardLargeEvent, BoxCardLargeEventPased, BoxTitle, Container, ContainerEvent, ContentScroll, Title } from './styles';
 
 import { CardLargeEvent } from '../../components/CardLargeEvent';
@@ -11,15 +13,23 @@ import { Header } from '../../components/Header';
 
 import { readOrders } from '../../services/order'
 
+import { getFinishedOrders, getOrders } from '../../helpers/ordersHelper';
+
 export function TicketsList() {
   const navigation = useNavigation();
   const [orders, setOrders] = useState([]); //TODO: define response type
+  const [finishedOrders, setFinishedOrders] = useState([]);
+
+  const { user } = useAuth();
 
   useEffect(() => {
     async function loadOrders() {
-      //load orders from api passing user id
-      const response = await readOrders(2); //TODO: Remove mock user id
-      setOrders(response);
+      const response = await readOrders(user.id);
+      const finishedOrders = getFinishedOrders(response);
+      const incomingOrders = getOrders(response);
+
+      setOrders(incomingOrders);
+      setFinishedOrders(finishedOrders);
     }
 
     loadOrders();
@@ -38,9 +48,9 @@ export function TicketsList() {
             <Title>Ingressos atuais</Title>
           </BoxTitle>
           {
-            orders.map((item, index) => (
-              <BoxCardLargeEvent key={item.id}>
-                <CardLargeEvent eventData={item} onPress={() => handleNavigateToTicket(item.id)} />
+            orders.map((order) => (
+              <BoxCardLargeEvent key={order.id}>
+                <CardLargeEvent image={order.id_ticket.id_event.images[0].url} title={order.id_ticket.id_event.name} address={order.id_ticket.id_event.id_place.address} date={order.id_ticket.id_event.dateStart} onPress={() => handleNavigateToTicket(order.id)} />
               </BoxCardLargeEvent>
             ))
           }
@@ -49,13 +59,13 @@ export function TicketsList() {
           <BoxTitle>
             <Title>Ingressos anteriores</Title>
           </BoxTitle>
-          {/* {
-            userEvents.map((item, index) => (
-              <BoxCardLargeEventPased key={index}>
-                <CardLargeEvent eventData={item} />
+          {
+            finishedOrders.map((order) => (
+              <BoxCardLargeEventPased key={order.id}>
+                <CardLargeEvent image={order.id_ticket.id_event.images[0].url} title={order.id_ticket.id_event.name} address={order.id_ticket.id_event.id_place.address} date={order.id_ticket.id_event.dateStart} onPress={() => handleNavigateToTicket(order.id)} />
               </BoxCardLargeEventPased>
             ))
-          } */}
+          }
         </ContainerEvent>
       </ContentScroll>
     </Container>
