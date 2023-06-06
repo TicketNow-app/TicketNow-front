@@ -1,40 +1,46 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useTheme } from "styled-components";
 import { UserPlusIcon } from "react-native-heroicons/solid";
 
-import { Container, Header, ScrollContainer, ButtonFollow, TextButton, ContainerImage, ContainerInfos, UserImage, UserName, BoxCardLargeEvent, BoxCardLargeEventPased, BoxTitle, ContainerEvent, ContentScroll, Title } from './styles';
+import { Container, ScrollContainer, ButtonFollow, TextButton, ContainerImage, ContainerInfos, UserImage, UserName, BoxCardLargeEvent, BoxCardLargeEventPased, BoxTitle, ContainerEvent, ContentScroll, Title } from './styles';
 
+import { Header } from '../../components/Header';
 import { HeaderButton } from '../../components/HeaderButton';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
 
-import { userEvents } from '../../mock';
+import { getUser } from '../../services/user';
 
+type FriendViewRouteProp = RouteProp<{ FriendView: { id: number } }, 'FriendView'>;
 
 export function FriendView() {
+  const route = useRoute<FriendViewRouteProp>();
+  const { id } = route.params;
 
+  const [friend, setFriend] = useState(null);
 
+  useEffect(() => {
+    async function loadFriend() {
+      const response = await getUser(id.toString(), '123');
+      setFriend(response);
+      console.log(response);
+    }
 
-  const navigation = useNavigation();
-
-  function GoBack() {
-    navigation.goBack();
-  }
+    loadFriend();
+  }, []);
 
   return (
     <Container>
-      <Header>
-          <HeaderButton onPress={GoBack}>
-            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>
-        </Header>
+      <Header
+        buttonBack
+      />
       <ScrollContainer>
         <ContainerInfos>
         <ContainerImage>
-          <UserImage />
+          <UserImage source={{ uri: friend?.image }} />
         </ContainerImage>
-        <UserName>Thiaguinho</UserName>
+        <UserName>{friend?.name}</UserName>
             <ButtonFollow>
               <UserPlusIcon size={20} color={useTheme().colors.text} />
               <TextButton>

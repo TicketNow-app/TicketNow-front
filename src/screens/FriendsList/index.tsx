@@ -73,8 +73,8 @@ export function FriendsList() {
 
 
 
-  function handleGoToFriend() {
-    navigation.navigate("FriendView");
+  function handleGoToFriend(id: number) {
+    navigation.navigate("FriendView", { id });
   }
 
   return (
@@ -114,7 +114,7 @@ export function FriendsList() {
               name={friend.name}
               commonFriends={friend.commonFriends}
               close={friend.close}
-              onPress={handleGoToFriend}
+              onPress={() => handleGoToFriend(friend.id)}
             />
           ))}
         </Section>

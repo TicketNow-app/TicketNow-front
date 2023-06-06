@@ -19,6 +19,10 @@ export function Settings() {
     navigation.navigate('AboutPromoters');
   }
 
+  function handleGoToTermsOfUse() {
+    navigation.navigate('TermsOfUse');
+  }
+
   return (
     <Container>
       <ContainerScroll>
@@ -44,7 +48,7 @@ export function Settings() {
           <Title>Conteúdo legal e políticas</Title>
         </Section>
         <ContainerProfileOptions>
-          <ConfigButtons separator="full" roundedBorder="top" icon={<DocumentIcon size={24} color={useTheme().colors.text} />} title="Termos de uso"/>
+          <ConfigButtons onPress={handleGoToTermsOfUse} separator="full" roundedBorder="top" icon={<DocumentIcon size={24} color={useTheme().colors.text} />} title="Termos de uso"/>
           <ConfigButtons roundedBorder="bottom" icon={<InformationCircleIcon size={24} color={useTheme().colors.text} />} title="Ajuda" />
         </ContainerProfileOptions>
         <Section>

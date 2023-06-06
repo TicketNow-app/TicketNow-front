@@ -1,5 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeftIcon, BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } from "react-native-heroicons/solid";
 import { useTheme } from "styled-components";
@@ -20,7 +20,6 @@ import mapStyle from '../../utils/mapStyle.json';
 type EventRouteProp = RouteProp<{ Event: { id: number } }, 'Event'>;
 
 export function Event() {
-  const navigation = useNavigation();
   const route = useRoute<EventRouteProp>();
   const { id } = route.params;
 

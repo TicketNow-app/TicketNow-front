@@ -11,7 +11,7 @@ export declare global { //export global namespace
       Event: { id: number };
       FriendsList: undefined;
       Settings: undefined;
-      FriendView: undefined;
+      FriendView: { id: number };
       AboutPromoters: undefined;
       TermsOfUse: undefined;
     }

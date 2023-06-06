@@ -6,6 +6,7 @@ import { FriendsList } from '../screens/FriendsList';
 import { Settings } from '../screens/Settings';
 import { FriendView } from '../screens/FriendView';
 import { AboutPromoters } from '../screens/AboutPromoters';
+import { TermsOfUse } from '../screens/TermsOfUse';
 import { AppRoutes } from './app.routes';
 
 const { Screen, Navigator } = createNativeStackNavigator();
@@ -19,6 +20,7 @@ export function StackRoutes() {
       <Screen name="FriendsList" component={FriendsList} />
       <Screen name="Settings" component={Settings} />
       <Screen name="FriendView" component={FriendView} />
+      <Screen name="TermsOfUse" component={TermsOfUse} />
       <Screen name="AboutPromoters" component={AboutPromoters} />
     </Navigator>
   );

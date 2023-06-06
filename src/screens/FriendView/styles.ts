@@ -8,13 +8,13 @@ export const Container = styled.View`
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0px ${RFValue(16)}px;
 `;
 
 export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
+    paddingHorizontal: 16,
   }
 })`
   width: 100%;
@@ -83,34 +83,34 @@ export const ContentScroll = styled.ScrollView.attrs({
   })`
     width: 100%;
   `;
-  
+
   export const ContainerEvent = styled.View`
     width: 100%;
     margin: ${RFValue(22)}px 0;
     display: grid;
     align-items: center;
   `;
-  
+
   export const BoxTitle = styled.View`
     width: 100%;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    
+
     margin-bottom: 20px;
   `;
-  
+
   export const Title = styled.Text`
     font-family: ${({ theme }) => theme.fonts.bold};
     font-size: ${RFValue(20)}px;
     color: ${({ theme }) => theme.colors.text};
     text-align: left;
   `;
-  
+
   export const BoxCardLargeEvent = styled.View`
     margin-bottom: 30px;
   `;
-  
+
   export const BoxCardLargeEventPased = styled(BoxCardLargeEvent)`
     opacity: 0.5;
   `;

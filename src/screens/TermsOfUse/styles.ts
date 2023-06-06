@@ -7,7 +7,6 @@ export const Container = styled.View`
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0px ${RFValue(16)}px;
 `;
 
 export const ScrollContainer = styled.ScrollView.attrs({
@@ -30,11 +29,13 @@ export const TermsIntroduction = styled.Text`
   text-align: center;
   color: ${({ theme }) => theme.colors.text_inactive};
   margin: ${RFValue(8)}px 0px;
+  padding: 0px ${RFValue(16)}px;
 `;
 
 export const ContainerTopic = styled.View`
   width: 100%;
   margin-top: ${RFValue(18)}px;
+  padding: 0px ${RFValue(16)}px;
 `;
 
 export const TopicTitle = styled.Text`
@@ -55,4 +56,5 @@ export const FooterDescription = styled(TopicText)`
   opacity: 1;
   margin-top: ${RFValue(24)}px;
   margin-bottom: ${RFValue(24)}px;
+  padding: 0px ${RFValue(16)}px;
 `

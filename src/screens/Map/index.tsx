@@ -143,7 +143,7 @@ export function Map() {
           />
         </ContainerScrollPills>
         <ContainerScrollCards>
-          {
+          {/* {
             events && events.length > 0 ?
               <ScrollCards
                 data={events}
@@ -158,7 +158,7 @@ export function Map() {
               />
             :
             <></>
-          }
+          } */}
         </ContainerScrollCards>
       </BottomSheet>
     </>
