@@ -1,7 +1,18 @@
-import React from "react";
-import { TouchableOpacityProps } from "react-native";
+import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
-import { Container, ContainerFriends, ContainerText, Content, Date, Description, FriendImage, Gradient, Image, Title } from './styles';
+import {
+  Container,
+  ContainerFriends,
+  ContainerText,
+  Content,
+  Date,
+  Description,
+  FriendImage,
+  Gradient,
+  Image,
+  Title,
+} from './styles';
 
 interface CardLargeEventProps extends TouchableOpacityProps {
   image: string;
@@ -11,14 +22,19 @@ interface CardLargeEventProps extends TouchableOpacityProps {
   date: string;
 }
 
-export function CardLargeEvent({ image, friends, title, address, date, ...rest }: CardLargeEventProps) {
+export function CardLargeEvent({
+  image,
+  friends,
+  title,
+  address,
+  date,
+  ...rest
+}: CardLargeEventProps) {
   return (
     <Container activeOpacity={0.6} {...rest}>
       <Content>
         <Image source={{ uri: image }} />
-        <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
-          locations={[0.4, 1]}
-        />
+        <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']} locations={[0.4, 1]} />
         <ContainerFriends activeOpacity={0.6}>
           {/* {
             //render only 3 friends
@@ -28,11 +44,7 @@ export function CardLargeEvent({ image, friends, title, address, date, ...rest }
           } */}
         </ContainerFriends>
         <ContainerText>
-          <Date>
-            {date.split('-')
-            .reverse()
-            .join('/')}
-          </Date>
+          <Date>{date.split('-').reverse().join('/')}</Date>
           <Title>{title}</Title>
           <Description>{address}</Description>
         </ContainerText>

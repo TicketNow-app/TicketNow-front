@@ -6,7 +6,7 @@ export interface IRegisterForm {
 
 export interface IRegister {
   cd_email: string;
-  cd_password: string
+  cd_password: string;
   ic_status: 'A' | 'I';
   id_user: number;
 }

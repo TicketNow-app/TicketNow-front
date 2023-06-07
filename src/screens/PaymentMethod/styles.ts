@@ -14,7 +14,7 @@ export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
-  }
+  },
 })`
   width: 100%;
 `;
@@ -76,8 +76,7 @@ export const TextTitle = styled.Text`
   color: ${({ theme }) => theme.colors.text_inactive};
 `;
 
-export const TextValue = styled(TextTitle)`
-`;
+export const TextValue = styled(TextTitle)``;
 
 export const TextTitleTotal = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
@@ -85,6 +84,4 @@ export const TextTitleTotal = styled.Text`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-export const TextValueTotal = styled(TextTitleTotal)`
-`;
-
+export const TextValueTotal = styled(TextTitleTotal)``;

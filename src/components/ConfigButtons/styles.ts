@@ -11,7 +11,7 @@ export const ContainerOption = styled.TouchableOpacity.attrs((props: PropBorders
   roundedBorder: props.roundedBorder,
   separator: props.separator,
   activeOpacity: 0.6,
-})) <PropBorders>`
+}))<PropBorders>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -20,33 +20,16 @@ export const ContainerOption = styled.TouchableOpacity.attrs((props: PropBorders
   background-color: ${({ theme }) => theme.colors.secondary};
   padding: 14px ${RFValue(18)}px;
   height: 70px;
-  border-top-left-radius: ${(props) =>
-    props.roundedBorder === 'top' || props.roundedBorder === 'all'
-      ? `14px 14px`
-      : 'none'
-  };
-  border-top-right-radius: ${(props) =>
-    props.roundedBorder === 'top' || props.roundedBorder === 'all'
-      ? `14px 14px`
-      : 'none'
-  };
-  border-bottom-right-radius: ${(props) =>
-    props.roundedBorder === 'bottom' || props.roundedBorder === 'all'
-      ? `14px 14px`
-      : 'none'
-  };
-  border-bottom-left-radius: ${(props) =>
-    props.roundedBorder === 'bottom' || props.roundedBorder === 'all'
-      ? `14px 14px`
-      : 'none'
-  };
-  border-bottom-width: ${(props) =>
-    props.separator === 'full'
-      ? `1px`
-      : 'none'
-  };
+  border-top-left-radius: ${props =>
+    props.roundedBorder === 'top' || props.roundedBorder === 'all' ? `14px 14px` : 'none'};
+  border-top-right-radius: ${props =>
+    props.roundedBorder === 'top' || props.roundedBorder === 'all' ? `14px 14px` : 'none'};
+  border-bottom-right-radius: ${props =>
+    props.roundedBorder === 'bottom' || props.roundedBorder === 'all' ? `14px 14px` : 'none'};
+  border-bottom-left-radius: ${props =>
+    props.roundedBorder === 'bottom' || props.roundedBorder === 'all' ? `14px 14px` : 'none'};
+  border-bottom-width: ${props => (props.separator === 'full' ? `1px` : 'none')};
 `;
-
 
 export const GroupIconTexts = styled.View`
   display: flex;
@@ -60,18 +43,13 @@ export const ContainerTexts = styled.View`
   margin-left: 20px;
 `;
 
-
 export const TitleProfileOption = styled.Text.attrs((props: PropBorders) => ({
   deleteColor: props.deleteColor,
-})) <PropBorders>`
-font-family: ${({ theme }) => theme.fonts.bold};
+}))<PropBorders>`
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(14)}px;
   margin-bottom: 4px;
-  color: ${(props) =>
-    props.deleteColor === 'true'
-      ? `#E83F5B`
-      : '#F3F6FB'
-  };
+  color: ${props => (props.deleteColor === 'true' ? `#E83F5B` : '#F3F6FB')};
 `;
 
 export const DescProfileOption = styled.Text`

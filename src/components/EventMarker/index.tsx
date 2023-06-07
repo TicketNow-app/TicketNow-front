@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Marker } from 'react-native-maps';
 import { ContainerMarker, MarkerImage } from './styles';
 
@@ -13,8 +13,8 @@ export function EventMarker({ latitude, longitude, image, onPress }: EventMarker
   return (
     <Marker
       coordinate={{
-        latitude: latitude,
-        longitude: longitude,
+        latitude,
+        longitude,
       }}
       onPress={onPress}
     >

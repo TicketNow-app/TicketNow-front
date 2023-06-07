@@ -1,7 +1,7 @@
+import { TextInput } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
-import { TextInput } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -15,7 +15,7 @@ export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
-  }
+  },
 })`
   width: 100%;
 `;
@@ -60,20 +60,19 @@ export const Form = styled.View`
   align-items: center;
 `;
 
-
 export const ContainerDate = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin: 0px 0px ${RFValue(20)}px 0px;
-  `;
+`;
 
 export const InputDate = styled.View`
   width: 50%;
 `;
 
-export const InputCvv= styled.View`
+export const InputCvv = styled.View`
   width: 40%;
 `;
 
@@ -110,7 +109,6 @@ export const TextCheckbox = styled.Text`
   font-size: ${RFValue(12)}px;
   font-family: ${({ theme }) => theme.fonts.regular};
 `;
-
 
 export const ContainerSelect = styled.View`
   width: 100%;

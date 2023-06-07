@@ -15,7 +15,6 @@ export const ContainerInfos = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  
 `;
 
 export const TextType = styled.Text`

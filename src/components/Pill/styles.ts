@@ -8,13 +8,14 @@ interface PillProps {
 
 export const ButtonPill = styled(TouchableOpacity).attrs({
   activeOpacity: 0.6,
-}) <PillProps>`
+})<PillProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
   height: ${RFValue(36)}px;
   padding: ${RFValue(10)}px ${RFValue(16)}px;
-  background-color: ${({ theme, selected }) => selected ? theme.colors.background_secondary : theme.colors.secondary};
+  background-color: ${({ theme, selected }) =>
+    selected ? theme.colors.background_secondary : theme.colors.secondary};
   border-radius: 20px;
   margin-right: ${RFValue(8)}px;
 `;

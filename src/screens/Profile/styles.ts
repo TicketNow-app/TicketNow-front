@@ -17,7 +17,7 @@ export const Container = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: getBottomSpace() + 24,
-  }
+  },
 })`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
@@ -52,7 +52,7 @@ export const UserName = styled.Text`
 
 export const ButtonPromoter = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
-}) <ButtonPromoterProps>`
+})<ButtonPromoterProps>`
   padding: ${RFValue(10)}px ${RFValue(16)}px;
   flex-direction: row;
   justify-content: center;

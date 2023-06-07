@@ -1,13 +1,8 @@
-import * as React from "react"
-import Svg, { Path, SvgProps } from "react-native-svg"
+import * as React from 'react';
+import Svg, { Path, SvgProps } from 'react-native-svg';
 
 export const TicketMini = (props: SvgProps) => (
-  <Svg
-    width={341}
-    height={150}
-    fill="none"
-    {...props}
-  >
+  <Svg width={341} height={150} fill="none" {...props}>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,4 +10,4 @@ export const TicketMini = (props: SvgProps) => (
       fill="#24262E"
     />
   </Svg>
-)
+);

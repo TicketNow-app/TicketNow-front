@@ -1,25 +1,41 @@
-import React from 'react';
-import { Keyboard } from 'react-native';
-import { useTheme } from "styled-components";
-import { FireIcon } from "react-native-heroicons/solid";
-import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Keyboard } from 'react-native';
+import { FireIcon } from 'react-native-heroicons/solid';
+import { useTheme } from 'styled-components';
+import * as Yup from 'yup';
 // import { Square2StackIcon } from "react-native-heroicons/outline";
 
-import { Container, Background, Form, CircleIcon, ContainerTexts, Title, Desc, ContainerCode, CodeLabel, ContainerInput, InputBox, ButtonCopy, ContainerButtons, ButtonCancel, ButtonConfirm, TextButton } from './styles';
-
-import { InputForm } from '../Form/InputForm';
+import {
+  Container,
+  Background,
+  Form,
+  CircleIcon,
+  ContainerTexts,
+  Title,
+  Desc,
+  ContainerCode,
+  CodeLabel,
+  ContainerInput,
+  InputBox,
+  ButtonCopy,
+  ContainerButtons,
+  ButtonCancel,
+  ButtonConfirm,
+  TextButton,
+} from './styles';
 
 import { useAuth } from '../../hooks/auth';
-
 import { validateUserCoupon, alterUser } from '../../services/user';
+import { InputForm } from '../Form/InputForm';
 
 interface FormData {
   coupon: string;
 }
 
-interface User { //TODO: Create global type
+interface User {
+  //TODO: Create global type
   id: number;
   image?: string;
   name: string;
@@ -37,22 +53,22 @@ interface ModalPromoterProps {
 }
 
 const schema = Yup.object().shape({
-  coupon: Yup
-    .string()
+  coupon: Yup.string()
     .required('Código obrigatório')
     .min(4, 'Mínimo 4 caracteres')
-    .max(11, 'Máximo 11 caracteres')
-})
+    .max(11, 'Máximo 11 caracteres'),
+});
 
 export function ModalPromoter({ closeModal }: ModalPromoterProps) {
+  const theme = useTheme();
   const { user, updateUser } = useAuth();
   const {
     control,
     handleSubmit,
     setError,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   function setCloseModal() {
@@ -62,9 +78,9 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
   async function handleAlterUser(coupon: string) {
     const alterUserObject: User = {
       ...user,
-      coupon: coupon,
-      category: 'P'
-    }
+      coupon,
+      category: 'P',
+    };
 
     try {
       await alterUser(alterUserObject);
@@ -76,8 +92,8 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
 
   async function handleValidateCoupon(coupon: string) {
     const couponObject = {
-      coupon: coupon
-    }
+      coupon,
+    };
 
     try {
       const response = await validateUserCoupon(couponObject);
@@ -93,7 +109,6 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
         handleAlterUser(coupon);
         closeModal();
       }
-
     } catch (error) {
       console.log(error);
     }
@@ -105,16 +120,19 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
     handleValidateCoupon(coupon);
   }
 
-  return(
+  return (
     <Container>
-      <Background onPress={setCloseModal}/>
+      <Background onPress={setCloseModal} />
       <Form onPress={() => Keyboard.dismiss()}>
         <CircleIcon>
-          <FireIcon size={40} color={useTheme().colors.text} />
+          <FireIcon size={40} color={theme.colors.text} />
         </CircleIcon>
         <ContainerTexts>
           <Title>Tornar-se promoter</Title>
-          <Desc>Você poderá compartilhar seu código de divulgação e ao utilizarem, receberá uma parte do lucro da venda do ingresso.</Desc>
+          <Desc>
+            Você poderá compartilhar seu código de divulgação e ao utilizarem, receberá uma parte do
+            lucro da venda do ingresso.
+          </Desc>
         </ContainerTexts>
         <ContainerCode>
           <CodeLabel>Escolha seu código</CodeLabel>
@@ -127,11 +145,11 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
                 autoCorrect={false}
                 autoCapitalize="none"
                 keyboardType="default"
-                error={errors.coupon && errors.coupon.message.toString()}
+                error={errors.coupon?.message.toString()}
               />
             </InputBox>
             {/* <ButtonCopy onPress={() => {}}>
-              <Square2StackIcon size={30} color={useTheme().colors.text_inactive} />
+              <Square2StackIcon size={30} color={theme.colors.text_inactive} />
             </ButtonCopy> */}
           </ContainerInput>
         </ContainerCode>
@@ -145,5 +163,5 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
         </ContainerButtons>
       </Form>
     </Container>
-  )
+  );
 }

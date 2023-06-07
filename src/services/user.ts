@@ -18,14 +18,14 @@ export const createUserRequired = (register: IRegister): Promise<IRegister> => {
     method: 'post',
     data: register,
   });
-}
+};
 
 export const getUser = (id: string, token: string): Promise<User> => {
   return backendRequest({
     endpoint: `/user/${id}`,
     method: 'get',
   });
-}
+};
 
 export const validateUserCoupon = (coupon: object): Promise<validateUserCouponResponse> => {
   console.log(coupon);
@@ -34,12 +34,13 @@ export const validateUserCoupon = (coupon: object): Promise<validateUserCouponRe
     method: 'post',
     data: coupon,
   });
-}
+};
 
-export const alterUser = (user) => { //TODO: TYPE
+export const alterUser = user => {
+  //TODO: TYPE
   return backendRequest({
     endpoint: `/user/alter`,
     method: 'post',
     data: user,
   });
-}
+};

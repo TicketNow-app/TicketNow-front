@@ -20,7 +20,6 @@ export const ContainerInfos = styled.View`
   gap: 15px;
 `;
 
-
 export const TextType = styled.Text`
   font-size: ${RFValue(12)}px;
   font-weight: bold;

@@ -1,13 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Event } from '../screens/Event';
-import { Ticket } from '../screens/Ticket';
-import { FriendsList } from '../screens/FriendsList';
-import { Settings } from '../screens/Settings';
-import { FriendView } from '../screens/FriendView';
-import { AboutPromoters } from '../screens/AboutPromoters';
-import { TermsOfUse } from '../screens/TermsOfUse';
 import { AppRoutes } from './app.routes';
+import { AboutPromoters } from '../screens/AboutPromoters';
+import { Event } from '../screens/Event';
+import { FriendsList } from '../screens/FriendsList';
+import { FriendView } from '../screens/FriendView';
+import { Settings } from '../screens/Settings';
+import { TermsOfUse } from '../screens/TermsOfUse';
+import { Ticket } from '../screens/Ticket';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 

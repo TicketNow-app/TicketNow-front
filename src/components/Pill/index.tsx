@@ -10,9 +10,7 @@ export function Pill({ title }: PillProps) {
 
   return (
     <ButtonPill onPress={() => setSelected(!selected)} selected={selected}>
-      <TextPill>
-        {title}
-      </TextPill>
+      <TextPill>{title}</TextPill>
     </ButtonPill>
-  )
+  );
 }

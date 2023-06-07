@@ -20,8 +20,7 @@ export const ContainerTicket = styled.View`
   background-color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const TicketTopInfos = styled.View`
-`;
+export const TicketTopInfos = styled.View``;
 
 export const ContainerTicketImage = styled.View`
   width: 100%;
@@ -38,7 +37,6 @@ export const ContainerTicketInfo = styled.View`
   margin-top: 20px;
 `;
 
-
 export const LineInfo = styled.View`
   flex-direction: row;
   align-items: center;
@@ -49,7 +47,7 @@ export const LineInfo = styled.View`
 
 export const LineInfoTitle = styled(LineInfo)`
   margin-bottom: 30px;
-  align-items: flex-start
+  align-items: flex-start;
 `;
 
 export const EventTitle = styled.Text`
@@ -75,8 +73,7 @@ export const EventInfo = styled.Text`
   margin-left: 5px;
 `;
 
-export const TicketBottomInfos = styled.View`
-`;
+export const TicketBottomInfos = styled.View``;
 
 export const ClientName = styled.Text`
   font-size: 18px;
@@ -96,8 +93,7 @@ export const ContainerQrCode = styled.View`
   margin-right: 26px;
 `;
 
-export const QrCodeTag = styled(QRCode)`
-`;
+export const QrCodeTag = styled(QRCode)``;
 
 export const ContainerDetails = styled.View`
   flex: 1;
@@ -118,8 +114,7 @@ export const TicketValue = styled.Text`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-export const ContainerQrCodeObservation = styled.View`
-`;
+export const ContainerQrCodeObservation = styled.View``;
 
 export const QrCodeObservation = styled.Text`
   font-size: ${RFValue(12)}px;
