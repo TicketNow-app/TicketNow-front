@@ -11,7 +11,7 @@ const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequ
   try {
     const response = await axios({
       method,
-      url: `https://ticketnow-api.onrender.com${endpoint}`,
+      url: `http://192.168.0.108:3000${endpoint}`,
       data,
       headers: headers || { 'Content-Type': 'application/json' },
     });

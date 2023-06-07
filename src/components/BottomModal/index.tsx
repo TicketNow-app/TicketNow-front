@@ -40,12 +40,12 @@ export function BottomModal({ icon, text, leftButtonText , rightButtonText, isMo
               <Button onPress={() => setModalVisible(false)}>
                 <ButtonText>{leftButtonText}</ButtonText>
               </Button>
-              <Button onPress={() => handleFunction(0)}>
+              <Button onPress={handleFunction}>
                 <ButtonText>{rightButtonText}</ButtonText>
               </Button>
             </ButtonContainer>
             :
-            <Button onPress={() => handleFunction(0)}>
+            <Button onPress={() => setModalVisible(false)}>
               <ButtonText>{rightButtonText}</ButtonText>
             </Button>
           }

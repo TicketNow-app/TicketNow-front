@@ -22,7 +22,7 @@ export function FriendView() {
 
   useEffect(() => {
     async function loadFriend() {
-      const response = await getUser(id.toString(), '123');
+      const response = await getUser(id.toString(), '123'); //TODO pass the token
       setFriend(response);
       console.log(response);
     }

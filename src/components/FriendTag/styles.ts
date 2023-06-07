@@ -29,7 +29,7 @@ export const FriendImage = styled.Image`
 `;
 
 export const ContainerFriendText = styled.View`
-
+  flex: 1;
 `;
 
 export const FriendName = styled.Text`

@@ -38,7 +38,6 @@ export function Home() {
       setCompanies(response);
     }
 
-
     Promise.all([loadRecommendedEvents(), loadCategories(), loadCompanies()]);
   }, []);
 
