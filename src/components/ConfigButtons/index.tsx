@@ -1,13 +1,18 @@
 import React from 'react';
-import { ChevronRightIcon } from "react-native-heroicons/solid";
-import { useTheme } from "styled-components";
+import { ChevronRightIcon } from 'react-native-heroicons/solid';
+import { useTheme } from 'styled-components';
 
-
-import { ContainerOption, ContainerTexts, DescProfileOption, GroupIconTexts, TitleProfileOption } from './styles';
+import {
+  ContainerOption,
+  ContainerTexts,
+  DescProfileOption,
+  GroupIconTexts,
+  TitleProfileOption,
+} from './styles';
 
 // import { Container } from './styles';
 
-interface ConfigButtons {
+interface IConfigButtons {
   icon?: React.ReactNode;
   title?: string;
   description?: string;
@@ -17,7 +22,17 @@ interface ConfigButtons {
   onPress?: () => void;
 }
 
-export function ConfigButtons({ icon, title, description, roundedBorder, deleteColor, separator, onPress }: ConfigButtons) {
+export function ConfigButtons({
+  icon,
+  title,
+  description,
+  roundedBorder,
+  deleteColor,
+  separator,
+  onPress,
+}: IConfigButtons) {
+  const theme = useTheme();
+
   return (
     <ContainerOption separator={separator} roundedBorder={roundedBorder} onPress={onPress}>
       <GroupIconTexts>
@@ -27,7 +42,7 @@ export function ConfigButtons({ icon, title, description, roundedBorder, deleteC
           {description && <DescProfileOption>{description}</DescProfileOption>}
         </ContainerTexts>
       </GroupIconTexts>
-      <ChevronRightIcon size={24} color={useTheme().colors.text_inactive} />
+      <ChevronRightIcon size={24} color={theme.colors.text_inactive} />
     </ContainerOption>
   );
 }

@@ -1,26 +1,62 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowLeftIcon, BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } from "react-native-heroicons/solid";
-import { useTheme } from "styled-components";
 import { ActivityIndicator } from 'react-native';
-
-import { About, BuyButton, Container, ContainerAbout, ContainerBuy, ContainerDateTime, ContainerIconDateTime, ContainerIcons, ContainerImageEvent, ContainerLineUp, ContainerLineUpArtists, ContainerMap, ContainerScroll, ContainerTitleIcons, ContainerTopInfos, DateTime, EventMarker, IconTouchBox, ImageEvent, Map, MarkerPointer, ReadMore, TextButton, TitleAbout, TitleEvent, TitleLineUp, LineUpArtist, NameArtist, ImageArtist } from './styles';
-
-import { HeaderButton } from '../../components/HeaderButton';
-import { Header } from '../../components/Header';
-
-import { readEvent } from '../../services/events';
+import {
+  ArrowLeftIcon,
+  BookmarkIcon,
+  CalendarDaysIcon,
+  ClockIcon,
+  ShareIcon,
+} from 'react-native-heroicons/solid';
+import { useTheme } from 'styled-components';
 
 import { EventSkeleton } from './skeleton';
+import {
+  About,
+  BuyButton,
+  Container,
+  ContainerAbout,
+  ContainerBuy,
+  ContainerDateTime,
+  ContainerIconDateTime,
+  ContainerIcons,
+  ContainerImageEvent,
+  ContainerLineUp,
+  ContainerLineUpArtists,
+  ContainerMap,
+  ContainerScroll,
+  ContainerTitleIcons,
+  ContainerTopInfos,
+  DateTime,
+  EventMarker,
+  IconTouchBox,
+  ImageEvent,
+  Map,
+  MarkerPointer,
+  ReadMore,
+  TextButton,
+  TitleAbout,
+  TitleEvent,
+  TitleLineUp,
+  LineUpArtist,
+  NameArtist,
+  ImageArtist,
+} from './styles';
+
+import { Header } from '../../components/Header';
+import { HeaderButton } from '../../components/HeaderButton';
 
 import theme from '../../global/styles/theme';
+import { readEvent } from '../../services/events';
+
 import mapStyle from '../../utils/mapStyle.json';
 
 type EventRouteProp = RouteProp<{ Event: { id: number } }, 'Event'>;
 
 export function Event() {
   const route = useRoute<EventRouteProp>();
+  const theme = theme;
   const { id } = route.params;
 
   const [readMore, setReadMore] = useState(false);
@@ -39,18 +75,15 @@ export function Event() {
     loadEvent();
   }, []);
 
-  return (
-    responseEvent
-      ?
+  return responseEvent ? (
     <Container>
       <Header buttonBack />
       <ContainerImageEvent>
-        {
-          responseEvent?
-            <ImageEvent source={{ uri: responseEvent?.images[0].url }} />
-            :
-            <ActivityIndicator size="large" color={theme.colors.text_inactive} />
-        }
+        {responseEvent ? (
+          <ImageEvent source={{ uri: responseEvent?.images[0].url }} />
+        ) : (
+          <ActivityIndicator size="large" color={theme.colors.text_inactive} />
+        )}
       </ContainerImageEvent>
       <BottomSheet
         ref={sheetRef}
@@ -71,43 +104,27 @@ export function Event() {
         <ContainerScroll>
           <ContainerTopInfos>
             <ContainerTitleIcons>
-                <TitleEvent>{responseEvent?.name}</TitleEvent>
+              <TitleEvent>{responseEvent?.name}</TitleEvent>
               <ContainerIcons>
                 <IconTouchBox>
-                  <ShareIcon size={24} color={useTheme().colors.text} />
+                  <ShareIcon size={24} color={theme.colors.text} />
                 </IconTouchBox>
                 <IconTouchBox>
-                  <BookmarkIcon size={24} color={useTheme().colors.text} />
+                  <BookmarkIcon size={24} color={theme.colors.text} />
                 </IconTouchBox>
               </ContainerIcons>
             </ContainerTitleIcons>
             <ContainerDateTime>
               <ContainerIconDateTime>
-                <CalendarDaysIcon size={24} color={useTheme().colors.text} />
-                <DateTime>{
-                    responseEvent?.dateStart
-                    .split('-')
-                    .reverse()
-                    .join('/')
-                }
-                </DateTime>
+                <CalendarDaysIcon size={24} color={theme.colors.text} />
+                <DateTime>{responseEvent?.dateStart.split('-').reverse().join('/')}</DateTime>
               </ContainerIconDateTime>
               <ContainerIconDateTime>
-                <ClockIcon size={24} color={useTheme().colors.text} />
+                <ClockIcon size={24} color={theme.colors.text} />
                 <DateTime>
-                  {
-                    responseEvent?.hourStart
-                    .split(':')
-                    .slice(0, 2)
-                    .join(':')
-                  }
+                  {responseEvent?.hourStart.split(':').slice(0, 2).join(':')}
                   {' - '}
-                  {
-                    responseEvent?.hourFinish
-                    .split(':')
-                    .slice(0, 2)
-                    .join(':')
-                  }
+                  {responseEvent?.hourFinish.split(':').slice(0, 2).join(':')}
                 </DateTime>
               </ContainerIconDateTime>
             </ContainerDateTime>
@@ -116,41 +133,46 @@ export function Event() {
             <TitleAbout>Sobre</TitleAbout>
             <About onPress={() => setReadMore(!readMore)}>
               {/* {event[1].about.substring(0, 200)}... <ReadMore>Ler mais</ReadMore> */}
-              {
-                readMore ?
-                    responseEvent?.ds_event
-                  :
-                    responseEvent?.description.substring(0, 200)
-              }
+              {readMore ? responseEvent?.ds_event : responseEvent?.description.substring(0, 200)}
               <ReadMore>{readMore ? '  Ler menos' : '  Ler mais'}</ReadMore>
             </About>
           </ContainerAbout>
           <ContainerMap>
-            {
-              responseEvent?.id_place ?
-                <Map customMapStyle={mapStyle} zoomEnabled={true} initialRegion={{ latitude: Number(responseEvent?.id_place.latitude), longitude: Number(responseEvent?.id_place.longitude), latitudeDelta: 0.01, longitudeDelta: 0.01 }}>
-                  <EventMarker coordinate={{ latitude: Number(responseEvent?.id_place.latitude), longitude: Number(responseEvent?.id_place.longitude) }}>
-
-                    <MarkerPointer />
-                  </EventMarker>
-                </Map>
-                :
-                <ActivityIndicator size="large" color={theme.colors.text_inactive} />
-            }
+            {responseEvent?.id_place ? (
+              <Map
+                customMapStyle={mapStyle}
+                zoomEnabled
+                initialRegion={{
+                  latitude: Number(responseEvent?.id_place.latitude),
+                  longitude: Number(responseEvent?.id_place.longitude),
+                  latitudeDelta: 0.01,
+                  longitudeDelta: 0.01,
+                }}
+              >
+                <EventMarker
+                  coordinate={{
+                    latitude: Number(responseEvent?.id_place.latitude),
+                    longitude: Number(responseEvent?.id_place.longitude),
+                  }}
+                >
+                  <MarkerPointer />
+                </EventMarker>
+              </Map>
+            ) : (
+              <ActivityIndicator size="large" color={theme.colors.text_inactive} />
+            )}
           </ContainerMap>
           <ContainerLineUp>
             <TitleLineUp>Organização</TitleLineUp>
             <ContainerLineUpArtists>
-              {
-                responseEvent?.participants_events?.map((participant: any) => {
-                  return (
-                    <LineUpArtist key={participant.id}>
-                      <ImageArtist source={{ uri: participant.id_participant.image }} />
-                      <NameArtist>{participant.id_participant.name}</NameArtist>
-                    </LineUpArtist>
-                  )
-                })
-              }
+              {responseEvent?.participants_events?.map((participant: any) => {
+                return (
+                  <LineUpArtist key={participant.id}>
+                    <ImageArtist source={{ uri: participant.id_participant.image }} />
+                    <NameArtist>{participant.id_participant.name}</NameArtist>
+                  </LineUpArtist>
+                );
+              })}
             </ContainerLineUpArtists>
           </ContainerLineUp>
         </ContainerScroll>
@@ -161,7 +183,7 @@ export function Event() {
         </BuyButton>
       </ContainerBuy>
     </Container>
-    :
+  ) : (
     <EventSkeleton />
   );
 }

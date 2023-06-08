@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
   position: absolute;
@@ -12,7 +12,7 @@ export const Container = styled.View`
 `;
 
 export const Background = styled.TouchableOpacity.attrs({
-  activeOpacity: 1
+  activeOpacity: 1,
 })`
   position: absolute;
   z-index: 5;
@@ -21,11 +21,11 @@ export const Background = styled.TouchableOpacity.attrs({
   justify-content: center;
   align-items: center;
   padding: 0px ${RFValue(16)}px;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 export const Form = styled.TouchableOpacity.attrs({
-  activeOpacity: 1
+  activeOpacity: 1,
 })`
   position: absolute;
   align-self: center;
@@ -95,7 +95,7 @@ export const InputBox = styled.View`
 
 // ButtonCopy
 export const ButtonCopy = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.6
+  activeOpacity: 0.6,
 })`
   padding: ${RFValue(8)}px;
   justify-content: center;
@@ -111,7 +111,7 @@ export const ContainerButtons = styled.View`
 `;
 
 export const ButtonCancel = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.6
+  activeOpacity: 0.6,
 })`
   flex: 1;
   height: 50px;

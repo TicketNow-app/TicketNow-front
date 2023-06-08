@@ -5,4 +5,4 @@ export const readTicket = (id: number): Promise<any> => {
     endpoint: `/tickets/${id}`,
     method: 'get',
   });
-}
+};

@@ -1,20 +1,28 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { BellIcon } from "react-native-heroicons/solid";
-import { useTheme } from "styled-components";
+import { BellIcon } from 'react-native-heroicons/solid';
+import { useTheme } from 'styled-components';
 
-import { Container, ContainerScroll, GhostView, HorizontalScroll, TitleContainer, ContainerCircle, ImageAvatar } from './styles';
+import {
+  Container,
+  ContainerScroll,
+  GhostView,
+  HorizontalScroll,
+  TitleContainer,
+  ContainerCircle,
+  ImageAvatar,
+} from './styles';
 
 import { Card, CardSkeleton } from '../../components/Card';
 import { CardLarge, CardLargeSkeleton } from '../../components/CardLarge';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { CompanyTag, CompanyTagSkeleton } from '../../components/CompanyTag';
-import {FlatListDivisor} from '../../components/FlatListDivisor';
-import {Header} from '../../components/Header';
+import { FlatListDivisor } from '../../components/FlatListDivisor';
+import { Header } from '../../components/Header';
 
 import { readCategories } from '../../services/categories';
-import { readEvents } from '../../services/events';
 import { readCompanies } from '../../services/companies';
+import { readEvents } from '../../services/events';
 
 export function Home() {
   const navigation = useNavigation();
@@ -38,7 +46,6 @@ export function Home() {
       setCompanies(response);
     }
 
-
     Promise.all([loadRecommendedEvents(), loadCategories(), loadCompanies()]);
   }, []);
 
@@ -49,58 +56,60 @@ export function Home() {
   return (
     <Container>
       <Header
-        buttonLeft={
-          <GhostView/>
-        }
+        buttonLeft={<GhostView />}
         logo
         buttonRight={
           <ContainerCircle onPress={() => navigation.navigate('Profile')}>
-            <ImageAvatar source={{ uri: 'https://images.unsplash.com/photo-1629818036993-ae9c53c8e059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }} />
+            <ImageAvatar
+              source={{
+                uri: 'https://images.unsplash.com/photo-1629818036993-ae9c53c8e059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+              }}
+            />
           </ContainerCircle>
         }
       />
       <ContainerScroll>
         <TitleContainer>Categorias</TitleContainer>
-        {
-          categories.length > 0 ?
-            <HorizontalScroll
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={categories}
-              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-              renderItem={({ item }) => <CardLarge category={item} />}
-            />
-            :
-            <HorizontalScroll
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={Array.from(Array(5).keys())}
-              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-              renderItem={() => <CardLargeSkeleton />}
-            />
-        }
+        {categories.length > 0 ? (
+          <HorizontalScroll
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={categories}
+            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+            renderItem={({ item }) => <CardLarge category={item} />}
+          />
+        ) : (
+          <HorizontalScroll
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={Array.from(Array(5).keys())}
+            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+            renderItem={() => <CardLargeSkeleton />}
+          />
+        )}
       </ContainerScroll>
 
       <ContainerScroll>
         <TitleContainer>Recomendados</TitleContainer>
-        {
-          recommendedEvents.length > 0 ?
-            <HorizontalScroll
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={recommendedEvents}
-              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-              renderItem={({ item }) => <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />}
-            />
-            :
-            <HorizontalScroll
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={Array.from(Array(5).keys())}
-              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-              renderItem={() => <CardSkeleton />}
-            />
-        }
+        {recommendedEvents.length > 0 ? (
+          <HorizontalScroll
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={recommendedEvents}
+            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+            renderItem={({ item }) => (
+              <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />
+            )}
+          />
+        ) : (
+          <HorizontalScroll
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={Array.from(Array(5).keys())}
+            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+            renderItem={() => <CardSkeleton />}
+          />
+        )}
       </ContainerScroll>
 
       <ContainerScroll>
@@ -116,24 +125,23 @@ export function Home() {
 
       <ContainerScroll>
         <TitleContainer>Produtoras recentes</TitleContainer>
-        {
-          companies.length > 0 ?
-            <HorizontalScroll
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={companies}
-              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-              renderItem={({ item }) => <CompanyTag company={item} />}
-            />
-          :
-            <HorizontalScroll
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={Array.from(Array(5).keys())}
-              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={10} />}
-              renderItem={() => <CompanyTagSkeleton />}
-            />
-        }
+        {companies.length > 0 ? (
+          <HorizontalScroll
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={companies}
+            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+            renderItem={({ item }) => <CompanyTag company={item} />}
+          />
+        ) : (
+          <HorizontalScroll
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={Array.from(Array(5).keys())}
+            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={10} />}
+            renderItem={() => <CompanyTagSkeleton />}
+          />
+        )}
       </ContainerScroll>
     </Container>
   );

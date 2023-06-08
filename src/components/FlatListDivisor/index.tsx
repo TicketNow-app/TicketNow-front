@@ -1,5 +1,5 @@
-import React from "react";
-import { View } from "react-native";
+import React from 'react';
+import { View } from 'react-native';
 
 interface FlatListDivisorProps {
   orientation: 'horizontal' | 'vertical';
@@ -8,6 +8,11 @@ interface FlatListDivisorProps {
 
 export function FlatListDivisor({ orientation, size }: FlatListDivisorProps) {
   return (
-    <View style={{ width: orientation === 'horizontal' ? size : 1, height: orientation === 'vertical' ? size : 1 }} />
+    <View
+      style={{
+        width: orientation === 'horizontal' ? size : 1,
+        height: orientation === 'vertical' ? size : 1,
+      }}
+    />
   );
 }

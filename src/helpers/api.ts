@@ -8,18 +8,13 @@ interface TicketNowRequest {
 }
 
 const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequest) => {
-  try {
-    const response = await axios({
-      method,
-      url: `https://ticketnow-api.onrender.com${endpoint}`,
-      data,
-      headers: headers || { 'Content-Type': 'application/json' },
-    });
-    return response?.data;
-  } catch (error) {
-    throw error;
-  }
-
+  const response = await axios({
+    method,
+    url: `https://ticketnow-api.onrender.com${endpoint}`,
+    data,
+    headers: headers || { 'Content-Type': 'application/json' },
+  });
+  return response?.data;
 };
 
 export default backendRequest;

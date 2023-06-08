@@ -1,4 +1,5 @@
-export declare global { //export global namespace
+export declare global {
+  //export global namespace
   namespace ReactNavigation {
     interface RootParamList {
       Login: undefined;

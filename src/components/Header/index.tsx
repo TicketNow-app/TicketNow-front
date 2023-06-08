@@ -1,6 +1,6 @@
-import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { BellIcon, ArrowLeftIcon } from 'react-native-heroicons/solid';
+import React from 'react';
+import { ArrowLeftIcon } from 'react-native-heroicons/solid';
 import { useTheme } from 'styled-components';
 
 import { Container, LogoHorizontal, MainTitle } from './styles';
@@ -12,26 +12,24 @@ interface HeaderProps {
   buttonLeft?: React.ReactNode;
   buttonBack?: boolean;
   logo?: boolean;
-  title?: string;
+  title?: string | undefined;
 }
 
 export const Header = ({ buttonRight, buttonLeft, buttonBack, logo, title }: HeaderProps) => {
   const navigation = useNavigation();
+  const theme = useTheme();
 
-  return(
+  return (
     <Container>
-      {
-        buttonBack && (
-          <HeaderButton onPress={() => navigation.goBack()}>
-            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>
+      {buttonBack && (
+        <HeaderButton onPress={() => navigation.goBack()}>
+          <ArrowLeftIcon size={20} color={theme.colors.text} />
+        </HeaderButton>
       )}
       {buttonLeft}
-      {
-        title?.length > 0 && <MainTitle>{title}</MainTitle>
-      }
+      {title !== undefined && title.length > 0 && <MainTitle>{title}</MainTitle>}
       {logo && <LogoHorizontal source={require('../../../assets/logo-horizontal.png')} />}
       {buttonRight}
     </Container>
-  )
-}
+  );
+};

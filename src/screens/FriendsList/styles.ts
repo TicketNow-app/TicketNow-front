@@ -13,7 +13,7 @@ export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
-  }
+  },
 })`
   width: 100%;
 `;
@@ -87,10 +87,8 @@ export const ButtonContainer = styled.View`
   gap: 10px;
 `;
 
-
-
 export const ButtonText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text}
+  color: ${({ theme }) => theme.colors.text};
 `;

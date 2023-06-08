@@ -1,4 +1,4 @@
-import Modal from "react-native-modal";
+import Modal from 'react-native-modal';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -26,7 +26,6 @@ export const Center = styled.View`
   align-items: center;
   justify-content: center;
 `;
-
 
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
@@ -57,11 +56,8 @@ export const ButtonContainer = styled.View`
   gap: 10px;
 `;
 
-
-
 export const ButtonText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text}
+  color: ${({ theme }) => theme.colors.text};
 `;
-

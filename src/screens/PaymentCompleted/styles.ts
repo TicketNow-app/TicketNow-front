@@ -14,7 +14,7 @@ export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
-  }
+  },
 })`
   width: 100%;
 `;
@@ -32,7 +32,6 @@ export const Title = styled.Text`
   font-size: ${RFValue(18)}px;
   color: ${({ theme }) => theme.colors.text};
 `;
-
 
 export const Main = styled.View`
   display: flex;
@@ -54,7 +53,4 @@ export const Bottom = styled.View`
   align-items: center;
   margin-top: 260px;
   gap: 8px;
-  
 `;
-
-

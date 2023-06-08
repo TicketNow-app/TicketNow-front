@@ -2,7 +2,6 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-
 export const Container = styled.View`
   flex: 1;
   align-items: center;
@@ -13,7 +12,7 @@ export const ContentScroll = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
-  }
+  },
 })`
   width: 100%;
 `;

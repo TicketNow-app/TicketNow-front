@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           email: credential.email!,
           name,
           photo,
-        }
+        };
 
         setUser(userLogged);
         await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged));
@@ -77,15 +77,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const userLogged = await loginAuth(email, password);
 
       const token = userLogged.token;
-      const id = userLogged.account.id_user.id
+      const id = userLogged.account.id_user.id;
 
       if (token) {
         const user = await getUser(id, token);
         setUser(user);
         await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
       }
-    }
-    catch (error) {
+    } catch (error) {
       throw new Error(error);
     }
   }
@@ -123,8 +122,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         signInWithApp,
         signOut,
         userStorageLoading,
-        updateUser
-      }}>
+        updateUser,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

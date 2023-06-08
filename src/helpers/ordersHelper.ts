@@ -40,7 +40,7 @@ interface Orders {
 export const getFinishedOrders = (orders: Orders[]) => {
   const currentDate = new Date();
 
-  return orders.filter((order) => {
+  return orders.filter(order => {
     const orderDateFinish = new Date(order.id_ticket.id_event.dateFinish);
     return orderDateFinish < currentDate;
   });
@@ -49,7 +49,7 @@ export const getFinishedOrders = (orders: Orders[]) => {
 export const getOrders = (orders: Orders[]) => {
   const currentDate = new Date();
 
-  return orders.filter((order) => {
+  return orders.filter(order => {
     const orderDateFinish = new Date(order.id_ticket.id_event.dateFinish);
     return orderDateFinish >= currentDate;
   });

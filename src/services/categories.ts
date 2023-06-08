@@ -5,4 +5,4 @@ export const readCategories = (): Promise<any> => {
     endpoint: '/categories',
     method: 'get',
   });
-}
+};

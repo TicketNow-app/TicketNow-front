@@ -22,7 +22,6 @@ export const InputBox = styled.View`
   margin-bottom: 20px;
 `;
 
-
 export const ButtonBox = styled.View`
   width: 100%;
   margin-bottom: 16px;

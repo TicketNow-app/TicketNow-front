@@ -13,7 +13,7 @@ export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
-  }
+  },
 })`
   width: 100%;
 `;
@@ -57,4 +57,4 @@ export const FooterDescription = styled(TopicText)`
   margin-top: ${RFValue(24)}px;
   margin-bottom: ${RFValue(24)}px;
   padding: 0px ${RFValue(16)}px;
-`
+`;

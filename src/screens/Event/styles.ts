@@ -1,5 +1,5 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker } from 'react-native-maps';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -21,8 +21,7 @@ export const ImageEvent = styled.Image`
   flex: 1;
 `;
 
-export const EventMarker = styled(Marker)`
-`;
+export const EventMarker = styled(Marker)``;
 
 export const MarkerPointer = styled.View`
   width: ${RFValue(20)}px;
@@ -133,8 +132,7 @@ export const ContainerIcons = styled.View`
   width: ${RFValue(60)}px;
 `;
 
-export const IconTouchBox = styled.TouchableOpacity`
-`;
+export const IconTouchBox = styled.TouchableOpacity``;
 
 export const ContainerDateTime = styled.View`
   flex-direction: row;
@@ -188,7 +186,7 @@ export const ContainerBuy = styled.View`
 `;
 
 export const BuyButton = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.6
+  activeOpacity: 0.6,
 })`
   width: 100%;
   height: ${RFValue(50)}px;
@@ -223,8 +221,7 @@ export const ContainerLineUp = styled.View`
   margin-top: ${RFValue(26)}px;
 `;
 
-export const TitleLineUp = styled(TitleAbout)`
-`;
+export const TitleLineUp = styled(TitleAbout)``;
 
 export const ContainerLineUpArtists = styled.ScrollView.attrs({
   horizontal: true,

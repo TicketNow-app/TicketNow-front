@@ -71,9 +71,7 @@ export const TextAlreadyAccount = styled.Text`
 
 export const TouchableAlreadyAccount = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
-})`
-
-`;
+})``;
 
 export const TextAlreadyAccountBold = styled(TextAlreadyAccount)`
   color: ${({ theme }) => theme.colors.text};

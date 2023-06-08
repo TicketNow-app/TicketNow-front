@@ -5,8 +5,8 @@ export const loginAuth = async (email: string, password: string) => {
     endpoint: '/login/validate',
     method: 'post',
     data: {
-      email: email,
-      password: password,
+      email,
+      password,
     },
   });
 

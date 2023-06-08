@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
-import MapView from "react-native-maps";
+import MapView from 'react-native-maps';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 

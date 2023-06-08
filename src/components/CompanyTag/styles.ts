@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
   width: ${RFValue(120)}px;
@@ -23,7 +23,7 @@ export const Image = styled.Image`
 export const ContainerText = styled.View`
   width: 100%;
   align-items: center;
-  `;
+`;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text};
