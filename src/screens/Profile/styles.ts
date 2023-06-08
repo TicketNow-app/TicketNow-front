@@ -17,19 +17,10 @@ export const Container = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: getBottomSpace() + 24,
-  }
+  },
 })`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0px ${RFValue(16)}px;
-`;
-
-export const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${getStatusBarHeight() + 26}px 0px ${RFValue(14)}px 0px;
 `;
 
 export const ContainerTopInfos = styled.View`
@@ -61,7 +52,7 @@ export const UserName = styled.Text`
 
 export const ButtonPromoter = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
-}) <ButtonPromoterProps>`
+})<ButtonPromoterProps>`
   padding: ${RFValue(10)}px ${RFValue(16)}px;
   flex-direction: row;
   justify-content: center;
@@ -95,6 +86,7 @@ export const ContainerConfigButtons = styled.View`
   width: 100%;
   height: ${RFValue(230)}px;
   justify-content: space-between;
+  padding: 0px ${RFValue(16)}px;
   margin-top: 24px;
 `;
 

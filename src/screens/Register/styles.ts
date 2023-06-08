@@ -9,20 +9,6 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  padding: ${getStatusBarHeight() + 30}px ${RFValue(24)}px 20px ${RFValue(24)}px;
-`;
-
-export const LogoHorizontal = styled.Image`
-  width: ${RFValue(100)}px;
-  height: ${RFValue(30)}px;
-`;
-
 export const Form = styled.View`
   flex: 1;
   align-items: center;
@@ -85,9 +71,7 @@ export const TextAlreadyAccount = styled.Text`
 
 export const TouchableAlreadyAccount = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
-})`
-
-`;
+})``;
 
 export const TextAlreadyAccountBold = styled(TextAlreadyAccount)`
   color: ${({ theme }) => theme.colors.text};

@@ -1,14 +1,13 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
-import { HomeIcon, MapIcon, TicketIcon, UserIcon } from "react-native-heroicons/outline";
-import { useTheme } from "styled-components";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import { HomeIcon, MapIcon, TicketIcon, UserIcon } from 'react-native-heroicons/outline';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { useTheme } from 'styled-components';
 
-import { getBottomSpace } from "react-native-iphone-x-helper";
-
-import { Home } from "../screens/Home";
-import { Map } from "../screens/Map";
-import { Profile } from "../screens/Profile";
-import { TicketsList } from "../screens/TicketsList";
+import { Home } from '../screens/Home';
+import { Map } from '../screens/Map';
+import { Profile } from '../screens/Profile';
+import { TicketsList } from '../screens/TicketsList';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -29,46 +28,37 @@ export function AppRoutes() {
           borderTopColor: 'transparent',
         },
         header: () => null,
-        tabBarShowLabel: false
-      }
-      }
+        tabBarShowLabel: false,
+      }}
     >
       <Screen
         name="Início"
         component={Home}
         options={{
-          tabBarIcon: (({ size, color }) => (
-            <HomeIcon size={size} color={color} />
-          ))
+          tabBarIcon: ({ size, color }) => <HomeIcon size={size} color={color} />,
         }}
       />
       <Screen
         name="Mapa"
         component={Map}
         options={{
-          tabBarIcon: (({ size, color }) => (
-            <MapIcon size={size} color={color} />
-          ))
+          tabBarIcon: ({ size, color }) => <MapIcon size={size} color={color} />,
         }}
       />
       <Screen
         name="TicketList"
         component={TicketsList}
         options={{
-          tabBarIcon: (({ size, color }) => (
-            <TicketIcon size={size} color={color} />
-          )),
+          tabBarIcon: ({ size, color }) => <TicketIcon size={size} color={color} />,
         }}
       />
       <Screen
         name="Profile"
         component={Profile}
         options={{
-          tabBarIcon: (({ size, color }) => (
-            <UserIcon size={size} color={color} />
-          ))
+          tabBarIcon: ({ size, color }) => <UserIcon size={size} color={color} />,
         }}
       />
-    </ Navigator>
+    </Navigator>
   );
 }

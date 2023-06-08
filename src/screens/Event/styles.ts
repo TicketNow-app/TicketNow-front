@@ -1,5 +1,5 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import MapView from "react-native-maps";
+import MapView, { Marker } from 'react-native-maps';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -8,15 +8,6 @@ export const Container = styled.View`
   position: relative;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
-`;
-
-export const Header = styled.View`
-  width: 100%;
-  height: ${RFValue(113)}px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${getStatusBarHeight() + 18}px ${RFValue(16)}px ${RFValue(19)}px ${RFValue(16)}px;
 `;
 
 export const ContainerImageEvent = styled.View`
@@ -28,6 +19,16 @@ export const ContainerImageEvent = styled.View`
 
 export const ImageEvent = styled.Image`
   flex: 1;
+`;
+
+export const EventMarker = styled(Marker)``;
+
+export const MarkerPointer = styled.View`
+  width: ${RFValue(20)}px;
+  height: ${RFValue(20)}px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: ${RFValue(10)}px;
+  border: 3px solid ${({ theme }) => theme.colors.text};
 `;
 
 export const ContainerDraggable = styled.View`
@@ -131,8 +132,7 @@ export const ContainerIcons = styled.View`
   width: ${RFValue(60)}px;
 `;
 
-export const IconTouchBox = styled.TouchableOpacity`
-`;
+export const IconTouchBox = styled.TouchableOpacity``;
 
 export const ContainerDateTime = styled.View`
   flex-direction: row;
@@ -186,7 +186,7 @@ export const ContainerBuy = styled.View`
 `;
 
 export const BuyButton = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.6
+  activeOpacity: 0.6,
 })`
   width: 100%;
   height: ${RFValue(50)}px;
@@ -221,8 +221,7 @@ export const ContainerLineUp = styled.View`
   margin-top: ${RFValue(26)}px;
 `;
 
-export const TitleLineUp = styled(TitleAbout)`
-`;
+export const TitleLineUp = styled(TitleAbout)``;
 
 export const ContainerLineUpArtists = styled.ScrollView.attrs({
   horizontal: true,

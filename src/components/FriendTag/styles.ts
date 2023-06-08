@@ -29,7 +29,7 @@ export const FriendImage = styled.Image`
 `;
 
 export const ContainerFriendText = styled.View`
-
+  flex: 1;
 `;
 
 export const FriendName = styled.Text`
@@ -65,7 +65,7 @@ export const ButtonAddText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.text};
-`
+`;
 
 export const ButtonRemove = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
@@ -75,4 +75,3 @@ export const ButtonRemove = styled.TouchableOpacity.attrs({
   justify-content: center;
   align-items: center;
 `;
-

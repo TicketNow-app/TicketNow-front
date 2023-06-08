@@ -9,8 +9,7 @@ interface InputSearchProps {
 
 export default function InputSearch({ placeholderText, iconLeft, iconRight }: InputSearchProps) {
   return (
-    <Input
-      placeholder={placeholderText}>
+    <Input placeholder={placeholderText}>
       {iconLeft}
       {iconRight}
     </Input>
