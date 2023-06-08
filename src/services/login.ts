@@ -2,7 +2,7 @@ import backendRequest from '../helpers/api';
 
 export const loginAuth = async (email: string, password: string) => {
   const response = await backendRequest({
-    endpoint: '/login/validate',
+    endpoint: '/account/validate',
     method: 'post',
     data: {
       email,
