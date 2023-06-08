@@ -1,7 +1,6 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { ArrowLeftIcon } from 'react-native-heroicons/outline';
-import { UserPlusIcon } from 'react-native-heroicons/solid';
+import { XCircleIcon } from 'react-native-heroicons/solid';
 import { useTheme } from 'styled-components';
 
 import {
@@ -19,28 +18,31 @@ import {
   Title,
 } from './styles';
 
+import { BottomModal } from '../../components/BottomModal';
 import { ButtonFriendshipStatus } from '../../components/ButtonFriendshipStatus';
 import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { Header } from '../../components/Header';
-import { HeaderButton } from '../../components/HeaderButton';
 import { useAuth } from '../../hooks/auth';
 
-import { readFriendshipStatus } from '../../services/friendship';
+import { readFriendshipStatus, excludeFriend } from '../../services/friendship';
 import { getUser } from '../../services/user';
 
 type FriendViewRouteProp = RouteProp<{ FriendView: { id: number } }, 'FriendView'>;
 
 export function FriendView() {
   const route = useRoute<FriendViewRouteProp>();
+  const theme = useTheme();
   const { id } = route.params;
   const { user } = useAuth();
 
   const [friend, setFriend] = useState(null);
-  const [friendshipStatus, setFriendshipStatus] = useState(null);
+  const [friendshipStatus, setFriendshipStatus] = useState('');
+  const [excludeFriendId, setExcludeFriendId] = useState(null);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     async function loadFriend() {
-      const response = await getUser(id.toString(), '123'); //TODO pass the token
+      const response = await getUser(id.toString(), '123'); //TODO: pass the token
       setFriend(response);
     }
 
@@ -53,6 +55,21 @@ export function FriendView() {
     Promise.all([loadFriend(), loadFriendshipStatus()]);
   }, []);
 
+  function removeSolicitation() {
+    excludeFriend(excludeFriendId);
+    setModalVisible(false);
+    setExcludeFriendId(null);
+  }
+
+  function excludeFriendConfirmation(id: number) {
+    setExcludeFriendId(id);
+    setModalVisible(true);
+  }
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
     <Container>
       <Header buttonBack />
@@ -62,7 +79,10 @@ export function FriendView() {
             <UserImage source={{ uri: friend?.image }} />
           </ContainerImage>
           <UserName>{friend?.name}</UserName>
-          <ButtonFriendshipStatus status={friendshipStatus} />
+          <ButtonFriendshipStatus
+            status={friendshipStatus.accepted}
+            handlePress={() => excludeFriendConfirmation(friendshipStatus.id)}
+          />
         </ContainerInfos>
         <ContentScroll>
           <ContainerEvent>
@@ -91,6 +111,16 @@ export function FriendView() {
           </ContainerEvent>
         </ContentScroll>
       </ScrollContainer>
+      <BottomModal
+        icon={<XCircleIcon size={70} color={theme.colors.text_inactive} />}
+        text="Voce tem certeza que deseja cancelar esta solicitação de amizade?"
+        leftButtonText="Cancelar"
+        rightButtonText="Excluir"
+        handleFunction={() => removeSolicitation()}
+        setModalVisible={() => setModalVisible(false)}
+        isModalVisible={isModalVisible}
+        toggleModal={toggleModal}
+      />
     </Container>
   );
 }
