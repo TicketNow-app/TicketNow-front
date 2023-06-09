@@ -10,8 +10,8 @@ import {
   ContainerInfos,
   UserImage,
   UserName,
-  BoxCardLargeEvent,
-  BoxCardLargeEventPased,
+  // BoxCardLargeEvent,
+  // BoxCardLargeEventPased,
   BoxTitle,
   ContainerEvent,
   ContentScroll,
@@ -20,7 +20,7 @@ import {
 
 import { BottomModal } from '../../components/BottomModal';
 import { ButtonFriendshipStatus } from '../../components/ButtonFriendshipStatus';
-import { CardLargeEvent } from '../../components/CardLargeEvent';
+// import { CardLargeEvent } from '../../components/CardLargeEvent';
 import { Header } from '../../components/Header';
 import { useAuth } from '../../hooks/auth';
 

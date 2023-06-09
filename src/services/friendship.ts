@@ -21,10 +21,21 @@ export const excludeFriend = (id: number): Promise<any> => {
   });
 };
 
-export const readFriendshipStatus = (userId, friendId): Promise<any> => {
+export const readFriendshipStatus = (userId: number, friendId: number): Promise<any> => {
   return backendRequest({
     endpoint: `/friends/status`,
     method: 'post',
     data: { userId, friendId },
+  });
+};
+
+export const acceptFriendship = (friendShipId: number, accepted: string): Promise<any> => {
+  return backendRequest({
+    endpoint: `/friends/alter`,
+    method: 'post',
+    data: {
+      id: friendShipId,
+      accepted,
+    },
   });
 };

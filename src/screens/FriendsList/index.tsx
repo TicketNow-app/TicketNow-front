@@ -22,6 +22,7 @@ import {
   readFriends,
   readPendingFriendSolicitations,
   excludeFriend,
+  acceptFriendship,
 } from '../../services/friendship';
 
 export function FriendsList() {
@@ -57,6 +58,11 @@ export function FriendsList() {
     setModalVisible(true);
   }
 
+  function acceptFriendshipConfirmation(id: number) {
+    const acceptTime = new Date().toISOString().replace('T', ' ').replace('Z', '');
+    acceptFriendship(id, acceptTime);
+  }
+
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
@@ -82,8 +88,8 @@ export function FriendsList() {
                 commonFriends={2}
                 close
                 removeFriend={() => excludeFriendConfirmation(solicitation.id)}
+                addFriend={() => acceptFriendshipConfirmation(solicitation.id)}
                 onPress={() => handleGoToFriend(solicitation.guest.id)}
-                // addFriend={() => addFriend(index)}
               />
             ))
           ) : (
