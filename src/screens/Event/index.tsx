@@ -2,13 +2,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-import {
-  ArrowLeftIcon,
-  BookmarkIcon,
-  CalendarDaysIcon,
-  ClockIcon,
-  ShareIcon,
-} from 'react-native-heroicons/solid';
+import { BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } from 'react-native-heroicons/solid';
 import { useTheme } from 'styled-components';
 
 import { EventSkeleton } from './skeleton';
@@ -45,9 +39,7 @@ import {
 } from './styles';
 
 import { Header } from '../../components/Header';
-import { HeaderButton } from '../../components/HeaderButton';
 
-import theme from '../../global/styles/theme';
 import { readEvent } from '../../services/events';
 
 import mapStyle from '../../utils/mapStyle.json';
@@ -56,7 +48,7 @@ type EventRouteProp = RouteProp<{ Event: { id: number } }, 'Event'>;
 
 export function Event() {
   const route = useRoute<EventRouteProp>();
-  const theme = theme;
+  const theme = useTheme();
   const { id } = route.params;
 
   const [readMore, setReadMore] = useState(false);

@@ -19,7 +19,7 @@ export function ButtonFriendshipStatus({ status, handlePress }: ButtonFriendship
           <UserMinusIcon size={20} color={theme.colors.text} />
           <TextButton>Pendente</TextButton>
         </ButtonFollow>
-      ) : status === 'accepted' ? (
+      ) : status != null ? (
         <ButtonFollow>
           <UsersIcon size={20} color={theme.colors.text} />
           <TextButton>Amigos</TextButton>
