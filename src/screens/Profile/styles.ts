@@ -42,6 +42,19 @@ export const UserImage = styled.Image`
   border-radius: 70px;
 `;
 
+export const PromoterTag = styled.View`
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  border: 4px solid ${({ theme }) => theme.colors.background};
+  border-radius: 21px;
+  justify-content: center;
+  align-items: center;
+  right: 0px;
+  bottom: 0px;
+`;
+
 export const UserName = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(24)}px;
@@ -64,8 +77,11 @@ export const ButtonPromoter = styled.TouchableOpacity.attrs({
 
 export const CopyButtonPromoter = styled(ButtonPromoter)`
   background-color: transparent;
-  margin-left: 0px;
-  margin-right: ${RFValue(8)}px;
+`;
+
+export const ContainerCopyIcon = styled.View`
+  position: absolute;
+  right: 0px;
 `;
 
 export const TextButton = styled.Text<TextButtonProps>`
@@ -78,8 +94,6 @@ export const TextButton = styled.Text<TextButtonProps>`
 export const TextCopyButton = styled(TextButton)`
   font-family: ${({ theme }) => theme.fonts.medium};
   color: ${({ theme }) => theme.colors.text_inactive};
-  margin-left: 0px;
-  margin-right: ${RFValue(8)}px;
 `;
 
 export const ContainerConfigButtons = styled.View`

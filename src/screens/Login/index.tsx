@@ -30,6 +30,7 @@ import {
   InputBox,
   TextAnotherSignUpWays,
   TextForgotPassword,
+  GhostView,
 } from '../Login/styles';
 
 interface FormData {
@@ -108,7 +109,7 @@ export function Login({ navigation }: any) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-        <Header logo />
+        <Header buttonLeft={<GhostView />} logo buttonRight={<GhostView />} />
         <Form>
           <TitleDesc
             title="Entre na sua conta"

@@ -4,7 +4,7 @@ export declare global {
     interface RootParamList {
       Login: undefined;
       Register: undefined;
-      RegisterSecondStep: undefined;
+      RegisterSecondStep: { accountId: number; userId: number };
       Home: undefined;
       Profile: undefined;
       Ticket: { id: number };
