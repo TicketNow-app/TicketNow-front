@@ -50,6 +50,7 @@ type RegisterSecondStepProp = RouteProp<
 
 type AlterAccount = {
   id: number;
+  status: 'A' | 'P' | 'I';
   id_user: number;
 };
 
@@ -82,6 +83,7 @@ export function RegisterSecondStep() {
 
     const account: AlterAccount = {
       id: accountId,
+      status: 'A',
       id_user: userId,
     };
 
