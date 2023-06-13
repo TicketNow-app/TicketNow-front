@@ -7,6 +7,7 @@ export declare global { //export global namespace
       Event: undefined;
       FriendsList: undefined;
       Settings: undefined;
+      TicketsSold: undefined;
     }
   }
 }

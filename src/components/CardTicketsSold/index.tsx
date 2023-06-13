@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ContainerValue, ContainerText, Content, Date, Image, Title, TitleQuantity } from './styles';
+import { Container, ContainerValue, ContainerText, Date, ContainerImage, Image, Gradient, Title, ContainerDesc, TitleSold, ValueSold } from './styles';
 
 
 interface CardTicketsSoldProps {
@@ -12,18 +12,27 @@ interface CardTicketsSoldProps {
 
 export function CardTicketsSold({ ticketsSold }: CardTicketsSoldProps) {
   return (
-    <Container activeOpacity={0.6}>
-      <Content>
-        <Image source={{ uri: ticketsSold.image }} />     
-        <ContainerValue activeOpacity={0.6}>
-         <TitleQuantity>Ingressos vendidos: 54</TitleQuantity>
-         <TitleQuantity>Ganhos: R$40,00</TitleQuantity>
-        </ContainerValue>    
-        <ContainerText>
-          <Date>{ticketsSold.date}</Date>
-          <Title>{ticketsSold.title}</Title>
-        </ContainerText>
-      </Content>
+    <Container>
+      <ContainerImage>
+        <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
+          locations={[0.1, 0.8]}
+        />
+        <Image source={{ uri: ticketsSold.image }} />
+      </ContainerImage>
+      <ContainerValue>
+        <ContainerDesc>
+          <TitleSold>Ingressos vendidos: </TitleSold>
+          <ValueSold>54</ValueSold>
+        </ContainerDesc>
+        <ContainerDesc>
+          <TitleSold>Ganhos: </TitleSold>
+          <ValueSold>R$40,00</ValueSold>
+        </ContainerDesc>
+      </ContainerValue>
+      <ContainerText>
+        <Date>{ticketsSold.date}</Date>
+        <Title>{ticketsSold.title}</Title>
+      </ContainerText>
     </Container>
   );
 }

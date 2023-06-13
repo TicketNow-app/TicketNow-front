@@ -31,6 +31,10 @@ export function Profile() {
     navigation.navigate('Settings')
   }
 
+  function goToTicketsSold() {
+    navigation.navigate('TicketsSold')
+  }
+
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(promoter);
     console.log('Copied to Clipboard!');
@@ -60,7 +64,7 @@ export function Profile() {
                 </TextCopyButton>
                 <Square2StackIcon size={20} color={useTheme().colors.text_inactive} />
               </CopyButtonPromoter>
-              <ContainerPromoterMetrics>
+              <ContainerPromoterMetrics onPress={goToTicketsSold}>
                 <TicketMiniSvg />
                 <ContainerMetricsInfos>
                   <TitleMetrics>Ingressos vendidos</TitleMetrics>
