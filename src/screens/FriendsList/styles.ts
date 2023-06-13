@@ -7,31 +7,15 @@ export const Container = styled.View`
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0px ${RFValue(16)}px;
 `;
 
 export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: 24,
-  }
+  },
 })`
   width: 100%;
-`;
-
-export const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${getStatusBarHeight() + 26}px 0px ${RFValue(14)}px 0px;
-`;
-
-export const MainTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.text};
-  margin: auto;
 `;
 
 export const GhostView = styled.View`
@@ -42,6 +26,7 @@ export const GhostView = styled.View`
 export const Section = styled.View`
   width: 100%;
   margin-top: ${RFValue(16)}px;
+  padding: 0px ${RFValue(16)}px;
 `;
 
 export const SectionTitle = styled.Text`
@@ -102,10 +87,8 @@ export const ButtonContainer = styled.View`
   gap: 10px;
 `;
 
-
-
 export const ButtonText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text}
+  color: ${({ theme }) => theme.colors.text};
 `;

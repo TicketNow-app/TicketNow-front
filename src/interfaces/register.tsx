@@ -4,9 +4,15 @@ export interface IRegisterForm {
   password: string;
 }
 
+export interface IRegisterSecondStep {
+  name: string;
+  cpf: string;
+  telephone: string;
+}
+
 export interface IRegister {
   cd_email: string;
-  cd_password: string
+  cd_password: string;
   ic_status: 'A' | 'I';
   id_user: number;
 }

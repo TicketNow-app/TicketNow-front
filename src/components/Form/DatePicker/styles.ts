@@ -20,13 +20,13 @@ export const HeaderDatePicker = styled.View`
   justify-content: space-between;
   padding: 0 ${RFValue(24)}px;
   border-bottom-width: 1px;
-  border-bottom-color: #FFFFFF10;
+  border-bottom-color: #ffffff10;
 `;
 
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text_inactive}
+  color: ${({ theme }) => theme.colors.text_inactive};
 `;
 
 export const Button = styled.TouchableOpacity.attrs({
@@ -40,7 +40,7 @@ export const Button = styled.TouchableOpacity.attrs({
 export const ButtonText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text}
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const CustomDatePicker = styled(DateTimePicker)`
