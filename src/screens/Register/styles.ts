@@ -9,6 +9,11 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
+export const GhostView = styled.View`
+  width: 40px;
+  height: 40px;
+`;
+
 export const Form = styled.View`
   flex: 1;
   align-items: center;

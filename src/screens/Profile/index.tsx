@@ -16,6 +16,7 @@ import {
   ButtonPromoter,
   Container,
   ContainerConfigButtons,
+  ContainerCopyIcon,
   ContainerImage,
   ContainerMetricsInfos,
   ContainerPromoterMetrics,
@@ -23,6 +24,7 @@ import {
   ContainerTopInfos,
   CopyButtonPromoter,
   MetricsDivisor,
+  PromoterTag,
   TextButton,
   TextCopyButton,
   TextSell,
@@ -92,13 +94,20 @@ export function Profile() {
         <ContainerTopInfos>
           <ContainerImage>
             <UserImage source={{ uri: user.image }} />
+            {user.category === 'P' && (
+              <PromoterTag>
+                <FireIcon size={20} color={theme.colors.primary} />
+              </PromoterTag>
+            )}
           </ContainerImage>
           <UserName>{user.name}</UserName>
           {user.category === 'P' ? (
             <>
               <CopyButtonPromoter onPress={copyToClipboard}>
                 <TextCopyButton promoter={user.category}>{user.coupon}</TextCopyButton>
-                <Square2StackIcon size={20} color={theme.colors.text_inactive} />
+                <ContainerCopyIcon>
+                  <Square2StackIcon size={20} color={theme.colors.text_inactive} />
+                </ContainerCopyIcon>
               </CopyButtonPromoter>
               <ContainerPromoterMetrics>
                 <TicketMiniSvg />

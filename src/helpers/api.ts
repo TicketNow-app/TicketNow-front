@@ -1,3 +1,4 @@
+import { API_KEY } from '@env';
 import axios from 'axios';
 
 interface TicketNowRequest {
@@ -10,7 +11,7 @@ interface TicketNowRequest {
 const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequest) => {
   const response = await axios({
     method,
-    url: `https://ticketnow-api.onrender.com${endpoint}`,
+    url: `${API_KEY}${endpoint}`,
     data,
     headers: headers || { 'Content-Type': 'application/json' },
   });
