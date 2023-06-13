@@ -59,7 +59,7 @@ export function TicketsList() {
                 title={order.id_ticket.id_event.name}
                 address={order.id_ticket.id_event.id_place.address}
                 date={order.id_ticket.id_event.dateStart}
-                onPress={() => handleNavigateToTicket(order.id)}
+                onPress={() => handleNavigateNavigateToTicket(order.id)}
               />
             </BoxCardLargeEvent>
           ))}

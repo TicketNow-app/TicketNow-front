@@ -1,5 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } from 'react-native-heroicons/solid';
@@ -57,6 +57,12 @@ export function Event() {
   const sheetRef = useRef<BottomSheet>(null);
 
   const snapPoints = ['40%', '80%'];
+
+  const navigation = useNavigation();
+
+  function handleGoToSelectTicketd() {
+    navigation.navigate('SelectTicket');
+  }
 
   useEffect(() => {
     async function loadEvent() {
@@ -171,7 +177,7 @@ export function Event() {
       </BottomSheet>
       <ContainerBuy>
         <BuyButton>
-          <TextButton>Comprar ingresso</TextButton>
+          <TextButton onPress={handleGoToSelectTicketd}>Comprar ingresso</TextButton>
         </BuyButton>
       </ContainerBuy>
     </Container>

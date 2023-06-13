@@ -15,6 +15,9 @@ export declare global {
       FriendView: { id: number };
       AboutPromoters: undefined;
       TermsOfUse: undefined;
+      SelectTicket: undefined;
+      PaymentMethod: undefined;
+      PaymentCompleted: undefined;
     }
   }
 }

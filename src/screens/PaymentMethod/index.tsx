@@ -1,6 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ArrowLeftIcon } from 'react-native-heroicons/outline';
+import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import {
   Container,
@@ -23,13 +23,21 @@ import { Button } from '../../components/Form/Button';
 import { HeaderButton } from '../../components/HeaderButton';
 import { PaymentMethods } from '../../components/Payment/PaymentMethods';
 import { SavedCards } from '../../components/Payment/SavedCards';
+import { formatMoney } from '../../utils/utils';
+
 export function PaymentMethod() {
   const [checked, setChecked] = React.useState('first');
   const navigation = useNavigation();
   const theme = useTheme();
+  const route = useRoute();
+  const { totalPrice } = route.params;
 
   function GoBack() {
     navigation.goBack();
+  }
+
+  function handleGoToPaymentCompleted() {
+    navigation.navigate('PaymentCompleted');
   }
 
   return (
@@ -56,15 +64,15 @@ export function PaymentMethod() {
           <ContainerValues>
             <ContainerTitle>
               <TextTitle>Código Promocional</TextTitle>
-              <TextValue>#AILAYANE</TextValue>
+              <TextValue>#HRHRGF</TextValue>
             </ContainerTitle>
             <ContainerTotal>
               <TextTitleTotal>Total</TextTitleTotal>
-              <TextValueTotal>R$ 165,00</TextValueTotal>
+              <TextValueTotal>{formatMoney(totalPrice)}</TextValueTotal>
             </ContainerTotal>
           </ContainerValues>
         </ContainerBottom>
-        <Button title="Continuar" />
+        <Button title="Continuar" onPress={handleGoToPaymentCompleted} />
       </ScrollContainer>
     </Container>
   );

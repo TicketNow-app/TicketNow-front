@@ -1,13 +1,18 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { Event } from '../screens/Event';
+import { Ticket } from '../screens/Ticket';
+import { FriendsList } from '../screens/FriendsList';
+import { Settings } from '../screens/Settings';
+import { SelectTicket } from '../screens/SelectTicket';
+import { PaymentMethod } from '../screens/PaymentMethod';
+import { PaymentCompleted } from '../screens/PaymentCompleted';
 import { AppRoutes } from './app.routes';
 import { AboutPromoters } from '../screens/AboutPromoters';
-import { Event } from '../screens/Event';
-import { FriendsList } from '../screens/FriendsList';
+
 import { FriendView } from '../screens/FriendView';
-import { Settings } from '../screens/Settings';
+
 import { TermsOfUse } from '../screens/TermsOfUse';
-import { Ticket } from '../screens/Ticket';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
@@ -22,6 +27,9 @@ export function StackRoutes() {
       <Screen name="FriendView" component={FriendView} />
       <Screen name="TermsOfUse" component={TermsOfUse} />
       <Screen name="AboutPromoters" component={AboutPromoters} />
+      <Screen name="SelectTicket" component={SelectTicket} />
+      <Screen name="PaymentMethod" component={PaymentMethod} />
+      <Screen name="PaymentCompleted" component={PaymentCompleted} />
     </Navigator>
   );
 }
