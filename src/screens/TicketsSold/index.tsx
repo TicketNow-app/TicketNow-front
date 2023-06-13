@@ -25,9 +25,9 @@ export function TicketsSold() {
         </HeaderButton>
         <MainTitle>Ingressos vendidos</MainTitle>
       </Header>
-      <ContentScroll>
         <SubTitle>54 ingressos</SubTitle>
         <MainTitle>R$ 256,00</MainTitle>
+      <ContentScroll>
         <ContainerTicket>
           {
             userEvents.map((item, index) => (
