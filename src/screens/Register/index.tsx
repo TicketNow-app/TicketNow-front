@@ -24,6 +24,7 @@ import {
   TextTerms,
   TextTermsBold,
   TouchableAlreadyAccount,
+  GhostView,
 } from './styles';
 
 import { Button } from '../../components/Form/Button';
@@ -33,8 +34,12 @@ import { InputForm } from '../../components/Form/InputForm';
 import { TitleDesc } from '../../components/Form/TitleDesc';
 import { Header } from '../../components/Header';
 
-import { IRegister, IRegisterForm } from '../../interfaces/register';
-import { createUserRequired } from '../../services/user';
+import { Account } from '../../interfaces/account';
+import { IRegisterForm } from '../../interfaces/register';
+import { User } from '../../interfaces/user';
+
+import { createAccount } from '../../services/account';
+import { createUser } from '../../services/user';
 
 const schema = Yup.object().shape({
   date: Yup.date(),
@@ -65,18 +70,33 @@ export function Register() {
   });
 
   async function handleRegister(form: IRegisterForm) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     if (!date || !form.email || !form.password) return alert('Preencha todos os campos');
 
-    const data: IRegister = {
-      cd_email: form.email,
-      cd_password: form.password,
-      ic_status: 'A',
-      id_user: 3,
+    const userData: User = {
+      image: '',
+      name: '',
+      cpf: '',
+      telephone: '',
+      birth: date.toISOString().split('T')[0],
+      category: 'C',
+      created_at: new Date().toISOString(),
     };
 
-    createUserRequired(data);
+    const response = await createUser(userData);
 
-    navigation.navigate('RegisterSecondStep');
+    const accountData: Account = {
+      email: form.email,
+      password: form.password,
+      status: 'P',
+      id_user: response.id,
+    };
+
+    const responseAccount = await createAccount(accountData);
+    navigation.navigate('RegisterSecondStep', {
+      accountId: responseAccount.id,
+      userId: response.id,
+    });
   }
 
   function goToTermsOfUse() {
@@ -90,7 +110,7 @@ export function Register() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-        <Header logo />
+        <Header buttonLeft={<GhostView />} logo buttonRight={<GhostView />} />
         <Form>
           <TitleDesc
             title="Crie sua conta"
@@ -106,7 +126,7 @@ export function Register() {
               onPressIn={() => {
                 setDatePickerShow(true);
               }}
-              error={errors.date?.message.toString()}
+              error={errors.date?.message?.toString()}
               onChange={(event: any) => {
                 setDate(event.nativeEvent.text);
               }}
@@ -121,7 +141,7 @@ export function Register() {
               autoCorrect={false}
               keyboardType="email-address"
               autoCapitalize="none"
-              error={errors.email?.message.toString()}
+              error={errors.email?.message?.toString()}
             />
           </InputBox>
           <InputBox>
@@ -130,7 +150,7 @@ export function Register() {
               control={control}
               placeholder="Senha"
               secureTextEntry
-              error={errors.password?.message.toString()}
+              error={errors.password?.message?.toString()}
             />
           </InputBox>
           <ContainerTerms>

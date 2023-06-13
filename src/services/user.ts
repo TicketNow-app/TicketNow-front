@@ -1,6 +1,4 @@
 import backendRequest from '../helpers/api';
-
-import { IRegister } from '../interfaces/register';
 interface User {
   id: number;
   name: string;
@@ -12,11 +10,11 @@ interface validateUserCouponResponse {
   isValid: boolean;
 }
 
-export const createUserRequired = (register: IRegister): Promise<IRegister> => {
+export const createUser = (user: any) => {
   return backendRequest({
-    endpoint: '/login',
+    endpoint: '/user/create',
     method: 'post',
-    data: register,
+    data: user,
   });
 };
 
@@ -28,7 +26,6 @@ export const getUser = (id: string, token: string): Promise<User> => {
 };
 
 export const validateUserCoupon = (coupon: object): Promise<validateUserCouponResponse> => {
-  console.log(coupon);
   return backendRequest({
     endpoint: `/user/coupon/validate`,
     method: 'post',
@@ -36,7 +33,7 @@ export const validateUserCoupon = (coupon: object): Promise<validateUserCouponRe
   });
 };
 
-export const alterUser = user => {
+export const alterUser = (user: any) => {
   //TODO: TYPE
   return backendRequest({
     endpoint: `/user/alter`,

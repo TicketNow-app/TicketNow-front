@@ -20,6 +20,8 @@ import { CompanyTag, CompanyTagSkeleton } from '../../components/CompanyTag';
 import { FlatListDivisor } from '../../components/FlatListDivisor';
 import { Header } from '../../components/Header';
 
+import { useAuth } from '../../hooks/auth';
+
 import { readCategories } from '../../services/categories';
 import { readCompanies } from '../../services/companies';
 import { readEvents } from '../../services/events';
@@ -29,6 +31,8 @@ export function Home() {
   const [recommendedEvents, setRecommendedEvents] = useState([]);
   const [categories, setCategories] = useState([]);
   const [companies, setCompanies] = useState([]);
+
+  const { user } = useAuth();
 
   useEffect(() => {
     async function loadCategories() {
@@ -62,7 +66,7 @@ export function Home() {
           <ContainerCircle onPress={() => navigation.navigate('Profile')}>
             <ImageAvatar
               source={{
-                uri: 'https://images.unsplash.com/photo-1629818036993-ae9c53c8e059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+                uri: user.image,
               }}
             />
           </ContainerCircle>

@@ -59,7 +59,6 @@ export function Ticket() {
     loadTicket();
   }, []);
 
-  console.log('order', order);
   if (!order) {
     return null; //TODO: Add skeleton
   }
