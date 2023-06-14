@@ -6,10 +6,9 @@ import { Event } from '../screens/Event';
 import { FriendsList } from '../screens/FriendsList';
 import { FriendView } from '../screens/FriendView';
 import { Settings } from '../screens/Settings';
-import { TicketsSold } from '../screens/TicketsSold';
-import { AppRoutes } from './app.routes';
 import { TermsOfUse } from '../screens/TermsOfUse';
 import { Ticket } from '../screens/Ticket';
+import { TicketsSold } from '../screens/TicketsSold';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 

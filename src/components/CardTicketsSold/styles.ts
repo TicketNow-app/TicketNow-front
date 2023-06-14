@@ -1,9 +1,9 @@
-import { RFValue } from "react-native-responsive-fontsize";
-import styled from "styled-components/native";
 import { LinearGradient } from 'expo-linear-gradient';
+import { RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.6
+  activeOpacity: 0.6,
 })`
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.secondary};
@@ -17,7 +17,7 @@ export const ContainerImage = styled.View`
   height: 100%;
   align-items: center;
   justify-content: center;
-  `;
+`;
 
 export const Gradient = styled(LinearGradient)`
   position: absolute;
@@ -44,9 +44,10 @@ export const ContainerValue = styled.View`
 
 export const ContainerText = styled.View`
   position: absolute;
+  z-index: 1;
   bottom: 0;
   padding: 14px;
-  `;
+`;
 
 export const Date = styled.Text`
   color: ${({ theme }) => theme.colors.text};
@@ -56,7 +57,7 @@ export const Date = styled.Text`
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text};
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(14)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
 

@@ -55,8 +55,10 @@ export function Profile() {
 
   useEffect(() => {
     async function loadSales() {
-      const response = await readSales(user.id);
-      setSales(response);
+      if (user.id) {
+        const response = await readSales(user.id);
+        setSales(response);
+      }
     }
 
     loadSales();
@@ -71,12 +73,13 @@ export function Profile() {
   }
 
   function goToTicketsSold() {
-    navigation.navigate('TicketsSold')
+    navigation.navigate('TicketsSold');
   }
 
   const copyToClipboard = async () => {
-    await Clipboard.setStringAsync(user.coupon);
-    console.log('Copied to Clipboard!');
+    if (user.coupon) {
+      await Clipboard.setStringAsync(user.coupon);
+    }
   };
 
   return (
