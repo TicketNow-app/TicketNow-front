@@ -5,6 +5,7 @@ import { AboutPromoters } from '../screens/AboutPromoters';
 import { Event } from '../screens/Event';
 import { FriendsList } from '../screens/FriendsList';
 import { FriendView } from '../screens/FriendView';
+import { SelectTicket } from '../screens/SelectTicket';
 import { Settings } from '../screens/Settings';
 import { TermsOfUse } from '../screens/TermsOfUse';
 import { Ticket } from '../screens/Ticket';
@@ -23,6 +24,7 @@ export function StackRoutes() {
       <Screen name="TicketsSold" component={TicketsSold} />
       <Screen name="FriendView" component={FriendView} />
       <Screen name="TermsOfUse" component={TermsOfUse} />
+      <Screen name="SelectTicket" component={SelectTicket} />
       <Screen name="AboutPromoters" component={AboutPromoters} />
     </Navigator>
   );
