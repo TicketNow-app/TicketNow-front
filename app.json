@@ -26,6 +26,9 @@
         "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show nearby events."
       },
       "bundleIdentifier": "com.ticketnow"
-    }
+    },
+    "plugins": [
+      "expo-image-picker"
+    ]
   }
 }

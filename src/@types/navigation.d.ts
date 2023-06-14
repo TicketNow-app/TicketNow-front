@@ -12,6 +12,8 @@ export declare global {
       Event: { id: number };
       FriendsList: undefined;
       Settings: undefined;
+      EditProfile: undefined;
+      EditPassword: undefined;
       TicketsSold: undefined;
       FriendView: { id: number };
       AboutPromoters: undefined;

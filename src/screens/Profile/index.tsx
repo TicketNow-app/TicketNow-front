@@ -72,6 +72,15 @@ export function Profile() {
     navigation.navigate('Settings');
   }
 
+  function goToEditProfile() {
+    navigation.navigate('EditProfile')
+  }
+
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync(promoter);
+    console.log('Copied to Clipboard!');
+  }
+    
   function goToTicketsSold() {
     navigation.navigate('TicketsSold');
   }
@@ -133,6 +142,14 @@ export function Profile() {
               <FireIcon size={20} color={theme.colors.text} />
               <TextButton promoter={user.category}>Tornar-se promoter</TextButton>
             </ButtonPromoter>
+        }
+      </ContainerTopInfos>
+      <ContainerConfigButtons>
+        <ConfigButtons roundedBorder='all' icon={<PencilIcon size={24} color={useTheme().colors.text} />} title="Editar" description="Editar informações pessoais" onPress={goToEditProfile} />
+        <ConfigButtons roundedBorder='all' icon={<TicketIcon size={24} color={useTheme().colors.text} />} title="Ingressos" description="Visualizar todos seus ingressos" />
+        <ConfigButtons roundedBorder='all' icon={<CreditCardIcon size={24} color={useTheme().colors.text} />} title="Pagamentos" description="Visualizar configurações pegamentos" />
+      </ContainerConfigButtons>
+    </Container>
           )}
         </ContainerTopInfos>
         <ContainerConfigButtons>

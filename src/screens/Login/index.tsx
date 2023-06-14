@@ -55,6 +55,14 @@ export function Login({ navigation }: any) {
   const { signInWithApple, signInWithApp } = useAuth();
   const theme = useTheme();
 
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
+
   // async function handleSignInWithGoogle() {
   //   try {
   //     // await signIn();

@@ -6,6 +6,8 @@ import { Event } from '../screens/Event';
 import { FriendsList } from '../screens/FriendsList';
 import { FriendView } from '../screens/FriendView';
 import { Settings } from '../screens/Settings';
+import {EditProfile} from '../screens/EditProfile';
+import { EditPassword } from '../screens/EditPassword';
 import { TermsOfUse } from '../screens/TermsOfUse';
 import { Ticket } from '../screens/Ticket';
 import { TicketsSold } from '../screens/TicketsSold';
@@ -20,6 +22,8 @@ export function StackRoutes() {
       <Screen name="Event" component={Event} />
       <Screen name="FriendsList" component={FriendsList} />
       <Screen name="Settings" component={Settings} />
+      <Screen name="EditProfile" component={EditProfile} />
+      <Screen name="EditPassword" component={EditPassword} />
       <Screen name="TicketsSold" component={TicketsSold} />
       <Screen name="FriendView" component={FriendView} />
       <Screen name="TermsOfUse" component={TermsOfUse} />
