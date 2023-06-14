@@ -1,42 +1,52 @@
-import React from "react";
-import { Container, ContainerFriends, ContainerText, Content, Date, Description, FriendImage, Gradient, Image, Title } from './styles';
+import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
-interface FriendsProps {
+import {
+  Container,
+  ContainerFriends,
+  ContainerText,
+  Content,
+  Date,
+  Description,
+  FriendImage,
+  Gradient,
+  Image,
+  Title,
+} from './styles';
+
+interface CardLargeEventProps extends TouchableOpacityProps {
   image: string;
-  name: string;
+  friends?: string[];
+  title: string;
+  address: string;
+  date: string;
 }
 
-interface CardLargeEventProps {
-  eventsRecent: {
-    image: string;
-    title: string;
-    location: string;
-    date: string;
-    friendsConfirmed: FriendsProps[];
-  },
-  verticalSpace?: boolean;
-}
-
-export function CardLargeEvent({ eventsRecent, verticalSpace }: CardLargeEventProps) {
+export function CardLargeEvent({
+  image,
+  friends,
+  title,
+  address,
+  date,
+  ...rest
+}: CardLargeEventProps) {
   return (
-    <Container activeOpacity={0.6} Margin={verticalSpace}>
+    <Container activeOpacity={0.6} {...rest}>
       <Content>
-        <Image source={{ uri: eventsRecent.image }} />
-        <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
-          locations={[0.4, 1]}
-        />
+        <Image source={{ uri: image }} />
+        <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']} locations={[0.4, 1]} />
         <ContainerFriends activeOpacity={0.6}>
-          {
+          {/* {
             //render only 3 friends
-            eventsRecent.friendsConfirmed.slice(0, 3).map((friend, index) => (
-              <FriendImage key={index} source={{ uri: friend.image }} />
+            eventData?.friendship?.map((friend) => (
+              <FriendImage key={friend.friendInfo.id_user} source={{ uri: friend.friendInfo.im_user }} />
             ))
-          }
+          } */}
         </ContainerFriends>
         <ContainerText>
-          <Date>{eventsRecent.date}</Date>
-          <Title>{eventsRecent.title}</Title>
-          <Description>{eventsRecent.location}</Description>
+          <Date>{date.split('-').reverse().join('/')}</Date>
+          <Title>{title}</Title>
+          <Description>{address}</Description>
         </ContainerText>
       </Content>
     </Container>

@@ -1,15 +1,15 @@
-import backendRequest from '../api';
+import backendRequest from '../helpers/api';
 
-export const readRecommendedEvents = (): Promise<any> => {
+export const readEvents = (): Promise<any> => {
   return backendRequest({
-    endpoint: '/events/recommended',
+    endpoint: '/events',
     method: 'get',
   });
-}
+};
 
 export const readEvent = (id: number): Promise<any> => {
   return backendRequest({
     endpoint: `/events/${id}`,
     method: 'get',
   });
-}
+};

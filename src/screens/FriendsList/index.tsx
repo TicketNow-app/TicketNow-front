@@ -1,137 +1,110 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { ArrowLeftIcon } from "react-native-heroicons/outline";
-import { useTheme } from "styled-components";
+import React, { useState, useEffect } from 'react';
+import { XCircleIcon } from 'react-native-heroicons/solid';
+import { useTheme } from 'styled-components';
 
-import { Container, ContainerNoSolicitations, GhostView, Header, MainTitle, NoSolicitationsSubtitle, NoSolicitationsTitle, ScrollContainer, Section, SectionTitle } from './styles';
+import {
+  Container,
+  ContainerNoSolicitations,
+  GhostView,
+  NoSolicitationsSubtitle,
+  NoSolicitationsTitle,
+  ScrollContainer,
+  Section,
+  SectionTitle,
+} from './styles';
 
+import { BottomModal } from '../../components/BottomModal';
 import { FriendTag } from '../../components/FriendTag';
-import { HeaderButton } from '../../components/HeaderButton';
-
-const solicitationsData = [
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: true
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: true
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: true
-  },
-];
-
-const friendsData = [
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600574691453-499962cc0611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    name: "Nome do amigo",
-    commonFriends: 6,
-    close: false
-  },
-];
+import { Header } from '../../components/Header';
+import { useAuth } from '../../hooks/auth';
+import {
+  readFriends,
+  readPendingFriendSolicitations,
+  excludeFriend,
+} from '../../services/friendship';
 
 export function FriendsList() {
-  const [solicitations, setSolicitations] = useState(solicitationsData);
-  const [friends, setFriends] = useState(friendsData);
+  const [friends, setFriends] = useState([]);
+  const [pendingSolicitations, setPendingSolicitations] = useState([]);
+  const [excludeFriendId, setExcludeFriendId] = useState(null);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const theme = useTheme();
+  const { user } = useAuth();
 
-  function removeSolicitation(index: number) {
-    setSolicitations(solicitations.filter((_, i) => i !== index));
+  useEffect(() => {
+    async function pendingFriendSolicitations() {
+      const pendingFriendSolicitations = await readPendingFriendSolicitations(user.id);
+      setPendingSolicitations(pendingFriendSolicitations);
+    }
+
+    async function loadFriends() {
+      const friends = await readFriends(user.id);
+      setFriends(friends);
+    }
+
+    Promise.all([pendingFriendSolicitations(), loadFriends()]);
+  }, []);
+
+  function removeSolicitation() {
+    excludeFriend(excludeFriendId);
+    setModalVisible(false);
+    setExcludeFriendId(null);
   }
 
-  function addFriend(index: number) {
-    setFriends([...friends, solicitations[index]]);
-    removeSolicitation(index);
+  function excludeFriendConfirmation(id: number) {
+    setExcludeFriendId(id);
+    setModalVisible(true);
   }
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const navigation = useNavigation();
 
-  function GoBack() {
-    navigation.goBack();
+  function handleGoToFriend(id: number) {
+    navigation.navigate('FriendView', { id });
   }
 
   return (
     <Container>
       <ScrollContainer>
-        <Header>
-          <HeaderButton onPress={GoBack}>
-            <ArrowLeftIcon size={20} color={useTheme().colors.text} />
-          </HeaderButton>
-          <MainTitle>Amigos</MainTitle>
-          <GhostView />
-        </Header>
+        <Header buttonBack title="Amigos" buttonRight={<GhostView />} />
         <Section>
           <SectionTitle>Solicitações</SectionTitle>
-          {
-            solicitations && solicitations.length > 0 ? (
-              solicitations.map((solicitation, index) => (
-                <FriendTag
-                  key={index}
-                  image={solicitation.image}
-                  name={solicitation.name}
-                  commonFriends={solicitation.commonFriends}
-                  close={solicitation.close}
-                  removeFriend={() => removeSolicitation(index)}
-                  addFriend={() => addFriend(index)}
-                />
-              ))
-            ) : (
-              <ContainerNoSolicitations>
-                <NoSolicitationsTitle>Não há solicitações</NoSolicitationsTitle>
-                <NoSolicitationsSubtitle>Sabemos que você é popular, mas não há nenhum pedido de amizade enviado recentemente</NoSolicitationsSubtitle>
-              </ContainerNoSolicitations>
-            )
-          }
+          {pendingSolicitations && pendingSolicitations.length > 0 ? (
+            pendingSolicitations.map(solicitation => (
+              <FriendTag
+                key={solicitation.id}
+                image={solicitation.guest?.image ? solicitation.guest.image : null}
+                name={solicitation.guest?.name ? solicitation.guest.name : null}
+                commonFriends={2}
+                close
+                removeFriend={() => excludeFriendConfirmation(solicitation.id)}
+                onPress={() => handleGoToFriend(solicitation.guest.id)}
+                // addFriend={() => addFriend(index)}
+              />
+            ))
+          ) : (
+            <ContainerNoSolicitations>
+              <NoSolicitationsTitle>Não há solicitações</NoSolicitationsTitle>
+              <NoSolicitationsSubtitle>
+                Sabemos que você é popular, mas não há nenhum pedido de amizade enviado recentemente
+              </NoSolicitationsSubtitle>
+            </ContainerNoSolicitations>
+          )}
         </Section>
+        <BottomModal
+          icon={<XCircleIcon size={70} color={theme.colors.text_inactive} />}
+          text="Voce tem certeza que deseja excluir esta solicitação de amizade?"
+          leftButtonText="Cancelar"
+          rightButtonText="Excluir"
+          handleFunction={() => removeSolicitation()}
+          setModalVisible={() => setModalVisible(false)}
+          isModalVisible={isModalVisible}
+          toggleModal={toggleModal}
+        />
         <Section>
           <SectionTitle>Meus amigos</SectionTitle>
           {friends.map((friend, index) => (
@@ -141,6 +114,7 @@ export function FriendsList() {
               name={friend.name}
               commonFriends={friend.commonFriends}
               close={friend.close}
+              onPress={() => handleGoToFriend(friend.id)}
             />
           ))}
         </Section>
@@ -148,6 +122,3 @@ export function FriendsList() {
     </Container>
   );
 }
-
-
-

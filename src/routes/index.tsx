@@ -10,9 +10,5 @@ export function Routes() {
 
   // console.log(user);
 
-  return (
-    <NavigationContainer>
-      {user.id ? <StackRoutes /> : <AuthRoutes />}
-    </NavigationContainer>
-  );
+  return <NavigationContainer>{user.id ? <StackRoutes /> : <AuthRoutes />}</NavigationContainer>;
 }

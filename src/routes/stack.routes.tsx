@@ -1,12 +1,16 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { AppRoutes } from './app.routes';
+import { AboutPromoters } from '../screens/AboutPromoters';
 import { Event } from '../screens/Event';
-import { Ticket } from '../screens/Ticket';
 import { FriendsList } from '../screens/FriendsList';
+import { FriendView } from '../screens/FriendView';
 import { Settings } from '../screens/Settings';
 import {EditProfile} from '../screens/EditProfile';
 import { EditPassword } from '../screens/EditPassword';
-import { AppRoutes } from './app.routes';
+import { TermsOfUse } from '../screens/TermsOfUse';
+import { Ticket } from '../screens/Ticket';
+import { TicketsSold } from '../screens/TicketsSold';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
@@ -20,6 +24,10 @@ export function StackRoutes() {
       <Screen name="Settings" component={Settings} />
       <Screen name="EditProfile" component={EditProfile} />
       <Screen name="EditPassword" component={EditPassword} />
+      <Screen name="TicketsSold" component={TicketsSold} />
+      <Screen name="FriendView" component={FriendView} />
+      <Screen name="TermsOfUse" component={TermsOfUse} />
+      <Screen name="AboutPromoters" component={AboutPromoters} />
     </Navigator>
   );
 }
