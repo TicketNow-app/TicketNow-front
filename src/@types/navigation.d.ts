@@ -14,6 +14,8 @@ export declare global {
       Settings: undefined;
       TicketsSold: undefined;
       FriendView: { id: number };
+      EditProfile: undefined;
+      EditPassword: undefined;
       AboutPromoters: undefined;
       TermsOfUse: undefined;
     }
