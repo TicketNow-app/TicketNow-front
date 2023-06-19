@@ -59,10 +59,6 @@ export function FriendsList() {
     Promise.all([pendingFriendSolicitations(), loadFriends()]);
   }, []);
 
-  // useEffect(() => {
-  //   filterUsers({ search: '' }); // Chama a função filterUsers inicialmente com uma string vazia
-  // }, [users]);
-
   function removeSolicitation() {
     excludeFriend(excludeFriendId);
     setModalVisible(false);
