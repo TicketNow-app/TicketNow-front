@@ -18,6 +18,7 @@ export declare global {
       EditPassword: undefined;
       AboutPromoters: undefined;
       TermsOfUse: undefined;
+      FilteredEvents: { categoryId: number };
     }
   }
 }

@@ -5,6 +5,7 @@ import { AboutPromoters } from '../screens/AboutPromoters';
 import { EditPassword } from '../screens/EditPassword';
 import { EditProfile } from '../screens/EditProfile';
 import { Event } from '../screens/Event';
+import { FilteredEvents } from '../screens/FilteredEvents';
 import { FriendsList } from '../screens/FriendsList';
 import { FriendView } from '../screens/FriendView';
 import { Settings } from '../screens/Settings';
@@ -28,6 +29,7 @@ export function StackRoutes() {
       <Screen name="FriendView" component={FriendView} />
       <Screen name="TermsOfUse" component={TermsOfUse} />
       <Screen name="AboutPromoters" component={AboutPromoters} />
+      <Screen name="FilteredEvents" component={FilteredEvents} />
     </Navigator>
   );
 }

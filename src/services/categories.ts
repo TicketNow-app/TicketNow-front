@@ -6,3 +6,10 @@ export const readCategories = (): Promise<any> => {
     method: 'get',
   });
 };
+
+export const readAllEventsByCategory = (categoryId: string): Promise<any> => {
+  return backendRequest({
+    endpoint: `/category-event/${categoryId}`,
+    method: 'get',
+  });
+};
