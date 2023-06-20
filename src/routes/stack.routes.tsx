@@ -8,6 +8,7 @@ import { Event } from '../screens/Event';
 import { FilteredEvents } from '../screens/FilteredEvents';
 import { FriendsList } from '../screens/FriendsList';
 import { FriendView } from '../screens/FriendView';
+import { SelectTicket } from '../screens/SelectTicket';
 import { Settings } from '../screens/Settings';
 import { TermsOfUse } from '../screens/TermsOfUse';
 import { Ticket } from '../screens/Ticket';
@@ -28,6 +29,7 @@ export function StackRoutes() {
       <Screen name="EditPassword" component={EditPassword} />
       <Screen name="FriendView" component={FriendView} />
       <Screen name="TermsOfUse" component={TermsOfUse} />
+      <Screen name="SelectTicket" component={SelectTicket} />
       <Screen name="AboutPromoters" component={AboutPromoters} />
       <Screen name="FilteredEvents" component={FilteredEvents} />
     </Navigator>

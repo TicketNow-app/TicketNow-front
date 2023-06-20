@@ -2,23 +2,24 @@ export declare global {
   //export global namespace
   namespace ReactNavigation {
     interface RootParamList {
+      AboutPromoters: undefined;
+      EditPassword: undefined;
+      EditProfile: undefined;
+      Event: { id: number };
+      FilteredEvents: { categoryId: number };
+      FriendsList: undefined;
+      FriendView: { id: number };
+      Home: undefined;
       Login: undefined;
+      Profile: undefined;
       Register: undefined;
       RegisterSecondStep: { accountId: number; userId: number };
-      Home: undefined;
-      Profile: undefined;
+      SelectTicket: { id: number };
+      Settings: undefined;
+      TermsOfUse: undefined;
       Ticket: { id: number };
       TicketList: undefined;
-      Event: { id: number };
-      FriendsList: undefined;
-      Settings: undefined;
       TicketsSold: undefined;
-      FriendView: { id: number };
-      EditProfile: undefined;
-      EditPassword: undefined;
-      AboutPromoters: undefined;
-      TermsOfUse: undefined;
-      FilteredEvents: { categoryId: number };
     }
   }
 }

@@ -1,5 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } from 'react-native-heroicons/solid';
@@ -62,6 +62,7 @@ export function Event() {
   const route = useRoute<EventRouteProp>();
   const theme = useTheme();
   const { id } = route.params;
+  const navigation = useNavigation();
 
   const [readMore, setReadMore] = useState(false);
   const [responseEvent, setResponseEvent]: any = useState(); //TODO: define response type
@@ -78,6 +79,10 @@ export function Event() {
 
     loadEvent();
   }, []);
+
+  function handleGoToSelectTicket() {
+    navigation.navigate('SelectTicket', { id: responseEvent.id });
+  }
 
   return responseEvent ? (
     <Container>
@@ -187,7 +192,7 @@ export function Event() {
         </ContainerScroll>
       </BottomSheet>
       <ContainerBuy>
-        <BuyButton>
+        <BuyButton onPress={handleGoToSelectTicket}>
           <TextButton>Comprar ingresso</TextButton>
         </BuyButton>
       </ContainerBuy>
