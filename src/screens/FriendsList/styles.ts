@@ -1,4 +1,3 @@
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -9,6 +8,15 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
+export const ContainerSearch = styled.KeyboardAvoidingView.attrs({
+  behavior: 'height',
+  enabled: true,
+})`
+  width: 100%;
+  padding: 0px ${RFValue(16)}px;
+  margin: ${RFValue(10)}px 0px;
+`;
+
 export const ScrollContainer = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
@@ -16,6 +24,12 @@ export const ScrollContainer = styled.ScrollView.attrs({
   },
 })`
   width: 100%;
+`;
+
+export const ContainerUsers = styled.ScrollView`
+  flex: 1;
+  width: 100%;
+  padding: ${RFValue(16)}px 0px;
 `;
 
 export const GhostView = styled.View`

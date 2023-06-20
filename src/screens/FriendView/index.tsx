@@ -49,7 +49,6 @@ export function FriendView() {
     async function loadFriendshipStatus() {
       const response = await readFriendshipStatus(user.id, id);
       setFriendshipStatus(response);
-      console.log(typeof response);
     }
 
     Promise.all([loadFriend(), loadFriendshipStatus()]);

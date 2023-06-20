@@ -10,3 +10,8 @@ export interface User {
   created_at?: string;
   deleted_at?: string;
 }
+
+export interface UserWithAccount extends User {
+  email?: string;
+  password?: string;
+}

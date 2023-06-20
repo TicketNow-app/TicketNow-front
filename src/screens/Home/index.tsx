@@ -57,6 +57,10 @@ export function Home() {
     navigation.navigate('Event', { id: eventId });
   }
 
+  function goToFilteredEvents(categoryId: number) {
+    navigation.navigate('FilteredEvents', { categoryId });
+  }
+
   return (
     <Container>
       <Header
@@ -80,7 +84,13 @@ export function Home() {
             showsHorizontalScrollIndicator={false}
             data={categories}
             ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-            renderItem={({ item }) => <CardLarge category={item} />}
+            renderItem={({ item }) => (
+              <CardLarge
+                name={item.name}
+                image={item.image}
+                onPress={() => goToFilteredEvents(item.id)}
+              />
+            )}
           />
         ) : (
           <HorizontalScroll
@@ -118,13 +128,21 @@ export function Home() {
 
       <ContainerScroll>
         <TitleContainer>Eventos recentes</TitleContainer>
-        {/* <HorizontalScroll
+        <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={eventsRecent}
+          data={recommendedEvents}
           ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-          renderItem={({ item }) => <CardLargeEvent eventData={item} onPress={() => handleNavigateToEvent(item.id)} />}
-        /> */}
+          renderItem={({ item }) => (
+            <CardLargeEvent
+              image={item.images[0].url}
+              title={item.name}
+              date={item.dateStart.split('-').reverse().join('/')}
+              address={item.id_place.address}
+              onPress={() => handleNavigateToEvent(item.id)}
+            />
+          )}
+        />
       </ContainerScroll>
 
       <ContainerScroll>

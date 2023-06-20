@@ -21,7 +21,7 @@ export const excludeFriend = (id: number): Promise<any> => {
   });
 };
 
-export const readFriendshipStatus = (userId, friendId): Promise<any> => {
+export const readFriendshipStatus = (userId: number, friendId: number): Promise<any> => {
   return backendRequest({
     endpoint: `/friends/status`,
     method: 'post',

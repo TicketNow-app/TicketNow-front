@@ -50,7 +50,7 @@ const schema = Yup.object().shape({
     .max(50, 'Máximo 50 caracteres'),
 });
 
-export function Login({ navigation }: any) {
+export function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const { signInWithApple, signInWithApp } = useAuth();
   const theme = useTheme();
@@ -123,7 +123,7 @@ export function Login({ navigation }: any) {
               autoCorrect={false}
               keyboardType="email-address"
               autoCapitalize="none"
-              error={errors.email && errors.email.message.toString()}
+              error={errors.email?.message?.toString()}
             />
           </InputBox>
           <InputBox>
@@ -135,7 +135,7 @@ export function Login({ navigation }: any) {
               keyboardType="default"
               autoCapitalize="none"
               secureTextEntry
-              error={errors.password && errors.password.message.toString()}
+              error={errors.password?.message?.toString()}
             />
           </InputBox>
           <ContainerForgotPassword>

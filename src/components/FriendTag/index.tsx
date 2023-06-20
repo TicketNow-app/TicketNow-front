@@ -19,7 +19,7 @@ import {
 interface FriendTagProps extends TouchableOpacityProps {
   image: string;
   name: string;
-  commonFriends: number;
+  commonFriends?: number;
   close?: boolean;
   addFriend?: () => void;
   removeFriend?: () => void;
@@ -41,7 +41,9 @@ export function FriendTag({
         <FriendImage source={{ uri: image }} />
         <ContainerFriendText>
           <FriendName>{name}</FriendName>
-          <FriendsCommon>{commonFriends} amigos em comum</FriendsCommon>
+          {commonFriends && commonFriends > 0 ? (
+            <FriendsCommon>{commonFriends} amigos em comum`</FriendsCommon>
+          ) : null}
         </ContainerFriendText>
       </ContainerFriendInfo>
       {close && close === true ? (

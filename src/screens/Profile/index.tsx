@@ -76,6 +76,10 @@ export function Profile() {
     navigation.navigate('TicketsSold');
   }
 
+  function goToEditProfile() {
+    navigation.navigate('EditProfile');
+  }
+
   const copyToClipboard = async () => {
     if (user.coupon) {
       await Clipboard.setStringAsync(user.coupon);
@@ -141,6 +145,7 @@ export function Profile() {
             icon={<PencilIcon size={24} color={theme.colors.text} />}
             title="Editar"
             description="Editar informações pessoais"
+            onPress={goToEditProfile}
           />
           <ConfigButtons
             roundedBorder="all"

@@ -2,7 +2,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppRoutes } from './app.routes';
 import { AboutPromoters } from '../screens/AboutPromoters';
+import { EditPassword } from '../screens/EditPassword';
+import { EditProfile } from '../screens/EditProfile';
 import { Event } from '../screens/Event';
+import { FilteredEvents } from '../screens/FilteredEvents';
 import { FriendsList } from '../screens/FriendsList';
 import { FriendView } from '../screens/FriendView';
 import { SelectTicket } from '../screens/SelectTicket';
@@ -22,10 +25,13 @@ export function StackRoutes() {
       <Screen name="FriendsList" component={FriendsList} />
       <Screen name="Settings" component={Settings} />
       <Screen name="TicketsSold" component={TicketsSold} />
+      <Screen name="EditProfile" component={EditProfile} />
+      <Screen name="EditPassword" component={EditPassword} />
       <Screen name="FriendView" component={FriendView} />
       <Screen name="TermsOfUse" component={TermsOfUse} />
       <Screen name="SelectTicket" component={SelectTicket} />
       <Screen name="AboutPromoters" component={AboutPromoters} />
+      <Screen name="FilteredEvents" component={FilteredEvents} />
     </Navigator>
   );
 }

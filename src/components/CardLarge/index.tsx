@@ -1,25 +1,22 @@
 import SkeletonLoader from 'expo-skeleton-loader';
-import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 import { useTheme } from 'styled-components';
 
 import { Container, ContainerText, Content, Description, Gradient, Image, Title } from './styles';
 
-interface CardLargeProps {
-  category: {
-    id: number;
-    name: string;
-    image: string;
-  };
+interface CardLargeProps extends TouchableOpacityProps {
+  name: string;
+  image: string;
 }
 
-export function CardLarge({ category }: CardLargeProps) {
+export function CardLarge({ name, image, ...rest }: CardLargeProps) {
   return (
-    <Container activeOpacity={0.6}>
+    <Container activeOpacity={0.6} {...rest}>
       <Content>
-        <Image source={{ uri: category.image }} />
+        <Image source={{ uri: image }} />
         <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']} locations={[0.4, 1]} />
         <ContainerText>
-          <Title>{category.name}</Title>
+          <Title>{name}</Title>
           <Description>10 eventos próximos</Description>
         </ContainerText>
       </Content>

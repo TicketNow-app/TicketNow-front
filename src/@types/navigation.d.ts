@@ -3,7 +3,10 @@ export declare global {
   namespace ReactNavigation {
     interface RootParamList {
       AboutPromoters: undefined;
+      EditPassword: undefined;
+      EditProfile: undefined;
       Event: { id: number };
+      FilteredEvents: { categoryId: number };
       FriendsList: undefined;
       FriendView: { id: number };
       Home: undefined;
