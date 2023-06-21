@@ -76,33 +76,57 @@ export function Home() {
           </ContainerCircle>
         }
       />
-      <ContainerScroll>
-        <TitleContainer>Categorias</TitleContainer>
-        {categories.length > 0 ? (
-          <HorizontalScroll
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={categories}
-            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-            renderItem={({ item }) => (
-              <CardLarge
-                name={item.name}
-                image={item.image}
-                onPress={() => goToFilteredEvents(item.id)}
+      {user.category === 'P' ? (
+        <>
+          <ContainerScroll>
+            <TitleContainer>Para promover</TitleContainer>
+            {recommendedEvents.length > 0 ? (
+              <HorizontalScroll
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={recommendedEvents}
+                ItemSeparatorComponent={() => (
+                  <FlatListDivisor orientation="horizontal" size={20} />
+                )}
+                renderItem={({ item }) => (
+                  <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />
+                )}
+              />
+            ) : (
+              <HorizontalScroll
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={Array.from(Array(5).keys())}
+                ItemSeparatorComponent={() => (
+                  <FlatListDivisor orientation="horizontal" size={20} />
+                )}
+                renderItem={() => <CardLargeSkeleton />}
               />
             )}
-          />
-        ) : (
-          <HorizontalScroll
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={Array.from(Array(5).keys())}
-            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-            renderItem={() => <CardLargeSkeleton />}
-          />
-        )}
-      </ContainerScroll>
-
+          </ContainerScroll>
+        </>
+      ) : (
+        <ContainerScroll>
+          <TitleContainer>Categorias</TitleContainer>
+          {categories.length > 0 ? (
+            <HorizontalScroll
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={categories}
+              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+              renderItem={({ item }) => <CardLarge category={item} />}
+            />
+          ) : (
+            <HorizontalScroll
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={Array.from(Array(5).keys())}
+              ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+              renderItem={() => <CardLargeSkeleton />}
+            />
+          )}
+        </ContainerScroll>
+      )}
       <ContainerScroll>
         <TitleContainer>Recomendados</TitleContainer>
         {recommendedEvents.length > 0 ? (
