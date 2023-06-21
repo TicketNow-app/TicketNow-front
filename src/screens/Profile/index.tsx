@@ -55,8 +55,10 @@ export function Profile() {
 
   useEffect(() => {
     async function loadSales() {
-      const response = await readSales(user.id);
-      setSales(response);
+      if (user.id) {
+        const response = await readSales(user.id);
+        setSales(response);
+      }
     }
 
     loadSales();
@@ -70,9 +72,18 @@ export function Profile() {
     navigation.navigate('Settings');
   }
 
+  function goToTicketsSold() {
+    navigation.navigate('TicketsSold');
+  }
+
+  function goToEditProfile() {
+    navigation.navigate('EditProfile');
+  }
+
   const copyToClipboard = async () => {
-    await Clipboard.setStringAsync(user.coupon);
-    console.log('Copied to Clipboard!');
+    if (user.coupon) {
+      await Clipboard.setStringAsync(user.coupon);
+    }
   };
 
   return (
@@ -109,7 +120,7 @@ export function Profile() {
                   <Square2StackIcon size={20} color={theme.colors.text_inactive} />
                 </ContainerCopyIcon>
               </CopyButtonPromoter>
-              <ContainerPromoterMetrics>
+              <ContainerPromoterMetrics onPress={goToTicketsSold}>
                 <TicketMiniSvg />
                 <ContainerMetricsInfos>
                   <TitleMetrics>Ingressos vendidos</TitleMetrics>
@@ -134,6 +145,7 @@ export function Profile() {
             icon={<PencilIcon size={24} color={theme.colors.text} />}
             title="Editar"
             description="Editar informações pessoais"
+            onPress={goToEditProfile}
           />
           <ConfigButtons
             roundedBorder="all"

@@ -63,14 +63,15 @@ export const DragComponent = styled.View`
 
 export const ContainerOutCard = styled.View`
   position: absolute;
-  width: ${RFValue(100)}%;
+  z-index: 2;
+  top: -${RFValue(84)}px;
+  width: 100%;
   height: ${RFValue(34)}px;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
   box-sizing: border-box;
   padding: 0 ${RFValue(16)}px;
-  top: -${RFValue(100)}px;
 `;
 
 export const ContainerProducer = styled.TouchableOpacity`
@@ -129,7 +130,6 @@ export const TitleEvent = styled.Text`
 export const ContainerIcons = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  width: ${RFValue(60)}px;
 `;
 
 export const IconTouchBox = styled.TouchableOpacity``;

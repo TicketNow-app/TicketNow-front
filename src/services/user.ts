@@ -1,10 +1,5 @@
 import backendRequest from '../helpers/api';
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  photo?: string;
-}
+import { User } from '../interfaces/user';
 
 interface validateUserCouponResponse {
   isValid: boolean;
@@ -25,6 +20,16 @@ export const getUser = (id: string, token: string): Promise<User> => {
   });
 };
 
+export const alterUser = (user: User): Promise<User> => {
+  console.log('sending to back: ', user);
+  return backendRequest({
+    endpoint: `/user/alter`,
+    method: 'put',
+    data: user,
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+};
+
 export const validateUserCoupon = (coupon: object): Promise<validateUserCouponResponse> => {
   return backendRequest({
     endpoint: `/user/coupon/validate`,
@@ -33,11 +38,9 @@ export const validateUserCoupon = (coupon: object): Promise<validateUserCouponRe
   });
 };
 
-export const alterUser = (user: any) => {
-  //TODO: TYPE
+export const getAllUsers = (): Promise<User[]> => {
   return backendRequest({
-    endpoint: `/user/alter`,
-    method: 'post',
-    data: user,
+    endpoint: `/user/`,
+    method: 'get',
   });
 };

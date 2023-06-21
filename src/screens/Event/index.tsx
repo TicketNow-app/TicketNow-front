@@ -1,5 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { BookmarkIcon, CalendarDaysIcon, ClockIcon, ShareIcon } from 'react-native-heroicons/solid';
@@ -36,13 +36,25 @@ import {
   LineUpArtist,
   NameArtist,
   ImageArtist,
+  ContainerOutCard,
+  ContainerProducer,
+  ImageProducer,
+  NameProducer,
+  ContainerFriends,
 } from './styles';
 
+import { AvatarsFriendsConfirmed } from '../../components/AvatarsFriendsConfirmed';
 import { Header } from '../../components/Header';
 
 import { readEvent } from '../../services/events';
 
 import mapStyle from '../../utils/mapStyle.json';
+
+const eventData = [
+  'https://images.unsplash.com/photo-1598539962077-e4185f37104f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80',
+  'https://images.unsplash.com/photo-1485463598028-44d6c47bf23f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=749&q=80',
+  'https://images.unsplash.com/photo-1631902112544-2271267abb73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+];
 
 type EventRouteProp = RouteProp<{ Event: { id: number } }, 'Event'>;
 
@@ -50,6 +62,7 @@ export function Event() {
   const route = useRoute<EventRouteProp>();
   const theme = useTheme();
   const { id } = route.params;
+  const navigation = useNavigation();
 
   const [readMore, setReadMore] = useState(false);
   const [responseEvent, setResponseEvent]: any = useState(); //TODO: define response type
@@ -67,6 +80,10 @@ export function Event() {
     loadEvent();
   }, []);
 
+  function handleGoToSelectTicket() {
+    navigation.navigate('SelectTicket', { id: responseEvent.id });
+  }
+
   return responseEvent ? (
     <Container>
       <Header buttonBack />
@@ -83,16 +100,21 @@ export function Event() {
         backgroundStyle={{ backgroundColor: theme.colors.background }}
         handleStyle={{ height: 40 }}
         handleIndicatorStyle={{ backgroundColor: theme.colors.text_inactive }}
+        detached
       >
-        {/* <ContainerOutCard>
+        <ContainerOutCard>
           <ContainerProducer activeOpacity={0.6}>
-            <ImageProducer source={{ uri: 'https://images.unsplash.com/flagged/photo-1563205764-79ea509b3e95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1261&q=80' }} />
+            <ImageProducer
+              source={{
+                uri: 'https://images.unsplash.com/flagged/photo-1563205764-79ea509b3e95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1261&q=80',
+              }}
+            />
             <NameProducer>Supra Events</NameProducer>
           </ContainerProducer>
           <ContainerFriends>
-            <AvatarsFriendsConfirmed images={event[1].friends} />
+            <AvatarsFriendsConfirmed images={eventData} avatarSize={34} />
           </ContainerFriends>
-        </ContainerOutCard> */}
+        </ContainerOutCard>
         <ContainerScroll>
           <ContainerTopInfos>
             <ContainerTitleIcons>
@@ -101,9 +123,9 @@ export function Event() {
                 <IconTouchBox>
                   <ShareIcon size={24} color={theme.colors.text} />
                 </IconTouchBox>
-                <IconTouchBox>
+                {/* <IconTouchBox>
                   <BookmarkIcon size={24} color={theme.colors.text} />
-                </IconTouchBox>
+                </IconTouchBox> */}
               </ContainerIcons>
             </ContainerTitleIcons>
             <ContainerDateTime>
@@ -160,8 +182,8 @@ export function Event() {
               {responseEvent?.participants_events?.map((participant: any) => {
                 return (
                   <LineUpArtist key={participant.id}>
-                    <ImageArtist source={{ uri: participant.id_participant.image }} />
-                    <NameArtist>{participant.id_participant.name}</NameArtist>
+                    <ImageArtist source={{ uri: participant.id_participant.name }} />
+                    <NameArtist>{participant.id_participant.image}</NameArtist>
                   </LineUpArtist>
                 );
               })}
@@ -170,7 +192,7 @@ export function Event() {
         </ContainerScroll>
       </BottomSheet>
       <ContainerBuy>
-        <BuyButton>
+        <BuyButton onPress={handleGoToSelectTicket}>
           <TextButton>Comprar ingresso</TextButton>
         </BuyButton>
       </ContainerBuy>

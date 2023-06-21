@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RegistrationProvider } from '../hooks/registerProcess';
 
 import { Login } from '../screens/Login';
 import { Register } from '../screens/Register';
@@ -18,20 +17,8 @@ export function AuthRoutes() {
         },
       }}
     >
-      <Screen name="Register">
-        {() => (
-          <RegistrationProvider>
-            <Register />
-          </RegistrationProvider>
-        )}
-      </Screen>
-      <Screen name="RegisterSecondStep">
-        {() => (
-          <RegistrationProvider>
-            <RegisterSecondStep />
-          </RegistrationProvider>
-        )}
-      </Screen>
+      <Screen name="Register" component={Register} />
+      <Screen name="RegisterSecondStep" component={RegisterSecondStep} />
       <Screen name="Login" component={Login} />
       <Screen name="TermsOfUse" component={TermsOfUse} />
     </Navigator>

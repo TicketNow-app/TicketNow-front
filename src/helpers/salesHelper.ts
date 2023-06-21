@@ -24,3 +24,11 @@ export const profit = (sales: Sales[]) => {
   });
   return profit;
 };
+
+export const profitByEvent = (orders: any[], percentage: number) => {
+  let profit = 0;
+  orders.forEach(order => {
+    profit += (parseFloat(order.price) * percentage) / 100;
+  });
+  return profit;
+};
