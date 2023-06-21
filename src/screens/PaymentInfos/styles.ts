@@ -5,19 +5,21 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
   padding: 0px ${RFValue(16)}px;
 `;
 
-export const ScrollContainer = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
-  contentContainerStyle: {
-    paddingBottom: 24,
-  },
+export const ScrollContainer = styled.KeyboardAvoidingView.attrs({
+  behavior: 'height',
+  enabled: true,
 })`
   width: 100%;
+`;
+
+export const GhostView = styled.View`
+  width: 40px;
+  height: 40px;
 `;
 
 export const Header = styled.View`
@@ -53,7 +55,9 @@ export const Section = styled.View`
   padding: 0px ${RFValue(6)}px 0px ${RFValue(6)}px;
 `;
 
-export const Form = styled.View`
+export const Form = styled.KeyboardAvoidingView.attrs({
+  behavior: 'padding',
+})`
   width: 100%;
   margin-top: ${RFValue(16)}px;
   justify-content: center;

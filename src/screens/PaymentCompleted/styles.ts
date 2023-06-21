@@ -7,16 +7,11 @@ export const Container = styled.View`
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0px ${RFValue(16)}px;
 `;
 
-export const ScrollContainer = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
-  contentContainerStyle: {
-    paddingBottom: 24,
-  },
-})`
+export const Content = styled.View`
   width: 100%;
+  padding: 0px 16px;
 `;
 
 export const Header = styled.View`

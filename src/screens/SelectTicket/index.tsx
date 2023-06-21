@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { CalendarIcon, ClockIcon } from 'react-native-heroicons/solid';
@@ -14,6 +14,7 @@ import {
   ContainerTitleValue,
   ContainerTotalValue,
   ContainerValues,
+  Content,
   TextTitle,
   TextValue,
   TextTitleTotal,
@@ -49,6 +50,14 @@ type SelectTicketRouteProp = RouteProp<{ SelectTicket: { id: number } }, 'Select
 export function SelectTicket() {
   const route = useRoute<SelectTicketRouteProp>();
   const { id } = route.params;
+  const navigation = useNavigation();
+
+  const [tickets, setTickets] = useState([]);
+  const [subtotal, setSubtotal] = useState(0);
+  const [totalTax, setTotalTax] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [promotionalCode, setPromotionalCode] = useState('');
 
   const schema = Yup.object().shape({
     promotionalCode: Yup.string().min(6, 'Mínimo 6 caracteres').max(255, 'Máximo 100 caracteres'),
@@ -62,11 +71,6 @@ export function SelectTicket() {
     resolver: yupResolver(schema),
   });
 
-  const [tickets, setTickets] = useState([]);
-  const [subtotal, setSubtotal] = useState(0);
-  const [totalTax, setTotalTax] = useState(0);
-  const [total, setTotal] = useState(0);
-
   useEffect(() => {
     async function loadTickets() {
       const response = await readTicketsByEvent(id);
@@ -77,98 +81,113 @@ export function SelectTicket() {
   }, []);
 
   useEffect(() => {
-    updateTotal();
-  }, [subtotal, totalTax]);
+    promotionalCode.length > 0
+      ? setTotal(subtotal + totalTax + discount)
+      : setTotal(subtotal + totalTax);
+  }, [subtotal, totalTax, discount]);
 
   function valueIncrement(value: number) {
     setSubtotal(subtotal + value);
-    setTotalTax(totalTax + value * 0.01);
+    setTotalTax(totalTax + value * 0.1);
+    setDiscount(discount - value * 0.05);
   }
 
   function valueDecrement(value: number) {
     if (subtotal > 0) {
       setSubtotal(subtotal - value);
-      if (totalTax > 0) setTotalTax(totalTax - value * 0.01);
+      setTotalTax(totalTax - value * 0.1);
+      setDiscount(discount + value * 0.05);
     }
   }
 
-  function updateTotal() {
-    setTotal(subtotal + totalTax);
+  function handlePromotionalCode({ promotionalCode }: any) {
+    setPromotionalCode(promotionalCode);
+  }
+
+  function goToPaymentInfos() {
+    navigation.navigate('PaymentInfos', { total });
   }
 
   return (
     <Container>
       <Header buttonBack title="Selecionar ingresso" buttonRight={<GhostView />} />
-      <ContainerTop>
-        <ImageEvent
-          source={{
-            uri: 'https://images.unsplash.com/photo-1542732351-fa2c82b0c746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80%201032w',
-          }}
+      <Content>
+        <ContainerTop>
+          <ImageEvent
+            source={{
+              uri: 'https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            }}
+          />
+          <ContainerInfosEvent>
+            <TextTitleEvent>Solid | Halloween</TextTitleEvent>
+            <ContainerDateTime>
+              <ContainerDateEvent>
+                <CalendarIcon size={20} color={useTheme().colors.text} />
+                <TextDateEvent>Sex 22 de Out</TextDateEvent>
+              </ContainerDateEvent>
+              <ContainerTimeEvent>
+                <ClockIcon size={20} color={useTheme().colors.text} />
+                <TextTimeEvent>21:30 - 05:30</TextTimeEvent>
+              </ContainerTimeEvent>
+            </ContainerDateTime>
+          </ContainerInfosEvent>
+        </ContainerTop>
+        <ScrollContainer
+          showsVerticalScrollIndicator={false}
+          data={tickets}
+          renderItem={({ item }) => (
+            <CounterTicket
+              type={item.id_category_ticket.name}
+              price={Number(item.price)}
+              valueIncrement={valueIncrement}
+              valueDecrement={valueDecrement}
+            />
+          )}
         />
-        <ContainerInfosEvent>
-          <TextTitleEvent>Solid | Halloween</TextTitleEvent>
-          <ContainerDateTime>
-            <ContainerDateEvent>
-              <CalendarIcon size={20} color={useTheme().colors.text} />
-              <TextDateEvent>Sex 22 de Out</TextDateEvent>
-            </ContainerDateEvent>
-            <ContainerTimeEvent>
-              <ClockIcon size={20} color={useTheme().colors.text} />
-              <TextTimeEvent>21:30 - 05:30</TextTimeEvent>
-            </ContainerTimeEvent>
-          </ContainerDateTime>
-        </ContainerInfosEvent>
-      </ContainerTop>
-      <ScrollContainer
-        showsVerticalScrollIndicator={false}
-        data={tickets}
-        renderItem={({ item }) => (
-          <CounterTicket
-            type={item.id_category_ticket.name}
-            price={Number(item.price)}
-            valueIncrement={valueIncrement}
-            valueDecrement={valueDecrement}
-          />
-        )}
-      />
-      <ContainerBottom>
-        <ContainerValues>
-          <ContainerTitleValue>
-            <TextTitle>Subtotal</TextTitle>
-            <TextValue>{formatMoney(subtotal)}</TextValue>
-          </ContainerTitleValue>
-          <ContainerTitleValue>
-            <TextTitle>Total de taxas</TextTitle>
-            <TextValue>{formatMoney(totalTax)}</TextValue>
-          </ContainerTitleValue>
-          <ContainerTitleValue>
-            <TextTitle>Código promocional</TextTitle>
-            <TextValue>R$ -7,50</TextValue>
-          </ContainerTitleValue>
-          <ContainerTotalValue>
-            <TextTitleTotal>Total</TextTitleTotal>
-            <TextValueTotal>{formatMoney(total)}</TextValueTotal>
-          </ContainerTotalValue>
-        </ContainerValues>
-        <ContainerCoupon>
-          <InputForm
-            name="promotionalCode"
-            control={control}
-            placeholder="Código promocional"
-            autoCorrect={false}
-            autoCapitalize="none"
-            error={errors.promotionalCode?.message.toString()}
-          />
-          <IconCoupon />
-        </ContainerCoupon>
-        <Button title="Continuar" onPress={handleSubmit(() => {})} />
-        <ContainerObservation>
-          <TextObservation>Para meia entrada consulte os</TextObservation>
-          <TouchableObservation>
-            <HightlightTextObservation>Termos & Condições</HightlightTextObservation>
-          </TouchableObservation>
-        </ContainerObservation>
-      </ContainerBottom>
+        <ContainerBottom>
+          <ContainerValues>
+            <ContainerTitleValue>
+              <TextTitle>Subtotal</TextTitle>
+              <TextValue>{formatMoney(subtotal)}</TextValue>
+            </ContainerTitleValue>
+            <ContainerTitleValue>
+              <TextTitle>Total de taxas</TextTitle>
+              <TextValue>{formatMoney(totalTax)}</TextValue>
+            </ContainerTitleValue>
+            {promotionalCode?.length > 0 && (
+              <ContainerTitleValue>
+                <TextTitle>Desconto</TextTitle>
+                <TextValue>{formatMoney(discount)}</TextValue>
+              </ContainerTitleValue>
+            )}
+            <ContainerTotalValue>
+              <TextTitleTotal>Total</TextTitleTotal>
+              <TextValueTotal>{formatMoney(total)}</TextValueTotal>
+            </ContainerTotalValue>
+          </ContainerValues>
+          <ContainerCoupon>
+            <InputForm
+              name="promotionalCode"
+              control={control}
+              placeholder="Código promocional"
+              autoCorrect={false}
+              autoCapitalize="none"
+              error={errors.promotionalCode?.message.toString()}
+              onEndEditing={() => {
+                handleSubmit(handlePromotionalCode)();
+              }}
+            />
+            <IconCoupon />
+          </ContainerCoupon>
+          <Button title="Continuar" onPress={goToPaymentInfos} />
+          <ContainerObservation>
+            <TextObservation>Para meia entrada consulte os</TextObservation>
+            <TouchableObservation>
+              <HightlightTextObservation>Termos & Condições</HightlightTextObservation>
+            </TouchableObservation>
+          </ContainerObservation>
+        </ContainerBottom>
+      </Content>
     </Container>
   );
 }

@@ -1,5 +1,4 @@
 import { ReceiptPercentIcon } from 'react-native-heroicons/outline';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -8,6 +7,13 @@ export const Container = styled.View`
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
+`;
+
+export const Content = styled.KeyboardAvoidingView.attrs({
+  behavior: 'padding',
+})`
+  flex: 1;
+  width: 100%;
 `;
 
 export const ScrollContainer = styled.FlatList.attrs({

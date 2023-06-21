@@ -8,6 +8,9 @@ import { Event } from '../screens/Event';
 import { FilteredEvents } from '../screens/FilteredEvents';
 import { FriendsList } from '../screens/FriendsList';
 import { FriendView } from '../screens/FriendView';
+import { PaymentCompleted } from '../screens/PaymentCompleted';
+import { PaymentInfos } from '../screens/PaymentInfos';
+import { PaymentMethod } from '../screens/PaymentMethod';
 import { SelectTicket } from '../screens/SelectTicket';
 import { Settings } from '../screens/Settings';
 import { TermsOfUse } from '../screens/TermsOfUse';
@@ -32,6 +35,9 @@ export function StackRoutes() {
       <Screen name="SelectTicket" component={SelectTicket} />
       <Screen name="AboutPromoters" component={AboutPromoters} />
       <Screen name="FilteredEvents" component={FilteredEvents} />
+      <Screen name="PaymentMethod" component={PaymentMethod} />
+      <Screen name="PaymentInfos" component={PaymentInfos} />
+      <Screen name="PaymentCompleted" component={PaymentCompleted} />
     </Navigator>
   );
 }

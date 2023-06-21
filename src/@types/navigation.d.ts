@@ -11,6 +11,9 @@ export declare global {
       FriendView: { id: number };
       Home: undefined;
       Login: undefined;
+      PaymentInfos: { total: number };
+      PaymentMethods: undefined;
+      PaymentCompleted: undefined;
       Profile: undefined;
       Register: undefined;
       RegisterSecondStep: { accountId: number; userId: number };
