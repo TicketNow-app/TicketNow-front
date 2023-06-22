@@ -1,7 +1,6 @@
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
-  ArrowLeftIcon,
   CalendarIcon,
   ClockIcon,
   EllipsisVerticalIcon,
@@ -29,6 +28,7 @@ import {
   QrCodeObservation,
   QrCodeTag,
   TicketBottomInfos,
+  TicketComponent,
   TicketImage,
   TicketTopInfos,
   TicketType,
@@ -36,9 +36,9 @@ import {
 } from './styles';
 
 import { AvatarsFriendsConfirmed } from '../../components/AvatarsFriendsConfirmed';
-import { ModalShareTicket } from '../../components/ModalShareTicket';
 import { Header } from '../../components/Header';
 import { HeaderButton } from '../../components/HeaderButton';
+import { ModalShareTicket } from '../../components/ModalShareTicket';
 import { readOrder } from '../../services/order';
 
 type TicketRouteProp = RouteProp<{ Ticket: { id: number } }, 'Ticket'>;
@@ -75,16 +75,13 @@ export function Ticket() {
           buttonBack
           title="Ingresso"
           buttonRight={
-            <HeaderButton>
-              <EllipsisVerticalIcon
-                size={20}
-                color={theme.colors.text}
-                onPress={() => setModalShareTicketVisible(true)}
-              />
+            <HeaderButton onPress={() => setModalShareTicketVisible(true)}>
+              <EllipsisVerticalIcon size={20} color={theme.colors.text} />
             </HeaderButton>
           }
         />
         <ContainerTicket>
+          <TicketComponent />
           <TicketTopInfos>
             <ContainerTicketImage>
               <TicketImage source={{ uri: order.id_ticket.id_event.images[0].url }} />
@@ -95,9 +92,9 @@ export function Ticket() {
                 <ContainerFriends>
                   <AvatarsFriendsConfirmed
                     images={[
-                      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-                      'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80',
-                      'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=766&q=80',
+                      'https://images.unsplash.com/photo-1598539962077-e4185f37104f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80',
+                      'https://images.unsplash.com/photo-1485463598028-44d6c47bf23f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=749&q=80',
+                      'https://images.unsplash.com/photo-1631902112544-2271267abb73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
                       'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=766&q=80',
                     ]}
                     avatarSize={26}

@@ -27,6 +27,7 @@ export const MainContainer = styled.TouchableOpacity.attrs({
 })`
   position: absolute;
   align-self: flex-end;
+  right: 20px;
   z-index: 10;
   width: ${RFValue(193)}px;
   background-color: ${({ theme }) => theme.colors.background};
@@ -51,10 +52,8 @@ export const ContainerOption = styled.TouchableOpacity.attrs((props: PropBorders
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.secondary};
-  padding: 14px ${RFValue(18)}px;
-  height: 70px;
+  padding: 16px ${RFValue(18)}px;
   border-top-left-radius: ${props =>
     props.roundedBorder === 'top' || props.roundedBorder === 'all' ? `14px 14px` : 'none'};
   border-top-right-radius: ${props =>
@@ -66,22 +65,9 @@ export const ContainerOption = styled.TouchableOpacity.attrs((props: PropBorders
   border-bottom-width: ${props => (props.separator === 'full' ? `1px` : 'none')};
 `;
 
-export const GroupIconTexts = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const ContainerTexts = styled.View`
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-`;
-
-export const TitleOption = styled.Text.attrs((props: PropBorders) => ({
-}))<PropBorders>`
+export const TitleOption = styled.Text.attrs((props: PropBorders) => ({}))<PropBorders>`
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(12)}px;
-  margin-bottom: 4px;
-  color: #f3f6fb;
+  font-size: ${RFValue(14)}px;
+  color: ${({ theme }) => theme.colors.text};
+  margin-left: ${RFValue(16)}px;
 `;

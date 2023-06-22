@@ -3,11 +3,13 @@ import QRCode from 'react-native-qrcode-svg';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
+import { TicketVertical } from '../../components/Svg/TicketVertical';
+
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-start;
   align-items: center;
-  padding: 0px ${RFValue(16)}px ${RFValue(30)}px ${RFValue(16)}px;
+  padding-bottom: 30px;
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
@@ -15,9 +17,14 @@ export const ContainerTicket = styled.View`
   flex: 1;
   justify-content: space-between;
   width: 100%;
-  padding: 20px 20px 50px 20px;
+  padding: 20px 40px 50px 40px;
   border-radius: 20px;
-  background-color: ${({ theme }) => theme.colors.secondary};
+`;
+
+export const TicketComponent = styled(TicketVertical)`
+  position: absolute;
+  top: 0px;
+  align-self: center;
 `;
 
 export const TicketTopInfos = styled.View``;

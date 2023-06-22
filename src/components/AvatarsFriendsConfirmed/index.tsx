@@ -14,17 +14,19 @@ export function AvatarsFriendsConfirmed({ images, avatarSize }: AvatarsFriendsCo
 
   return (
     <Container activeOpacity={0.6}>
-      {[
-        images.map(
-          (image, index) =>
-            index < 3 && <Avatar key={index} source={{ uri: image }} size={avatarSize} />
-        ),
-        images.length > 3 && (
-          <AvatarMore size={avatarSize}>
-            <UsersIcon size={avatarSize - 10} color={theme.colors.text_inactive} />
-          </AvatarMore>
-        ),
-      ]}
+      {images.map((image, index) => {
+        if (index < 3) {
+          return <Avatar key={index} source={{ uri: image }} size={avatarSize} />;
+        }
+        if (index === 3) {
+          return (
+            <AvatarMore key={index} size={avatarSize}>
+              <UsersIcon size={avatarSize - 10} color={theme.colors.text_inactive} />
+            </AvatarMore>
+          );
+        }
+        return null;
+      })}
     </Container>
   );
 }
