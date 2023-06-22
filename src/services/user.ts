@@ -24,16 +24,16 @@ export const alterUser = (user: User): Promise<User> => {
   console.log('sending to back: ', user);
   return backendRequest({
     endpoint: `/user/alter`,
-    method: 'put',
+    method: 'post',
     data: user,
-    headers: { 'Content-Type': 'multipart/form-data' },
   });
 };
 
 export const validateUserCoupon = (coupon: object): Promise<validateUserCouponResponse> => {
+  console.log('sending to back: ', coupon);
   return backendRequest({
     endpoint: `/user/coupon/validate`,
-    method: 'post',
+    method: 'get',
     data: coupon,
   });
 };

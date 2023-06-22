@@ -1,4 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet';
+import { useNavigation } from '@react-navigation/native';
 import * as Location from 'expo-location';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -30,6 +31,7 @@ export function Map() {
   const [errorMsg, setErrorMsg] = useState(null);
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
+  const navigation = useNavigation();
 
   const theme = useTheme();
   const fletListRef = useRef(null);
@@ -103,8 +105,7 @@ export function Map() {
   };
 
   function handleMarker(eventIndex: number) {
-    // setBottomSheet(!bottomSheet);
-    fletListRef.current.scrollToIndex({ index: eventIndex - 1, animated: true });
+    navigation.navigate('Event', { id: eventIndex });
   }
 
   function handleCard(latitude, longitude) {
@@ -156,22 +157,27 @@ export function Map() {
           <ScrollPills data={categories} renderItem={({ item }) => <Pill title={item.name} />} />
         </ContainerScrollPills>
         <ContainerScrollCards>
-          {/* {
-            events && events.length > 0 ?
-              <ScrollCards
-                data={events}
-                renderItem={({ item }) => <CardLargeEvent eventData={item} onPress={() => handleCard(item.id_place.latitude, item.id_place.longitude)} />}
-                ref={fletListRef}
-                getItemLayout={(data, index) => (
-                  { length: 300, offset: 400 * index, index }
-                )}
-                ItemSeparatorComponent={() => <View style={{ width: 14 }} />}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-              />
-            :
+          {events && events.length > 0 ? (
+            <ScrollCards
+              data={events}
+              renderItem={({ item }) => (
+                <CardLargeEvent
+                  title={item.name}
+                  image={item.images[0].url}
+                  date={item.dateStart}
+                  address={item.id_place.address}
+                  onPress={() => handleCard(item.id_place.latitude, item.id_place.longitude)}
+                />
+              )}
+              ref={fletListRef}
+              getItemLayout={(data, index) => ({ length: 300, offset: 400 * index, index })}
+              ItemSeparatorComponent={() => <View style={{ width: 14 }} />}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
+          ) : (
             <></>
-          } */}
+          )}
         </ContainerScrollCards>
       </BottomSheet>
     </>

@@ -134,7 +134,6 @@ export function Login() {
               autoCorrect={false}
               keyboardType="default"
               autoCapitalize="none"
-              secureTextEntry
               error={errors.password?.message?.toString()}
             />
           </InputBox>

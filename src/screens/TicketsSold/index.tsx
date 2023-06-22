@@ -71,7 +71,7 @@ export function TicketsSold() {
                 title={sale?.id_event?.name}
                 date={sale?.id_event?.dateStart}
                 quantity={sale.orders?.length}
-                sold={formatMoney(profitByEvent(sale.orders, sale.id_coupon.discount))}
+                sold={formatMoney(profitByEvent(sale.orders, sale?.id_event.earned))}
               />
             </BoxCardTicket>
           ))}

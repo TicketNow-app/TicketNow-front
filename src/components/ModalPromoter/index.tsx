@@ -76,11 +76,13 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
   }
 
   async function handleAlterUser(coupon: string) {
-    const alterUserObject: User = {
+    const alterUserObject: any = {
       ...user,
       coupon,
       category: 'P',
     };
+
+    console.log(alterUserObject);
 
     try {
       await alterUser(alterUserObject);
@@ -95,27 +97,30 @@ export function ModalPromoter({ closeModal }: ModalPromoterProps) {
       coupon,
     };
 
-    try {
-      const response = await validateUserCoupon(couponObject);
+    console.log(couponObject);
 
-      if (response.isValid === false) {
-        setError('coupon', {
-          type: 'manual',
-          message: 'Código inválido',
-        });
-      }
+    const response = await validateUserCoupon(couponObject);
 
-      if (response.isValid === true) {
-        handleAlterUser(coupon);
-        closeModal();
-      }
-    } catch (error) {
-      console.log(error);
+    console.log(response);
+
+    if (response.isValid === false) {
+      setError('coupon', {
+        type: 'manual',
+        message: 'Código inválido',
+      });
+    }
+
+    if (response.isValid === true) {
+      console.log('Código válido');
+      // handleAlterUser(coupon);
+      closeModal();
     }
   }
 
   function handleSubmitCoupon(form: FormData) {
     const { coupon } = form;
+
+    console.log(coupon);
 
     handleValidateCoupon(coupon);
   }

@@ -19,8 +19,9 @@ interface Sales {
 
 export const profit = (sales: Sales[]) => {
   let profit = 0;
+
   sales.forEach(sale => {
-    profit += (parseFloat(sale.id_ticket.price) * parseFloat(sale.id_coupon.discount)) / 100;
+    profit += parseFloat(sale.id_ticket.price) * (parseFloat(sale.id_ticket.id_event.earned) / 100);
   });
   return profit;
 };

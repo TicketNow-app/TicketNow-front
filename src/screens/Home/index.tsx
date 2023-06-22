@@ -114,7 +114,13 @@ export function Home() {
               showsHorizontalScrollIndicator={false}
               data={categories}
               ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-              renderItem={({ item }) => <CardLarge category={item} />}
+              renderItem={({ item }) => (
+                <CardLarge
+                  name={item.name}
+                  image={item.image}
+                  onPress={() => goToFilteredEvents(item.id)}
+                />
+              )}
             />
           ) : (
             <HorizontalScroll

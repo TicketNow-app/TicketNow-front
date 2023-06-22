@@ -81,7 +81,7 @@ export const sortPromoterSoldTicketsByEvent = (orders: PromoterSoldTickets[]) =>
     const eventOrders = eventsMap[Number(eventId)];
     const firstOrder = eventOrders[0];
     const { id_event } = firstOrder.id_ticket;
-    const { id, name, description, dateStart, dateFinish, hourStart, hourFinish, images } =
+    const { id, name, description, dateStart, dateFinish, hourStart, hourFinish, earned, images } =
       id_event;
 
     const orders = eventOrders.map(order => {
@@ -104,6 +104,7 @@ export const sortPromoterSoldTicketsByEvent = (orders: PromoterSoldTickets[]) =>
         dateFinish,
         hourStart,
         hourFinish,
+        earned,
         images,
       },
       id_coupon: {
