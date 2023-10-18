@@ -31,16 +31,12 @@ TicketNow is a comprehensive software solution comprising an application and web
 <h2>Installation & Development</h2>
 
 Install packages :
-
+1. Clone the repository via [GitHub Desktop](https://desktop.github.com/) or use the command:
+```bash
+$ git clone https://github.com/ThiagoLeaoDev/TicketNow-dashboard.git
 ```
-yarn install
-```
-
-When installation is complete, run it :
-
-```
-expo start
-```
+3. Use the `yarn install` command inside the root of the project folder to install the dependencies.
+4. When installation is complete, run `npx expo start` command (The QR Code will be open to run project with Expo Go app)
 
 <h2>License</h2>
 <p>TicketNow-dashboard is licensed under the MIT License. See the <a href="https://github.com/ThiagoLeaoDev/TicketNow-front/blob/main/LICENSE">LICENSE</a> file for more details.</p>
