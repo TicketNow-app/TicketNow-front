@@ -34,14 +34,13 @@ import {
 } from '../Login/styles';
 
 interface FormData {
-  email: string;
+  login: string;
   password: string;
 }
 
 const schema = Yup.object().shape({
-  email: Yup.string()
+  login: Yup.string()
     .required('E-mail obrigatório')
-    .email('E-mail inválido')
     .min(6, 'Mínimo 6 caracteres')
     .max(255, 'Máximo 100 caracteres'),
   password: Yup.string()
@@ -75,7 +74,7 @@ export function Login({ navigation }: any) {
     }
   }
 
-  async function handleSignInWithApp(credentials: { email: string; password: string }) {
+  async function handleSignInWithApp(credentials: { login: string; password: string }) {
     try {
       setIsLoading(true);
       return await signInWithApp(credentials);
@@ -95,11 +94,11 @@ export function Login({ navigation }: any) {
   });
 
   function handleLogin(form: FormData) {
-    if (!form.email || !form.password) return alert('Preencha todos os campos!');
+    if (!form.login || !form.password) return alert('Preencha todos os campos!');
 
     const data = {
       //return example for backend
-      email: form.email,
+      login: form.login,
       password: form.password,
     };
 
@@ -117,13 +116,13 @@ export function Login({ navigation }: any) {
           />
           <InputBox>
             <InputForm
-              name="email"
+              name="login"
               control={control}
               placeholder="E-mail"
               autoCorrect={false}
               keyboardType="email-address"
               autoCapitalize="none"
-              error={errors.email && errors.email.message.toString()}
+              error={errors.login && errors.login.message.toString()}
             />
           </InputBox>
           <InputBox>

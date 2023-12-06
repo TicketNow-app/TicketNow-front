@@ -58,15 +58,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   async function signInWithApp(credentials: SignInCredentials) {
     try {
-      const { email, password } = credentials;
-      const userLogged = await loginAuth(email, password);
+      const { login, password } = credentials;
+      const userLogged = await loginAuth(login, password);
 
       const token = userLogged.token;
-      const id = userLogged.account.id_user.id;
 
       if (token) {
-        const user = await getUser(id, token);
-        setUser(user);
+        setUser(userLogged.User);
         await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
       }
     } catch (error) {

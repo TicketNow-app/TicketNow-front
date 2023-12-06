@@ -71,7 +71,7 @@ export function Profile() {
   }
 
   const copyToClipboard = async () => {
-    await Clipboard.setStringAsync(user.coupon);
+    await Clipboard.setStringAsync(user.nickname);
     console.log('Copied to Clipboard!');
   };
 
@@ -100,11 +100,11 @@ export function Profile() {
               </PromoterTag>
             )}
           </ContainerImage>
-          <UserName>{user.name}</UserName>
+          <UserName>{`${user.first_name} ${user.last_name}`}</UserName>
           {user.category === 'P' ? (
             <>
               <CopyButtonPromoter onPress={copyToClipboard}>
-                <TextCopyButton promoter={user.category}>{user.coupon}</TextCopyButton>
+                <TextCopyButton promoter={user.category}>{user.nickname}</TextCopyButton>
                 <ContainerCopyIcon>
                   <Square2StackIcon size={20} color={theme.colors.text_inactive} />
                 </ContainerCopyIcon>

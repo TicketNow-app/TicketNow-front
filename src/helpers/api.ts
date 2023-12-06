@@ -11,7 +11,7 @@ interface TicketNowRequest {
 const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequest) => {
   const response = await axios({
     method,
-    url: `${API_KEY}${endpoint}`,
+    url: `https://www.ticketnowapp.com${endpoint}`,
     data,
     headers: headers || { 'Content-Type': 'application/json' },
   });

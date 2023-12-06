@@ -1,5 +1,5 @@
 export interface SignInCredentials {
-  email: string;
+  login: string;
   password: string;
 }
 

@@ -1,14 +1,25 @@
 import backendRequest from '../helpers/api';
 
-export const loginAuth = async (email: string, password: string) => {
+import { User } from '../interfaces/user';
+
+interface Account {
+  User: User;
+  token: string;
+}
+
+export const loginAuth = async (login: string, password: string): Promise<Account> => {
+  console.log(login, password);
+
   const response = await backendRequest({
-    endpoint: '/account/validate',
+    endpoint: '/user/auth',
     method: 'post',
     data: {
-      email,
+      login,
       password,
     },
   });
+
+  console.log(response.User);
 
   return response;
 };
