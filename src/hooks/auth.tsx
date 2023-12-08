@@ -1,3 +1,4 @@
+import { S3_URL } from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import React, { useEffect, useState } from 'react';
@@ -64,7 +65,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const token = userLogged.token;
 
       if (token) {
-        setUser(userLogged.User);
+        const image = S3_URL + userLogged.User.image;
+        const user = {
+          ...userLogged.User,
+          image,
+        };
+
+        setUser(user);
         await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
       }
     } catch (error) {

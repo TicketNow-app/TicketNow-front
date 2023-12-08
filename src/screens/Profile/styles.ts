@@ -38,7 +38,6 @@ export const ContainerImage = styled.View`
 export const UserImage = styled.Image`
   width: ${RFValue(120)}px;
   height: ${RFValue(120)}px;
-  background-color: ${({ theme }) => theme.colors.text_inactive};
   border-radius: 70px;
 `;
 

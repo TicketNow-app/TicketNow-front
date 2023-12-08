@@ -8,8 +8,6 @@ interface Account {
 }
 
 export const loginAuth = async (login: string, password: string): Promise<Account> => {
-  console.log(login, password);
-
   const response = await backendRequest({
     endpoint: '/user/auth',
     method: 'post',
@@ -18,8 +16,6 @@ export const loginAuth = async (login: string, password: string): Promise<Accoun
       password,
     },
   });
-
-  console.log(response.User);
 
   return response;
 };

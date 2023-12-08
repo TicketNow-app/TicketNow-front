@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { BellIcon } from 'react-native-heroicons/solid';
+import { useQuery } from 'react-query';
 import { useTheme } from 'styled-components';
 
 import {
@@ -22,24 +23,24 @@ import { Header } from '../../components/Header';
 
 import { useAuth } from '../../hooks/auth';
 
-import { readCategories } from '../../services/categories';
+import { useReadCategories } from '../../services/categories';
 import { readCompanies } from '../../services/companies';
 import { readEvents } from '../../services/events';
 
 export function Home() {
   const navigation = useNavigation();
   const [recommendedEvents, setRecommendedEvents] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [companies, setCompanies] = useState([]);
+
+  const {
+    isLoading: categoriesLoading,
+    error: categoriesError,
+    data: categories,
+  } = useReadCategories();
 
   const { user } = useAuth();
 
   useEffect(() => {
-    async function loadCategories() {
-      const response = await readCategories();
-      setCategories(response);
-    }
-
     async function loadRecommendedEvents() {
       const response = await readEvents();
       setRecommendedEvents(response);
@@ -50,7 +51,7 @@ export function Home() {
       setCompanies(response);
     }
 
-    Promise.all([loadRecommendedEvents(), loadCategories(), loadCompanies()]);
+    Promise.all([loadRecommendedEvents(), loadCompanies()]);
   }, []);
 
   function handleNavigateToEvent(eventId: number) {
@@ -74,7 +75,7 @@ export function Home() {
       />
       <ContainerScroll>
         <TitleContainer>Categorias</TitleContainer>
-        {categories.length > 0 ? (
+        {!categoriesLoading ? (
           <HorizontalScroll
             horizontal
             showsHorizontalScrollIndicator={false}

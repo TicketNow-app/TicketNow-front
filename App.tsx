@@ -4,6 +4,7 @@ import {
   Roboto_700Bold,
   useFonts,
 } from '@expo-google-fonts/roboto';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
@@ -19,6 +20,8 @@ export default function App() {
     Roboto_700Bold,
   });
 
+  const queryClient = new QueryClient();
+
   const { userStorageLoading } = useAuth();
 
   if (!fontsLoaded || userStorageLoading) {
@@ -26,10 +29,12 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <Routes />
-      </AuthProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
