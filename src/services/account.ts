@@ -1,4 +1,4 @@
-import backendRequest from '../helpers/api';
+import backendRequest from './api';
 
 import { User } from '../interfaces/user';
 

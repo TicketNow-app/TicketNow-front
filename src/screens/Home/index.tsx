@@ -23,13 +23,13 @@ import { Header } from '../../components/Header';
 
 import { useAuth } from '../../hooks/auth';
 
+import { readAllEventsResponse } from '../../interfaces/event';
 import { useReadCategories } from '../../services/categories';
 import { readCompanies } from '../../services/companies';
-import { readEvents } from '../../services/events';
+import { useReadEvents } from '../../services/events';
 
 export function Home() {
   const navigation = useNavigation();
-  const [recommendedEvents, setRecommendedEvents] = useState([]);
   const [companies, setCompanies] = useState([]);
 
   const {
@@ -40,21 +40,9 @@ export function Home() {
 
   const { user } = useAuth();
 
-  useEffect(() => {
-    async function loadRecommendedEvents() {
-      const response = await readEvents();
-      setRecommendedEvents(response);
-    }
+  const { isLoading: eventsLoading, error: eventsError, data: events } = useReadEvents();
 
-    async function loadCompanies() {
-      const response = await readCompanies();
-      setCompanies(response);
-    }
-
-    Promise.all([loadRecommendedEvents(), loadCompanies()]);
-  }, []);
-
-  function handleNavigateToEvent(eventId: number) {
+  function handleNavigateToEvent(eventId: string) {
     navigation.navigate('Event', { id: eventId });
   }
 
@@ -67,7 +55,7 @@ export function Home() {
           <ContainerCircle onPress={() => navigation.navigate('Profile')}>
             <ImageAvatar
               source={{
-                uri: user.image,
+                uri: user?.User.image,
               }}
             />
           </ContainerCircle>
@@ -95,38 +83,41 @@ export function Home() {
       </ContainerScroll>
 
       <ContainerScroll>
-        <TitleContainer>Recomendados</TitleContainer>
-        {recommendedEvents.length > 0 ? (
-          <HorizontalScroll
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={recommendedEvents}
-            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-            renderItem={({ item }) => (
-              <Card event={item} onPress={() => handleNavigateToEvent(item.id)} />
-            )}
-          />
-        ) : (
-          <HorizontalScroll
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={Array.from(Array(5).keys())}
-            ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-            renderItem={() => <CardSkeleton />}
-          />
-        )}
+        <TitleContainer>Todos os eventos</TitleContainer>
+        <HorizontalScroll
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={eventsLoading || eventsError || !events ? Array.from(Array(5).keys()) : events}
+          ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
+          renderItem={({ item }) =>
+            eventsLoading || eventsError || !events ? (
+              <CardSkeleton />
+            ) : (
+              <Card
+                image={item.Images[0]}
+                date={item.Event.start}
+                name={item.Event.name}
+                number={item.Address.number}
+                address={item.Address.street}
+                onPress={() => handleNavigateToEvent(item.Event.id)}
+              />
+            )
+          }
+        />
       </ContainerScroll>
 
-      <ContainerScroll>
+      {/* <ContainerScroll>
         <TitleContainer>Eventos recentes</TitleContainer>
-        {/* <HorizontalScroll
+        <HorizontalScroll
           horizontal
           showsHorizontalScrollIndicator={false}
           data={eventsRecent}
           ItemSeparatorComponent={() => <FlatListDivisor orientation="horizontal" size={20} />}
-          renderItem={({ item }) => <CardLargeEvent eventData={item} onPress={() => handleNavigateToEvent(item.id)} />}
-        /> */}
-      </ContainerScroll>
+          renderItem={({ item }) => (
+            <CardLargeEvent eventData={item} onPress={() => handleNavigateToEvent(item.id)} />
+          )}
+        />
+      </ContainerScroll> */}
 
       <ContainerScroll>
         <TitleContainer>Produtoras recentes</TitleContainer>

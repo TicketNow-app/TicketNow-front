@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-import backendRequest from '../helpers/api';
+import backendRequest from './api';
 
-export const readCategories = (): Promise<any> => {
+const readCategories = (): Promise<any> => {
   const response = backendRequest({
     endpoint: '/categoryEvent/readAll',
     method: 'get',
@@ -15,5 +15,8 @@ export const useReadCategories = () => {
   return useQuery({
     queryKey: ['categories'],
     queryFn: readCategories,
+    refetchInterval: 6000,
+    staleTime: 600,
+    retry: false,
   });
 };

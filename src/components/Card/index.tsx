@@ -13,16 +13,35 @@ import {
   Title,
 } from './styles';
 
-export function Card({ event, ...rest }) {
+import { formatToWriteDate } from '../../utils/utils';
+
+interface CardProps {
+  image: string;
+  date: string;
+  name: string;
+  number: string;
+  address: string;
+  onPress: () => void;
+}
+
+export function Card({ image, date, name, number, address, ...rest }: CardProps) {
   return (
     <Container activeOpacity={0.6} {...rest}>
       <Content>
-        <Image source={{ uri: event.images[0].url }} />
+        <Image
+          source={{
+            uri: `${process.env.S3_URL}${image}` || '',
+          }}
+        />
         <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)']} locations={[0, 1]} />
         <ContainerText>
-          <Date>{event.dateStart.split('-').reverse().join('/')}</Date>
-          <Title>{event.name}</Title>
-          <Description>{event?.id_place?.address.split(',').slice(1)}</Description>
+          <Date>{formatToWriteDate(date)}</Date>
+          <Title numberOfLines={1} ellipsizeMode="tail">
+            {name}
+          </Title>
+          <Description numberOfLines={1} ellipsizeMode="tail">
+            {number}, {address}
+          </Description>
         </ContainerText>
       </Content>
     </Container>

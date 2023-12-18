@@ -1,4 +1,4 @@
-import backendRequest from '../helpers/api';
+import backendRequest from './api';
 
 export const readTicket = (id: number): Promise<any> => {
   return backendRequest({

@@ -9,7 +9,7 @@ export declare global {
       Profile: undefined;
       Ticket: { id: number };
       TicketList: undefined;
-      Event: { id: number };
+      Event: { id: string };
       FriendsList: undefined;
       Settings: undefined;
       FriendView: { id: number };

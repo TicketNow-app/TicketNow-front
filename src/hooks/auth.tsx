@@ -13,19 +13,24 @@ type AuthProviderProps = {
   children: React.ReactNode;
 };
 
+type UserAuth = {
+  User: User;
+  token: string;
+};
+
 interface IAuthContextData {
-  user: User;
+  user: UserAuth;
   signInWithApple: () => Promise<void>;
   signInWithApp: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => Promise<void>;
   userStorageLoading: boolean;
-  updateUser: (user: User) => Promise<void>;
+  updateUser: (user: UserAuth) => Promise<void>;
 }
 
 const AuthContext = React.createContext({} as IAuthContextData);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User>({} as User);
+  const [user, setUser] = useState<UserAuth>({} as UserAuth);
   const [userStorageLoading, setUserStorageLoading] = useState(true);
 
   const userStorageKey = '@ticketnow:user';
@@ -44,6 +49,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         const photo = `https://ui-avatars.com/api/?name=${credential.fullName.givenName}}&length=2&size=1024&background=323643&color=FFFFFF&font-size=0.33`;
         const userLogged = {
           id: Number(credential.user),
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           email: credential.email!,
           name,
           photo,
@@ -71,21 +77,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           image,
         };
 
-        setUser(user);
-        await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
+        const userAuth: UserAuth = {
+          User: user,
+          token,
+        };
+
+        setUser(userAuth);
+        await AsyncStorage.setItem(userStorageKey, JSON.stringify(userAuth));
       }
     } catch (error) {
       throw new Error(error);
     }
   }
 
-  async function updateUser(user: User) {
+  async function updateUser(user: UserAuth) {
     setUser(user);
     await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
   }
 
   async function signOut() {
-    setUser({} as User);
+    setUser({} as UserAuth);
     await AsyncStorage.removeItem(userStorageKey);
   }
 
@@ -94,7 +105,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const userStorage = await AsyncStorage.getItem(userStorageKey);
 
       if (userStorage) {
-        const userLogged = JSON.parse(userStorage) as User;
+        const userLogged = JSON.parse(userStorage) as UserAuth;
         setUser(userLogged);
       }
 

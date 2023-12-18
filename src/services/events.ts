@@ -1,9 +1,25 @@
-import backendRequest from '../helpers/api';
+import { useQuery } from '@tanstack/react-query';
 
-export const readEvents = (): Promise<any> => {
-  return backendRequest({
-    endpoint: '/events',
+import backendRequest from './api';
+
+import { readAllEventsResponse } from '../interfaces/event';
+
+const readEvents = (): Promise<readAllEventsResponse[]> => {
+  const response = backendRequest({
+    endpoint: '/event/readAll',
     method: 'get',
+  });
+
+  return response;
+};
+
+export const useReadEvents = () => {
+  return useQuery({
+    queryKey: ['events'],
+    queryFn: readEvents,
+    refetchInterval: 6000,
+    staleTime: 6000,
+    retry: false,
   });
 };
 

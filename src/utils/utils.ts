@@ -29,19 +29,31 @@ export function formatMoney(value: number): string {
   return value.toLocaleString('pt-BR', format);
 }
 
-export function formatDate(date: Date, separator = '/', hasHour = false): string {
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear();
+export function formatToDate(timestamp: string): string {
+  const date = timestamp.split('T')[0];
+  return date.split('-').reverse().join('/');
+}
 
-  let formatedDate = `${day}${separator}${month}${separator}${year}`;
+export function formatToWriteDate(timestamp: string): string {
+  const date = new Date(timestamp);
 
-  if (hasHour) {
-    const hour = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
+  const weekday = date
+    .toLocaleDateString('pt-BR', {
+      weekday: 'short',
+    })
+    .split('.')[0];
 
-    formatedDate += ` ${hour}:${minutes}`;
-  }
+  const weekdayUpperCase = weekday.charAt(0).toUpperCase() + weekday.slice(1);
 
-  return formatedDate;
+  const day = date.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+  });
+
+  const month = date.toLocaleDateString('pt-BR', {
+    month: 'short',
+  });
+
+  const monthUpperCase = month.charAt(0).toUpperCase() + month.slice(1).split('.')[0];
+
+  return `${weekdayUpperCase} ${day} de ${monthUpperCase}`;
 }
