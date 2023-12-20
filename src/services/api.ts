@@ -25,7 +25,6 @@ const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequ
     data,
     headers: {
       Authorization: `Bearer ${userStorage?.token}`,
-      Accept: 'application/json',
       'Content-Type': 'application/json',
       ...headers,
     },

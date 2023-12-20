@@ -23,26 +23,19 @@ export const useReadEvents = () => {
   });
 };
 
-const readEvent = (): Promise<readEventResponse> => {
-  try {
-    const response = backendRequest({
-      endpoint: `/event/read/`,
-      method: 'get',
-      data: {
-        id: '38082123-b165-4a4c-8f83-24b976d0d96a',
-      },
-    });
+const readEvent = (id: string): Promise<readEventResponse> => {
+  const response = backendRequest({
+    endpoint: `/event/read/${id}`,
+    method: 'get',
+  });
 
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
+  return response;
 };
 
-export const useReadEvent = () => {
+export const useReadEvent = (id: string) => {
   return useQuery({
     queryKey: ['event'],
-    queryFn: readEvent,
+    queryFn: () => readEvent(id),
     refetchInterval: 6000,
     staleTime: 6000,
     retry: false,

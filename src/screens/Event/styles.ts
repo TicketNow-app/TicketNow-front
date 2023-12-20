@@ -1,5 +1,6 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import MapView, { Marker } from 'react-native-maps';
+import PagerView from 'react-native-pager-view';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -15,6 +16,12 @@ export const ContainerImageEvent = styled.View`
   z-index: -1;
   width: 100%;
   height: ${RFValue(60)}%;
+`;
+
+export const Carousel = styled(PagerView).attrs({
+  initialPage: 0,
+})`
+  flex: 1;
 `;
 
 export const ImageEvent = styled.Image`

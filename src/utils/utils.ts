@@ -57,3 +57,11 @@ export function formatToWriteDate(timestamp: string): string {
 
   return `${weekdayUpperCase} ${day} de ${monthUpperCase}`;
 }
+
+export function formatHour(timestamp: string): string {
+  const date = new Date(timestamp);
+  return date.toLocaleTimeString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}

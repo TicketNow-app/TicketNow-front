@@ -9,6 +9,7 @@ import { EventSkeleton } from './skeleton';
 import {
   About,
   BuyButton,
+  Carousel,
   Container,
   ContainerAbout,
   ContainerBuy,
@@ -44,7 +45,7 @@ import { useReadEvent } from '../../services/events';
 
 import mapStyle from '../../utils/mapStyle.json';
 
-import { formatToWriteDate } from '../../utils/utils';
+import { formatToWriteDate, formatHour } from '../../utils/utils';
 
 type EventRouteProp = RouteProp<{ Event: { id: number } }, 'Event'>;
 
@@ -65,11 +66,18 @@ export function Event() {
     <Container>
       <Header buttonBack />
       <ContainerImageEvent>
-        {event ? (
-          <ImageEvent source={{ uri: event.Images[0] }} />
-        ) : (
-          <ActivityIndicator size="large" color={theme.colors.text_inactive} />
-        )}
+        <Carousel initialPage={0}>
+          {event?.Images?.map((image: any, index) => {
+            return (
+              <ImageEvent
+                key={image}
+                source={{
+                  uri: `${process.env.S3_URL}${event.Images[index]}` || '',
+                }}
+              />
+            );
+          })}
+        </Carousel>
       </ContainerImageEvent>
       <BottomSheet
         ref={sheetRef}
@@ -103,14 +111,13 @@ export function Event() {
             <ContainerDateTime>
               <ContainerIconDateTime>
                 <CalendarDaysIcon size={24} color={theme.colors.text} />
-                <DateTime>{formatToWriteDate(event?.Event.start)}</DateTime>
+                <DateTime>{event?.Event.start && formatToWriteDate(event?.Event.start)}</DateTime>
               </ContainerIconDateTime>
               <ContainerIconDateTime>
                 <ClockIcon size={24} color={theme.colors.text} />
                 <DateTime>
-                  {event?.hourStart.split(':').slice(0, 2).join(':')}
-                  {' - '}
-                  {event?.hourFinish.split(':').slice(0, 2).join(':')}
+                  {event?.Event.start && formatHour(event?.Event.start)} -{' '}
+                  {event?.Event.end && formatHour(event?.Event.end)}
                 </DateTime>
               </ContainerIconDateTime>
             </ContainerDateTime>
@@ -119,26 +126,28 @@ export function Event() {
             <TitleAbout>Sobre</TitleAbout>
             <About onPress={() => setReadMore(!readMore)}>
               {/* {event[1].about.substring(0, 200)}... <ReadMore>Ler mais</ReadMore> */}
-              {readMore ? event?.ds_event : event?.description.substring(0, 200)}
-              <ReadMore>{readMore ? '  Ler menos' : '  Ler mais'}</ReadMore>
+              {readMore ? event?.Event.description : event?.Event.description.substring(0, 200)}
+              {event?.Event.description && event?.Event.description.length > 200 && (
+                <ReadMore>{readMore ? '  Ler menos' : '  Ler mais'}</ReadMore>
+              )}
             </About>
           </ContainerAbout>
           <ContainerMap>
-            {event?.id_place ? (
+            {event?.Address ? (
               <Map
                 customMapStyle={mapStyle}
                 zoomEnabled
                 initialRegion={{
-                  latitude: Number(event?.id_place.latitude),
-                  longitude: Number(event?.id_place.longitude),
+                  latitude: Number(event?.Address.latitude || 0),
+                  longitude: Number(event?.Address.longitude || 0),
                   latitudeDelta: 0.01,
                   longitudeDelta: 0.01,
                 }}
               >
                 <EventMarker
                   coordinate={{
-                    latitude: Number(event?.id_place.latitude),
-                    longitude: Number(event?.id_place.longitude),
+                    latitude: Number(event?.Address.latitude),
+                    longitude: Number(event?.Address.longitude),
                   }}
                 >
                   <MarkerPointer />
