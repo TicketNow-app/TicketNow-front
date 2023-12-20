@@ -40,9 +40,11 @@ import {
 
 import { Header } from '../../components/Header';
 
-import { readEvent } from '../../services/events';
+import { useReadEvent } from '../../services/events';
 
 import mapStyle from '../../utils/mapStyle.json';
+
+import { formatToWriteDate } from '../../utils/utils';
 
 type EventRouteProp = RouteProp<{ Event: { id: number } }, 'Event'>;
 
@@ -52,27 +54,19 @@ export function Event() {
   const { id } = route.params;
 
   const [readMore, setReadMore] = useState(false);
-  const [responseEvent, setResponseEvent]: any = useState(); //TODO: define response type
 
   const sheetRef = useRef<BottomSheet>(null);
 
   const snapPoints = ['40%', '80%'];
 
-  useEffect(() => {
-    async function loadEvent() {
-      const response = await readEvent(id);
-      setResponseEvent(response);
-    }
+  const { isLoading, error, data: event } = useReadEvent(id.toString());
 
-    loadEvent();
-  }, []);
-
-  return responseEvent ? (
+  return (
     <Container>
       <Header buttonBack />
       <ContainerImageEvent>
-        {responseEvent ? (
-          <ImageEvent source={{ uri: responseEvent?.images[0].url }} />
+        {event ? (
+          <ImageEvent source={{ uri: event.Images[0] }} />
         ) : (
           <ActivityIndicator size="large" color={theme.colors.text_inactive} />
         )}
@@ -96,7 +90,7 @@ export function Event() {
         <ContainerScroll>
           <ContainerTopInfos>
             <ContainerTitleIcons>
-              <TitleEvent>{responseEvent?.name}</TitleEvent>
+              <TitleEvent>{event?.Event.name}</TitleEvent>
               <ContainerIcons>
                 <IconTouchBox>
                   <ShareIcon size={24} color={theme.colors.text} />
@@ -109,14 +103,14 @@ export function Event() {
             <ContainerDateTime>
               <ContainerIconDateTime>
                 <CalendarDaysIcon size={24} color={theme.colors.text} />
-                <DateTime>{responseEvent?.dateStart.split('-').reverse().join('/')}</DateTime>
+                <DateTime>{formatToWriteDate(event?.Event.start)}</DateTime>
               </ContainerIconDateTime>
               <ContainerIconDateTime>
                 <ClockIcon size={24} color={theme.colors.text} />
                 <DateTime>
-                  {responseEvent?.hourStart.split(':').slice(0, 2).join(':')}
+                  {event?.hourStart.split(':').slice(0, 2).join(':')}
                   {' - '}
-                  {responseEvent?.hourFinish.split(':').slice(0, 2).join(':')}
+                  {event?.hourFinish.split(':').slice(0, 2).join(':')}
                 </DateTime>
               </ContainerIconDateTime>
             </ContainerDateTime>
@@ -125,26 +119,26 @@ export function Event() {
             <TitleAbout>Sobre</TitleAbout>
             <About onPress={() => setReadMore(!readMore)}>
               {/* {event[1].about.substring(0, 200)}... <ReadMore>Ler mais</ReadMore> */}
-              {readMore ? responseEvent?.ds_event : responseEvent?.description.substring(0, 200)}
+              {readMore ? event?.ds_event : event?.description.substring(0, 200)}
               <ReadMore>{readMore ? '  Ler menos' : '  Ler mais'}</ReadMore>
             </About>
           </ContainerAbout>
           <ContainerMap>
-            {responseEvent?.id_place ? (
+            {event?.id_place ? (
               <Map
                 customMapStyle={mapStyle}
                 zoomEnabled
                 initialRegion={{
-                  latitude: Number(responseEvent?.id_place.latitude),
-                  longitude: Number(responseEvent?.id_place.longitude),
+                  latitude: Number(event?.id_place.latitude),
+                  longitude: Number(event?.id_place.longitude),
                   latitudeDelta: 0.01,
                   longitudeDelta: 0.01,
                 }}
               >
                 <EventMarker
                   coordinate={{
-                    latitude: Number(responseEvent?.id_place.latitude),
-                    longitude: Number(responseEvent?.id_place.longitude),
+                    latitude: Number(event?.id_place.latitude),
+                    longitude: Number(event?.id_place.longitude),
                   }}
                 >
                   <MarkerPointer />
@@ -157,7 +151,7 @@ export function Event() {
           <ContainerLineUp>
             <TitleLineUp>Organização</TitleLineUp>
             <ContainerLineUpArtists>
-              {responseEvent?.participants_events?.map((participant: any) => {
+              {event?.participants_events?.map((participant: any) => {
                 return (
                   <LineUpArtist key={participant.id}>
                     <ImageArtist source={{ uri: participant.id_participant.image }} />
@@ -175,7 +169,5 @@ export function Event() {
         </BuyButton>
       </ContainerBuy>
     </Container>
-  ) : (
-    <EventSkeleton />
   );
 }

@@ -9,7 +9,7 @@ export interface Event {
   company: string;
 }
 
-export interface readAllEventsResponse {
+export interface readEventResponse {
   Event: Event;
   Address: AdressComplete;
   Images: string[];

@@ -4,15 +4,15 @@ export declare global {
     interface RootParamList {
       Login: undefined;
       Register: undefined;
-      RegisterSecondStep: { accountId: number; userId: number };
+      RegisterSecondStep: { accountId: number; userId: string };
       Home: undefined;
       Profile: undefined;
-      Ticket: { id: number };
+      Ticket: { id: string };
       TicketList: undefined;
       Event: { id: string };
       FriendsList: undefined;
       Settings: undefined;
-      FriendView: { id: number };
+      FriendView: { id: string };
       AboutPromoters: undefined;
       TermsOfUse: undefined;
     }

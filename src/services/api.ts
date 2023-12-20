@@ -21,10 +21,12 @@ const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequ
 
   const response = await axios({
     method,
-    url: `http://www.ticketnowapp.com${endpoint}`,
+    url: `${process.env.API_KEY}${endpoint}`,
     data,
     headers: {
       Authorization: `Bearer ${userStorage?.token}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       ...headers,
     },
   });

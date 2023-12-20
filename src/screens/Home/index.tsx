@@ -23,7 +23,8 @@ import { Header } from '../../components/Header';
 
 import { useAuth } from '../../hooks/auth';
 
-import { readAllEventsResponse } from '../../interfaces/event';
+import { readEventResponse } from '../../interfaces/event';
+
 import { useReadCategories } from '../../services/categories';
 import { readCompanies } from '../../services/companies';
 import { useReadEvents } from '../../services/events';
