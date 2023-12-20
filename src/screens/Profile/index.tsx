@@ -56,7 +56,7 @@ export function Profile() {
 
   useEffect(() => {
     async function loadSales() {
-      const response = await readSales(user.id);
+      const response = await readSales(user.User.id);
       setSales(response);
     }
 
@@ -72,7 +72,7 @@ export function Profile() {
   }
 
   const copyToClipboard = async () => {
-    await Clipboard.setStringAsync(user.nickname);
+    await Clipboard.setStringAsync(user.User.nickname);
     console.log('Copied to Clipboard!');
   };
 
@@ -94,18 +94,18 @@ export function Profile() {
         />
         <ContainerTopInfos>
           <ContainerImage>
-            <UserImage source={{ uri: user.image }} />
-            {user.category === 'P' && (
+            <UserImage source={{ uri: user.User.image }} />
+            {user.User.category === 'P' && (
               <PromoterTag>
                 <FireIcon size={20} color={theme.colors.primary} />
               </PromoterTag>
             )}
           </ContainerImage>
-          <UserName>{`${user.first_name} ${user.last_name}`}</UserName>
-          {user.category === 'P' ? (
+          <UserName>{`${user.User.first_name} ${user.User.last_name}`}</UserName>
+          {user.User.category === 'P' ? (
             <>
               <CopyButtonPromoter onPress={copyToClipboard}>
-                <TextCopyButton promoter={user.category}>{user.nickname}</TextCopyButton>
+                <TextCopyButton promoter={user.User.category}>{user.User.nickname}</TextCopyButton>
                 <ContainerCopyIcon>
                   <Square2StackIcon size={20} color={theme.colors.text_inactive} />
                 </ContainerCopyIcon>
@@ -125,7 +125,7 @@ export function Profile() {
           ) : (
             <ButtonPromoter promoter={promoter} onPress={() => setModalPromoterVisible(true)}>
               <FireIcon size={20} color={theme.colors.text} />
-              <TextButton promoter={user.category}>Tornar-se promoter</TextButton>
+              <TextButton promoter={user.User.category}>Tornar-se promoter</TextButton>
             </ButtonPromoter>
           )}
         </ContainerTopInfos>
