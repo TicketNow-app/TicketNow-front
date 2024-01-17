@@ -1,4 +1,3 @@
-import { S3_URL } from '@env';
 import { useNavigation } from '@react-navigation/native';
 import * as Clipboard from 'expo-clipboard';
 import React, { useState, useEffect } from 'react';

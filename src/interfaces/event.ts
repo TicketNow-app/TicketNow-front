@@ -1,3 +1,4 @@
+import { Attraction } from './attractions';
 import { AdressComplete } from '../interfaces/address';
 
 export interface Event {
@@ -13,4 +14,5 @@ export interface readEventResponse {
   Event: Event;
   Address: AdressComplete;
   Images: string[];
+  Attractions: Attraction[];
 }

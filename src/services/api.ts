@@ -30,6 +30,8 @@ const backendRequest = async ({ endpoint, method, data, headers }: TicketNowRequ
     },
   });
 
+  console.log(response?.data);
+
   return response?.data;
 };
 

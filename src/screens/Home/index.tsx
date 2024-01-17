@@ -33,13 +33,13 @@ export function Home() {
   const navigation = useNavigation();
   const [companies, setCompanies] = useState([]);
 
+  const { user } = useAuth();
+
   const {
     isLoading: categoriesLoading,
     error: categoriesError,
     data: categories,
   } = useReadCategories();
-
-  const { user } = useAuth();
 
   const { isLoading: eventsLoading, error: eventsError, data: events } = useReadEvents();
 

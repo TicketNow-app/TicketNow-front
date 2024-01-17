@@ -30,7 +30,7 @@ export function Card({ image, date, name, number, address, ...rest }: CardProps)
       <Content>
         <Image
           source={{
-            uri: `${process.env.S3_URL}${image}` || '',
+            uri: `${image}` || '',
           }}
         />
         <Gradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)']} locations={[0, 1]} />

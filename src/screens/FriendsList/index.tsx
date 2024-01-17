@@ -20,30 +20,30 @@ import { Header } from '../../components/Header';
 import { useAuth } from '../../hooks/auth';
 import {
   readFriends,
-  readPendingFriendSolicitations,
+  useReadPendingFriendSolicitations,
   excludeFriend,
 } from '../../services/friendship';
 
 export function FriendsList() {
   const [friends, setFriends] = useState([]);
-  const [pendingSolicitations, setPendingSolicitations] = useState([]);
   const [excludeFriendId, setExcludeFriendId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
   const theme = useTheme();
   const { user } = useAuth();
 
-  useEffect(() => {
-    async function pendingFriendSolicitations() {
-      const pendingFriendSolicitations = await readPendingFriendSolicitations(user.id);
-      setPendingSolicitations(pendingFriendSolicitations);
-    }
+  const {
+    isLoading: pendingFriendSolicitationsLoading,
+    error: pendingFriendSolicitationsError,
+    data: pendingFriendSolicitations,
+  } = useReadPendingFriendSolicitations();
 
+  useEffect(() => {
     async function loadFriends() {
       const friends = await readFriends(user.id);
       setFriends(friends);
     }
 
-    Promise.all([pendingFriendSolicitations(), loadFriends()]);
+    Promise.all([loadFriends()]);
   }, []);
 
   function removeSolicitation() {
@@ -73,17 +73,15 @@ export function FriendsList() {
         <Header buttonBack title="Amigos" buttonRight={<GhostView />} />
         <Section>
           <SectionTitle>Solicitações</SectionTitle>
-          {pendingSolicitations && pendingSolicitations.length > 0 ? (
-            pendingSolicitations.map(solicitation => (
+          {pendingFriendSolicitations?.pending && pendingFriendSolicitations?.pending.length > 0 ? (
+            pendingFriendSolicitations?.pending.map((solicitation, index) => (
               <FriendTag
-                key={solicitation.id}
-                image={solicitation.guest?.image ? solicitation.guest.image : null}
-                name={solicitation.guest?.name ? solicitation.guest.name : null}
-                commonFriends={2}
-                close
-                removeFriend={() => excludeFriendConfirmation(solicitation.id)}
-                onPress={() => handleGoToFriend(solicitation.guest.id)}
-                // addFriend={() => addFriend(index)}
+                key={index}
+                image={solicitation.image}
+                name={`${solicitation.first_name} ${solicitation.last_name}`}
+                commonFriends={solicitation.mutualFriends}
+                // close={solicitation.}
+                // onPress={() => excludeFriendConfirmation(solicitation.id)}
               />
             ))
           ) : (

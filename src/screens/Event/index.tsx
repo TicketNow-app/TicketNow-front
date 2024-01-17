@@ -72,7 +72,7 @@ export function Event() {
               <ImageEvent
                 key={image}
                 source={{
-                  uri: `${process.env.S3_URL}${event.Images[index]}` || '',
+                  uri: `${event.Images[index]}` || '',
                 }}
               />
             );
@@ -124,13 +124,7 @@ export function Event() {
           </ContainerTopInfos>
           <ContainerAbout>
             <TitleAbout>Sobre</TitleAbout>
-            <About onPress={() => setReadMore(!readMore)}>
-              {/* {event[1].about.substring(0, 200)}... <ReadMore>Ler mais</ReadMore> */}
-              {readMore ? event?.Event.description : event?.Event.description.substring(0, 200)}
-              {event?.Event.description && event?.Event.description.length > 200 && (
-                <ReadMore>{readMore ? '  Ler menos' : '  Ler mais'}</ReadMore>
-              )}
-            </About>
+            <About>{event?.Event.description}</About>
           </ContainerAbout>
           <ContainerMap>
             {event?.Address ? (
@@ -160,11 +154,11 @@ export function Event() {
           <ContainerLineUp>
             <TitleLineUp>Organização</TitleLineUp>
             <ContainerLineUpArtists>
-              {event?.participants_events?.map((participant: any) => {
+              {event?.Attractions?.map((attraction: any) => {
                 return (
-                  <LineUpArtist key={participant.id}>
-                    <ImageArtist source={{ uri: participant.id_participant.image }} />
-                    <NameArtist>{participant.id_participant.name}</NameArtist>
+                  <LineUpArtist key={attraction.id}>
+                    <ImageArtist source={{ uri: attraction.image }} />
+                    <NameArtist>{attraction.name}</NameArtist>
                   </LineUpArtist>
                 );
               })}

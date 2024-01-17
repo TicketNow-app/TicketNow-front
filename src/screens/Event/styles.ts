@@ -1,5 +1,6 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import MapView, { Marker } from 'react-native-maps';
+import Markdown from 'react-native-markdown-display';
 import PagerView from 'react-native-pager-view';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
@@ -169,12 +170,17 @@ export const TitleAbout = styled.Text`
   margin-bottom: ${RFValue(8)}px;
 `;
 
-export const About = styled.Text`
-  font-size: ${RFValue(14)}px;
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.text_inactive};
-  line-height: ${RFValue(18)}px;
-`;
+export const About = styled(Markdown).attrs({
+  style: {
+    text: {
+      //     font-size: ${RFValue(14)}px;
+      // font-family: ${({ theme }) => theme.fonts.regular};
+      // color: ${({ theme }) => theme.colors.text_inactive};
+      // line-height: ${RFValue(18)}px;
+      color: '#fff',
+    },
+  },
+})``;
 
 export const ReadMore = styled.Text`
   font-size: ${RFValue(14)}px;
